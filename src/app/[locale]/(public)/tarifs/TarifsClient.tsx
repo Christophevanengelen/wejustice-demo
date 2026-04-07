@@ -14,6 +14,7 @@
  */
 
 import { useState, useRef } from "react";
+import Image from "next/image";
 import { Badge, Table, TableBody, TableCell, TableHead, TableHeadCell, TableRow, Tooltip } from "flowbite-react";
 import {
   PLANS,
@@ -197,41 +198,49 @@ export function TarifsClient() {
   return (
     <div className="bg-white dark:bg-gray-900">
 
-      {/* ═══ SECTION 1 : HERO + VALUE PROPOSITION ═══ */}
-      <div className="mx-auto max-w-screen-xl px-4 pb-6 pt-10 lg:px-6 lg:pt-16">
-        <ScrollReveal>
-          <div className="mx-auto mb-6 max-w-2xl text-center">
-            <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-gray-400 dark:text-gray-500">
-              Forfaits Libertés
-            </p>
-            <h1 className="mb-4 text-3xl font-extrabold text-gray-900 dark:text-white lg:text-4xl">
-              Activez le 5<sup className="text-lg">e</sup> pouvoir
-            </h1>
-            <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-              Chaque citoyen peut agir en Justice pour défendre ses droits.
-              Choisissez votre forfait, rejoignez les actions, et devenez acteur du changement.
-            </p>
-          </div>
-        </ScrollReveal>
-
-        {/* Trust signals inline */}
-        <ScrollReveal delay={0.1}>
-          <div className="mx-auto mb-10 flex max-w-xl flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs text-gray-400 dark:text-gray-500">
+      {/* ═══ SECTION 1 : HERO ═══ */}
+      <section className="relative flex min-h-[40vh] flex-col overflow-hidden">
+        <Image
+          src="/images/pages/wejustice_actions.jpg"
+          alt="Citoyens mobilisés pour la justice collective"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-[center_30%]"
+        />
+        <div
+          className="absolute inset-0"
+          style={{
+            background: 'linear-gradient(to bottom, rgba(3, 7, 18, 0.75) 0%, rgba(3, 7, 18, 0.60) 50%, rgba(3, 7, 18, 0.80) 100%)',
+          }}
+        />
+        <div className="relative z-10 mx-auto flex max-w-screen-xl flex-1 flex-col items-center justify-center px-4 py-10 text-center sm:py-16">
+          <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-white/60">
+            Forfaits Libertés
+          </p>
+          <h1 className="mb-4 text-3xl font-bold leading-tight tracking-tight text-white lg:text-5xl">
+            Activez le 5<sup className="text-lg">e</sup> pouvoir
+          </h1>
+          <p className="mx-auto mb-6 max-w-2xl text-base text-white/80 sm:text-lg">
+            Chaque citoyen peut agir en Justice pour défendre ses droits.
+            Choisissez votre forfait, rejoignez les actions, et devenez acteur du changement.
+          </p>
+          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs text-white/60">
             <span className="flex items-center gap-1.5">
               <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
-              Paiement s\u00e9curis\u00e9
+              Paiement sécurisé
             </span>
             <span className="flex items-center gap-1.5">
               <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-              Sans engagement mensuel
+              Sans engagement
             </span>
             <span className="flex items-center gap-1.5">
               <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
-              +15 000 citoyens engag\u00e9s
+              +15 000 citoyens
             </span>
           </div>
-        </ScrollReveal>
-      </div>
+        </div>
+      </section>
 
       {/* ═══ SECTION 2 : CITOYENS - CONFIGURATOR + CARDS ═══ */}
       <div className="mx-auto max-w-screen-xl px-4 pb-10 lg:px-6">
@@ -249,7 +258,7 @@ export function TarifsClient() {
         {!isReduced && (
           <div className="mb-6 flex items-center justify-center gap-4">
             <span className="text-sm text-gray-500 dark:text-gray-400">
-              B\u00e9n\u00e9ficiaires
+              Bénéficiaires
               <Tooltip content={TOOLTIPS.seats}>
                 <span className="ml-1 inline-block cursor-help text-gray-400">
                   <svg width="13" height="13" viewBox="0 0 20 20" className="inline align-middle" style={{ marginBottom: 1 }}>
@@ -282,7 +291,7 @@ export function TarifsClient() {
         {/* Duration selector */}
         <div className="mb-8 flex items-center justify-center gap-3">
           <span className="text-sm text-gray-500 dark:text-gray-400">
-            Dur\u00e9e
+            Durée
             <Tooltip content={TOOLTIPS.duration}>
               <span className="ml-1 inline-block cursor-help text-gray-400">
                 <svg width="13" height="13" viewBox="0 0 20 20" className="inline align-middle" style={{ marginBottom: 1 }}>
@@ -360,13 +369,13 @@ export function TarifsClient() {
             <div className="mb-10 overflow-x-auto rounded-lg border border-gray-200 dark:border-gray-700">
               <Table striped>
                 <TableHead>
-                  <TableHeadCell className="bg-gray-50 dark:bg-gray-800">Fonctionnalit\u00e9</TableHeadCell>
+                  <TableHeadCell className="bg-gray-50 dark:bg-gray-800">Fonctionnalité</TableHeadCell>
                   {PLANS.map((p) => (
                     <TableHeadCell key={p.id} className="bg-gray-50 text-center dark:bg-gray-800">
                       <span className="font-bold" style={{ color: p.color }}>{p.name}</span>
                       {p.recommended && (
                         <Badge color="purple" size="xs" className="ml-1.5 inline-flex">
-                          Recommand\u00e9
+                          Recommandé
                         </Badge>
                       )}
                     </TableHeadCell>
@@ -423,7 +432,7 @@ export function TarifsClient() {
                 <div className={`h-4 w-4 transform rounded-full bg-white shadow transition-transform ${isReduced ? "translate-x-4" : "translate-x-0.5"} mt-0.5`} />
               </div>
             </div>
-            <span className="text-sm text-gray-500 dark:text-gray-400">Tarif r\u00e9duit</span>
+            <span className="text-sm text-gray-500 dark:text-gray-400">Tarif réduit</span>
           </label>
         </div>
 
@@ -496,7 +505,7 @@ export function TarifsClient() {
         <div className="mx-auto max-w-2xl">
           <ScrollReveal>
             <h2 className="mb-8 text-center text-2xl font-bold text-gray-900 dark:text-white">
-              Questions fr\u00e9quentes
+              Questions fréquentes
             </h2>
           </ScrollReveal>
           <div>

@@ -26,7 +26,7 @@ function relativeDate(dateStr: string): string {
   const diffMs = now.getTime() - date.getTime();
   const diffH = Math.floor(diffMs / 3600000);
   const diffD = Math.floor(diffH / 24);
-  if (diffH < 1) return "\u00e0 l'instant";
+  if (diffH < 1) return "à l'instant";
   if (diffH < 24) return `il y a ${diffH}h`;
   if (diffD < 7) return `il y a ${diffD}j`;
   return `il y a ${Math.floor(diffD / 7)} sem.`;
@@ -68,7 +68,7 @@ const CATEGORY_ICON_COLOR: Record<string, string> = {
 function getNotificationCTA(type: string, locale: string): { label: string; href: string } | null {
   switch (type) {
     case "bienvenue":
-      return { label: "D\u00e9couvrir les actions", href: `/${locale}/actions` };
+      return { label: "Découvrir les actions", href: `/${locale}/actions` };
     case "action":
       return { label: "Voir l'action", href: `/${locale}/actions` };
     case "upgrade":

@@ -77,17 +77,17 @@ export function TribuneWaitingClient() {
               {
                 icon: "M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2",
                 title: "1. Constituez votre dossier",
-                desc: "D\u00e9crivez l'injustice avec des faits dat\u00e9s et v\u00e9rifiables. Identifiez la cible : organisation, institution ou pratique syst\u00e9mique.",
+                desc: "Décrivez l'injustice avec des faits datés et vérifiables. Identifiez la cible : organisation, institution ou pratique systémique.",
               },
               {
                 icon: "M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z",
                 title: "2. Ajoutez vos preuves",
-                desc: "Documents, photos, vid\u00e9os, liens. Jusqu'\u00e0 10 Mo par fichier. Les preuves renforcent la cr\u00e9dibilit\u00e9 de votre dossier aupr\u00e8s de la communaut\u00e9.",
+                desc: "Documents, photos, vidéos, liens. Jusqu'à 10 Mo par fichier. Les preuves renforcent la crédibilité de votre dossier auprès de la communauté.",
               },
               {
                 icon: "M3 6l3 1m0 0l-3 9a5 5 0 006 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5 5 0 006 0M18 7l3 9m-3-9l-6-2",
                 title: "3. La communaute vote",
-                desc: "Votre dossier est publi\u00e9 apr\u00e8s mod\u00e9ration. Les citoyens votent : Soutien, Opposition ou Abstention. L'organisation cibl\u00e9e peut exercer son droit de r\u00e9ponse.",
+                desc: "Votre dossier est publié après modération. Les citoyens votent : Soutien, Opposition ou Abstention. L'organisation ciblée peut exercer son droit de réponse.",
               },
             ].map(({ icon, title, desc }) => (
               <div key={title} className="rounded-lg border border-gray-200 bg-gray-50 p-6 dark:border-gray-700 dark:bg-gray-800">
@@ -112,11 +112,11 @@ export function TribuneWaitingClient() {
           </h2>
           <div className="mx-auto max-w-3xl space-y-6">
             {[
-              { step: 1, title: "D\u00e9finir la cible", desc: "Qui ou quoi est responsable de l'injustice ? Organisation, institution ou pratique syst\u00e9mique." },
-              { step: 2, title: "Chronologie des faits", desc: "Listez les \u00e9v\u00e9nements dat\u00e9s et v\u00e9rifiables, dans l'ordre chronologique. Chaque fait doit \u00eatre factuel." },
-              { step: 3, title: "D\u00e9poser les preuves", desc: "Documents PDF, photos, vid\u00e9os, liens. Jusqu'\u00e0 10 Mo par fichier. Optionnel mais renforce votre dossier." },
-              { step: 4, title: "Formuler vos demandes", desc: "R\u00e9paration financi\u00e8re, excuses publiques, changement de politique, transparence. Soyez pr\u00e9cis." },
-              { step: 5, title: "Soumettre \u00e0 la mod\u00e9ration", desc: "Votre dossier est relu par l'\u00e9quipe. Si valide, il est publi\u00e9 et soumis au vote de la communaut\u00e9." },
+              { step: 1, title: "Définir la cible", desc: "Qui ou quoi est responsable de l'injustice ? Organisation, institution ou pratique systémique." },
+              { step: 2, title: "Chronologie des faits", desc: "Listez les événements datés et vérifiables, dans l'ordre chronologique. Chaque fait doit être factuel." },
+              { step: 3, title: "Déposer les preuves", desc: "Documents PDF, photos, vidéos, liens. Jusqu'à 10 Mo par fichier. Optionnel mais renforce votre dossier." },
+              { step: 4, title: "Formuler vos demandes", desc: "Réparation financière, excuses publiques, changement de politique, transparence. Soyez précis." },
+              { step: 5, title: "Soumettre à la modération", desc: "Votre dossier est relu par l'équipe. Si valide, il est publié et soumis au vote de la communauté." },
             ].map(({ step, title, desc }) => (
               <div key={step} className="flex gap-4 rounded-lg bg-white p-5 dark:bg-gray-900">
                 <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-gray-900 text-sm font-bold text-white dark:bg-white dark:text-gray-900">
@@ -143,10 +143,10 @@ export function TribuneWaitingClient() {
           </p>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {[
-              { icon: "M3 21h18M3 7v1a3 3 0 006 0V7m0 1a3 3 0 006 0V7m0 1a3 3 0 006 0V7H3l2-4h14l2 4M5 21V10.7M19 21V10.7", title: "Citoyens", desc: "D\u00e9noncez une injustice v\u00e9cue. Constituez un dossier solide et laissez la communaut\u00e9 juger." },
-              { icon: "M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z", title: "Scientifiques", desc: "Publiez des dossiers \u00e9tay\u00e9s par des preuves scientifiques pour \u00e9clairer le d\u00e9bat public." },
-              { icon: "M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z", title: "Journalistes", desc: "Documentez des affaires d'int\u00e9r\u00eat public avec une structure juridique rigoureuse." },
-              { icon: "M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z", title: "Associations", desc: "Portez des causes collectives avec le soutien et le vote de la communaut\u00e9." },
+              { icon: "M3 21h18M3 7v1a3 3 0 006 0V7m0 1a3 3 0 006 0V7m0 1a3 3 0 006 0V7H3l2-4h14l2 4M5 21V10.7M19 21V10.7", title: "Citoyens", desc: "Dénoncez une injustice vécue. Constituez un dossier solide et laissez la communauté juger." },
+              { icon: "M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z", title: "Scientifiques", desc: "Publiez des dossiers étayés par des preuves scientifiques pour éclairer le débat public." },
+              { icon: "M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z", title: "Journalistes", desc: "Documentez des affaires d'intérêt public avec une structure juridique rigoureuse." },
+              { icon: "M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z", title: "Associations", desc: "Portez des causes collectives avec le soutien et le vote de la communauté." },
             ].map(({ icon, title, desc }) => (
               <div key={title} className="rounded-lg border border-gray-200 p-6 text-center dark:border-gray-700">
                 <div className="mb-4 mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-gray-100 dark:bg-gray-800">
@@ -175,10 +175,10 @@ export function TribuneWaitingClient() {
             </p>
             <ul className="space-y-3">
               {[
-                "L'organisation cibl\u00e9e est notifi\u00e9e de la publication du dossier",
-                "Elle peut publier sa r\u00e9ponse officielle, visible par tous",
-                "La communaut\u00e9 vote en connaissance de cause, avec les deux versions",
-                "Aucune censure : les faits et les r\u00e9ponses sont publics",
+                "L'organisation ciblée est notifiée de la publication du dossier",
+                "Elle peut publier sa réponse officielle, visible par tous",
+                "La communauté vote en connaissance de cause, avec les deux versions",
+                "Aucune censure : les faits et les réponses sont publics",
               ].map((item) => (
                 <li key={item} className="flex items-start gap-2.5">
                   <svg className="mt-0.5 h-4 w-4 flex-shrink-0 text-green-500" fill="currentColor" viewBox="0 0 20 20">

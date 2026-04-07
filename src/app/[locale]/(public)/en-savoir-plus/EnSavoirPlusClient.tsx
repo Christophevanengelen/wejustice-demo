@@ -19,6 +19,7 @@
 
 import { useParams } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import {
   Badge,
   Card,
@@ -62,18 +63,20 @@ const TEAM = [
     role: "Avocat référent — Cabinet Lexprecia",
     bio: "Avocat au barreau de Paris depuis 2015, spécialisé en droit de la consommation et actions collectives. Plus de 50 procédures collectives portées, des victoires significatives contre des multinationales.",
     initials: "AD",
-    badges: ["Droit de la consommation", "Actions collectives", "+50 procédures"],
+    photo: "/images/team/arnaud.jpg",
     quote: "Les citoyens ont le droit d'agir ensemble. Mon rôle est de leur donner les armes juridiques pour le faire.",
-    iconPath: "M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3",
+    linkedin: "https://www.linkedin.com/in/arnauddurand/",
+    twitter: "https://x.com/ArnaudAvocat",
   },
   {
     name: "Christophe van Engelen",
     role: "Expert CX & Communication — Co-fondateur",
     bio: "Spécialiste en expérience utilisateur et communication digitale basé à Bruxelles. Transforme des idées complexes en produits intuitifs qui mobilisent. Son obsession : que chaque citoyen puisse agir en 30 secondes.",
     initials: "CVE",
-    badges: ["Customer Experience", "Communication digitale", "Product Design"],
+    photo: "/images/team/christophe.jpg",
     quote: "La justice est un sujet trop sérieux pour être mal communiqué. Si l'UX est mauvaise, les citoyens ne s'engagent pas.",
-    iconPath: "M15.59 14.37a6 6 0 01-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.631 8.41m5.96 5.96a14.926 14.926 0 01-5.841 2.58m-.119-8.54a6 6 0 00-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 00-2.58 5.84m2.699 2.7c-.103.021-.207.041-.311.06a15.09 15.09 0 01-2.448-2.448 14.9 14.9 0 01.06-.312m-2.24 2.39a4.493 4.493 0 00-1.757 4.306 4.493 4.493 0 004.306-1.758M16.5 9a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z",
+    linkedin: "https://www.linkedin.com/in/christophevanengelen/",
+    twitter: "https://x.com/jhondoe2509",
   },
 ];
 
@@ -192,12 +195,12 @@ export default function EnSavoirPlusClient() {
         </div>
       </section>
 
-      {/* 4. L'ÉQUIPE — Joint venture */}
+      {/* 4. L'ÉQUIPE — design humain, cards homothétiques */}
       <section className="bg-gray-50 py-16 lg:py-24 dark:bg-gray-800">
         <div className="mx-auto max-w-screen-xl px-4">
           <ScrollReveal>
             <div className="mb-12 text-center">
-              <p className="text-sm font-semibold uppercase tracking-wider" style={{ color: 'var(--color-brand)' }}>L&apos;équipe</p>
+              <p className="text-sm font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">L&apos;équipe</p>
               <h2 className="mt-2 text-3xl font-extrabold text-gray-900 dark:text-white">
                 Deux expertises, une mission
               </h2>
@@ -208,33 +211,49 @@ export default function EnSavoirPlusClient() {
             </div>
           </ScrollReveal>
 
-          <div className="mx-auto grid max-w-4xl gap-8 lg:grid-cols-2">
+          <div className="mx-auto grid auto-rows-[1fr] max-w-4xl gap-8 lg:grid-cols-2">
             {TEAM.map((member, i) => (
-              <ScrollReveal key={member.name} delay={0.1 * (i + 1)}>
-                <Card className="h-full">
-                  <div className="flex items-center gap-4">
-                    <div className="flex h-14 w-14 items-center justify-center rounded-full bg-gray-100 dark:bg-gray-700">
-                      <svg className="h-7 w-7 text-gray-700 dark:text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                        <path strokeLinecap="round" strokeLinejoin="round" d={member.iconPath} />
-                      </svg>
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-bold text-gray-900 dark:text-white">{member.name}</h3>
-                      <p className="text-sm text-gray-500 dark:text-gray-400">{member.role}</p>
+              <ScrollReveal key={member.name} delay={0.1 * (i + 1)} className="flex">
+                <div className="flex w-full flex-col rounded-lg border border-gray-200 bg-white p-8 dark:border-gray-700 dark:bg-gray-900">
+                  {/* Photo + nom — centré, humain */}
+                  <div className="mb-6 text-center">
+                    <Image
+                      src={member.photo}
+                      alt={member.name}
+                      width={96}
+                      height={96}
+                      className="mx-auto mb-4 h-24 w-24 rounded-full object-cover"
+                    />
+                    <h3 className="text-xl font-bold text-gray-900 dark:text-white">{member.name}</h3>
+                    <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">{member.role}</p>
+
+                    {/* Liens sociaux */}
+                    <div className="mt-3 flex items-center justify-center gap-3">
+                      <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="text-gray-400 transition-colors hover:text-gray-600 dark:hover:text-gray-300" aria-label={`LinkedIn de ${member.name}`}>
+                        <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2zM4 6a2 2 0 110-4 2 2 0 010 4z" />
+                        </svg>
+                      </a>
+                      <a href={member.twitter} target="_blank" rel="noopener noreferrer" className="text-gray-400 transition-colors hover:text-gray-600 dark:hover:text-gray-300" aria-label={`Twitter de ${member.name}`}>
+                        <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                        </svg>
+                      </a>
                     </div>
                   </div>
-                  <p className="text-sm text-gray-600 leading-relaxed dark:text-gray-400">{member.bio}</p>
-                  <div className="flex flex-wrap gap-2">
-                    {member.badges.map((b) => (
-                      <Badge key={b} color="gray" size="xs">{b}</Badge>
-                    ))}
-                  </div>
-                  <div className="rounded-lg bg-gray-50 p-3 dark:bg-gray-700">
-                    <p className="text-xs italic text-gray-500 dark:text-gray-400">
+
+                  {/* Bio */}
+                  <p className="flex-1 text-center text-sm leading-relaxed text-gray-600 dark:text-gray-400">
+                    {member.bio}
+                  </p>
+
+                  {/* Citation — en bas, toujours au même niveau */}
+                  <div className="mt-6 border-t border-gray-100 pt-4 dark:border-gray-700">
+                    <p className="text-center text-sm italic text-gray-500 dark:text-gray-400">
                       &laquo; {member.quote} &raquo;
                     </p>
                   </div>
-                </Card>
+                </div>
               </ScrollReveal>
             ))}
           </div>
