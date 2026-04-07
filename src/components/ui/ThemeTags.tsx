@@ -21,9 +21,12 @@ export function ThemeTags({ themes, variant = "default" }: ThemeTagsProps) {
       ? "rounded-full bg-white/15 px-2.5 py-0.5 text-xs font-medium capitalize text-white/80"
       : "rounded-full bg-gray-100 px-2.5 py-0.5 text-xs font-medium capitalize text-gray-600 dark:bg-gray-700 dark:text-gray-300";
 
+  /* Max 2 thèmes affichés — pas de wrap, pas de surcharge visuelle */
+  const visible = themes.slice(0, 2);
+
   return (
-    <div className="flex flex-wrap gap-1.5">
-      {themes.map((theme) => (
+    <div className="flex gap-1.5">
+      {visible.map((theme) => (
         <span key={theme} className={cls}>
           {theme}
         </span>

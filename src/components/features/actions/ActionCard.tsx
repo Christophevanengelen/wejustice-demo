@@ -47,7 +47,7 @@ export function ActionCard({
           alt={title}
           fill
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          className="object-cover transition-transform duration-300 group-hover:scale-105"
+          className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
           onError={(e) => {
             const img = e.target as HTMLImageElement;
             if (!img.src.endsWith("default.png")) {
@@ -64,15 +64,15 @@ export function ActionCard({
       </div>
 
       <div className="flex flex-1 flex-col p-5">
-        <div className="mb-3 flex flex-wrap items-center gap-1.5">
-          {/* Action hashtag - contrasted: dark bg in light, white bg in dark */}
-          <span className="rounded-full bg-gray-900 px-3 py-1 text-xs font-semibold text-white dark:bg-white dark:text-gray-900">
-            #{tag}
-          </span>
-          <ThemeTags themes={themes} />
-        </div>
+        {/* Tag + thèmes — une seule ligne, pas de wrap, max 2 thèmes */}
+        <p className="mb-3 truncate text-xs text-gray-500 dark:text-gray-400">
+          <span className="font-semibold text-gray-900 dark:text-white">#{tag}</span>
+          {themes.slice(0, 2).map((t) => (
+            <span key={t}> · <span className="capitalize">{t}</span></span>
+          ))}
+        </p>
 
-        <h3 className="mb-2 text-base font-bold leading-snug text-gray-900 group-hover:text-primary-600 dark:text-white dark:group-hover:text-primary-400">
+        <h3 className="mb-2 text-base font-bold leading-snug text-gray-900 dark:text-white">
           {title}
         </h3>
 

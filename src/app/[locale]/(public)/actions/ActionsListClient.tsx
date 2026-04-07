@@ -5,6 +5,7 @@ import { Button } from "flowbite-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useParams } from "next/navigation";
+import { CTAButton } from "@/components/ui/CTAButton";
 import { ActionCard } from "@/components/features/actions/ActionCard";
 import actionsData from "@/mocks/actions.json";
 
@@ -169,13 +170,9 @@ export function ActionsListClient() {
             <p className="mb-6 text-sm text-gray-500 dark:text-gray-400">
               Devenez partie prenante des actions en justice en choisissant votre forfait.
             </p>
-            <Link
-              href={`/${locale}/tarifs`}
-              className="inline-flex items-center justify-center rounded-lg px-6 py-3 text-base font-bold text-white transition-all hover:opacity-90"
-              style={{ backgroundColor: 'var(--color-brand)' }}
-            >
+            <CTAButton href={`/${locale}/tarifs`} size="lg">
               Découvrir les forfaits
-            </Link>
+            </CTAButton>
           </div>
         </div>
       </section>

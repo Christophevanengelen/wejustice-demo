@@ -1,5 +1,6 @@
 import { setRequestLocale } from "next-intl/server";
 import Link from "next/link";
+import { CTAButton } from "@/components/ui/CTAButton";
 
 type Props = { params: Promise<{ locale: string; id: string }> };
 
@@ -25,13 +26,9 @@ export default async function RejoindrePage({ params }: Props) {
         </p>
 
         <div className="flex flex-col gap-3 sm:flex-row">
-          <Link
-            href={`/${locale}/tarifs`}
-            className="inline-flex items-center justify-center rounded-lg px-6 py-3 text-base font-bold text-white transition-all hover:opacity-90"
-            style={{ backgroundColor: 'var(--color-brand)' }}
-          >
+          <CTAButton href={`/${locale}/tarifs`} size="lg">
             Découvrir les forfaits
-          </Link>
+          </CTAButton>
           <Link
             href={`/${locale}/actions/${id}`}
             className="inline-flex items-center justify-center rounded-lg border border-gray-300 bg-white px-6 py-3 text-base font-medium text-gray-700 transition-all hover:bg-gray-100 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700"

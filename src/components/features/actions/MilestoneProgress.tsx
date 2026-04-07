@@ -31,12 +31,13 @@ interface Milestone {
   color: string;
 }
 
+/* Tous les jalons en gris neutre — une seule couleur, pas de carnaval */
 const MILESTONES: Milestone[] = [
-  { threshold: 1_000, label: "Action populaire", shortLabel: "1K", color: "text-green-600 dark:text-green-400" },
-  { threshold: 10_000, label: "Mobilisation en vue", shortLabel: "10K", color: "text-blue-600 dark:text-blue-400" },
-  { threshold: 50_000, label: "Palier décisif", shortLabel: "50K", color: "text-purple-600 dark:text-purple-400" },
-  { threshold: 100_000, label: "Lancement juridique", shortLabel: "100K", color: "text-red-600 dark:text-red-400" },
-  { threshold: 500_000, label: "Action historique", shortLabel: "500K", color: "text-amber-600 dark:text-amber-400" },
+  { threshold: 1_000, label: "Action populaire", shortLabel: "1K", color: "text-gray-500 dark:text-gray-400" },
+  { threshold: 10_000, label: "Mobilisation en vue", shortLabel: "10K", color: "text-gray-500 dark:text-gray-400" },
+  { threshold: 50_000, label: "Palier décisif", shortLabel: "50K", color: "text-gray-500 dark:text-gray-400" },
+  { threshold: 100_000, label: "Lancement juridique", shortLabel: "100K", color: "text-gray-500 dark:text-gray-400" },
+  { threshold: 500_000, label: "Action historique", shortLabel: "500K", color: "text-gray-500 dark:text-gray-400" },
 ];
 
 function formatCount(n: number): string {
@@ -73,9 +74,8 @@ export function MilestoneProgress({
   const nextMilestone = MILESTONES.find((m) => m.threshold > currentSignatures);
   const remaining = nextMilestone ? nextMilestone.threshold - currentSignatures : 0;
 
-  /* ─── Compact : barre + jalons atteints + prochain palier ─── */
+  /* ─── Compact : barre seule, pas de jalons (trop de bruit dans une carte) ─── */
   if (variant === "compact") {
-    const reachedCompact = MILESTONES.filter((m) => currentSignatures >= m.threshold);
     return (
       <div>
         <div className="h-1.5 w-full overflow-hidden rounded-full bg-gray-200 dark:bg-gray-700">
@@ -86,21 +86,6 @@ export function MilestoneProgress({
             animate={{ width: `${animatedPct}%` }}
             transition={{ duration: prefersReduced ? 0 : 1.2, ease: EASING.smooth }}
           />
-        </div>
-        <div className="mt-1.5 flex flex-wrap items-center gap-1.5">
-          {reachedCompact.map((m) => (
-            <span key={m.threshold} className={`inline-flex items-center gap-0.5 text-[10px] font-medium ${m.color}`}>
-              <svg className="h-2.5 w-2.5" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-              </svg>
-              {m.shortLabel}
-            </span>
-          ))}
-          {nextMilestone && remaining > 0 && (
-            <span className="text-[10px] text-gray-400 dark:text-gray-500">
-              → <span className={`font-semibold ${nextMilestone.color}`}>{nextMilestone.shortLabel}</span> dans {remaining.toLocaleString("fr-FR")}
-            </span>
-          )}
         </div>
       </div>
     );

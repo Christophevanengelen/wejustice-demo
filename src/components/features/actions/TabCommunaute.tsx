@@ -8,6 +8,7 @@
  */
 
 import { useState } from "react";
+import { CTAButton } from "@/components/ui/CTAButton";
 import { useAuthSafe } from "@/lib/mock-auth";
 import { CommentThread } from "./CommentThread";
 import commentsData from "@/mocks/comments.json";
@@ -78,14 +79,9 @@ export function TabCommunaute({ actionId, signaturesThisWeek, totalSignatures }:
               className="w-full resize-none rounded-lg border border-gray-300 bg-gray-50 px-4 py-3 text-sm text-gray-900 outline-none transition-colors focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400"
             />
             <div className="mt-2 flex justify-end">
-              <button
-                onClick={handlePost}
-                disabled={!newComment.trim()}
-                className="rounded-lg px-5 py-2 text-sm font-bold text-white transition-colors hover:opacity-90 disabled:opacity-40"
-                style={{ backgroundColor: 'var(--color-brand)' }}
-              >
+              <CTAButton onClick={handlePost} disabled={!newComment.trim()} size="sm">
                 Publier
-              </button>
+              </CTAButton>
             </div>
           </div>
         </div>

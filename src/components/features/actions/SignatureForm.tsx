@@ -13,6 +13,7 @@
 
 import { useState, useEffect } from "react";
 import { Badge, Tooltip } from "flowbite-react";
+import { CTAButton } from "@/components/ui/CTAButton";
 import { useAuthSafe } from "@/lib/mock-auth";
 // SignatureProgress removed — progress bar is already shown in the hero zone
 
@@ -164,11 +165,12 @@ export function SignatureForm({
         </div>
 
         {/* 1-click CTA */}
-        <button
+        <CTAButton
           onClick={handleOneClick}
           disabled={submitting}
-          className="mt-4 w-full rounded-lg py-3.5 text-base font-bold text-white transition-all hover:opacity-90 hover:shadow-md disabled:opacity-50"
-          style={{ backgroundColor: 'var(--color-brand)' }}
+          size="lg"
+          fullWidth
+          className="mt-4"
         >
           {submitting ? (
             <span className="inline-flex items-center gap-2">
@@ -181,7 +183,7 @@ export function SignatureForm({
           ) : (
             "Signer en 1 clic"
           )}
-        </button>
+        </CTAButton>
 
         {/* Trust badges */}
         <div className="mt-4 flex items-center justify-center gap-4">
@@ -240,12 +242,7 @@ export function SignatureForm({
           required
           className="w-full rounded-lg border border-gray-300 bg-gray-50 px-4 py-3 text-sm text-gray-900 outline-none transition-colors focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400"
         />
-        <button
-          type="submit"
-          disabled={submitting}
-          className="w-full rounded-lg py-3.5 text-base font-bold text-white transition-all hover:opacity-90 hover:shadow-md disabled:opacity-50"
-          style={{ backgroundColor: 'var(--color-brand)' }}
-        >
+        <CTAButton type="submit" disabled={submitting} size="lg" fullWidth>
           {submitting ? (
             <span className="inline-flex items-center gap-2">
               <svg className="h-4 w-4 animate-spin" fill="none" viewBox="0 0 24 24">
@@ -257,7 +254,7 @@ export function SignatureForm({
           ) : (
             "Signer gratuitement"
           )}
-        </button>
+        </CTAButton>
       </form>
 
       {/* Trust badges */}

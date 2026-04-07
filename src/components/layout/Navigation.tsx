@@ -34,8 +34,17 @@ export function Navigation() {
           <LogoFigma size="sm" />
         </Link>
 
-        {/* Right side: dark toggle + user + hamburger */}
+        {/* Right side: lang + dark toggle + user + hamburger */}
         <div className="ml-auto flex items-center gap-2 md:order-2">
+          {/* Language switcher */}
+          <Link
+            href={`/${locale === "fr" ? "en" : "fr"}${pathname.replace(/^\/(fr|en)/, "")}`}
+            className="rounded-lg px-2 py-1.5 text-xs font-semibold uppercase text-gray-500 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700"
+            title={locale === "fr" ? "Switch to English" : "Passer en français"}
+          >
+            {locale === "fr" ? "EN" : "FR"}
+          </Link>
+
           <div title="Mode sombre/clair">
             <DarkThemeToggle />
           </div>

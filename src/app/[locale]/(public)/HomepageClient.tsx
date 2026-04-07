@@ -127,16 +127,12 @@ export function HomepageClient() {
           </p>
 
           <div className="mb-16 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-            <Link
-              href={`/${locale}/actions`}
-              className="inline-flex items-center rounded-lg px-8 py-4 text-base font-bold text-white shadow-lg transition-all hover:opacity-90 hover:shadow-xl"
-              style={{ backgroundColor: 'var(--color-brand)' }}
-            >
+            <CTAButton href={`/${locale}/actions`} size="xl" className="shadow-lg hover:shadow-xl">
               {siteSettings.heroCta}
               <svg className="ml-2 -mr-1 h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
               </svg>
-            </Link>
+            </CTAButton>
             <Link
               href={`/${locale}/en-savoir-plus`}
               className="rounded-lg border border-white/30 bg-white/10 px-6 py-3.5 text-base font-medium text-white backdrop-blur-sm transition-all hover:bg-white/20"
@@ -208,16 +204,12 @@ export function HomepageClient() {
 
           <ScrollReveal delay={0.3}>
             <div className="mt-10 text-center">
-              <Link
-                href={`/${locale}/actions`}
-                className="inline-flex items-center rounded-lg px-8 py-4 text-base font-bold text-white transition-all hover:opacity-90 hover:shadow-lg"
-                style={{ backgroundColor: 'var(--color-brand)' }}
-              >
+              <CTAButton href={`/${locale}/actions`} size="xl">
                 Voir toutes les actions
                 <svg className="ml-2 h-4 w-4" fill="none" viewBox="0 0 14 10">
                   <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
                 </svg>
-              </Link>
+              </CTAButton>
             </div>
           </ScrollReveal>
         </div>

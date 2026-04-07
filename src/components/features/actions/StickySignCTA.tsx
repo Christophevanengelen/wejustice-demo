@@ -12,6 +12,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
+import { CTAButton } from "@/components/ui/CTAButton";
 
 interface StickySignCTAProps {
   actionId: string;
@@ -92,13 +93,9 @@ export function StickySignCTA({
           </div>
 
           {/* CTA */}
-          <button
-            onClick={onSign}
-            className="w-full rounded-lg py-3 text-sm font-bold text-white transition-colors hover:opacity-90"
-            style={{ backgroundColor: 'var(--color-brand)' }}
-          >
+          <CTAButton onClick={onSign} size="md" fullWidth>
             Signer maintenant
-          </button>
+          </CTAButton>
         </motion.div>
       )}
     </AnimatePresence>

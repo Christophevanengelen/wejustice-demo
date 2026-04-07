@@ -80,11 +80,11 @@ export function BlogArticleClient({ slug }: { slug: string }) {
             {article.excerpt}
           </p>
 
-          {/* Placeholder body */}
-          <div className="prose prose-gray max-w-none dark:prose-invert">
-            <p>Cet article sera publié prochainement avec le contenu complet. En attendant, vous pouvez consulter nos actions en cours pour soutenir ce combat.</p>
-            <p>La justice collective, c&apos;est le pouvoir de citoyens qui se rassemblent pour faire valoir leurs droits face à des adversaires plus puissants qu&apos;eux. Chaque signature compte. Chaque voix porte.</p>
-          </div>
+          {/* Article body */}
+          <div
+            className="prose prose-gray max-w-none dark:prose-invert"
+            dangerouslySetInnerHTML={{ __html: (article as Record<string, unknown>).body as string || "<p>Cet article sera publié prochainement avec le contenu complet.</p>" }}
+          />
 
           {/* CTA — Agissez maintenant */}
           <div className="mt-12 rounded-lg border border-gray-200 bg-gray-50 p-8 text-center dark:border-gray-700 dark:bg-gray-800">

@@ -38,26 +38,20 @@ const sizeClasses: Record<CTASize, string> = {
   xl: "px-8 py-4 text-lg",
 };
 
+/**
+ * Variant styles.
+ * "solid" uses bg-brand CSS class (defined in globals.css) which maps to
+ * var(--color-brand): #C20520 in light, #FF4D63 in dark.
+ * This ensures the correct red in both modes automatically.
+ */
 const variantClasses: Record<CTAVariant, string> = {
-  solid: [
-    "bg-primary-700 text-white",
-    "hover:bg-primary-800 active:bg-primary-900",
-    "dark:bg-primary-600 dark:hover:bg-primary-700 dark:active:bg-primary-800",
-    "focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-800",
-  ].join(" "),
-  outline: [
-    "border-2 border-primary-700 text-primary-700 bg-transparent",
-    "hover:bg-primary-50 active:bg-primary-100",
-    "dark:border-primary-500 dark:text-primary-500",
-    "dark:hover:bg-primary-900/20 dark:active:bg-primary-900/30",
-    "focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-800",
-  ].join(" "),
+  solid: "bg-brand text-white hover:opacity-90 active:opacity-80",
+  outline: "border-2 border-brand text-brand bg-transparent hover:opacity-80",
   light: [
     "border border-gray-300 bg-white text-gray-900",
     "hover:bg-gray-100 active:bg-gray-200",
     "dark:border-gray-600 dark:bg-gray-800 dark:text-white",
     "dark:hover:bg-gray-700 dark:active:bg-gray-600",
-    "focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700",
   ].join(" "),
 };
 

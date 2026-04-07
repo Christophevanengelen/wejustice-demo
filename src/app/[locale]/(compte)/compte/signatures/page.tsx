@@ -18,6 +18,7 @@ import { useAuthSafe } from "@/lib/mock-auth";
 import { canJoinAction } from "@/lib/pricing-engine";
 import { ComptePageShell } from "@/components/features/compte/ComptePageShell";
 import { StatusBadge } from "@/components/ui/StatusBadge";
+import { CTAButton } from "@/components/ui/CTAButton";
 import { Card, Badge, Button } from "flowbite-react";
 import userActivity from "@/mocks/user-activity.json";
 import actionsData from "@/mocks/actions.json";
@@ -103,17 +104,9 @@ export default function SignaturesPage() {
                         Deja rejoint
                       </span>
                     ) : canJoin ? (
-                      <Button
-                        as="a"
-                        href="https://palace.legal"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        size="xs"
-                        style={{ backgroundColor: "var(--color-brand)" }}
-                        className="border-0 text-white hover:opacity-90"
-                      >
+                      <CTAButton href="https://palace.legal" size="sm">
                         Rejoindre
-                      </Button>
+                      </CTAButton>
                     ) : (
                       <span className="text-xs text-amber-600 dark:text-amber-400">
                         <Link href={`/${locale}/tarifs`} className="underline">

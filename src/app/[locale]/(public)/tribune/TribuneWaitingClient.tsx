@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { CTAButton } from "@/components/ui/CTAButton";
 
 export function TribuneWaitingClient() {
   const [email, setEmail] = useState("");
@@ -51,13 +52,9 @@ export function TribuneWaitingClient() {
                 required
                 className="hero-glass-input flex-1"
               />
-              <button
-                type="submit"
-                className="rounded-lg px-6 py-3 text-sm font-bold text-white transition-colors hover:opacity-90"
-                style={{ backgroundColor: 'var(--color-brand)' }}
-              >
+              <CTAButton type="submit" size="md">
                 Me prévenir
-              </button>
+              </CTAButton>
             </form>
           )}
         </div>
