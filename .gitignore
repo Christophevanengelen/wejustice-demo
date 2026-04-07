@@ -1,0 +1,43 @@
+# Dependencies
+node_modules/
+
+# Next.js build
+.next/
+out/
+
+# macOS
+.DS_Store
+*.DS_Store
+**/.DS_Store
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*.bak
+*.tmp
+*.orig
+
+# Logs
+*.log
+npm-debug.log*
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# System
+Thumbs.db
+Desktop.ini
+
+# Playwright
+test-results/
+playwright-report/
+blob-report/
+
+# Claude (keep launch.json only)
+.claude/memory/
+.claude/projects/
+.claude/settings.json

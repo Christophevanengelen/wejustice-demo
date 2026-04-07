@@ -1,0 +1,514 @@
+"use client";
+
+/**
+ * TarifsClient - Premium pricing page with comparison table.
+ *
+ * Marketing-grade layout:
+ * 1. Hero with value proposition + trust signals
+ * 2. Configurator (seats, duration) + 4 plan cards
+ * 3. Comparison table toggle (Flowbite Table)
+ * 4. Don libre step (after CTA)
+ * 5. Trust badges bar
+ * 6. Organisations section
+ * 7. FAQ (Flowbite Accordion pattern)
+ */
+
+import { useState, useRef } from "react";
+import { Badge, Table, TableBody, TableCell, TableHead, TableHeadCell, TableRow, Tooltip } from "flowbite-react";
+import {
+  PLANS,
+  DURATIONS,
+  TOOLTIPS,
+  calculatePrice,
+  type DurationKey,
+  type Plan,
+} from "@/lib/pricing-engine";
+import { PricingCard } from "@/components/features/pricing/PricingCard";
+import { DonLibreStep } from "@/components/features/pricing/DonLibreStep";
+import { OrganisationsTable } from "@/components/features/pricing/OrganisationsTable";
+import { ScrollReveal } from "@/components/animations/ScrollReveal";
+
+/* ─── FAQ Data ─── */
+const FAQ_ITEMS = [
+  {
+    q: "Quelle est la diff\u00e9rence entre signer et rejoindre ?",
+    a: "Signer une action est gratuit et illimit\u00e9 : cela exprime votre soutien. Rejoindre signifie devenir partie prenante de l'action en Justice, ce qui est encadr\u00e9 par votre forfait.",
+  },
+  {
+    q: "Puis-je changer de forfait en cours de route ?",
+    a: "Oui, vous pouvez passer \u00e0 un forfait sup\u00e9rieur \u00e0 tout moment. La diff\u00e9rence sera calcul\u00e9e au prorata de votre engagement restant.",
+  },
+  {
+    q: "Qu'est-ce que le tarif r\u00e9duit ?",
+    a: "Le tarif r\u00e9duit (-50%) est r\u00e9serv\u00e9 aux personnes en situation de pr\u00e9carit\u00e9 (ch\u00f4mage, \u00e9tudiants, faibles retraites). Un justificatif peut \u00eatre demand\u00e9.",
+  },
+  {
+    q: "Comment fonctionne le forfait groupe ?",
+    a: "Avec les forfaits Plus (2 pers.), Maxi (3 pers.) ou Aura (4 pers.), vous financez l'abonnement de vos proches. Chacun a son propre compte et ses propres actions.",
+  },
+  {
+    q: "Mon don libre est-il d\u00e9ductible des imp\u00f4ts ?",
+    a: "WeJustice est en cours d'obtention du statut d'int\u00e9r\u00eat g\u00e9n\u00e9ral. Nous vous tiendrons inform\u00e9 d\u00e8s que la d\u00e9ductibilit\u00e9 fiscale sera active.",
+  },
+  {
+    q: "Que se passe-t-il si je ne renouvelle pas ?",
+    a: "Vos signatures restent actives. Vous ne pourrez simplement plus rejoindre de nouvelles actions tant que vous n'aurez pas r\u00e9activ\u00e9 un forfait.",
+  },
+];
+
+/* ─── Trust badges ─── */
+const TRUST_BADGES = [
+  {
+    icon: (
+      <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+      </svg>
+    ),
+    label: "Paiement s\u00e9curis\u00e9",
+    desc: "Chiffrement SSL 256-bit",
+  },
+  {
+    icon: (
+      <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+    ),
+    label: "Sans engagement",
+    desc: "R\u00e9siliable \u00e0 tout moment",
+  },
+  {
+    icon: (
+      <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+    ),
+    label: "Satisfait ou rembours\u00e9",
+    desc: "Garantie 30 jours",
+  },
+  {
+    icon: (
+      <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" />
+      </svg>
+    ),
+    label: "+15 000 citoyens",
+    desc: "Communaut\u00e9 active",
+  },
+];
+
+/* ─── Comparison table features ─── */
+const COMPARISON_FEATURES = [
+  { label: "Gazette mensuelle", mini: true, plus: true, maxi: true, aura: true },
+  { label: "Support en ligne", mini: true, plus: true, maxi: true, aura: true },
+  { label: "Actions rejoignables", mini: "1", plus: "2", maxi: "5", aura: "Illimit\u00e9" },
+  { label: "Rejoindre les proces", mini: true, plus: true, maxi: true, aura: true },
+  { label: "B\u00e9n\u00e9ficiaires max", mini: "1", plus: "2", maxi: "3", aura: "4" },
+  { label: "R\u00e9duction groupe", mini: false, plus: "-40%", maxi: "-50%", aura: "-50%" },
+  { label: "Tarif r\u00e9duit disponible", mini: true, plus: true, maxi: true, aura: false },
+];
+
+/* ─── FAQ Item component ─── */
+function FaqItem({ q, a }: { q: string; a: string }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <div className="border-b border-gray-200 dark:border-gray-700">
+      <button
+        onClick={() => setOpen(!open)}
+        className="flex w-full items-center justify-between py-4 text-left"
+      >
+        <span className="text-sm font-medium text-gray-900 dark:text-white">{q}</span>
+        <svg
+          className={`h-4 w-4 flex-shrink-0 text-gray-500 transition-transform duration-200 ${open ? "rotate-180" : ""}`}
+          fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+        </svg>
+      </button>
+      <div className={`overflow-hidden transition-all duration-200 ${open ? "max-h-40 pb-4" : "max-h-0"}`}>
+        <p className="text-sm leading-relaxed text-gray-500 dark:text-gray-400">
+          {a}
+        </p>
+      </div>
+    </div>
+  );
+}
+
+/* ─── Check/Cross icons for comparison table ─── */
+function CheckIcon() {
+  return (
+    <svg className="mx-auto h-4 w-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+    </svg>
+  );
+}
+
+function CrossIcon() {
+  return (
+    <svg className="mx-auto h-4 w-4 text-gray-300 dark:text-gray-600" fill="currentColor" viewBox="0 0 20 20">
+      <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
+    </svg>
+  );
+}
+
+function CellValue({ val }: { val: boolean | string }) {
+  if (val === true) return <CheckIcon />;
+  if (val === false) return <CrossIcon />;
+  return <span className="text-xs font-medium text-gray-700 dark:text-gray-300">{val}</span>;
+}
+
+/* ─── Main Component ─── */
+export function TarifsClient() {
+  const [seats, setSeats] = useState(1);
+  const [duration, setDuration] = useState<DurationKey>("annual");
+  const [isReduced, setIsReduced] = useState(false);
+  const [selectedPlan, setSelectedPlan] = useState<Plan | null>(null);
+  const [showComparison, setShowComparison] = useState(false);
+
+  const donLibreRef = useRef<HTMLDivElement>(null);
+
+  const visiblePlans = isReduced ? PLANS.filter((p) => p.id !== "aura") : PLANS;
+
+  const handleChoose = (plan: Plan) => {
+    setSelectedPlan(plan);
+    setTimeout(() => {
+      donLibreRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+    }, 100);
+  };
+
+  const handleReducedToggle = () => {
+    const next = !isReduced;
+    setIsReduced(next);
+    if (next) {
+      setSeats(1);
+      setSelectedPlan(null);
+    }
+  };
+
+  const handleSeatDown = () => {
+    if (seats > 1) { setSeats(seats - 1); setSelectedPlan(null); }
+  };
+
+  const handleSeatUp = () => {
+    if (seats < 4) { setSeats(seats + 1); setSelectedPlan(null); }
+  };
+
+  const currentDuration = DURATIONS.find((d) => d.key === duration)!;
+
+  return (
+    <div className="bg-white dark:bg-gray-900">
+
+      {/* ═══ SECTION 1 : HERO + VALUE PROPOSITION ═══ */}
+      <div className="mx-auto max-w-screen-xl px-4 pb-6 pt-10 lg:px-6 lg:pt-16">
+        <ScrollReveal>
+          <div className="mx-auto mb-6 max-w-2xl text-center">
+            <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-gray-400 dark:text-gray-500">
+              Forfaits Libertés
+            </p>
+            <h1 className="mb-4 text-3xl font-extrabold text-gray-900 dark:text-white lg:text-4xl">
+              Activez le 5<sup className="text-lg">e</sup> pouvoir
+            </h1>
+            <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+              Chaque citoyen peut agir en Justice pour défendre ses droits.
+              Choisissez votre forfait, rejoignez les actions, et devenez acteur du changement.
+            </p>
+          </div>
+        </ScrollReveal>
+
+        {/* Trust signals inline */}
+        <ScrollReveal delay={0.1}>
+          <div className="mx-auto mb-10 flex max-w-xl flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs text-gray-400 dark:text-gray-500">
+            <span className="flex items-center gap-1.5">
+              <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
+              Paiement s\u00e9curis\u00e9
+            </span>
+            <span className="flex items-center gap-1.5">
+              <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+              Sans engagement mensuel
+            </span>
+            <span className="flex items-center gap-1.5">
+              <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+              +15 000 citoyens engag\u00e9s
+            </span>
+          </div>
+        </ScrollReveal>
+      </div>
+
+      {/* ═══ SECTION 2 : CITOYENS - CONFIGURATOR + CARDS ═══ */}
+      <div className="mx-auto max-w-screen-xl px-4 pb-10 lg:px-6">
+
+        {/* Section label */}
+        <div className="mb-8 flex items-center gap-3">
+          <div className="h-px flex-1 bg-gray-200 dark:bg-gray-700" />
+          <span className="text-xs font-semibold uppercase tracking-widest text-gray-400 dark:text-gray-500">
+            Pour les citoyens
+          </span>
+          <div className="h-px flex-1 bg-gray-200 dark:bg-gray-700" />
+        </div>
+
+        {/* Seat selector (hidden in reduced mode) */}
+        {!isReduced && (
+          <div className="mb-6 flex items-center justify-center gap-4">
+            <span className="text-sm text-gray-500 dark:text-gray-400">
+              B\u00e9n\u00e9ficiaires
+              <Tooltip content={TOOLTIPS.seats}>
+                <span className="ml-1 inline-block cursor-help text-gray-400">
+                  <svg width="13" height="13" viewBox="0 0 20 20" className="inline align-middle" style={{ marginBottom: 1 }}>
+                    <circle cx="10" cy="10" r="8.5" fill="none" stroke="currentColor" strokeWidth="1.8" />
+                    <text x="10" y="14.5" textAnchor="middle" fontSize="10" fontWeight="600" fill="currentColor" fontFamily="sans-serif">i</text>
+                  </svg>
+                </span>
+              </Tooltip>
+            </span>
+            <div className="flex items-center gap-2">
+              <button
+                onClick={handleSeatDown}
+                className={`flex h-8 w-8 items-center justify-center rounded-full border text-sm transition-colors ${seats <= 1 ? "border-gray-200 text-gray-300 dark:border-gray-700 dark:text-gray-600" : "border-gray-400 text-gray-700 hover:bg-gray-100 dark:border-gray-500 dark:text-gray-300 dark:hover:bg-gray-800"}`}
+              >
+                -
+              </button>
+              <span className="min-w-[60px] text-center text-sm font-medium text-gray-900 dark:text-white">
+                {seats} pers.
+              </span>
+              <button
+                onClick={handleSeatUp}
+                className={`flex h-8 w-8 items-center justify-center rounded-full border text-sm transition-colors ${seats >= 4 ? "border-gray-200 text-gray-300 dark:border-gray-700 dark:text-gray-600" : "border-gray-400 text-gray-700 hover:bg-gray-100 dark:border-gray-500 dark:text-gray-300 dark:hover:bg-gray-800"}`}
+              >
+                +
+              </button>
+            </div>
+          </div>
+        )}
+
+        {/* Duration selector */}
+        <div className="mb-8 flex items-center justify-center gap-3">
+          <span className="text-sm text-gray-500 dark:text-gray-400">
+            Dur\u00e9e
+            <Tooltip content={TOOLTIPS.duration}>
+              <span className="ml-1 inline-block cursor-help text-gray-400">
+                <svg width="13" height="13" viewBox="0 0 20 20" className="inline align-middle" style={{ marginBottom: 1 }}>
+                  <circle cx="10" cy="10" r="8.5" fill="none" stroke="currentColor" strokeWidth="1.8" />
+                  <text x="10" y="14.5" textAnchor="middle" fontSize="10" fontWeight="600" fill="currentColor" fontFamily="sans-serif">i</text>
+                </svg>
+              </span>
+            </Tooltip>
+          </span>
+          <div className="flex gap-2">
+            {DURATIONS.map((d) => (
+              <button
+                key={d.key}
+                onClick={() => { setDuration(d.key); setSelectedPlan(null); }}
+                className={`rounded-lg px-3 py-2 text-xs font-medium transition-colors ${
+                  duration === d.key
+                    ? "border border-gray-900 bg-gray-100 text-gray-900 dark:border-white dark:bg-gray-700 dark:text-white"
+                    : "border border-gray-200 bg-white text-gray-500 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700"
+                }`}
+              >
+                {d.label}
+                {d.discountPercent && (
+                  <span className={`ml-1 inline-block rounded px-1.5 py-0.5 text-[10px] font-semibold ${
+                    d.key === "annual" ? "bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300" :
+                    d.key === "biannual" ? "bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-300" :
+                    "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-300"
+                  }`}>
+                    -{d.discountPercent}%
+                  </span>
+                )}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Cards */}
+        <div className="mb-8 flex gap-6 overflow-x-auto pb-4 lg:grid lg:grid-cols-4 lg:overflow-visible">
+          {visiblePlans.map((plan, i) => {
+            const priceResult = calculatePrice(plan.id, seats, duration, isReduced);
+            return (
+              <ScrollReveal key={plan.id} delay={0.06 * i} distance={16}>
+                <PricingCard
+                  plan={plan}
+                  price={priceResult}
+                  seats={seats}
+                  isReduced={isReduced}
+                  onChoose={() => handleChoose(plan)}
+                />
+              </ScrollReveal>
+            );
+          })}
+        </div>
+
+        {/* Comparison table toggle */}
+        <ScrollReveal>
+          <div className="mb-8 text-center">
+            <button
+              onClick={() => setShowComparison(!showComparison)}
+              className="inline-flex items-center gap-2 rounded-lg border border-gray-300 bg-white px-5 py-2.5 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700"
+            >
+              <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25H12" />
+              </svg>
+              {showComparison ? "Masquer la comparaison" : "Comparer les forfaits"}
+              <svg className={`h-3 w-3 transition-transform duration-200 ${showComparison ? "rotate-180" : ""}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+          </div>
+        </ScrollReveal>
+
+        {/* Comparison table — Flowbite Table */}
+        {showComparison && (
+          <ScrollReveal distance={12}>
+            <div className="mb-10 overflow-x-auto rounded-lg border border-gray-200 dark:border-gray-700">
+              <Table striped>
+                <TableHead>
+                  <TableHeadCell className="bg-gray-50 dark:bg-gray-800">Fonctionnalit\u00e9</TableHeadCell>
+                  {PLANS.map((p) => (
+                    <TableHeadCell key={p.id} className="bg-gray-50 text-center dark:bg-gray-800">
+                      <span className="font-bold" style={{ color: p.color }}>{p.name}</span>
+                      {p.recommended && (
+                        <Badge color="purple" size="xs" className="ml-1.5 inline-flex">
+                          Recommand\u00e9
+                        </Badge>
+                      )}
+                    </TableHeadCell>
+                  ))}
+                </TableHead>
+                <TableBody className="divide-y">
+                  {COMPARISON_FEATURES.map((feat) => (
+                    <TableRow key={feat.label} className="bg-white dark:border-gray-700 dark:bg-gray-900">
+                      <TableCell className="whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white">
+                        {feat.label}
+                      </TableCell>
+                      <TableCell className="text-center"><CellValue val={feat.mini} /></TableCell>
+                      <TableCell className="text-center"><CellValue val={feat.plus} /></TableCell>
+                      <TableCell className="text-center"><CellValue val={feat.maxi} /></TableCell>
+                      <TableCell className="text-center"><CellValue val={feat.aura} /></TableCell>
+                    </TableRow>
+                  ))}
+                  {/* Price row */}
+                  <TableRow className="bg-gray-50 font-semibold dark:border-gray-700 dark:bg-gray-800">
+                    <TableCell className="text-sm font-bold text-gray-900 dark:text-white">
+                      Prix / mois
+                    </TableCell>
+                    {PLANS.map((p) => {
+                      const pr = calculatePrice(p.id, 1, "annual", false);
+                      return (
+                        <TableCell key={p.id} className="text-center text-sm font-bold text-gray-900 dark:text-white">
+                          {pr.pricePerPersonMonthly.toFixed(2).replace(".", ",")} EUR
+                        </TableCell>
+                      );
+                    })}
+                  </TableRow>
+                </TableBody>
+              </Table>
+            </div>
+          </ScrollReveal>
+        )}
+
+        {/* Reduced toggle */}
+        <div className="mb-10">
+          {isReduced && (
+            <div className="mb-3 rounded-lg bg-orange-500 p-3 text-xs text-white">
+              Réservé aux personnes à faibles revenus (précarité, étudiants, chômage, faibles retraites) acceptant de fournir à première demande des justificatifs.
+            </div>
+          )}
+          <label className="flex cursor-pointer items-center gap-3">
+            <div className="relative">
+              <input
+                type="checkbox"
+                checked={isReduced}
+                onChange={handleReducedToggle}
+                className="sr-only"
+              />
+              <div className={`h-5 w-9 rounded-full transition-colors ${isReduced ? "bg-purple-600" : "bg-gray-300 dark:bg-gray-600"}`}>
+                <div className={`h-4 w-4 transform rounded-full bg-white shadow transition-transform ${isReduced ? "translate-x-4" : "translate-x-0.5"} mt-0.5`} />
+              </div>
+            </div>
+            <span className="text-sm text-gray-500 dark:text-gray-400">Tarif r\u00e9duit</span>
+          </label>
+        </div>
+
+        {/* Step 2: Don libre */}
+        {selectedPlan && (
+          <div ref={donLibreRef}>
+            <DonLibreStep
+              plan={selectedPlan}
+              price={calculatePrice(selectedPlan.id, seats, duration, isReduced)}
+              seats={seats}
+              isReduced={isReduced}
+              durationLabel={currentDuration.label}
+              onBack={() => setSelectedPlan(null)}
+            />
+          </div>
+        )}
+      </div>
+
+      {/* ═══ TRUST BADGES BAR ═══ */}
+      <ScrollReveal>
+        <div className="border-y border-gray-200 bg-gray-50 py-8 dark:border-gray-700 dark:bg-gray-800/50">
+          <div className="mx-auto grid max-w-screen-xl grid-cols-2 gap-6 px-4 lg:grid-cols-4 lg:px-6">
+            {TRUST_BADGES.map((badge) => (
+              <div key={badge.label} className="flex items-center gap-3">
+                <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-white text-gray-600 shadow-sm dark:bg-gray-700 dark:text-gray-300">
+                  {badge.icon}
+                </div>
+                <div>
+                  <p className="text-sm font-semibold text-gray-900 dark:text-white">{badge.label}</p>
+                  <p className="text-xs text-gray-500 dark:text-gray-400">{badge.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </ScrollReveal>
+
+      {/* ═══ SECTION 3 : ORGANISATIONS ═══ */}
+      <div className="border-t border-gray-200 bg-gray-50 py-16 dark:border-gray-700 dark:bg-gray-800/30">
+        <div className="mx-auto max-w-screen-xl px-4 lg:px-6">
+
+          {/* Section label */}
+          <div className="mb-4 flex items-center gap-3">
+            <div className="h-px flex-1 bg-gray-200 dark:bg-gray-700" />
+            <span className="text-xs font-semibold uppercase tracking-widest text-gray-400 dark:text-gray-500">
+              Pour les organisations
+            </span>
+            <div className="h-px flex-1 bg-gray-200 dark:bg-gray-700" />
+          </div>
+
+          {/* Intro text */}
+          <ScrollReveal>
+            <div className="mx-auto mb-10 max-w-xl text-center">
+              <h2 className="mb-3 text-2xl font-bold text-gray-900 dark:text-white lg:text-3xl">
+                Vous êtes une organisation ?
+              </h2>
+              <p className="text-sm leading-relaxed text-gray-500 dark:text-gray-400">
+                Syndicats, entreprises, associations et ONG : WeJustice vous permet de lancer
+                des actions collectives en Justice pour défendre vos membres et votre cause.
+              </p>
+            </div>
+          </ScrollReveal>
+
+          <OrganisationsTable />
+        </div>
+      </div>
+
+      {/* ═══ SECTION 4 : FAQ ═══ */}
+      <div className="mx-auto max-w-screen-xl px-4 py-16 lg:px-6">
+        <div className="mx-auto max-w-2xl">
+          <ScrollReveal>
+            <h2 className="mb-8 text-center text-2xl font-bold text-gray-900 dark:text-white">
+              Questions fr\u00e9quentes
+            </h2>
+          </ScrollReveal>
+          <div>
+            {FAQ_ITEMS.map((item, i) => (
+              <ScrollReveal key={i} delay={0.04 * i} distance={12}>
+                <FaqItem q={item.q} a={item.a} />
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </div>
+
+    </div>
+  );
+}

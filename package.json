@@ -1,0 +1,36 @@
+{
+  "name": "wejustice-demo",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "next dev --port 3001 --webpack",
+    "build": "next build",
+    "start": "next start --port 3001",
+    "test:e2e": "playwright test"
+  },
+  "dependencies": {
+    "class-variance-authority": "0.7.1",
+    "clsx": "2.1.1",
+    "date-fns": "4.1.0",
+    "flowbite": "4.0.1",
+    "flowbite-react": "0.12.16",
+    "framer-motion": "12.27.1",
+    "lucide-react": "0.562.0",
+    "next": "16.1.4",
+    "next-intl": "4.7.0",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "sonner": "2.0.7",
+    "tailwind-merge": "3.4.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.59.1",
+    "@tailwindcss/postcss": "4.1.4",
+    "@types/node": "22.0.0",
+    "@types/react": "19.2.9",
+    "@types/react-dom": "19.2.3",
+    "tailwindcss": "4.1.4",
+    "typescript": "5.8.3"
+  }
+}

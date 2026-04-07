@@ -1,0 +1,116 @@
+# WeJustice - Documentation complète
+
+> Plateforme d'actions juridiques collectives permettant aux citoyens de se regrouper pour agir en Justice.
+
+## À propos de WeJustice
+
+WeJustice est une plateforme de legaltech civique qui permet aux citoyens européens de lancer et rejoindre des actions collectives en Justice. Inspirée par le modèle d'Avaaz et Change.org, WeJustice va plus loin en transformant les pétitions en véritables procédures juridiques coordonnées par des avocats.
+
+### Équipe
+- Fondateur : Christophe Van Engelen
+- Avocat référent : Me Arnaud Durand, cabinet Lexprecia
+- Siège : France
+- Périmètre juridique : Union européenne
+
+### Distinctions
+- Signer une action = gratuit et illimité (pétition classique)
+- Rejoindre une action = devenir partie prenante de la procédure juridique (nécessite un forfait)
+
+---
+
+## Actions collectives détaillées
+
+### 1. DejaVu - Transparence vaccins Covid-19
+- URL : /fr/actions/act-001
+- Statut : Action en justice
+- Signatures : 287 695 / 500 000
+- Cible : Commission européenne, Pfizer, Moderna
+- Résumé : Les citoyens exigent la transparence sur les contrats d'achat de vaccins Covid-19. Le 17 juillet 2024, le Tribunal de l'UE a condamné la Commission pour opacité.
+- Avocat : Me Arnaud Durand (Lexprecia)
+- Thèmes : santé, libertés, transparence
+
+### 2. Linky - Respect du refus des compteurs
+- URL : /fr/actions/act-002
+- Statut : Action en justice
+- Signatures : 15 561 / 50 000
+- Cible : Enedis / EDF
+- Résumé : Des milliers de citoyens refusent l'installation forcée des compteurs Linky. L'action vise à faire respecter le droit de refus.
+- Thèmes : vie privée, santé, environnement
+
+### 3. DNC - Abattage massif des troupeaux bovins
+- URL : /fr/actions/act-003
+- Statut : En préparation
+- Cible : Ministère de l'Agriculture
+- Résumé : Des éleveurs sont contraints d'abattre des troupeaux entiers sur la base de tests peu fiables. Taux de mortalité réel : 1 à 5%.
+- Thèmes : agriculture, élevage, justice
+
+### 4. Phonegate - Ondes illégales des smartphones
+- URL : /fr/actions/act-004
+- Statut : En préparation
+- Cible : Samsung, Apple, fabricants
+- Résumé : Des smartphones dépassent les normes d'émission d'ondes (DAS). L'ANFR a relevé des dépassements sur 9 modèles sur 10.
+- Thèmes : santé, consommateurs, technologie
+
+### 5. Glyphosate - Empoisonnement aux pesticides
+- URL : /fr/actions/act-005
+- Statut : En préparation
+- Cible : Bayer/Monsanto, Commission européenne
+- Résumé : Le glyphosate, classé cancérogène probable par le CIRC, reste autorisé en Europe malgré les preuves scientifiques.
+- Thèmes : santé, environnement, agriculture
+
+### 6. VoxAct - Censure sur les réseaux sociaux
+- URL : /fr/actions/act-006
+- Statut : Pétition
+- Signatures : 4 200 / 25 000
+- Cible : Meta (Facebook/Instagram), X (Twitter), YouTube
+- Résumé : Des contenus légitimes sont censurés par les algorithmes des plateformes sans procédure contradictoire.
+- Thèmes : libertés, numérique, expression
+
+### 7. DataBreach - Vol de données personnelles
+- URL : /fr/actions/act-007
+- Statut : En préparation
+- Cible : Entreprises victimes de fuites de données
+- Résumé : Des millions de Français voient leurs données personnelles exposées sans compensation ni information claire.
+- Thèmes : vie privée, numérique, consommateurs
+
+### 8. Au nom du vote - Sincérité du scrutin
+- URL : /fr/actions/act-008
+- Statut : Pétition
+- Signatures : 6 100 / 100 000
+- Cible : Ministère de l'Intérieur
+- Résumé : Des irrégularités dans le processus électoral français nécessitent des garanties renforcées.
+- Thèmes : démocratie, transparence, institutions
+
+---
+
+## Forfaits Libertés
+
+| Forfait | Prix mensuel | Actions | Sièges max |
+|---------|-------------|---------|------------|
+| Mini | 8,40 EUR | 1 | 1 |
+| Plus | 14,60 EUR | 2 | 2 |
+| Maxi | 24,80 EUR | 5 | 3 |
+| Aura | 58,00 EUR | Illimité | 4 |
+
+Réductions :
+- Duo (2 personnes) : -40%
+- Trio (3 personnes) : -50%
+- Annuel : -30%, Biannuel : -35%, Triannuel : -40%
+- Tarif réduit (précarité) : -50%
+
+---
+
+## Offre Organisations
+
+WeJustice propose aussi des forfaits pour les organisations :
+- Syndicats / entreprises : de 100 à 10 000 bénéficiaires
+- Associations / ONG : de 1 000 à 250 000 membres
+
+Fonctionnalités : lancer un ultimatum, agir en Justice, étendre la communauté, gestion de projet dédiée (option), intégration site web (option).
+
+---
+
+## Contact
+- Email : contact@wejustice.legal
+- Twitter : @wejustice
+- Site : https://wejustice-demo.vercel.app

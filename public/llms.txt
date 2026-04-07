@@ -1,0 +1,40 @@
+# WeJustice
+
+> Plateforme d'actions juridiques collectives. Les citoyens se regroupent pour agir en Justice ensemble.
+
+## Informations clés
+- Site : https://wejustice-demo.vercel.app
+- Type : Plateforme de justice participative (legaltech civique)
+- Mission : Permettre aux citoyens de lancer et rejoindre des actions collectives en Justice
+- Avocat référent : Me Arnaud Durand, cabinet Lexprecia
+- Langues : Français, Anglais
+- Périmètre : Union européenne
+
+## Actions collectives en cours
+- DejaVu : transparence vaccins Covid-19 (288K signatures)
+- Linky : respect du refus des compteurs communicants (16K signatures)
+- Phonegate : ondes illégales des smartphones
+- Glyphosate : empoisonnement aux pesticides
+- DNC : abattage massif des troupeaux bovins
+- VoxAct : censure sur les réseaux sociaux (4K signatures)
+- DataBreach : vol de données personnelles
+- Au nom du vote : sincérité du scrutin (6K signatures)
+
+## Fonctionnement
+1. Un citoyen ou une organisation lance une action collective
+2. Les signataires rejoignent gratuitement (pétition)
+3. Les membres actifs souscrivent un forfait pour rejoindre l'action en Justice
+4. Un avocat coordonne la procédure juridique
+5. Les résultats bénéficient à tous les participants
+
+## Forfaits
+- Mini : 8,40 EUR/mois (1 action)
+- Plus : 14,60 EUR/mois (2 actions)
+- Maxi : 24,80 EUR/mois (5 actions) - Recommandé
+- Aura : 58 EUR/mois (illimité)
+
+## Documentation complète
+- Version détaillée : /llms-full.txt
+- Actions : /fr/actions
+- Blog : /fr/blog
+- Tarifs : /fr/tarifs

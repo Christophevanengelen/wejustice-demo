@@ -1,0 +1,372 @@
+/**
+ * ==========================================================================
+ * WeJustice Design System v3 — THE SINGLE SOURCE OF TRUTH
+ * ==========================================================================
+ *
+ * This file defines EVERY design token for the WeJustice demo app.
+ * No other file should define colors, radii, or typography tokens.
+ *
+ * Architecture:
+ *   wejustice-theme.css (this file)
+ *   ├── Typography ............ fonts, sizes, leading, tracking
+ *   ├── Border Radius ......... scale + semantic aliases
+ *   ├── Border Width .......... default border width
+ *   ├── Gray Scale ............ slate 50-950 (Tailwind gray-* classes)
+ *   ├── Surfaces .............. page > section > card > input (light + dark)
+ *   ├── Text .................. heading > primary > secondary > tertiary (light + dark)
+ *   ├── Borders ............... subtle > default > strong (light + dark)
+ *   ├── Brand ................. Cramoisi red — CTA only (light + dark)
+ *   ├── Status ................ success / danger / warning (light + dark)
+ *   ├── Accent ................ purple, sky, teal, pink, etc.
+ *   └── [Deprecated] .......... backward-compat aliases, marked for removal
+ *
+ * RULES FOR ARNAUD:
+ *   1. Use surface-* tokens for backgrounds (never raw hex).
+ *   2. Use text-* tokens for foreground colors.
+ *   3. Use border-* tokens for borders and dividers.
+ *   4. Use brand-* tokens for CTA elements ONLY.
+ *   5. Use gray-* via Tailwind classes (bg-gray-100, text-gray-700, etc.).
+ *   6. NEVER add new tokens here without removing an old one.
+ *   7. Deprecated tokens at the bottom are scheduled for removal —
+ *      do not use them in new code.
+ *
+ * WCAG AA verified on all text/surface combos.
+ */
+
+@theme {
+    /* ==========================================================
+       1. TYPOGRAPHY
+       ========================================================== */
+    --font-sans: 'Campton', 'Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif';
+    --font-body: 'Campton', 'Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif';
+    --font-mono: 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', 'monospace';
+
+    --text-2xs: 0.625rem;
+    --leading-9: 36px;
+    --leading-8: 32px;
+    --leading-7: 28px;
+    --leading-6: 24px;
+    --leading-5: 20px;
+    --leading-4: 16px;
+    --leading-none: 1px;
+    --leading-heading-none: 60px;
+    --tracking-tighter: -0.8px;
+    --tracking-tight: -0.4px;
+
+    /* ==========================================================
+       2. BORDER RADIUS — Scale + Semantic
+       ========================================================== */
+    --radius-none: 0px;
+    --radius-xs: 2px;
+    --radius-sm: 4px;
+    --radius-md: 6px;
+    --radius: 8px;
+    --radius-lg: 12px;
+    --radius-xl: 16px;
+    --radius-2xl: 24px;
+    --radius-full: 9999px;
+
+    /* Semantic radius — use these in components */
+    --radius-input: var(--radius-sm);
+    --radius-checkbox: var(--radius-xs);
+    --radius-button: var(--radius-md);
+    --radius-button-lg: var(--radius);
+    --radius-button-pill: var(--radius-full);
+    --radius-card: var(--radius-lg);
+    --radius-card-sm: var(--radius);
+    --radius-modal: var(--radius-xl);
+    --radius-dropdown: var(--radius-sm);
+    --radius-tooltip: var(--radius-sm);
+    --radius-badge: var(--radius-sm);
+    --radius-chip: var(--radius-full);
+    --radius-avatar: var(--radius-full);
+    --radius-avatar-square: var(--radius);
+    --radius-cta: var(--radius-lg);
+    --radius-hero: var(--radius-xl);
+    --radius-image: var(--radius);
+    --radius-progress: var(--radius-full);
+    --radius-0: var(--radius-none);
+    --radius-xxs: var(--radius-xs);
+    --radius-base: var(--radius-lg);
+
+    /* ==========================================================
+       3. BORDER WIDTH
+       ========================================================== */
+    --default-border-width: 1px;
+
+    /* ==========================================================
+       4. GRAY SCALE — Slate family
+       Single source of truth for ALL gray-* Tailwind classes.
+       Flowbite React + dark: classes consume these.
+       DO NOT also define gray in tailwind.config.ts.
+       ========================================================== */
+    --color-gray-50:  #f8fafc;
+    --color-gray-100: #f1f5f9;
+    --color-gray-200: #e2e8f0;
+    --color-gray-300: #cbd5e1;
+    --color-gray-400: #94a3b8;
+    --color-gray-500: #64748b;
+    --color-gray-600: #475569;
+    --color-gray-700: #334155;
+    --color-gray-800: #1e293b;
+    --color-gray-900: #0f172a;
+    --color-gray-950: #020617;
+
+    /* ==========================================================
+       5. SURFACES (Light Mode)
+       Hierarchy: page > section > card > input
+       Use: bg-[var(--color-surface-page)], etc.
+       ========================================================== */
+    --color-surface-page:       #ffffff;
+    --color-surface-section:    #f8fafc;  /* slate-50 */
+    --color-surface-card:       #ffffff;
+    --color-surface-input:      #f8fafc;  /* slate-50 */
+    --color-surface-overlay:    rgba(2, 6, 23, 0.60);
+    --color-surface-hover:      #f1f5f9;  /* slate-100 */
+    --color-surface-active:     #e2e8f0;  /* slate-200 */
+    --color-surface-raised:     #f8fafc;
+    --color-surface-sunken:     #f1f5f9;
+    --color-surface-interactive: #ffffff;
+    --color-surface-interactive-hover: #f8fafc;
+
+    /* ==========================================================
+       6. TEXT (Light Mode)
+       Hierarchy: heading > primary > secondary > tertiary
+       "on-brand" = white text on brand-red backgrounds.
+       "link" = brand red for inline links.
+       ========================================================== */
+    --color-text-heading:       #0f172a;  /* slate-900 — 17.4:1 on white */
+    --color-text-primary:       #0f172a;  /* slate-900 */
+    --color-text-secondary:     #334155;  /* slate-700 — 9.7:1 on white */
+    --color-text-tertiary:      #64748b;  /* slate-500 — 4.6:1 on white (AA) */
+    --color-text-on-brand:      #ffffff;
+    --color-text-link:          #C20520;
+
+    /* ==========================================================
+       7. BORDERS (Light Mode)
+       Hierarchy: subtle (lightest) > default > strong (darkest)
+       ========================================================== */
+    --color-border-subtle:      #e2e8f0;  /* slate-200 */
+    --color-border-default:     #cbd5e1;  /* slate-300 */
+    --color-border-strong:      #94a3b8;  /* slate-400 */
+
+    /* ==========================================================
+       8. BRAND — Cramoisi (#C20520)
+       CTA elements ONLY. Never for large backgrounds.
+       Brand red = same red as the logo.
+       ========================================================== */
+    --color-brand-rgb:          194, 5, 32;
+    --color-brand-softer:       #fde2e8;
+    --color-brand-soft:         #fbc5d0;
+    --color-brand:              #C20520;
+    --color-brand-medium:       #E8304A;
+    --color-brand-strong:       #9B0A22;
+    --color-brand-subtle:       #FBC5D0;
+    --color-brand-light:        #FB3049;
+
+    /* ==========================================================
+       9. STATUS COLORS (Light Mode)
+       Each status has: soft (bg), base, medium, strong, subtle
+       ========================================================== */
+    --color-success-soft:       #f0fdf4;
+    --color-success:            #16a34a;
+    --color-success-medium:     #bbf7d0;
+    --color-success-strong:     #15803d;
+    --color-success-subtle:     #bbf7d0;
+
+    --color-danger-soft:        #fef2f2;
+    --color-danger:             #dc2626;
+    --color-danger-medium:      #fecaca;
+    --color-danger-strong:      #b91c1c;
+    --color-danger-subtle:      #fecaca;
+
+    --color-warning-soft:       #fffbeb;
+    --color-warning:            #d97706;
+    --color-warning-medium:     #fde68a;
+    --color-warning-strong:     #b45309;
+    --color-warning-subtle:     #fde68a;
+
+    /* ==========================================================
+       10. ACCENT COLORS
+       Use for charts, badges, category tags, etc.
+       ========================================================== */
+    --color-purple:             #7c3aed;
+    --color-sky:                #0ea5e9;
+    --color-teal:               #14b8a6;
+    --color-pink:               #ec4899;
+    --color-cyan:               #06b6d4;
+    --color-fuchsia:            #d946ef;
+    --color-indigo:             #6366f1;
+    --color-orange:             #f97316;
+
+    /* ==========================================================
+       11. DEPRECATED — Backward-compat aliases
+       DO NOT USE IN NEW CODE. Scheduled for removal.
+       These exist solely so old components don't break.
+       Migration: see the mapping comments below.
+       ========================================================== */
+
+    /* Old text tokens → use text-* instead */
+    --color-heading:            #0f172a;  /* → --color-text-heading */
+    --color-body:               #334155;  /* → --color-text-secondary */
+    --color-body-subtle:        #64748b;  /* → --color-text-tertiary */
+
+    /* Old foreground tokens → use brand/status base tokens instead */
+    --color-fg-brand-subtle:    #FBC5D0;  /* → --color-brand-subtle */
+    --color-fg-brand:           #C20520;  /* → --color-brand */
+    --color-fg-brand-strong:    #9B0A22;  /* → --color-brand-strong */
+    --color-fg-success:         #16a34a;  /* → --color-success */
+    --color-fg-success-strong:  #15803d;  /* → --color-success-strong */
+    --color-fg-danger:          #dc2626;  /* → --color-danger */
+    --color-fg-danger-strong:   #b91c1c;  /* → --color-danger-strong */
+    --color-fg-warning-subtle:  #FEECDC;  /* → --color-warning-subtle */
+    --color-fg-warning:         #d97706;  /* → --color-warning */
+    --color-fg-disabled:        #f1f5f9;  /* → --color-surface-hover */
+
+    /* Old neutral background tokens → use surface-* instead */
+    --color-neutral-primary:         #ffffff;   /* → --color-surface-page */
+    --color-neutral-secondary:       #f8fafc;   /* → --color-surface-section */
+    --color-neutral-tertiary:        #f1f5f9;   /* → --color-surface-hover */
+    --color-neutral-quaternary:      #e2e8f0;   /* → --color-surface-active */
+
+    /* Old border/misc tokens → use border-* or surface-* instead */
+    --color-buffer:             #ffffff;   /* → --color-surface-page */
+    --color-muted:              #f8fafc;   /* → --color-surface-section */
+    --color-light:              #e2e8f0;   /* → --color-border-subtle */
+    --color-default:            #e2e8f0;   /* → --color-border-subtle */
+    --color-default-medium:     #cbd5e1;   /* → --color-border-default */
+    --color-default-strong:     #cbd5e1;   /* → --color-border-default */
+    --color-dark:               #0f172a;   /* → --color-text-heading (slate-900) */
+    --color-dark-strong:        #0f172a;   /* → --color-text-heading */
+    --color-dark-subtle:        #334155;   /* → --color-text-secondary (slate-700) */
+    --color-dark-backdrop:      #020617;   /* → --color-gray-950 (slate-950) */
+    --color-disabled:           #f1f5f9;   /* → --color-surface-hover (slate-100) */
+}
+
+/* ==========================================================================
+   DARK MODE — Slate-based, consistent
+   Same token names, different values. Components just work.
+   ========================================================================== */
+.dark {
+    /* --- 5. SURFACES (Dark) ---
+       Material Design 3: deeper = darker, elevated = lighter */
+    --color-surface-page:       #0f172a;  /* slate-900 */
+    --color-surface-section:    #131c2e;  /* between slate-900 and slate-800 */
+    --color-surface-card:       #1e293b;  /* slate-800 */
+    --color-surface-input:      #0f172a;  /* slate-900 (sunken) */
+    --color-surface-overlay:    rgba(2, 6, 23, 0.80);
+    --color-surface-hover:      #1e293b;  /* slate-800 */
+    --color-surface-active:     #334155;  /* slate-700 */
+    --color-surface-raised:     #1e293b;
+    --color-surface-sunken:     #0f172a;
+    --color-surface-interactive: #1e293b;
+    --color-surface-interactive-hover: #334155;
+
+    /* --- 6. TEXT (Dark) ---
+       Not pure white. slate-100 for headings, slate-300 for body. */
+    --color-text-heading:       #f1f5f9;  /* slate-100 — 14.8:1 */
+    --color-text-primary:       #f1f5f9;
+    --color-text-secondary:     #cbd5e1;  /* slate-300 — 10.2:1 */
+    --color-text-tertiary:      #94a3b8;  /* slate-400 — 6.1:1 */
+    --color-text-on-brand:      #ffffff;
+    --color-text-link:          #FF4D63;
+
+    /* --- 7. BORDERS (Dark) ---
+       Lighter than surfaces to create definition. */
+    --color-border-subtle:      #1e293b;  /* slate-800 */
+    --color-border-default:     #334155;  /* slate-700 */
+    --color-border-strong:      #475569;  /* slate-600 */
+
+    /* --- 8. BRAND (Dark) ---
+       Lightened for contrast on dark surfaces.
+       #FF4D63 on #0f172a = 5.6:1 — AA compliant */
+    --color-brand-rgb:          255, 77, 99;
+    --color-brand-softer:       #2D0A1A;
+    --color-brand-soft:         #481025;
+    --color-brand:              #FF4D63;
+    --color-brand-medium:       #FF7A8F;
+    --color-brand-strong:       #FF5E75;
+    --color-brand-subtle:       #481025;
+    --color-brand-light:        #FF4D63;
+
+    /* --- 9. STATUS (Dark) --- */
+    --color-success-soft:       #052e16;
+    --color-success:            #4ade80;
+    --color-success-medium:     #166534;
+    --color-success-strong:     #22c55e;
+    --color-success-subtle:     #166534;
+
+    --color-danger-soft:        #450a0a;
+    --color-danger:             #f87171;
+    --color-danger-medium:      #7f1d1d;
+    --color-danger-strong:      #ef4444;
+    --color-danger-subtle:      #7f1d1d;
+
+    --color-warning-soft:       #451a03;
+    --color-warning:            #fbbf24;
+    --color-warning-medium:     #78350f;
+    --color-warning-strong:     #f59e0b;
+    --color-warning-subtle:     #78350f;
+
+    /* --- 10. ACCENT (Dark) --- */
+    --color-purple:             #a78bfa;
+    --color-sky:                #38bdf8;
+    --color-teal:               #2dd4bf;
+    --color-pink:               #f472b6;
+    --color-cyan:               #22d3ee;
+    --color-fuchsia:            #e879f9;
+    --color-indigo:             #818cf8;
+    --color-orange:             #fb923c;
+
+    /* --- 11. DEPRECATED (Dark) --- */
+    --color-heading:            #f1f5f9;
+    --color-body:               #cbd5e1;
+    --color-body-subtle:        #94a3b8;
+
+    --color-fg-brand-subtle:    #481025;
+    --color-fg-brand:           #FF4D63;
+    --color-fg-brand-strong:    #FF5E75;
+    --color-fg-success:         #4ade80;
+    --color-fg-success-strong:  #22c55e;
+    --color-fg-danger:          #f87171;
+    --color-fg-danger-strong:   #ef4444;
+    --color-fg-warning-subtle:  #451a03;
+    --color-fg-warning:         #fbbf24;
+    --color-fg-disabled:        #1e293b;
+
+    --color-neutral-primary:         #0f172a;
+    --color-neutral-secondary:       #131c2e;
+    --color-neutral-tertiary:        #1e293b;
+    --color-neutral-quaternary:      #334155;
+
+    --color-buffer:             #0f172a;
+    --color-muted:              #1e293b;
+    --color-light:              #1e293b;
+    --color-default:            #334155;
+    --color-default-medium:     #334155;
+    --color-default-strong:     #475569;
+    --color-dark:               #cbd5e1;
+    --color-dark-strong:        #f1f5f9;
+    --color-dark-subtle:        #475569;
+    --color-dark-backdrop:      #020617;
+    --color-disabled:           #1e293b;
+
+    /* Gray scale does NOT change in dark mode.
+       dark:bg-gray-900 picks a different step from the SAME scale.
+       The scale is defined once in @theme above. */
+}
+
+/* ==========================================================================
+   PROSE / ARTICLE CONTENT
+   Uses semantic tokens only.
+   ========================================================================== */
+.prose { color: var(--color-text-secondary); }
+.prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6 { color: var(--color-text-heading); }
+.prose p { color: var(--color-text-secondary); }
+.prose strong { color: var(--color-text-heading); }
+.prose a { color: var(--color-brand); }
+.prose a:hover { color: var(--color-brand-strong); }
+.prose blockquote { color: var(--color-text-secondary); border-left-color: var(--color-brand); }
+.prose ul li, .prose ol li { color: var(--color-text-secondary); }
+.prose code { color: var(--color-text-heading); background-color: var(--color-surface-hover); }
+.prose pre { background-color: var(--color-surface-hover); }

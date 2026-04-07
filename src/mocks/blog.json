@@ -1,0 +1,98 @@
+[
+  {
+    "id": "blog-001",
+    "slug": "commission-europeenne-condamnee-contrats-vaccins",
+    "title": "Victoire historique : la Commission europeenne condamnee pour opacite sur les contrats vaccins",
+    "excerpt": "Le 17 juillet 2024, le Tribunal de l'UE a donne raison a 2 089 plaignants menes par Me Arnaud Durand. La Commission doit publier les contrats d'achat de vaccins Covid-19.",
+    "category": "Victoires",
+    "image": "/images/actions/wejustice_dejavu.jpg",
+    "author": { "name": "Christophe Van Engelen", "avatar": "/images/authors/christophe-van-engelen.jpg" },
+    "date": "2024-07-18",
+    "readTime": 6,
+    "featured": true
+  },
+  {
+    "id": "blog-002",
+    "slug": "dermatose-nodulaire-pourquoi-abattage-disproportionne",
+    "title": "Dermatose nodulaire : pourquoi l'abattage massif est disproportionne",
+    "excerpt": "3 500 bovins abattus pour une maladie dont la mortalite n'est que de 1 a 5%. L'EFSA confirme que la vaccination est une alternative efficace. Analyse juridique.",
+    "category": "Analyse",
+    "image": "/images/actions/wejustice_agriculteurs.jpg",
+    "author": { "name": "Christophe Van Engelen", "avatar": "/images/authors/christophe-van-engelen.jpg" },
+    "date": "2026-01-20",
+    "readTime": 8,
+    "featured": false
+  },
+  {
+    "id": "blog-003",
+    "slug": "phonegate-9-telephones-sur-10-depassent-normes",
+    "title": "Phonegate : 9 telephones sur 10 depassent les normes legales d'ondes",
+    "excerpt": "Le scandale revele par le Dr Marc Arazi en 2016 continue. 66 modeles non conformes identifies par l'ANFR. La Commission europeenne a reconnu la fraude en 2025.",
+    "category": "Enquete",
+    "image": "/images/actions/wejustice_phonegate.jpg",
+    "author": { "name": "Christophe Van Engelen", "avatar": "/images/authors/christophe-van-engelen.jpg" },
+    "date": "2025-12-05",
+    "readTime": 10,
+    "featured": false
+  },
+  {
+    "id": "blog-004",
+    "slug": "glyphosate-reautorisation-2033-recours-cjue",
+    "title": "Glyphosate reautorise jusqu'en 2033 : le recours devant la CJUE",
+    "excerpt": "Antidote Europe a depose l'affaire T-503/24 pour faire annuler la reautorisation. 4 associations francaises rejoignent la procedure. Audience prevue fin 2026.",
+    "category": "Juridique",
+    "image": "/images/actions/wejustice_agriculteurs.jpg",
+    "author": { "name": "Christophe Van Engelen", "avatar": "/images/authors/christophe-van-engelen.jpg" },
+    "date": "2025-10-15",
+    "readTime": 7,
+    "featured": false
+  },
+  {
+    "id": "blog-005",
+    "slug": "shadow-ban-dsa-vos-droits-reseaux-sociaux",
+    "title": "Shadow ban : le DSA vous donne enfin des droits face aux reseaux sociaux",
+    "excerpt": "Depuis 2024, le Digital Services Act impose aux plateformes de notifier toute restriction de visibilite. Un utilisateur a deja gagne en justice a Amsterdam.",
+    "category": "Decryptage",
+    "image": "/images/actions/wejustice_voxact.jpg",
+    "author": { "name": "Christophe Van Engelen", "avatar": "/images/authors/christophe-van-engelen.jpg" },
+    "date": "2025-09-01",
+    "readTime": 5,
+    "featured": false
+  },
+  {
+    "id": "blog-006",
+    "slug": "fuite-donnees-france-2024-bilan-noir",
+    "title": "Fuites de donnees en France : le bilan noir de 2024",
+    "excerpt": "France Travail, Free, Viamedis, hopitaux : 9 Francais sur 10 touches. La CNIL a inflige 55 millions d'amendes. Mais les victimes ne touchent rien.",
+    "category": "Enquete",
+    "image": "/images/actions/wejustice_datagate.jpg",
+    "author": { "name": "Christophe Van Engelen", "avatar": "/images/authors/christophe-van-engelen.jpg" },
+    "date": "2025-06-10",
+    "readTime": 9,
+    "featured": false
+  },
+  {
+    "id": "blog-007",
+    "slug": "linky-penalite-38-euros-refus-compteur",
+    "title": "Linky : 38,90 EUR par an pour avoir refuse le compteur. Est-ce legal ?",
+    "excerpt": "Depuis janvier 2025, Enedis facture les foyers sans Linky. Me Arnaud Durand conteste la legalite de cette penalite. 847 communes ont vote contre.",
+    "category": "Decryptage",
+    "image": "/images/actions/wejustice_linky.jpg",
+    "author": { "name": "Christophe Van Engelen", "avatar": "/images/authors/christophe-van-engelen.jpg" },
+    "date": "2025-03-20",
+    "readTime": 6,
+    "featured": false
+  },
+  {
+    "id": "blog-008",
+    "slug": "procurations-dematerialisees-risque-fraude",
+    "title": "Procurations dematerialisees : le risque de fraude electorale que personne ne veut voir",
+    "excerpt": "Le decret du 3 novembre 2025 permet de voter au nom d'un inconnu sans verification physique. PlanProcu et ses liens avec le parti presidentiel.",
+    "category": "Analyse",
+    "image": "/images/actions/wejustice_scrutin.jpg",
+    "author": { "name": "Christophe Van Engelen", "avatar": "/images/authors/christophe-van-engelen.jpg" },
+    "date": "2025-11-15",
+    "readTime": 7,
+    "featured": false
+  }
+]

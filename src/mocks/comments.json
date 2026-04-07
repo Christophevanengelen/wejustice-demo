@@ -1,0 +1,206 @@
+{
+  "act-001": [
+    {
+      "id": "c-001",
+      "author": "Marie L.",
+      "avatarColor": "#3B82F6",
+      "date": "2026-04-02T14:30:00Z",
+      "text": "J'ai enfin ose contester mes frais bancaires grace a cette action. 340 euros recuperes en 2 semaines. Merci WeJustice !",
+      "likes": 47,
+      "isTeam": false,
+      "replies": [
+        {
+          "id": "r-001",
+          "author": "Equipe WeJustice",
+          "avatarColor": "#C20520",
+          "date": "2026-04-02T15:10:00Z",
+          "text": "Bravo Marie ! Votre temoignage encourage des centaines d'autres personnes a agir. C'est exactement l'objectif de cette action collective.",
+          "likes": 12,
+          "isTeam": true
+        }
+      ]
+    },
+    {
+      "id": "c-002",
+      "author": "Pierre K.",
+      "avatarColor": "#10B981",
+      "date": "2026-04-01T09:15:00Z",
+      "text": "8 commissions d'intervention en un seul mois, a 8 euros chacune. Pour un decouvert de 12 euros. C'est du vol organise. Je signe et je partage autour de moi.",
+      "likes": 83,
+      "isTeam": false,
+      "replies": [
+        {
+          "id": "r-002",
+          "author": "Sophie D.",
+          "avatarColor": "#8B5CF6",
+          "date": "2026-04-01T10:00:00Z",
+          "text": "Exactement la meme chose pour moi. 6 commissions en decembre. On se fait plumer en silence.",
+          "likes": 24,
+          "isTeam": false
+        }
+      ]
+    },
+    {
+      "id": "c-003",
+      "author": "Jean-Marc T.",
+      "avatarColor": "#F59E0B",
+      "date": "2026-03-30T18:45:00Z",
+      "text": "Question : si je signe, est-ce que ca m'engage a devenir plaignant ? Ou je peux juste soutenir sans aller au tribunal ?",
+      "likes": 31,
+      "isTeam": false,
+      "replies": [
+        {
+          "id": "r-003",
+          "author": "Equipe WeJustice",
+          "avatarColor": "#C20520",
+          "date": "2026-03-30T19:20:00Z",
+          "text": "Bonne question Jean-Marc ! Signer ne vous engage a rien. 80% de nos soutiens signent pour appuyer l'action sans devenir plaignants. Si vous souhaitez aller plus loin, c'est possible mais jamais obligatoire.",
+          "likes": 45,
+          "isTeam": true
+        }
+      ]
+    },
+    {
+      "id": "c-004",
+      "author": "Isabelle R.",
+      "avatarColor": "#EC4899",
+      "date": "2026-03-28T11:30:00Z",
+      "text": "Depuis que j'ai rejoint cette action, ma banque m'a spontanement rembourse 180 euros. Le simple fait de mentionner l'action collective a suffi. Imaginez quand on sera 25 000 !",
+      "likes": 156,
+      "isTeam": false,
+      "replies": []
+    },
+    {
+      "id": "c-005",
+      "author": "Thomas B.",
+      "avatarColor": "#6366F1",
+      "date": "2026-03-25T16:00:00Z",
+      "text": "J'ai partage cette action avec mes collegues. On est deja 12 a avoir signe au bureau. Les frais bancaires, ca touche tout le monde.",
+      "likes": 28,
+      "isTeam": false,
+      "replies": []
+    },
+    {
+      "id": "c-006",
+      "author": "Nathalie G.",
+      "avatarColor": "#14B8A6",
+      "date": "2026-03-22T08:00:00Z",
+      "text": "Ma mere de 78 ans paie 15 euros par mois de frais de tenue de compte. Elle ne sait meme pas ce que c'est. Je signe pour elle.",
+      "likes": 92,
+      "isTeam": false,
+      "replies": [
+        {
+          "id": "r-006",
+          "author": "Pierre K.",
+          "avatarColor": "#10B981",
+          "date": "2026-03-22T09:15:00Z",
+          "text": "Pareil pour mon pere. Les personnes agees sont les premieres victimes. Force a vous Nathalie.",
+          "likes": 18,
+          "isTeam": false
+        }
+      ]
+    },
+    {
+      "id": "c-007",
+      "author": "David M.",
+      "avatarColor": "#F97316",
+      "date": "2026-03-20T14:00:00Z",
+      "text": "Ancien employe de banque ici. Je confirme : les frais d'incident sont calibres pour maximiser le revenu, pas pour couvrir un cout reel. C'est une marge pure.",
+      "likes": 234,
+      "isTeam": false,
+      "replies": []
+    },
+    {
+      "id": "c-008",
+      "author": "Lucie F.",
+      "avatarColor": "#A855F7",
+      "date": "2026-03-18T10:30:00Z",
+      "text": "12 847 signatures et ca monte ! Allez, on peut atteindre les 25 000 avant l'ete. Partagez autour de vous !",
+      "likes": 41,
+      "isTeam": false,
+      "replies": []
+    }
+  ],
+  "act-003": [
+    {
+      "id": "c-dnc-001",
+      "author": "Jean-Pierre M.",
+      "avatarColor": "#16A34A",
+      "date": "2026-03-28T08:00:00Z",
+      "text": "Mon troupeau a ete abattu le 15 aout. 85 betes. Mon pere m'a appele en pleurant, il avait 82 ans. C'est lui qui avait commence cet élevage en 1968. Merci WeJustice de porter notre voix.",
+      "likes": 342,
+      "isTeam": false,
+      "replies": [
+        {
+          "id": "r-dnc-001",
+          "author": "Equipe WeJustice",
+          "avatarColor": "#C20520",
+          "date": "2026-03-28T09:30:00Z",
+          "text": "Jean-Pierre, votre temoignage est bouleversant et il compte. Nous nous battons pour que plus aucun éleveur ne vive ca. Chaque signature nous rapproche du recours devant le Conseil d'Etat.",
+          "likes": 89,
+          "isTeam": true
+        }
+      ]
+    },
+    {
+      "id": "c-dnc-002",
+      "author": "Dr. Veronique S., vétérinaire",
+      "avatarColor": "#7C3AED",
+      "date": "2026-03-25T14:00:00Z",
+      "text": "Veterinaire rurale depuis 20 ans. La DNC a une mortalite de 10%. On vaccine contre la fievre catarrhale (bluetongue) depuis des annees sans abattre. Pourquoi pas la DNC ? La reponse est economique, pas sanitaire : proteger le statut 'indemne' pour les exportations.",
+      "likes": 518,
+      "isTeam": false,
+      "replies": []
+    },
+    {
+      "id": "c-dnc-003",
+      "author": "Marie-France D.",
+      "avatarColor": "#EC4899",
+      "date": "2026-03-20T11:00:00Z",
+      "text": "Eleveuse en Haute-Savoie. L'indemnisation qu'on m'a proposee ne couvre meme pas le prix du betail au cours du marche. Et la genetique ? 30 ans de selection, ca vaut combien ? Pour eux, rien.",
+      "likes": 267,
+      "isTeam": false,
+      "replies": [
+        {
+          "id": "r-dnc-003",
+          "author": "Laurent B.",
+          "avatarColor": "#F59E0B",
+          "date": "2026-03-20T12:15:00Z",
+          "text": "Pareil dans le Jura. L'indemnisation c'est une insulte. On nous detruit et on nous donne des miettes.",
+          "likes": 84,
+          "isTeam": false
+        }
+      ]
+    },
+    {
+      "id": "c-dnc-004",
+      "author": "Sophie T., consommatrice",
+      "avatarColor": "#3B82F6",
+      "date": "2026-03-18T16:30:00Z",
+      "text": "Je ne suis pas éleveuse mais je signe quand meme. On vaccine un million de betes et personne ne nous dit ce qu'il y a dans le vaccin ni si ca se retrouve dans le lait et la viande. Je veux de la transparence.",
+      "likes": 156,
+      "isTeam": false,
+      "replies": []
+    },
+    {
+      "id": "c-dnc-005",
+      "author": "Thomas R., agriculteur bio",
+      "avatarColor": "#10B981",
+      "date": "2026-03-15T09:00:00Z",
+      "text": "En bio, on n'a pas le droit d'utiliser certains vaccins. Resultat : abattage obligatoire, zero alternative. Mon troupeau bio de 40 ans, detruit pour une regle administrative absurde.",
+      "likes": 423,
+      "isTeam": false,
+      "replies": [
+        {
+          "id": "r-dnc-005",
+          "author": "Equipe WeJustice",
+          "avatarColor": "#C20520",
+          "date": "2026-03-15T10:00:00Z",
+          "text": "Thomas, le cas des éleveurs bio est un angle juridique fort que nous integrons au dossier. La double peine (pas de vaccin autorise + abattage impose) est potentiellement contraire au principe de proportionnalite.",
+          "likes": 67,
+          "isTeam": true
+        }
+      ]
+    }
+  ]
+}

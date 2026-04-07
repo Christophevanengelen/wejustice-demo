@@ -1,0 +1,42 @@
+[
+  {
+    "id": "t-001",
+    "name": "Marie L.",
+    "action": "Frais bancaires abusifs",
+    "quote": "Grace a WeJustice, j'ai ete remboursee de 340 euros de frais bancaires injustifies. Seule, je n'aurais jamais ose me battre.",
+    "avatar": null,
+    "featured": true
+  },
+  {
+    "id": "t-002",
+    "name": "Jean-Pierre M.",
+    "action": "Compteurs Linky",
+    "quote": "Le collectif a reussi a faire entendre notre voix la ou des milliers de reclamations individuelles avaient echoue.",
+    "avatar": null,
+    "featured": true
+  },
+  {
+    "id": "t-003",
+    "name": "Sophie D.",
+    "action": "Encadrement des loyers",
+    "quote": "Mon proprietaire me faisait payer 200 euros de trop par mois. L'action collective a permis de recuperer 2 ans de trop-percu.",
+    "avatar": null,
+    "featured": true
+  },
+  {
+    "id": "t-004",
+    "name": "Ahmed K.",
+    "action": "Obsolescence programmee",
+    "quote": "C'est rassurant de savoir que des avocats specialises se battent pour nous. WeJustice rend la justice accessible.",
+    "avatar": null,
+    "featured": true
+  },
+  {
+    "id": "t-005",
+    "name": "Isabelle R.",
+    "action": "Pollution de l'air",
+    "quote": "Ma fille souffre d'asthme a cause de la pollution. Cette action collective est notre meilleur espoir pour faire bouger les choses.",
+    "avatar": null,
+    "featured": false
+  }
+]

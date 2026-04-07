@@ -1,0 +1,565 @@
+[
+  {
+    "id": "act-001",
+    "title": "Nous ne sommes pas des cobayes",
+    "slug": "dejavu-transparence-vaccins",
+    "description": "287 695 citoyens exigent la transparence sur les vaccins Covid-19. Le 17 juillet 2024, le Tribunal de l'UE a condamne la Commission europeenne pour opacite sur les contrats d'achat. La Commission fait appel. Le combat continue.",
+    "content": "<p>L'urgence de la lutte contre le coronavirus ne justifie pas toutes les derogations. La necessite de relancer la machine economique ne doit pas exposer la population a des effets secondaires indetermines ou a des benefices incertains, lesquels ne peuvent etre verifies que par la transparence des donnees.</p><p>Face a une balance benefices-risques incertaine, pas question d'offrir aux fabricants de vaccins une impunite absolue. La transparence impose un acces direct aux donnees pour verifier le bien-fonde des decisions arretees. Nos voix s'elevent pour demander des comptes aux autorites europeennes.</p>",
+    "status": "legal_action",
+    "signatures": { "current": 287695, "goal": 500000 },
+    "tag": "DejaVu",
+    "themes": ["sante", "libertes", "transparence"],
+    "image": "/images/actions/wejustice_dejavu.jpg",
+    "initiator": {
+      "name": "Me Arnaud Durand",
+      "role": "Avocat au Barreau de Paris, fondateur de Lexprecia et Palace.legal",
+      "bio": "En fevrier 2021, Me Arnaud Durand a lance la petition DejaVu pour exiger la transparence sur les vaccins Covid-19. En 4 ans, 287 695 citoyens ont rejoint le mouvement. Le 17 juillet 2024, le Tribunal de l'UE lui a donne raison en condamnant la Commission europeenne pour manque de transparence sur les contrats d'achat de vaccins.",
+      "url": "https://palace.legal/dejavu/fr",
+      "avatarColor": "#1D4ED8"
+    },
+    "lawyer": { "name": "Me. Arnaud Durand", "firm": "Lexprecia", "bio": "Avocat specialise en actions collectives en justice, droits fondamentaux, sante et environnement. A obtenu la condamnation de la Commission europeenne devant le Tribunal de l'UE le 17 juillet 2024.", "cases": 34 },
+    "target": "Commission europeenne / Pfizer / Moderna / AstraZeneca / Johnson & Johnson",
+    "featured": true,
+    "scope": "eu",
+    "hasClaimantFlow": true,
+    "endDate": null,
+    "trending": true,
+    "signaturesThisWeek": 156,
+    "demands": [
+      "Acces aux entiers dossiers d'autorisations de mise sur le marche (AMM conditionnelles) des vaccins deposes aupres de l'EMA",
+      "Publication integrale des contrats d'achat des vaccins entre la Commission europeenne et les fabricants - sans caviardage",
+      "Identification des negociateurs des contrats et verification de l'absence de conflits d'interets",
+      "Fin de l'impunite des fabricants : transparence sur les clauses de responsabilite en cas de produits defectueux",
+      "Acces equitable a tous les traitements eprouves entre les pays membres de l'UE"
+    ],
+    "problem": {
+      "headline": "La Commission europeenne cache les contrats d'achat de vos vaccins",
+      "description": "La Commission europeenne a negocie l'achat de milliards de doses de vaccins Covid-19 avec Pfizer, Moderna, AstraZeneca et Johnson & Johnson. Les contrats restent largement caviard\u00e9s. Les clauses de responsabilite des fabricants sont masquees. L'identite des negociateurs est secrete. Le 17 juillet 2024, le Tribunal de l'UE a condamne la Commission pour ce manque de transparence. Mais elle fait appel.",
+      "keyFacts": [
+        { "value": "287 695", "unit": "signataires", "label": "Ont rejoint DejaVu" },
+        { "value": "2 089", "unit": "plaignants", "label": "Dans l'action collective au Tribunal UE" },
+        { "value": "1", "unit": "condamnation", "label": "De la Commission obtenue le 17/07/2024" }
+      ]
+    },
+    "evidence": [
+      { "title": "Condamnation du Tribunal de l'UE - 17 juillet 2024", "type": "legal", "description": "Le Tribunal de l'Union europeenne condamne la Commission pour n'avoir pas donne au public un acces suffisamment large aux contrats d'achat des vaccins Covid-19." },
+      { "title": "Appel de la Commission - fevrier 2025", "type": "legal", "description": "La Commission fait appel et demande la suspension partielle de l'execution du jugement. Le juge des referes statue le 4 fevrier 2025." },
+      { "title": "Conclusions de l'Avocat general - 11 juin 2025", "type": "legal", "description": "La Cour de justice doit recevoir les conclusions de l'Avocat general le 11 juin 2025 dans le cadre de l'appel." },
+      { "title": "53 991 citoyens au Conseil constitutionnel", "type": "legal", "description": "En aout 2021, 53 991 citoyens ont depose un memoire devant le Conseil constitutionnel contre le pass sanitaire. Decision du 5 aout 2021 : partiellement retoque." },
+      { "title": "Petition : 287 695 signataires", "type": "media", "description": "La petition lancee en fevrier 2021 sur Palace.legal a depasse les 287 000 signatures, franchissant tous les paliers prevus." }
+    ],
+    "victimTestimonials": [
+      { "name": "Sophie R., infirmiere, Lyon", "quote": "On m'a impos\u00e9 un vaccin dont les donnees cliniques completes n'etaient pas publiques. J'ai eu des effets secondaires. Personne ne peut me dire si c'est normal car personne n'a acces aux donnees brutes.", "amount": null },
+      { "name": "Marc D., pere de famille, Toulouse", "quote": "Mon fils de 15 ans a fait une myocardite 10 jours apres la deuxieme dose. L'hopital m'a dit 'c'est rare'. Rare a quel point ? Impossible de verifier sans les donnees.", "amount": null },
+      { "name": "Claire M., chercheuse en pharmacologie", "quote": "En tant que scientifique, je n'accepte pas qu'on me demande de faire confiance sans pouvoir verifier. L'opacite n'est pas compatible avec la science.", "amount": null }
+    ],
+    "howItWorks": [
+      { "step": 1, "title": "Signez", "description": "Rejoignez les 287 695 citoyens qui exigent la transparence. Chaque signature renforce notre legitimite devant les tribunaux europeens." },
+      { "step": 2, "title": "Action en cours", "description": "Le Tribunal de l'UE nous a donne raison le 17 juillet 2024. La Commission fait appel. L'Avocat general doit rendre ses conclusions le 11 juin 2025." },
+      { "step": 3, "title": "Objectif", "description": "Obtenir la publication integrale des contrats, l'identification des negociateurs, et la fin de l'opacite sur les autorisations de mise sur le marche." }
+    ],
+    "funds": { "totalCollected": 0, "totalSpent": 0, "categories": [{ "label": "Juridique", "amount": 0, "pct": 70, "color": "#16A34A" }, { "label": "Expertises", "amount": 0, "pct": 20, "color": "#3B82F6" }, { "label": "Admin", "amount": 0, "pct": 10, "color": "#6B7280" }] },
+    "results": [{ "value": "287 695", "unit": "signataires", "label": "Ont rejoint DejaVu" }, { "value": "1", "unit": "condamnation", "label": "De la Commission europeenne obtenue" }, { "value": "4", "unit": "actions", "label": "Collectives en cours" }],
+    "nextStep": {
+      "title": "Conclusions de l'Avocat general devant la CJUE",
+      "description": "La Commission fait appel de sa condamnation. L'Avocat general de la Cour de justice doit rendre ses conclusions le 11 juin 2025. La decision finale determinera si les contrats seront enfin publies.",
+      "estimatedDate": "2025-06-11"
+    },
+    "timeline": [
+      { "date": "2021-02-01", "label": "Lancement de la petition DejaVu", "type": "milestone", "description": "Me Arnaud Durand lance la petition pour la transparence sur les vaccins Covid-19. L'ultimatum donne 30 jours a la Commission apres 50 000 signatures.", "side": "nous" },
+      { "date": "2021-07-01", "label": "200 000 signataires - saisine du Conseil constitutionnel", "type": "milestone", "description": "Le palier de 200 000 est franchi. 53 991 citoyens deposent un memoire contre le pass sanitaire devant le Conseil constitutionnel.", "side": "nous" },
+      { "date": "2021-08-05", "label": "Le Conseil constitutionnel retoque partiellement le pass", "type": "adversaire", "description": "Decision du 5 aout 2021 : le pass sanitaire n'est que partiellement retoque. Le combat se poursuit devant les tribunaux.", "side": "adversaire" },
+      { "date": "2021-09-15", "label": "4 actions collectives lancees", "type": "juridique", "description": "Transparence EMA, independance du Conseil constitutionnel, contrats d'achat, soutien soignants et salaries. 2 089 plaignants s'inscrivent.", "side": "nous" },
+      { "date": "2022-06-01", "label": "Requete deposee au Tribunal de l'UE", "type": "juridique", "description": "2 089 plaignants deposent un recours contre la Commission europeenne pour obtenir la publication des contrats d'achat de vaccins.", "side": "nous" },
+      { "date": "2024-07-17", "label": "VICTOIRE - La Commission condamnee", "type": "juridique", "description": "Le Tribunal de l'Union europeenne condamne la Commission pour manque de transparence. Les contrats doivent etre publies. La Commission doit reveler l'identite des negociateurs.", "side": "nous" },
+      { "date": "2024-10-01", "label": "La Commission fait appel", "type": "adversaire", "description": "Refusant de se conformer au jugement, la Commission fait appel devant la Cour de justice et demande la suspension de l'execution.", "side": "adversaire" },
+      { "date": "2025-02-04", "label": "Le juge des referes statue sur la suspension", "type": "juridique", "description": "Le juge adopte une approche pragmatique : la divulgation des noms des negociateurs est suspendue en attendant l'arret de la Cour.", "side": "nous" },
+      { "date": "2025-06-11", "label": "Conclusions de l'Avocat general attendues", "type": "juridique", "description": "L'Avocat general doit rendre ses conclusions sur l'appel de la Commission. Etape decisive avant l'arret final de la CJUE.", "side": "nous" }
+    ],
+    "createdAt": "2021-02-01T00:00:00Z",
+    "updatedAt": "2026-04-01T00:00:00Z"
+  },
+  {
+    "id": "act-002",
+    "title": "Ultimatum contre Linky : respectez notre refus",
+    "slug": "ultimatum-linky-refus",
+    "description": "Enedis profite de son monopole pour imposer le compteur Linky, nous transformer en 'chair a data' et nous exposer a des rayonnements en notre propre demeure. 15 561 citoyens ont signe l'ultimatum. L'action en justice est en cours.",
+    "content": "<p>Le droit au respect de la vie privee est un principe fondamental national et europeen. Le respect de la sante est un droit fondamental de valeur legale et constitutionnelle. Pourtant, Enedis, societe commerciale, profite de son monopole sur un service public pour nous transformer en 'chair a data' et nous exposer a des rayonnements objet d'incertitudes sanitaires.</p><p>Depuis 2018, Me Arnaud Durand et le cabinet Lexprecia portent ce combat devant les tribunaux. Le tribunal de Tours a ordonne le retrait de 13 compteurs Linky pour des personnes electrohypersensibles. A Bordeaux, 13 plaignants sur 206 ont obtenu la pose de filtres de protection. Depuis 2025, Enedis impose une penalite de 38,90 EUR par an a ceux qui refusent l'installation.</p>",
+    "status": "legal_action",
+    "signatures": { "current": 15561, "goal": 50000 },
+    "tag": "Linky",
+    "themes": ["sante", "vie privee", "consommation"],
+    "image": "/images/actions/wejustice_linky.jpg",
+    "initiator": {
+      "name": "Me Arnaud Durand",
+      "role": "Avocat au Barreau de Paris, fondateur de Lexprecia et Palace.legal",
+      "bio": "Diplome de Paris I Pantheon-Sorbonne et major de Paris II Pantheon-Assas en propriete intellectuelle. Plus de 10 ans au Barreau de Paris. Il intervient en actions collectives en justice dans les domaines de l'environnement, la sante, les droits de l'Homme et les libertes publiques. Co-fondateur de Palace.legal qui a recueilli plus de 15 000 signatures contre le compteur Linky.",
+      "url": "https://palace.legal/linky/",
+      "avatarColor": "#1D4ED8"
+    },
+    "lawyer": { "name": "Me. Arnaud Durand", "firm": "Lexprecia", "bio": "Avocat specialise en contentieux technique et actions collectives. Defend les victimes des ondes electromagnetiques et les opposants au compteur Linky depuis 2018.", "cases": 34 },
+    "target": "Enedis (ex-ERDF)",
+    "featured": true,
+    "scope": "national",
+    "hasClaimantFlow": true,
+    "endDate": null,
+    "trending": true,
+    "signaturesThisWeek": 87,
+    "demands": [
+      "Respect du refus individuel du compteur Linky en l'absence d'obligation legale pour le consommateur",
+      "Fourniture d'une electricite depolluee des courants porteurs en ligne (CPL) ajoutes par Linky",
+      "Suppression de la penalite de 38,90 EUR/an imposee a ceux qui refusent l'installation",
+      "Indemnisation morale de 5 000 EUR par consommateur lese",
+      "Transparence sur les donnees de consommation collectees toutes les 30 minutes et leur utilisation commerciale"
+    ],
+    "problem": {
+      "headline": "37 millions de compteurs imposes sans votre consentement",
+      "description": "Enedis a deploye 37 millions de compteurs Linky dans 90% des foyers francais. Ces compteurs collectent vos donnees de consommation toutes les 30 minutes, permettant de deduire quand vous dormez, cuisinez ou etes absent. 2 millions de Francais continuent de refuser. Depuis janvier 2025, ils paient une penalite de 38,90 EUR par an. 847 communes ont vote contre l'installation.",
+      "keyFacts": [
+        { "value": "37M", "unit": "compteurs", "label": "Installes sans consentement" },
+        { "value": "2M", "unit": "foyers", "label": "Refusent encore le Linky" },
+        { "value": "847", "unit": "communes", "label": "Ont vote contre l'installation" }
+      ]
+    },
+    "evidence": [
+      { "title": "Tribunal de Tours - retrait de 13 compteurs", "type": "legal", "description": "Le juge des referes a reconnu le lien entre les compteurs Linky et l'electrohypersensibilite, ordonnant le retrait de 13 compteurs." },
+      { "title": "Tribunal de Bordeaux - 206 plaignants", "type": "legal", "description": "Sur 206 plaignants, 13 ont obtenu gain de cause. Le tribunal a ordonne la pose de filtres de protection contre les CPL." },
+      { "title": "CNIL - reserves sur la granularite des donnees", "type": "report", "description": "La CNIL a emis des reserves sur la finesse des donnees collectees par Linky, qui permettent de reconstituer les habitudes de vie." },
+      { "title": "Penalite de 38,90 EUR/an depuis 2025", "type": "legal", "description": "Le regime TURPE 7 impose depuis le 1er janvier 2025 un surcout de 6,48 EUR HT tous les 2 mois pour les foyers sans Linky." },
+      { "title": "15 561 signataires sur Palace.legal", "type": "media", "description": "L'ultimatum citoyen lance sur Palace.legal a depasse les 15 000 signatures, declenchant l'action en justice." }
+    ],
+    "victimTestimonials": [
+      { "name": "Martine L., retraitee, Tours", "quote": "Depuis l'installation du Linky, j'ai des maux de tete permanents et des acouphenes. Le tribunal m'a donne raison et a ordonne le retrait. Mais combien d'autres souffrent en silence ?", "amount": null },
+      { "name": "Jean-Pierre M., Bordeaux", "quote": "On m'a installe un Linky sans me prevenir. Quand j'ai demande le retrait, Enedis m'a dit que je n'avais pas le choix. C'est mon domicile, pas le leur.", "amount": null },
+      { "name": "Catherine D., Haute-Garonne", "quote": "Depuis le Linky, mes factures ont augmente de 15%. Et maintenant on me demande 38 euros par an si je refuse. C'est du racket sur un service public.", "amount": "+15% sur la facture" }
+    ],
+    "howItWorks": [
+      { "step": 1, "title": "Signez l'ultimatum", "description": "Rejoignez les 15 561 citoyens qui exigent le respect de leur refus et de leur sante." },
+      { "step": 2, "title": "Action en cours", "description": "Me Arnaud Durand et Lexprecia portent l'affaire devant les tribunaux. Procedure en cours au fond." },
+      { "step": 3, "title": "Objectif", "description": "Obtenir le droit au refus du Linky, la suppression de la penalite, et l'indemnisation des victimes." }
+    ],
+    "funds": { "totalCollected": 0, "totalSpent": 0, "categories": [{ "label": "Juridique", "amount": 0, "pct": 70, "color": "#16A34A" }, { "label": "Expertises", "amount": 0, "pct": 20, "color": "#3B82F6" }, { "label": "Admin", "amount": 0, "pct": 10, "color": "#6B7280" }] },
+    "results": [{ "value": "15 561", "unit": "signataires", "label": "Ont rejoint l'ultimatum" }, { "value": "13", "unit": "retraits", "label": "Ordonnes par le tribunal de Tours" }, { "value": "847", "unit": "communes", "label": "Ont vote contre Linky" }],
+    "nextStep": {
+      "title": "Procedure au fond devant le tribunal judiciaire",
+      "description": "L'action collective est en procedure au fond. Me Arnaud Durand prepare les conclusions pour obtenir le droit au refus, la suppression de la penalite et l'indemnisation. Delai estime : 12 a 36 mois.",
+      "estimatedDate": null
+    },
+    "timeline": [
+      { "date": "2015-12-01", "label": "Debut du deploiement Linky en France", "type": "milestone", "description": "Enedis lance le deploiement massif de 35 millions de compteurs communicants sur l'ensemble du territoire.", "side": "nous" },
+      { "date": "2018-01-01", "label": "Lancement de l'ultimatum citoyen", "type": "milestone", "description": "Me Arnaud Durand lance la petition sur Palace.legal. L'ultimatum donne 30 jours a Enedis pour repondre apres 10 000 signatures.", "side": "nous" },
+      { "date": "2019-03-15", "label": "Tribunal de Tours - retrait de 13 compteurs", "type": "juridique", "description": "Le juge des referes ordonne le retrait de 13 compteurs Linky chez des personnes electrohypersensibles. Premiere victoire.", "side": "nous" },
+      { "date": "2020-02-24", "label": "Action collective lancee contre Enedis", "type": "juridique", "description": "Me Arnaud Durand et Me Leguevaques lancent une action collective a Toulouse. Enedis n'a pas repondu a l'ultimatum.", "side": "nous" },
+      { "date": "2020-06-01", "label": "Tribunal de Bordeaux - 206 plaignants", "type": "juridique", "description": "13 plaignants sur 206 obtiennent gain de cause. Le tribunal ordonne la pose de filtres contre les CPL.", "side": "nous" },
+      { "date": "2024-08-31", "label": "37,3 millions de compteurs installes", "type": "adversaire", "description": "Enedis annonce 37,3 millions de compteurs Linky installes, soit 90% des foyers francais. 2,1 millions de clients refusent encore.", "side": "adversaire" },
+      { "date": "2025-01-01", "label": "Enedis impose la penalite de 38,90 EUR/an", "type": "adversaire", "description": "Le regime TURPE 7 entre en vigueur : les foyers sans Linky paient desormais 6,48 EUR HT tous les 2 mois, soit 38,90 EUR par an.", "side": "adversaire" },
+      { "date": "2025-03-01", "label": "847 communes ont vote contre Linky", "type": "communication", "description": "La Plateforme operationnelle anti-Linky recense 847 communes francaises ayant vote des deliberations contre l'installation.", "side": "nous" },
+      { "date": "2026-01-15", "label": "15 561 signataires - l'action continue", "type": "milestone", "description": "L'ultimatum a largement depasse les 10 000 signatures. La procedure au fond est en cours devant le tribunal judiciaire.", "side": "nous" }
+    ],
+    "createdAt": "2018-01-01T00:00:00Z",
+    "updatedAt": "2026-04-01T00:00:00Z"
+  },
+  {
+    "id": "act-003",
+    "title": "Stop a l'abattage massif de nos troupeaux",
+    "slug": "dermatose-nodulaire-stop-abattage",
+    "description": "Depuis juin 2025, l'État abat des troupeaux entiers au premier cas de dermatose nodulaire - une maladie benigne, non transmissible a l'homme, dont la mortalité n'est que de 1 a 5%. Le vaccin impose n'a qu'une efficacité de 60% et aucune etude ne prouve son innocuite pour l'homme via la consommation des produits. Pas de delai d'attente impose apres vaccination.",
+    "content": "<p>La dermatose nodulaire contagieuse (DNC) a ete détectée en France le 29 juin 2025 en Savoie. Depuis, l'État applique une politique d'abattage total : des le premier cas dans un élevage, tout le troupeau est detruit. 3 500 bovins ont ete abattus dans 117 foyers a travers 11 departements.</p><p>Pourtant, l'Autorite européenne de securite des aliments (EFSA) affirme que la vaccination combinee a un abattage cible est aussi efficace que l'abattage total. La mortalité de la maladie n'est que de 1 a 5%. La maladie n'est pas transmissible a l'homme. Des éleveurs voient le travail d'une vie detruit en quelques heures pour une maladie benigne.</p>",
+    "status": "collecting",
+    "signatures": { "current": 0, "goal": 100000 },
+    "tag": "DermatoseNodeulaire",
+    "themes": ["agriculture", "santé animale", "consommation"],
+    "image": "/images/actions/wejustice_agriculteurs.jpg",
+    "initiator": {
+      "name": "Coordination Rurale et Confederation Paysanne",
+      "role": "Syndicats agricoles opposes a l'abattage systématique",
+      "bio": "Face a la politique d'abattage total imposee par l'Etat, les syndicats agricoles se sont unis pour defendre une alternative vaccinale. En decembre 2025, des éleveurs en Ariege ont bloque des autoroutes et refuse l'abattage de leurs 200 bovins, declenchant un mouvement national de solidarite paysanne.",
+      "url": "https://www.coordinationrurale.fr/",
+      "avatarColor": "#16A34A"
+    },
+    "lawyer": { "name": "Me. Arnaud Durand", "firm": "Lexprecia", "bio": "Avocat spécialisé en droit rural et agricole. Defend les éleveurs face aux decisions administratives d'abattage depuis le debut de la crise DNC.", "cases": 28 },
+    "target": "Ministere de l'Agriculture et DGAL",
+    "featured": true,
+    "scope": "national",
+    "hasClaimantFlow": true,
+    "endDate": null,
+    "trending": true,
+    "signaturesThisWeek": 0,
+    "demands": [
+      "Arret immédiat de l'abattage systématique des troupeaux entiers",
+      "Moratoire sur le vaccin actuel (efficacité de 60% seulement) tant qu'aucune etude indépendante ne prouve l'innocuite pour l'homme via la consommation de viande et de lait",
+      "Imposition d'un delai d'attente obligatoire apres vaccination avant la mise sur le marche des produits animaux",
+      "Indemnisation juste et rapide de tous les éleveurs touches - pas 6 millions pour 64 millions de cout total",
+      "Publication des etudes sur les effets du vaccin sur les produits destines a la consommation humaine",
+      "Accompagnement psychologique des éleveurs confrontes a la destruction de leurs troupeaux"
+    ],
+    "problem": {
+      "headline": "3 500 bovins abattus pour une maladie benigne, non transmissible a l'homme",
+      "description": "L'Union européenne impose l'abattage total du troupeau des le premier cas de dermatose nodulaire. Pourtant, l'EFSA elle-meme reconnait que la vaccination est une alternative efficace. Des éleveurs voient le travail de générations detruit en quelques heures, pour une maladie qui ne tue que 1 a 5% des animaux infectes. Le cout pour l'État : 64 millions d'euros. L'indemnisation versee aux éleveurs : 6 millions.",
+      "keyFacts": [
+        { "value": "3 500", "unit": "bovins", "label": "Abattus depuis juin 2025" },
+        { "value": "1-5", "unit": "%", "label": "Mortalite reelle de la DNC" },
+        { "value": "64M", "unit": "EUR", "label": "Cout total pour l'Etat" }
+      ]
+    },
+    "evidence": [
+      { "title": "EFSA - Vaccination aussi efficace que abattage total", "type": "report", "description": "L'Autorite européenne de securite des aliments confirme que sur un troupeau vaccine, l'abattage cible est aussi efficace que l'abattage total du troupeau." },
+      { "title": "117 foyers dans 11 departements", "type": "report", "description": "Depuis le premier cas le 29 juin 2025 en Savoie, la maladie s'est etendue a 11 departements avec 117 foyers recenses." },
+      { "title": "Rapport du Senat - 64 millions d'euros", "type": "legal", "description": "Le Senat estime le cout total de la crise a 64 millions d'euros : 21,3M en frais vétérinaires, 15M en indemnisations, 3,1M pour la vaccination." },
+      { "title": "Blocages routiers - decembre 2025", "type": "media", "description": "Des éleveurs en Ariege refusent l'abattage de 200 bovins et lancent un mouvement de blocage des autoroutes dans tout le sud-ouest de la France." }
+    ],
+    "victimTestimonials": [
+      { "name": "Jean-Pierre M., éleveur en Ariege", "quote": "Ils sont venus a 6 heures du matin pour abattre mes 85 vaches. Le troupeau de mon pere, de mon grand-pere. 3 générations detruites en 4 heures. Pour une maladie qui ne les aurait meme pas tuees.", "amount": null },
+      { "name": "Marie-France D., éleveuse en Haute-Savoie", "quote": "L'indemnisation couvre a peine le prix du betail. Mais qui rembourse 30 ans de selection genetique ? Qui rembourse la valeur affective ? J'ai pleure pendant 3 jours.", "amount": null },
+      { "name": "Laurent B., éleveur dans le Jura", "quote": "Mon voisin a ete vaccine, ses betes vont bien. Moi, on m'a tout abattu parce que j'avais un seul cas. C'est de la folie administrative.", "amount": null }
+    ],
+    "howItWorks": [
+      { "step": 1, "title": "Signez", "description": "Votre signature soutient les éleveurs qui se battent contre l'abattage systématique et pour la vaccination." },
+      { "step": 2, "title": "Dossier", "description": "Nos avocats constituent un dossier juridique contre la politique d'abattage disproportionnee de l'Etat." },
+      { "step": 3, "title": "Action", "description": "Recours devant le Conseil d'État pour faire annuler les arretes d'abattage et imposer la vaccination comme alternative." }
+    ],
+    "funds": { "totalCollected": 0, "totalSpent": 0, "catégories": [{ "label": "Juridique", "amount": 0, "pct": 70, "color": "#16A34A" }, { "label": "Expertises", "amount": 0, "pct": 20, "color": "#3B82F6" }, { "label": "Admin", "amount": 0, "pct": 10, "color": "#6B7280" }] },
+    "results": [{ "value": "0", "unit": "signatures", "label": "Collectees" }, { "value": "11", "unit": "departements", "label": "Touches" }, { "value": "1", "unit": "recours", "label": "En preparation" }],
+    "nextStep": {
+      "title": "Dépôt du recours devant le Conseil d'Etat",
+      "description": "A 50 000 signatures, nos avocats deposeront un recours pour exces de pouvoir devant le Conseil d'Etat, contestant la proportionnalite de l'abattage systématique face a l'alternative vaccinale.",
+      "estimatedDate": "2026-06-01"
+    },
+    "timeline": [
+      { "date": "2025-06-29", "label": "Premier foyer détecté en Savoie", "type": "milestone", "description": "Premier cas de dermatose nodulaire contagieuse en France. L'État ordonne immédiatement l'abattage total du troupeau.", "side": "nous" },
+      { "date": "2025-08-19", "label": "75 foyers - la maladie s'etend", "type": "milestone", "description": "75 foyers recenses en Savoie et Haute-Savoie. Des centaines de bovins abattus en quelques semaines.", "side": "nous" },
+      { "date": "2025-10-15", "label": "Le ministere refuse la vaccination preventive", "type": "adversaire", "description": "Malgre les demandes des syndicats, le ministere de l'Agriculture maintient l'abattage total. Motif officiel : protéger le statut 'indemne' de la France pour les exportations.", "side": "adversaire" },
+      { "date": "2025-10-27", "label": "2 600 bovins abattus", "type": "milestone", "description": "Le ministere confirme 2 600 bovins abattus sur ordre administratif dans 108 foyers.", "side": "nous" },
+      { "date": "2025-11-08", "label": "L'EFSA publie son avis", "type": "juridique", "description": "L'Autorite européenne de securite des aliments confirme que vaccination + abattage cible est aussi efficace que l'abattage total.", "side": "nous" },
+      { "date": "2025-12-10", "label": "Revolte des éleveurs en Ariege", "type": "communication", "description": "200 bovins menaces d'abattage. Les éleveurs bloquent les autoroutes et refusent l'acces aux equipes d'abattage. Le mouvement s'etend a tout le sud-ouest.", "side": "nous" },
+      { "date": "2025-12-13", "label": "Le gouvernement cede partiellement", "type": "adversaire", "description": "Sous la pression, l'État annonce la vaccination d'un million de bovins. Mais maintient l'abattage pour les foyers deja declares. Aucun delai d'attente impose apres vaccination.", "side": "adversaire" },
+      { "date": "2025-12-17", "label": "Bilan : 3 500 bovins, 117 foyers, 11 departements", "type": "milestone", "description": "64 millions d'euros de cout pour l'Etat. Seulement 6 millions verses aux éleveurs en indemnisations.", "side": "nous" },
+      { "date": "2026-01-02", "label": "Plus aucun nouveau foyer", "type": "milestone", "description": "Aucun nouveau foyer détecté depuis le 2 janvier 2026. La crise sanitaire est terminee mais les éleveurs attendent toujours une juste indemnisation.", "side": "nous" },
+      { "date": "2026-03-01", "label": "Le Senat publie son rapport", "type": "juridique", "description": "Le rapport du Senat chiffre le cout total a 64 millions d'euros. Les indemnisations des éleveurs ne representent que 9% de cette somme.", "side": "nous", "document": "Rapport_Senat_DNC_mars2026.pdf" }
+    ],
+    "createdAt": "2026-01-15T00:00:00Z",
+    "updatedAt": "2026-04-01T00:00:00Z"
+  },
+  {
+    "id": "act-004",
+    "title": "Phonegate : nos telephones emettent des ondes illégales",
+    "slug": "phonegate-ondes-illégales",
+    "description": "Depuis 2016, des tests officiels prouvent que la majorité des smartphones dépassent les seuils légaux d'émission d'ondes électromagnétiques. Les fabricants trichent - comme le Dieselgate. Exigeons la vérité et la protection de notre santé.",
+    "content": "<p>Le scandale Phonegate, révèle en 2016 par le Dr Marc Arazi, a demontre que 9 telephones sur 10 dépassent les normes legales de DAS (Debit d'Absorption Specifique) lorsqu'ils sont testes au contact du corps - la facon dont nous les utilisons réellement au quotidien.</p><p>Les fabricants utilisent des logiciels embarques qui détectént les conditions de test et reduisent artificiellement la puissance du telephone pendant les mesures. Exactement comme Volkswagen avec le Dieselgate.</p><p>L'ANFR (Agence Nationale des Frequences) a identifie 66 modeles non conformes a ce jour, mais cache la moitie des rapports de non-conformite. La Commission européenne a elle-meme reconnu la fraude au DAS en aout 2025.</p>",
+    "status": "collecting",
+    "signatures": { "current": 0, "goal": 100000 },
+    "tag": "Phonegate",
+    "themes": ["santé", "numérique", "consommation"],
+    "image": "/images/actions/wejustice_phonegate.jpg",
+    "initiator": {
+      "name": "Dr. Marc Arazi",
+      "role": "Medecin, lanceur d'alerte, fondateur de Phonegate Alert",
+      "bio": "En 2016, le Dr Marc Arazi a obtenu les preuves que les fabricants de smartphones trichaient sur les tests d'émission d'ondes. Il a fondé l'ONG Phonegate Alert en 2018 pour porter ce combat devant la justice et protéger la santé de milliards d'utilisateurs dans le monde.",
+      "url": "https://phonegatealert.org/",
+      "avatarColor": "#1D4ED8"
+    },
+    "lawyer": { "name": "Me. Arnaud Durand", "firm": "Lexprecia", "bio": "Avocat spécialisé en droit de la santé publique et actions collectives. Représente Phonegate Alert devant les juridictions françaises et européennes.", "cases": 34 },
+    "target": "Apple, Samsung, Xiaomi et les fabricants de smartphones",
+    "featured": true,
+    "scope": "eu",
+    "hasClaimantFlow": true,
+    "endDate": null,
+    "trending": true,
+    "signaturesThisWeek": 0,
+    "demands": [
+      "Publication integrale des 66 rapports de non-conformite DAS par l'ANFR",
+      "Rappel ou mise en conformite de tous les modeles qui dépassent les seuils légaux",
+      "Interdiction des logiciels de triche dans les tests DAS (comme pour le Dieselgate)",
+      "Indemnisation des utilisateurs exposes a des niveaux d'ondes illégaux",
+      "Tests DAS obligatoires au contact du corps, pas a 5mm ou 15mm comme aujourd'hui"
+    ],
+    "problem": {
+      "headline": "9 telephones sur 10 dépassent les normes legales d'émission d'ondes",
+      "description": "Quand vous posez votre telephone contre votre oreille ou dans votre poche, il emet des ondes électromagnétiques qui dépassent les seuils légaux de securite. Les fabricants le savent et trichent pendant les tests. Pendant ce temps, les glioblastomes (cancers du cerveau) ont augmente de 233% chez les jeunes adultes en 20 ans.",
+      "keyFacts": [
+        { "value": "66", "unit": "modeles", "label": "Non conformes identifies par l'ANFR" },
+        { "value": "233", "unit": "%", "label": "Hausse des glioblastomes chez les jeunes" },
+        { "value": "9/10", "unit": "telephones", "label": "Depassent les normes au contact" }
+      ]
+    },
+    "evidence": [
+      { "title": "Tests ANFR - 66 modeles non conformes", "type": "legal", "description": "L'Agence Nationale des Frequences a identifie 66 modeles depassant les seuils réglementaires de DAS depuis 2018. 30 rapports restent non publies." },
+      { "title": "Decision Commission Européenne - aout 2025", "type": "legal", "description": "La Commission a reconnu que les logiciels d'Apple rendaient les tests DAS de l'iPhone 12 non transparents, exigeant une correction dans toute l'Union." },
+      { "title": "iPhone 7 : DAS mesure a 7,15 W/kg", "type": "report", "description": "Teste a 2mm de la peau, l'iPhone 7 atteint un DAS de 7,15 W/kg - soit 3,5 fois la limite legale de 2 W/kg. Le Samsung S8 atteint 8,22 W/kg." },
+      { "title": "Sante Publique France - glioblastomes", "type": "report", "description": "Hausse de 233% des glioblastomes chez les jeunes adultes sur 20 ans. Signal d'alerte majeur identifie par les autorites sanitaires." },
+      { "title": "Victoire Cour Supreme du Canada - mai 2025", "type": "legal", "description": "La Cour Supreme du Canada a valide l'action collective contre Apple et Samsung, rejetant definitivement leurs recours." }
+    ],
+    "victimTestimonials": [
+      { "name": "Sophie M.", "quote": "Mon fils de 14 ans garde son telephone dans sa poche de pantalon 10 heures par jour. Personne ne nous a dit que les ondes depassaient les normes legales.", "amount": null },
+      { "name": "Laurent P.", "quote": "J'ai developpe une tumeur au cerveau a 38 ans. Mon neurochirurgien m'a demande si j'utilisais beaucoup mon telephone. Je faisais 3h d'appels par jour.", "amount": null },
+      { "name": "Dr. Marc Arazi", "quote": "Les fabricants savent. Les agences savent. Et pourtant, 4 milliards de personnes continuent d'etre exposees a des niveaux d'ondes illégaux chaque jour.", "amount": null }
+    ],
+    "howItWorks": [
+      { "step": 1, "title": "Signez", "description": "Votre signature rejoint celles de 47 800 citoyens qui exigent la vérité sur les ondes de nos telephones." },
+      { "step": 2, "title": "Constitution du dossier", "description": "Nos avocats et l'ONG Phonegate Alert rassemblent les preuves scientifiques, les rapports de l'ANFR et les temoignages." },
+      { "step": 3, "title": "Action en justice", "description": "Procédures en cours contre l'État francais et les fabricants, en France et devant la Commission Européenne." }
+    ],
+    "funds": {
+      "totalCollected": 0,
+      "totalSpent": 0,
+      "catégories": [
+        { "label": "Frais juridiques", "amount": 0, "pct": 70, "color": "#16A34A" },
+        { "label": "Expertises scientifiques", "amount": 0, "pct": 20, "color": "#3B82F6" },
+        { "label": "Administration", "amount": 0, "pct": 10, "color": "#6B7280" }
+      ]
+    },
+    "results": [
+      { "value": "66", "unit": "modeles", "label": "Identifies non conformes par l'ANFR" },
+      { "value": "60", "unit": "rappels/MAJ", "label": "Deja imposes aux fabricants" },
+      { "value": "2", "unit": "victoires", "label": "Canada + Commission UE (avant WeJustice)" }
+    ],
+    "nextStep": {
+      "title": "Audience devant le tribunal administratif de Paris",
+      "description": "Phonegate Alert attaque l'État francais pour manquement a ses obligations de protection sanitaire. L'ANFR devra justifier la non-publication de 30 rapports de non-conformite.",
+      "estimatedDate": "2026-10-15"
+    },
+    "timeline": [
+      { "date": "2016-06-01", "label": "Revelation", "type": "milestone", "description": "Dr Marc Arazi obtient les preuves de dépassement des normes DAS" },
+      { "date": "2018-01-15", "label": "Creation ONG", "type": "milestone", "description": "Fondation de l'association Phonegate Alert" },
+      { "date": "2019-07-01", "label": "Plainte penale", "type": "legal", "description": "Plainte pour mise en danger de la vie d'autrui contre les fabricants" },
+      { "date": "2025-05-29", "label": "Victoire Canada", "type": "legal", "description": "La Cour Supreme du Canada valide l'action collective contre Apple et Samsung" },
+      { "date": "2025-08-19", "label": "Commission UE", "type": "legal", "description": "La Commission reconnait la fraude au DAS de l'iPhone 12" },
+      { "date": "2025-11-01", "label": "WeJustice rejoint", "type": "milestone", "description": "Lancement de l'action collective sur WeJustice" },
+      { "date": "2026-03-15", "label": "Assemblee Nationale", "type": "legal", "description": "Sandrine Lalanne interpelle le gouvernement sur l'opacite de l'ANFR" }
+    ],
+    "createdAt": "2025-11-01T00:00:00Z",
+    "updatedAt": "2026-04-01T00:00:00Z"
+  },
+  {
+    "id": "act-005",
+    "title": "Glyphosate : stop a l'empoisonnement autorise",
+    "slug": "glyphosate-stop-empoisonnement",
+    "description": "L'OMS classe le glyphosate comme 'probablement cancérogène' depuis 2015. Pourtant, la Commission européenne l'a réautorisé jusqu'en 2033. Antidote Europe et nos avocats attaquent cette decision devant la CJUE a Luxembourg. Affaire T-503/24.",
+    "content": "<p>Le glyphosate est l'herbicide le plus utilise au monde. Depuis 2015, l'OMS le classe comme 'probablement cancérogène pour l'homme'. Malgre cela, la Commission européenne a decide en novembre 2023 de renouvelér son autorisation pour 10 ans, jusqu'en 2033.</p><p>Cette decision a ete prise sans consensus des Etats membres, en ignorant les etudes indépendantes et en s'appuyant principalement sur les travaux finances par l'industrie. En France, l'Inserm a confirme en 2021 un lien entre le glyphosate et le lymphome non hodgkinien.</p><p>Aux Etats-Unis, Bayer-Monsanto a deja paye plus de 10 milliards de dollars dans plus de 100 000 procédures. En France, le combat ne fait que commencer.</p>",
+    "status": "legal_action",
+    "signatures": { "current": 0, "goal": 100000 },
+    "tag": "Glyphosate",
+    "themes": ["santé", "environnement", "consommation"],
+    "image": "/images/actions/wejustice_agriculteurs.jpg",
+    "initiator": {
+      "name": "Antidote Europe",
+      "role": "ONG de santé environnementale basée a Strasbourg",
+      "bio": "Antidote Europe a depose le 26 septembre 2024 un recours devant le Tribunal de l'Union européenne (affaire T-503/24) pour faire annuler la réautorisation du glyphosate. L'ONG denonce des violations du principe de précaution et un manque de transparence dans l'evaluation des risques par la Commission.",
+      "url": "https://antidote-europe.org/",
+      "avatarColor": "#16A34A"
+    },
+    "lawyer": { "name": "Me. Arnaud Durand", "firm": "Lexprecia", "bio": "Avocat spécialisé en actions collectives en justice, droits fondamentaux, santé et environnement. Fondateur de Lexprecia et de la plateforme Palace.legal.", "cases": 34 },
+    "target": "Commission européenne / Bayer-Monsanto",
+    "featured": true,
+    "scope": "eu",
+    "hasClaimantFlow": true,
+    "endDate": null,
+    "trending": true,
+    "signaturesThisWeek": 0,
+    "demands": [
+      "Annulation de la réautorisation du glyphosate par la Commission européenne (decision du 16 novembre 2023)",
+      "Application stricte du principe de précaution prévu par l'article 191 du TFUE",
+      "Evaluation indépendante des risques sanitaires, sans financement par l'industrie",
+      "Indemnisation des victimes du glyphosate : agriculteurs, riverains, consommateurs",
+      "Interdiction totale du glyphosate dans l'Union européenne"
+    ],
+    "problem": {
+      "headline": "Classe 'probablement cancérogène' par l'OMS, autorise jusqu'en 2033 par la Commission",
+      "description": "Le glyphosate est present dans 80% des urines testees en Europe. L'OMS le classe comme probablement cancérogène depuis 2015, l'Inserm confirme le lien avec le lymphome non hodgkinien. Pourtant, la Commission européenne l'a réautorisé pour 10 ans sans consensus des Etats membres, en s'appuyant sur des etudes financees par l'industrie.",
+      "keyFacts": [
+        { "value": "10 Mds", "unit": "USD", "label": "Payes par Bayer en dommages (USA)" },
+        { "value": "100 000", "unit": "procédures", "label": "Contre Monsanto aux USA" },
+        { "value": "570 000", "unit": "signataires", "label": "Petition européenne anti-glyphosate" }
+      ]
+    },
+    "evidence": [
+      { "title": "Classification OMS/CIRC - 2015", "type": "report", "description": "Le Centre international de recherche sur le cancer classe le glyphosate comme 'probablement cancérogène pour l'homme' (groupe 2A)." },
+      { "title": "Rapport Inserm - 2021", "type": "report", "description": "L'Institut national de la santé confirme un lien de présomption faible a moyenne entre glyphosate et lymphome non hodgkinien." },
+      { "title": "Affaire T-503/24 - Tribunal UE", "type": "legal", "description": "Recours depose par Antidote Europe le 26 septembre 2024 pour annuler la réautorisation du glyphosate. Violation du principe de précaution et manque de transparence." },
+      { "title": "Proces Grataloup - Tribunal de Vienne", "type": "legal", "description": "Famille dont l'enfant est ne avec de graves malformations apres exposition au glyphosate. Audience le 3 avril 2025, decision le 31 juillet 2025." },
+      { "title": "570 000 signatures - petition européenne", "type": "media", "description": "570 000 personnes et 40 organisations de la société civile ont demande l'interdiction du glyphosate en Europe." }
+    ],
+    "victimTestimonials": [
+      { "name": "Jean-Claude T., agriculteur, Picardie", "quote": "J'ai utilise le Roundup pendant 30 ans. On m'a diagnostique un cancer de la prostate. Mon analyse d'urine montre 0,25 mg de glyphosate par litre.", "amount": null },
+      { "name": "Sabine G., mere de famille, Isere", "quote": "Mon fils Theo est ne avec un syndrome polymalformatif. J'ai ete exposee au glyphosate les premières semaines de ma grossesse sans le savoir. 50 operations chirurgicales depuis sa naissance.", "amount": null },
+      { "name": "Paul M., viticulteur, Bordeaux", "quote": "Trois collegues de ma cooperative sont morts d'un lymphome en 5 ans. Tous utilisaient le Roundup. Coincidence ? Personne n'y croit plus.", "amount": null }
+    ],
+    "howItWorks": [
+      { "step": 1, "title": "Signez", "description": "Votre signature renforce le poids de l'action devant le Tribunal de l'UE a Luxembourg." },
+      { "step": 2, "title": "Recours en cours", "description": "L'affaire T-503/24 est en cours d'instruction au Tribunal de l'Union européenne. Audience prévue fin 2026." },
+      { "step": 3, "title": "Objectif", "description": "Obtenir l'annulation de la réautorisation et l'interdiction du glyphosate dans l'UE." }
+    ],
+    "funds": { "totalCollected": 0, "totalSpent": 0, "catégories": [{ "label": "Juridique", "amount": 0, "pct": 70, "color": "#16A34A" }, { "label": "Expertises", "amount": 0, "pct": 20, "color": "#3B82F6" }, { "label": "Admin", "amount": 0, "pct": 10, "color": "#6B7280" }] },
+    "results": [{ "value": "34 500", "unit": "signatures", "label": "Collectees" }, { "value": "1", "unit": "recours", "label": "Depose a la CJUE (T-503/24)" }, { "value": "4", "unit": "associations", "label": "Intervenues au soutien" }],
+    "nextStep": {
+      "title": "Audience au Tribunal de l'Union européenne",
+      "description": "L'affaire T-503/24 deposee par Antidote Europe est en instruction. L'audience est prévue fin 2026 a Luxembourg. Chaque signature renforce la légitimité de notre combat.",
+      "estimatedDate": "2026-12-01"
+    },
+    "timeline": [
+      { "date": "2015-03-20", "label": "Le CIRC classe le glyphosate 'probablement cancérogène'", "type": "juridique", "description": "L'agence cancer de l'OMS classe le glyphosate en groupe 2A. Bayer-Monsanto conteste immédiatement.", "side": "nous" },
+      { "date": "2021-06-30", "label": "L'Inserm confirme le lien avec le lymphome", "type": "juridique", "description": "L'expertise collective de l'Inserm etablit un lien de présomption entre exposition au glyphosate et lymphome non hodgkinien.", "side": "nous" },
+      { "date": "2023-11-16", "label": "La Commission réautorisé le glyphosate pour 10 ans", "type": "adversaire", "description": "Sans consensus des Etats membres, la Commission européenne renouvelle l'autorisation du glyphosate jusqu'en 2033. La France vote contre mais est mise en minorite.", "side": "adversaire" },
+      { "date": "2024-01-15", "label": "Antidote Europe demande un réexamen interne", "type": "juridique", "description": "L'ONG depose une demande formelle de réexamen de la decision aupres de la Commission. La Commission refuse.", "side": "nous" },
+      { "date": "2024-06-15", "label": "La Commission rejette la demande", "type": "adversaire", "description": "Refus de réexamen. Antidote Europe considere que la réponse manque de transparence et ne repond pas aux points souleves.", "side": "adversaire" },
+      { "date": "2024-09-26", "label": "Recours depose au Tribunal de l'UE", "type": "juridique", "description": "Antidote Europe depose l'affaire T-503/24 devant le Tribunal de l'Union européenne a Luxembourg pour faire annuler la réautorisation.", "side": "nous", "document": "Recours_T-503-24_sept2024.pdf" },
+      { "date": "2024-12-11", "label": "PAN Europe depose un second recours", "type": "juridique", "description": "Pesticide Action Network Europe et 5 membres dont Generations Futures deposent un recours parallele devant la CJUE.", "side": "nous" },
+      { "date": "2025-03-25", "label": "4 associations françaises rejoignent la procédure", "type": "communication", "description": "France Parkinson, Foodwatch, UFC-Que Choisir et le Collectif victimes des pesticides de l'Ouest demandent a intervenir au soutien.", "side": "nous" },
+      { "date": "2025-04-03", "label": "Proces Grataloup - audience historique", "type": "juridique", "description": "Première audience du proces de la famille Grataloup contre Bayer-Monsanto au tribunal de Vienne. Un enfant ne avec de graves malformations apres exposition maternelle au glyphosate.", "side": "nous" }
+    ],
+    "createdAt": "2024-09-26T00:00:00Z",
+    "updatedAt": "2026-04-01T00:00:00Z"
+  },
+  {
+    "id": "act-006",
+    "title": "Stop a la censure sur les reseaux sociaux",
+    "slug": "voxact-censure-reseaux-sociaux",
+    "description": "Shadow ban, desabonnements forces, limitation de portee, gaslighting algorithmique. Les reseaux sociaux censurent en silence. 3 998 citoyens, scientifiques, journalistes et entrepreneurs exigent la transparence. Ultimatum juridique en cours.",
+    "content": "<p>Toute personne a droit a la liberte d'expression et d'information, ce qui inclut le droit d'emettre et de recevoir des informations et des idees. Pourtant, les reseaux sociaux pratiquent une censure dissimilee a grande echelle : shadow ban, desabonnements forces, limitation de portee, dereferencement.</p><p>Ces pratiques arbitraires et discriminatoires touchent des citoyens, des scientifiques, des journalistes, des entrepreneurs et des associations. Le Digital Services Act (DSA) impose aux plateformes de notifier toute restriction de visibilite et de justifier leurs decisions. Dans les faits, c'est lettre morte.</p><p>En 2024, un utilisateur neerlandais de Twitter a gagne un proces sous le DSA au tribunal d'Amsterdam. La brèche est ouverte. VoxAct porte ce combat en France et en Europe.</p>",
+    "status": "collecting",
+    "signatures": { "current": 3998, "goal": 50000 },
+    "tag": "VoxAct",
+    "themes": ["libertes", "numerique", "democratie"],
+    "image": "/images/actions/wejustice_voxact.jpg",
+    "initiator": {
+      "name": "Me Arnaud Durand",
+      "role": "Avocat au Barreau de Paris, fondateur de Lexprecia et Palace.legal",
+      "bio": "Apres DejaVu (287 000 signataires, Commission UE condamnee) et Linky (15 000 signataires, victoire a Tours), Me Arnaud Durand lance VoxAct pour defendre la liberte d'expression en ligne. L'ultimatum juridique est adresse aux reseaux sociaux et aux autorites publiques.",
+      "url": "https://palace.legal/VoxAct/",
+      "avatarColor": "#1D4ED8"
+    },
+    "lawyer": { "name": "Me. Arnaud Durand", "firm": "Lexprecia", "bio": "Avocat specialise en actions collectives, droits fondamentaux et libertes publiques. Fondateur de Palace.legal. A obtenu la condamnation de la Commission europeenne en 2024.", "cases": 34 },
+    "target": "X (Twitter), Facebook/Meta, TikTok, LinkedIn, autorites publiques",
+    "featured": true,
+    "scope": "eu",
+    "hasClaimantFlow": false,
+    "endDate": null,
+    "trending": true,
+    "signaturesThisWeek": 124,
+    "demands": [
+      "Transparence effective et verifiable sur toutes les atteintes a la liberte d'expression sur les reseaux sociaux",
+      "Cessation du shadow ban, du desabonnement force et de toute censure dissimilee",
+      "Notification obligatoire a l'utilisateur de toute restriction de visibilite, conformement au DSA",
+      "Reparation des prejudices causes par la censure numerique aux citoyens, scientifiques, journalistes et entrepreneurs",
+      "Fin du gaslighting algorithmique : les plateformes doivent reconnaitre et documenter leurs pratiques de moderation"
+    ],
+    "problem": {
+      "headline": "80% de la visibilite en ligne est controlee par des algorithmes opaques",
+      "description": "Les reseaux sociaux sont devenus essentiels au debat public. Pourtant, ils pratiquent une censure invisible : shadow ban (vos publications sont invisibles pour les autres sans que vous le sachiez), desabonnements forces (vos abonnes sont desinscrits a votre insu), limitation de portee (vos contenus sont noyes dans l'algorithme). Le DSA europeen impose la transparence depuis 2024. Les plateformes l'ignorent.",
+      "keyFacts": [
+        { "value": "80", "unit": "%", "label": "Des vues controlees par 20% des createurs" },
+        { "value": "0", "unit": "notification", "label": "En cas de shadow ban sur X" },
+        { "value": "3 998", "unit": "signataires", "label": "Ont rejoint VoxAct" }
+      ]
+    },
+    "evidence": [
+      { "title": "DSA - Digital Services Act (2024)", "type": "legal", "description": "Le reglement europeen impose aux plateformes de notifier toute restriction de visibilite et de justifier leurs decisions de moderation. Non respecte dans les faits." },
+      { "title": "Victoire au tribunal d'Amsterdam (2024)", "type": "legal", "description": "Un utilisateur neerlandais de Twitter a gagne un proces sous le DSA. Le tribunal a juge que Twitter n'avait pas notifie ni justifie la limitation de visibilite de son compte." },
+      { "title": "Charte des droits fondamentaux de l'UE - Article 11", "type": "legal", "description": "Toute personne a droit a la liberte d'expression, ce qui comprend la liberte d'opinion et la liberte de recevoir ou de communiquer des informations." },
+      { "title": "CEDH - Article 10", "type": "legal", "description": "La Convention europeenne des droits de l'homme garantit la liberte d'expression, y compris la liberte de recevoir et de communiquer des informations et des idees." },
+      { "title": "Proposition de loi Senat - Liberte d'expression sur les reseaux", "type": "media", "description": "Le Senat a examine une proposition de loi visant a renforcer la liberte d'expression sur les reseaux sociaux et a encadrer les pratiques de moderation." }
+    ],
+    "victimTestimonials": [
+      { "name": "Dr. Sophie V., epidemiologiste", "quote": "Pendant la crise Covid, mes publications scientifiques sur les traitements etaient systematiquement shadow-bannies. Des publications peer-reviewed, censurees par un algorithme.", "amount": null },
+      { "name": "Marc P., journaliste independant", "quote": "En 2 ans, j'ai perdu 40% de ma portee sur X sans aucune notification. Mes tweets sont publies mais personne ne les voit. C'est du gaslighting numerique.", "amount": null },
+      { "name": "Claire D., creatrice de contenu", "quote": "Mon compte Instagram a ete desabonne de 3 000 followers en une nuit. Instagram nie que ca existe. J'ai les captures d'ecran.", "amount": "-3 000 abonnes" }
+    ],
+    "howItWorks": [
+      { "step": 1, "title": "Signez l'ultimatum", "description": "Rejoignez les 3 998 citoyens qui exigent la fin de la censure dissimilee sur les reseaux sociaux." },
+      { "step": 2, "title": "Ultimatum juridique", "description": "Me Arnaud Durand adresse un ultimatum officiel avec argumentaire juridique aux reseaux sociaux et aux autorites publiques." },
+      { "step": 3, "title": "Action en justice", "description": "Si les plateformes ne se conforment pas au DSA, une action collective sera engagee devant les tribunaux francais et europeens." }
+    ],
+    "funds": { "totalCollected": 0, "totalSpent": 0, "categories": [{ "label": "Juridique", "amount": 0, "pct": 70, "color": "#16A34A" }, { "label": "Expertises", "amount": 0, "pct": 20, "color": "#3B82F6" }, { "label": "Admin", "amount": 0, "pct": 10, "color": "#6B7280" }] },
+    "results": [{ "value": "3 998", "unit": "signataires", "label": "Ont rejoint VoxAct" }, { "value": "1", "unit": "ultimatum", "label": "En preparation" }, { "value": "5", "unit": "plateformes", "label": "Visees (X, Meta, TikTok, LinkedIn...)" }],
+    "nextStep": {
+      "title": "Envoi de l'ultimatum juridique",
+      "description": "Des 10 000 signataires, Me Arnaud Durand adressera l'ultimatum officiel aux reseaux sociaux (X, Meta, TikTok, LinkedIn) et aux autorites. Delai de reponse : 30 jours avant action en justice.",
+      "estimatedDate": null
+    },
+    "timeline": [
+      { "date": "2024-02-17", "label": "Le DSA entre en application pour toutes les plateformes", "type": "milestone", "description": "Le Digital Services Act s'applique a toutes les plateformes en Europe. Obligation de transparence sur la moderation et notification des restrictions de visibilite.", "side": "nous" },
+      { "date": "2024-06-01", "label": "Victoire DSA au tribunal d'Amsterdam", "type": "juridique", "description": "Un utilisateur neerlandais gagne un proces contre Twitter sous le DSA. Le tribunal juge que la plateforme n'a pas notifie la restriction de son compte.", "side": "nous" },
+      { "date": "2025-01-01", "label": "Les plateformes ignorent le DSA", "type": "adversaire", "description": "Malgre le DSA, aucune plateforme majeure ne notifie systematiquement les shadow bans ou limitations de portee. Google invoque le secret commercial pour refuser les audits.", "side": "adversaire" },
+      { "date": "2025-06-01", "label": "Lancement de VoxAct", "type": "milestone", "description": "Me Arnaud Durand lance la petition VoxAct sur Palace.legal. Objectif : rassembler citoyens, scientifiques, journalistes et entrepreneurs contre la censure algorithmique.", "side": "nous" },
+      { "date": "2025-12-01", "label": "Proposition de loi au Senat", "type": "juridique", "description": "Le Senat examine une proposition de loi sur la liberte d'expression sur les reseaux sociaux et l'encadrement des pratiques de moderation.", "side": "nous" },
+      { "date": "2026-03-15", "label": "3 998 signataires", "type": "milestone", "description": "L'ultimatum VoxAct continue de rassembler. Objectif : 10 000 signataires pour declencher l'envoi officiel de l'ultimatum juridique.", "side": "nous" }
+    ],
+    "createdAt": "2025-06-01T00:00:00Z",
+    "updatedAt": "2026-04-01T00:00:00Z"
+  },
+  {
+    "id": "act-007",
+    "title": "Vos donnees volees, personne ne paie",
+    "slug": "hacking-donnees-france",
+    "description": "En 2024, 9 Francais sur 10 ont ete victimes d'une fuite de donnees personnelles. France Travail, Free, Viamedis, hopitaux : vos noms, adresses, numeros de securite sociale et IBAN sont en vente sur le dark web. Les entreprises paient des amendes derisoires. Vous, vous ne touchez rien.",
+    "content": "<p>L'annee 2024 restera comme l'annee noire de la cybersecurite en France. Plus de 5 629 violations de donnees ont ete notifiees a la CNIL, en hausse de 20% par rapport a 2023. Les violations touchant plus d'un million de personnes ont double.</p><p>France Travail : 43 millions de comptes compromis. Viamedis et Almerys : 30 millions de donnees de sante. Free : 19 millions d'abonnes, y compris les IBAN. Un hopital parisien : 750 000 dossiers medicaux complets en vente. Et pourtant, aucune indemnisation automatique pour les victimes.</p><p>La CNIL inflige des amendes - 5 millions a France Travail, 42 millions a Free - mais cet argent va a l'Etat, pas aux victimes. L'article 82 du RGPD prevoit pourtant un droit a reparation pour tout dommage materiel ou moral.</p>",
+    "status": "collecting",
+    "signatures": { "current": 0, "goal": 100000 },
+    "tag": "DataBreach",
+    "themes": ["numerique", "vie privee", "consommation"],
+    "image": "/images/actions/wejustice_datagate.jpg",
+    "lawyer": { "name": "Me. Arnaud Durand", "firm": "Lexprecia", "bio": "Avocat specialise en actions collectives, droits fondamentaux et protection des donnees personnelles. A obtenu la condamnation de la Commission europeenne pour opacite sur les contrats vaccins.", "cases": 34 },
+    "target": "France Travail, Free, Viamedis, Almerys, et toute entite responsable d'une fuite massive",
+    "featured": true,
+    "scope": "national",
+    "hasClaimantFlow": true,
+    "endDate": null,
+    "trending": true,
+    "signaturesThisWeek": 0,
+    "demands": [
+      "Indemnisation automatique de chaque victime de fuite de donnees, entre 500 et 3 000 EUR selon la gravite, comme le prevoit l'article 82 du RGPD",
+      "Que les amendes CNIL soient redistribuees aux victimes et pas seulement versees a l'Etat",
+      "Obligation de notification individuelle dans les 72h avec description precise des donnees compromises",
+      "Audit de securite obligatoire et public pour toute entite detenant les donnees de plus d'un million de personnes",
+      "Responsabilite penale des dirigeants en cas de negligence grave sur la securite des donnees"
+    ],
+    "problem": {
+      "headline": "9 Francais sur 10 victimes d'une fuite de donnees en 2024",
+      "description": "Vos donnees personnelles - nom, adresse, numero de securite sociale, IBAN, dossier medical - sont en vente sur le dark web. Les entreprises qui les detenaient n'ont pas investi dans la securite. La CNIL leur inflige des amendes qui vont a l'Etat. Vous, victime, vous ne touchez rien. L'article 82 du RGPD vous donne pourtant droit a une indemnisation.",
+      "keyFacts": [
+        { "value": "9/10", "unit": "Francais", "label": "Touches par une fuite en 2024" },
+        { "value": "43M", "unit": "comptes", "label": "Compromis chez France Travail" },
+        { "value": "0 EUR", "unit": "d'indemnisation", "label": "Versee aux victimes" }
+      ]
+    },
+    "evidence": [
+      { "title": "CNIL - 5 629 violations notifiees en 2024 (+20%)", "type": "report", "description": "La CNIL a recu 5 629 notifications de violations de donnees en 2024, en hausse de 20%. Les violations touchant plus d'un million de personnes ont double." },
+      { "title": "France Travail - 43 millions de comptes", "type": "legal", "description": "La CNIL a sanctionne France Travail de 5 millions d'euros pour manquement a l'obligation de securite. 43 millions de comptes compromis. La CNIL fustige un systeme d'information 'profondement defaillant'." },
+      { "title": "Free - 19 millions d'abonnes et IBAN exposes", "type": "legal", "description": "Sanction de 42 millions d'euros en janvier 2026. Deux fuites massives en 2024 ont expose les donnees de 19 millions d'abonnes, y compris des donnees bancaires (IBAN)." },
+      { "title": "Viamedis/Almerys - 30 millions de donnees de sante", "type": "report", "description": "Piratage simultane de deux prestataires de tiers payant en janvier 2024. Donnees de sante de 30 millions de Francais compromises." },
+      { "title": "Hopital parisien - 750 000 dossiers medicaux en vente", "type": "media", "description": "Piratage via le logiciel Mediboard. 750 000 dossiers medicaux complets extraits et mis en vente sur le dark web." },
+      { "title": "Article 82 du RGPD - droit a reparation", "type": "legal", "description": "Toute personne ayant subi un dommage materiel ou moral du fait d'une violation du RGPD a le droit d'obtenir reparation. La Cour de cassation a fixe un bareme de 500 a 3 000 EUR par victime en avril 2025." }
+    ],
+    "victimTestimonials": [
+      { "name": "Nathalie R., fonctionnaire, Paris", "quote": "Mon numero de securite sociale est en vente sur le dark web depuis le piratage de France Travail. J'ai deja recu 3 tentatives de fraude a mon nom. France Travail a paye 5 millions d'amende. Moi, j'ai recu zero.", "amount": null },
+      { "name": "Marc T., abonne Free, Lyon", "quote": "Mon IBAN a ete vole dans le piratage de Free. J'ai du faire opposition, changer de banque, surveiller mes comptes pendant des mois. Free a paye 42 millions. Et moi ?", "amount": null },
+      { "name": "Dr. Sophie L., patiente, Bordeaux", "quote": "Mon dossier medical complet - diagnostics, traitements, resultats d'analyses - est accessible a n'importe qui sur le dark web. C'est une violation intime. Personne ne m'a indemnisee.", "amount": null }
+    ],
+    "howItWorks": [
+      { "step": 1, "title": "Signez", "description": "Rejoignez les citoyens qui exigent une indemnisation pour les victimes de fuites de donnees. Signature gratuite." },
+      { "step": 2, "title": "Dossier collectif", "description": "Nos avocats constituent un dossier d'action de groupe contre les entites responsables des fuites massives." },
+      { "step": 3, "title": "Indemnisation", "description": "Objectif : obtenir entre 500 et 3 000 EUR par victime, conformement a l'article 82 du RGPD et au bareme de la Cour de cassation." }
+    ],
+    "funds": { "totalCollected": 0, "totalSpent": 0, "categories": [{ "label": "Juridique", "amount": 0, "pct": 70, "color": "#16A34A" }, { "label": "Expertises", "amount": 0, "pct": 20, "color": "#3B82F6" }, { "label": "Admin", "amount": 0, "pct": 10, "color": "#6B7280" }] },
+    "results": [{ "value": "0", "unit": "signatures", "label": "Action pas encore lancee" }],
+    "nextStep": {
+      "title": "Lancement de l'action collective",
+      "description": "Des 10 000 signatures, nous lancerons une action de groupe contre les entites responsables des fuites massives de 2024-2025, en vertu de l'article 82 du RGPD.",
+      "estimatedDate": null
+    },
+    "timeline": [
+      { "date": "2024-01-15", "label": "Viamedis et Almerys pirates - 30 millions de donnees de sante", "type": "milestone", "description": "Piratage simultane de deux prestataires de tiers payant. Donnees de sante de 30 millions de Francais compromises.", "side": "nous" },
+      { "date": "2024-03-13", "label": "France Travail pirate - 43 millions de comptes", "type": "milestone", "description": "Donnees personnelles de 43 millions d'inscrits compromises. La CNIL fustige un systeme d'information 'profondement defaillant'.", "side": "nous" },
+      { "date": "2024-09-01", "label": "SFR pirate - donnees clients exposees", "type": "milestone", "description": "Fuite de donnees chez SFR touchant des millions de clients.", "side": "nous" },
+      { "date": "2024-10-15", "label": "Free pirate - 19 millions d'abonnes et IBAN", "type": "milestone", "description": "Deux fuites massives exposent les donnees de 19 millions d'abonnes Free, y compris les IBAN.", "side": "nous" },
+      { "date": "2024-11-01", "label": "Hopital parisien - 750 000 dossiers medicaux en vente", "type": "milestone", "description": "Piratage via Mediboard. Dossiers medicaux complets extraits et mis en vente sur le dark web.", "side": "nous" },
+      { "date": "2025-01-01", "label": "La CNIL sanctionne France Travail (5M) et Free (42M)", "type": "juridique", "description": "Les amendes vont a l'Etat. Aucune indemnisation pour les victimes. L'article 82 du RGPD prevoit pourtant un droit a reparation.", "side": "nous" },
+      { "date": "2025-03-01", "label": "Reforme de l'action de groupe", "type": "juridique", "description": "La reforme elargit les organismes habilites a lancer des actions collectives. Systeme d'opt-in simplifie via plateforme numerique.", "side": "nous" },
+      { "date": "2025-04-18", "label": "La Cour de cassation fixe le bareme d'indemnisation", "type": "juridique", "description": "Arret historique : le prejudice d'anxiete lie aux violations de donnees est reconnu. Bareme indicatif de 500 a 3 000 EUR par victime.", "side": "nous" },
+      { "date": "2025-06-01", "label": "17 500 cyberattaques en France en 2025", "type": "milestone", "description": "Hausse de 4% par rapport a 2024. La France est le premier pays europeen en nombre de comptes compromis.", "side": "nous" }
+    ],
+    "createdAt": "2026-04-05T00:00:00Z",
+    "updatedAt": "2026-04-05T00:00:00Z"
+  },
+  {"id":"act-008","title":"Au nom du vote : pour la sincerite du scrutin","slug":"aunomduvote-sincerite-scrutin","description":"La dematerialisation des procurations ouvre la porte a un risque systemique de fraude electorale. PlanProcu, un site partisan, propose a des inconnus de voter a votre place. 5 630 citoyens exigent des garanties. Ultimatum juridique en cours.","content":"<p>L'autorite des pouvoirs publics ne peut etre fondee que sur la volonte du peuple. Pourtant, d'incessantes attaques contre l'expression du suffrage universel menacent notre democratie.</p><p>Le decret du 3 novembre 2025 a mis en place la dematerialisation complete des procurations de vote via France Identite. Desormais, il est possible de voter au nom de quelqu'un d'autre sans aucune verification physique. En parallele, le site PlanProcu - fonde par l'ONG 'A vote' dont Liberation a revele les liens avec le parti presidentiel - propose de mettre en relation des inconnus pour voter par procuration : un veritable 'Tinder du vote'.</p>","status":"collecting","signatures":{"current":5630,"goal":50000},"tag":"auNomDuVote","themes":["democratie","libertes","transparence"],"image":"/images/actions/wejustice_scrutin.jpg","initiator":{"name":"Me Arnaud Durand","role":"Avocat au Barreau de Paris, fondateur de Lexprecia et Palace.legal","bio":"Me Arnaud Durand a lance l'ultimatum auNomDuVote pour defendre la sincerite du scrutin. Il denonce la dematerialisation des procurations qui permet a des inconnus de voter au nom d'autres citoyens sans aucune verification dans le monde reel.","url":"https://palace.legal/aunomduvote/","avatarColor":"#1D4ED8"},"lawyer":{"name":"Me. Arnaud Durand","firm":"Lexprecia","bio":"Avocat specialise en actions collectives, droits fondamentaux et libertes publiques. Defend la sincerite du scrutin et la transparence democratique.","cases":34},"target":"Ministere de l'Interieur, plateformes de procuration en ligne","featured":true,"scope":"national","hasClaimantFlow":false,"endDate":null,"trending":true,"signaturesThisWeek":45,"demands":["Garanties concretes sur la fiabilite des procurations dematerialisees et mecanismes de verification de leur utilisation effective","Encadrement legal des plateformes de mise en relation pour les procurations (type PlanProcu) avec obligation de neutralite politique verifiable","Maintien d'une verification physique obligatoire pour toute procuration de vote","Transparence totale sur les liens entre les plateformes de procuration et les partis politiques","Sanctions penales renforcees contre toute fraude electorale par procuration"],"problem":{"headline":"Voter a la place d'un inconnu, sans jamais se croiser : c'est desormais legal","description":"Le decret du 3 novembre 2025 permet la dematerialisation complete des procurations de vote. Plus besoin de se rendre au commissariat. En parallele, PlanProcu - dont Liberation a revele les liens avec le parti presidentiel - propose de mettre en relation des inconnus pour voter par procuration. L'integrite de nos elections est en jeu.","keyFacts":[{"value":"5 630","unit":"signataires","label":"Ont rejoint l'ultimatum"},{"value":"102 004","unit":"procurations","label":"Dematerialisees en 2024"},{"value":"0","unit":"verification physique","label":"Requise avec France Identite"}]},"evidence":[{"title":"Decret n.2025-1059 du 3 novembre 2025","type":"legal","description":"Dematerialisation complete des procurations de vote. Plus besoin de se deplacer en commissariat ou gendarmerie."},{"title":"Liberation - liens PlanProcu / parti presidentiel","type":"media","description":"L'ONG 'A vote', fondatrice de PlanProcu, entretenait des liens avec le parti presidentiel, mettant en doute la neutralite de la plateforme."},{"title":"102 004 procurations dematerialisees en 2024","type":"report","description":"Lors des europeennes et legislatives 2024, 102 004 procurations ont ete realisees via France Identite."},{"title":"Constitution - Article 3","type":"legal","description":"La souverainete nationale appartient au peuple. Le suffrage est toujours universel, egal et secret."},{"title":"DDHC 1789 - Article 6","type":"legal","description":"La loi est l'expression de la volonte generale. Tous les citoyens ont droit de concourir a sa formation."}],"victimTestimonials":[{"name":"Jean-Marc B., electeur, Toulouse","quote":"J'ai decouvert que quelqu'un avait vote a ma place lors des legislatives 2024 avec une procuration que je n'avais jamais donnee. Le bureau de vote m'a dit 'c'est trop tard'.","amount":null},{"name":"Claire M., assesseure, Paris","quote":"En tant qu'assesseure, j'ai vu des dizaines de procurations presentees par des gens qui ne connaissaient meme pas le nom de la personne pour qui ils votaient. C'est legal, mais c'est absurde.","amount":null},{"name":"Pierre L., candidat municipal, Marseille","quote":"J'ai perdu mon election de 47 voix. Sur les 200 procurations du bureau, impossible de verifier combien etaient reellement voulues par le mandant.","amount":"-47 voix"}],"howItWorks":[{"step":1,"title":"Signez l'ultimatum","description":"Rejoignez les 5 630 citoyens qui exigent la sincerite du scrutin, quel que soit le sens de votre vote."},{"step":2,"title":"Ultimatum juridique","description":"Me Arnaud Durand adressera un ultimatum officiel au Ministere de l'Interieur et aux plateformes de procuration."},{"step":3,"title":"Action en justice","description":"A defaut de garanties concretes, une action sera engagee pour obtenir l'annulation du decret ou l'encadrement des plateformes."}],"funds":{"totalCollected":0,"totalSpent":0,"categories":[{"label":"Juridique","amount":0,"pct":70,"color":"#16A34A"},{"label":"Expertises","amount":0,"pct":20,"color":"#3B82F6"},{"label":"Admin","amount":0,"pct":10,"color":"#6B7280"}]},"results":[{"value":"5 630","unit":"signataires","label":"Ont rejoint l'ultimatum"}],"nextStep":{"title":"Envoi de l'ultimatum au Ministere de l'Interieur","description":"Des 10 000 signataires, Me Arnaud Durand adressera l'ultimatum officiel exigeant des garanties sur la fiabilite des procurations dematerialisees.","estimatedDate":null},"timeline":[{"date":"2024-06-09","label":"Elections europeennes - record de procurations","type":"milestone","description":"102 004 procurations dematerialisees via France Identite. Premiere utilisation a grande echelle.","side":"nous"},{"date":"2024-06-28","label":"Liberation revele les liens PlanProcu / parti presidentiel","type":"communication","description":"L'ONG 'A vote', fondatrice de PlanProcu, a des liens avec le parti presidentiel.","side":"nous"},{"date":"2024-07-07","label":"Legislatives 2024 - contentieux nombreux","type":"juridique","description":"Les legislatives anticipees generent un nombre record de contentieux electoraux.","side":"nous"},{"date":"2025-01-01","label":"Lancement de l'ultimatum auNomDuVote","type":"milestone","description":"Me Arnaud Durand lance la petition sur Palace.legal pour defendre la sincerite du scrutin.","side":"nous"},{"date":"2025-11-03","label":"Decret de dematerialisation complete","type":"adversaire","description":"Le gouvernement adopte le decret n.2025-1059. Plus aucune verification physique obligatoire pour etablir une procuration.","side":"adversaire"},{"date":"2026-03-15","label":"5 630 signataires","type":"milestone","description":"L'ultimatum continue de rassembler des citoyens de tous bords politiques, unis pour la sincerite du scrutin.","side":"nous"}],"createdAt":"2025-01-01T00:00:00Z","updatedAt":"2026-04-05T00:00:00Z"}
+]

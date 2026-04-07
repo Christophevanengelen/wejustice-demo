@@ -1,0 +1,24 @@
+{
+  "siteName": "WeJustice",
+  "tagline": "La justice collective, pour tous",
+  "heroTitle": "Ensemble, faisons respecter nos droits",
+  "heroSubtitle": "WeJustice rassemble les citoyens pour des actions juridiques collectives. Rejoignez le mouvement.",
+  "heroCta": "D\u00e9couvrir les actions",
+  "totalSignatures": 312884,
+  "activeActions": 8,
+  "totalMembers": 45200,
+  "totalActions": 8,
+  "featuredActionIds": ["act-001", "act-002", "act-004", "act-006"],
+  "howItWorks": [
+    { "step": 1, "title": "Signez", "description": "Rejoignez une action collective en signant gratuitement." },
+    { "step": 2, "title": "Rassemblez", "description": "Plus nous sommes nombreux, plus notre voix porte." },
+    { "step": 3, "title": "Agissez", "description": "Nos avocats engagent les procedures juridiques." },
+    { "step": 4, "title": "Gagnez", "description": "Obtenez reparation et faites changer les pratiques." }
+  ],
+  "socialLinks": {
+    "twitter": "https://twitter.com/wejustice",
+    "facebook": "https://facebook.com/wejustice",
+    "linkedin": "https://linkedin.com/company/wejustice",
+    "instagram": "https://instagram.com/wejustice"
+  }
+}

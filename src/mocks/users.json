@@ -1,0 +1,54 @@
+{
+  "member": {
+    "id": "u-001",
+    "email": "jean.dupont@example.com",
+    "firstName": "Jean",
+    "lastName": "Dupont",
+    "role": "user",
+    "plan": "member",
+    "country": "FR",
+    "avatar": null,
+    "avatarColor": "#3B82F6",
+    "totalCredits": 5,
+    "grade": "Citoyen engage"
+  },
+  "admin": {
+    "id": "u-admin",
+    "email": "admin@wejustice.legal",
+    "firstName": "Admin",
+    "lastName": "WeJustice",
+    "role": "admin",
+    "plan": "member",
+    "country": "FR",
+    "avatar": null,
+    "avatarColor": "#C20520",
+    "totalCredits": 100,
+    "grade": "Administrateur"
+  },
+  "free": {
+    "id": "u-free",
+    "email": "marie.libre@example.com",
+    "firstName": "Marie",
+    "lastName": "Libre",
+    "role": "user",
+    "plan": "free",
+    "country": "FR",
+    "avatar": null,
+    "avatarColor": "#10B981",
+    "totalCredits": 0,
+    "grade": "Signataire"
+  },
+  "lawyer": {
+    "id": "u-lawyer",
+    "email": "sophie.martin@cabinet.fr",
+    "firstName": "Sophie",
+    "lastName": "Martin",
+    "role": "lawyer",
+    "plan": "member",
+    "country": "FR",
+    "avatar": null,
+    "avatarColor": "#7C3AED",
+    "totalCredits": 50,
+    "grade": "Avocat partenaire"
+  }
+}

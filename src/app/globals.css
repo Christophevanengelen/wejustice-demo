@@ -1,0 +1,144 @@
+@import "tailwindcss";
+@import "../styles/wejustice-theme.css";
+
+/*
+ * Tailwind CSS 4 config:
+ * - @config: content scan + primary color palette from tailwind.config.ts
+ * - @custom-variant: dark mode class strategy for Flowbite DarkThemeToggle
+ *
+ * Flowbite React components are styled via ThemeProvider (lib/flowbite-theme.ts).
+ * Design tokens come from @theme block in wejustice-theme.css.
+ */
+@config "../../tailwind.config.ts";
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ─── Campton Font Face ─── */
+@font-face {
+  font-family: "Campton";
+  src: url("/fonts/campton/Campton-Book.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Campton";
+  src: url("/fonts/campton/Campton-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Campton";
+  src: url("/fonts/campton/Campton-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Campton";
+  src: url("/fonts/campton/Campton-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Campton";
+  src: url("/fonts/campton/Campton-ExtraBold.woff2") format("woff2");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ─── Base styles ─── */
+:root {
+  --font-campton: "Campton", system-ui, -apple-system, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-campton);
+  background-color: var(--color-surface-page);
+  color: var(--color-text-secondary);
+}
+
+/* ─── Dark mode transition ─── */
+html.dark {
+  color-scheme: dark;
+}
+
+* {
+  transition-property: background-color, border-color, color;
+  transition-duration: 300ms;
+  transition-timing-function: ease;
+}
+
+/* ─── CTA Token System ───
+ * RULE: Rouge = cliquable uniquement.
+ *
+ * Uses --color-brand (#C20520 light) = same red as the logo.
+ * Dark mode: keeps brand red (not brand-strong which is too dark).
+ */
+
+/* Full-width CTA section (e.g. "Pret a agir") */
+.cta-brand-block {
+  background-color: var(--color-brand);
+  color: #fff;
+}
+.cta-brand-block h2,
+.cta-brand-block p { color: #fff; }
+.cta-brand-block p { opacity: 0.85; }
+
+:is(.dark) .cta-brand-block {
+  background-color: var(--color-brand);
+}
+
+/* Numbered step circles (e.g. "Comment ca marche") */
+.step-circle {
+  background-color: var(--color-brand);
+  color: #fff;
+}
+
+/* ─── Hero Glass Input Token ───
+ * Standard style for inputs on dark/image hero backgrounds.
+ * Used in: search bars, email signups, newsletter forms.
+ * Rule: always use this class on hero zone inputs for consistency.
+ */
+.hero-glass-input {
+  width: 100%;
+  border-radius: 0.75rem; /* rounded-xl = 12px */
+  border: 1px solid rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.1);
+  padding: 0.875rem 1.25rem; /* py-3.5 px-5 */
+  font-size: 0.875rem;
+  color: #fff;
+  outline: none;
+  backdrop-filter: blur(12px);
+}
+.hero-glass-input::placeholder { color: rgba(255,255,255,0.5); }
+.hero-glass-input:focus {
+  border-color: rgba(255,255,255,0.4);
+  box-shadow: 0 0 0 3px rgba(255,255,255,0.1);
+}
+
+/* ─── Hero Subtitle Token ───
+ * Standard style for subtitles on dark/image hero backgrounds.
+ * Rule: always use text-white/80, never text-gray-400 (too dark on images).
+ */
+
+/* ─── Smooth scrollbar ─── */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-surface-page);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-surface-hover);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-surface-active);
+}
