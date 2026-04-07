@@ -9,6 +9,7 @@
  */
 
 import { type Plan, type PriceResult, formatPrice } from "@/lib/pricing-engine";
+import { CTAButton } from "@/components/ui/CTAButton";
 
 interface PricingCardProps {
   plan: Plan;
@@ -55,18 +56,9 @@ export function PricingCard({ plan, price, seats, isReduced, onChoose }: Pricing
         </div>
       )}
 
-      {/* Icon + Name */}
-      <div className="mb-4 flex items-center gap-2">
-        <svg width="16" height="16" viewBox="0 0 20 20" style={{ color: plan.color }}>
-          {plan.id === "mini" ? (
-            <path d={plan.icon} fill={plan.color} />
-          ) : plan.id === "plus" ? (
-            <polygon points={plan.icon} fill={plan.color} />
-          ) : (
-            <path d={plan.icon} fill={plan.color} />
-          )}
-        </svg>
-        <span className="text-sm font-bold uppercase tracking-wider" style={{ color: plan.color }}>
+      {/* Name — pas d'icône, propre et aligné */}
+      <div className="mb-4">
+        <span className="text-sm font-bold uppercase tracking-wider text-gray-900 dark:text-white">
           {plan.name}
         </span>
       </div>
@@ -125,14 +117,15 @@ export function PricingCard({ plan, price, seats, isReduced, onChoose }: Pricing
       </ul>
 
       {/* CTA */}
-      <button
+      <CTAButton
         onClick={onChoose}
         disabled={disabled}
-        className="w-full rounded-lg py-3 text-sm font-bold text-white transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-30"
-        style={{ backgroundColor: disabled ? '#9ca3af' : 'var(--color-brand)' }}
+        variant={disabled ? "light" : "solid"}
+        size="lg"
+        fullWidth
       >
         Choisir
-      </button>
+      </CTAButton>
     </div>
   );
 }

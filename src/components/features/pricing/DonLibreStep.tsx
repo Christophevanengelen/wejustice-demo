@@ -9,6 +9,7 @@
 
 import { useState } from "react";
 import { type Plan, type PriceResult, formatPrice, DON_TAGS_STANDARD, DON_TAGS_REDUCED } from "@/lib/pricing-engine";
+import { CTAButton } from "@/components/ui/CTAButton";
 
 interface DonLibreStepProps {
   plan: Plan;
@@ -158,13 +159,9 @@ export function DonLibreStep({ plan, price, seats, isReduced, durationLabel, onB
       </div>
 
       {/* Final CTA */}
-      <button
-        onClick={handleConfirm}
-        className="w-full rounded-lg py-3.5 text-base font-bold text-white transition-colors hover:opacity-90"
-        style={{ backgroundColor: plan.color }}
-      >
+      <CTAButton onClick={handleConfirm} size="lg" fullWidth>
         Confirmer
-      </button>
+      </CTAButton>
     </div>
   );
 }

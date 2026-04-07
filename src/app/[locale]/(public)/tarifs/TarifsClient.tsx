@@ -15,7 +15,7 @@
 
 import { useState, useRef } from "react";
 import Image from "next/image";
-import { Badge, Table, TableBody, TableCell, TableHead, TableHeadCell, TableRow, ToggleSwitch, Tooltip } from "flowbite-react";
+import { Badge, Table, TableBody, TableCell, TableHead, TableHeadCell, TableRow, Tooltip } from "flowbite-react";
 import {
   PLANS,
   DURATIONS,
@@ -243,32 +243,36 @@ export function TarifsClient() {
       </section>
 
       {/* ═══ SECTION 2 : CITOYENS - CONFIGURATOR + CARDS ═══ */}
-      <div className="mx-auto max-w-screen-xl px-4 pb-10 lg:px-6">
+      <div className="mx-auto max-w-screen-xl px-4 pb-10 pt-12 lg:px-6">
 
-        {/* Section label */}
-        <div className="mb-8 flex items-center gap-3">
-          <div className="h-px flex-1 bg-gray-200 dark:bg-gray-700" />
-          <span className="text-xs font-semibold uppercase tracking-widest text-gray-400 dark:text-gray-500">
+        {/* Section header — même structure que "Pour les organisations" */}
+        <div className="mb-10 text-center">
+          <p className="text-sm font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">
             Pour les citoyens
-          </span>
-          <div className="h-px flex-1 bg-gray-200 dark:bg-gray-700" />
+          </p>
+          <h2 className="mt-2 text-3xl font-extrabold text-gray-900 dark:text-white">
+            Choisissez votre forfait
+          </h2>
+          <p className="mx-auto mt-3 max-w-2xl text-gray-500 dark:text-gray-400">
+            Soutenez la justice collective et devenez partie prenante des actions en cours.
+          </p>
         </div>
 
         {/* Seat selector (hidden in reduced mode) */}
         {!isReduced && (
-          <div className="mb-6 flex items-center justify-center gap-4">
-            <span className="text-sm text-gray-500 dark:text-gray-400">
+          <div className="mb-6 flex flex-wrap items-center justify-center gap-4">
+            <span className="flex items-center gap-1.5 text-sm text-gray-500 dark:text-gray-400">
               Bénéficiaires
               <Tooltip content={TOOLTIPS.seats}>
-                <span className="ml-1 inline-block cursor-help text-gray-400">
-                  <svg width="13" height="13" viewBox="0 0 20 20" className="inline align-middle" style={{ marginBottom: 1 }}>
+                <span className="inline-flex cursor-help items-center text-gray-400 dark:text-gray-500">
+                  <svg width="14" height="14" viewBox="0 0 20 20">
                     <circle cx="10" cy="10" r="8.5" fill="none" stroke="currentColor" strokeWidth="1.8" />
-                    <text x="10" y="14.5" textAnchor="middle" fontSize="10" fontWeight="600" fill="currentColor" fontFamily="sans-serif">i</text>
+                    <text x="10" y="14.5" textAnchor="middle" fontSize="10" fontWeight="600" fill="currentColor" fontFamily="sans-serif">?</text>
                   </svg>
                 </span>
               </Tooltip>
             </span>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-3">
               <button
                 onClick={handleSeatDown}
                 disabled={seats <= 1}
@@ -277,7 +281,7 @@ export function TarifsClient() {
               >
                 -
               </button>
-              <span className="min-w-[60px] text-center text-sm font-medium text-gray-900 dark:text-white">
+              <span className="min-w-[60px] text-center text-sm font-semibold text-gray-900 dark:text-white">
                 {seats} pers.
               </span>
               <button
@@ -293,19 +297,19 @@ export function TarifsClient() {
         )}
 
         {/* Duration selector */}
-        <div className="mb-8 flex items-center justify-center gap-3">
-          <span className="text-sm text-gray-500 dark:text-gray-400">
+        <div className="mb-8 flex flex-wrap items-center justify-center gap-3">
+          <span className="flex items-center gap-1.5 text-sm text-gray-500 dark:text-gray-400">
             Durée
             <Tooltip content={TOOLTIPS.duration}>
-              <span className="ml-1 inline-block cursor-help text-gray-400">
-                <svg width="13" height="13" viewBox="0 0 20 20" className="inline align-middle" style={{ marginBottom: 1 }}>
+              <span className="inline-flex cursor-help items-center text-gray-400 dark:text-gray-500">
+                <svg width="14" height="14" viewBox="0 0 20 20">
                   <circle cx="10" cy="10" r="8.5" fill="none" stroke="currentColor" strokeWidth="1.8" />
-                  <text x="10" y="14.5" textAnchor="middle" fontSize="10" fontWeight="600" fill="currentColor" fontFamily="sans-serif">i</text>
+                  <text x="10" y="14.5" textAnchor="middle" fontSize="10" fontWeight="600" fill="currentColor" fontFamily="sans-serif">?</text>
                 </svg>
               </span>
             </Tooltip>
           </span>
-          <div className="flex gap-2">
+          <div className="flex flex-wrap gap-2">
             {DURATIONS.map((d) => (
               <button
                 key={d.key}
@@ -329,7 +333,7 @@ export function TarifsClient() {
         </div>
 
         {/* Cards */}
-        <div className="mb-8 flex gap-6 overflow-x-auto pb-4 lg:grid lg:grid-cols-4 lg:overflow-visible">
+        <div className={`mb-8 flex gap-6 overflow-x-auto pb-4 lg:grid lg:overflow-visible ${visiblePlans.length <= 3 ? "lg:grid-cols-3 lg:max-w-4xl lg:mx-auto" : "lg:grid-cols-4"}`}>
           {visiblePlans.map((plan, i) => {
             const priceResult = calculatePrice(plan.id, seats, duration, isReduced);
             return (
@@ -351,7 +355,7 @@ export function TarifsClient() {
           <div className="mb-8 text-center">
             <button
               onClick={() => setShowComparison(!showComparison)}
-              className="inline-flex items-center gap-2 rounded-lg border border-gray-300 bg-white px-5 py-2.5 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700"
+              className="inline-flex items-center gap-2 rounded-lg border border-gray-300 bg-gray-50 px-5 py-2.5 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-100 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700"
             >
               <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25H12" />
@@ -367,13 +371,13 @@ export function TarifsClient() {
         {/* Comparison table — Flowbite Table */}
         {showComparison && (
           <ScrollReveal distance={12}>
-            <div className="mb-10 overflow-x-auto rounded-lg border border-gray-200 dark:border-gray-700">
-              <Table striped>
+            <div className="mb-10 overflow-x-auto rounded-lg border border-gray-200 bg-gray-50 dark:border-gray-700 dark:bg-gray-800">
+              <Table>
                 <TableHead>
                   <TableHeadCell className="bg-gray-50 dark:bg-gray-800">Fonctionnalité</TableHeadCell>
                   {PLANS.map((p) => (
                     <TableHeadCell key={p.id} className="bg-gray-50 text-center dark:bg-gray-800">
-                      <span className="font-bold" style={{ color: p.color }}>{p.name}</span>
+                      <span className="font-bold text-gray-900 dark:text-white">{p.name}</span>
                       {p.recommended && (
                         <Badge color="gray" size="xs" className="ml-1.5 inline-flex">
                           Recommandé
@@ -415,17 +419,35 @@ export function TarifsClient() {
         )}
 
         {/* Reduced toggle */}
-        <div className="mb-10">
+        <div className="mb-10 flex flex-col items-center">
+          <button
+            role="switch"
+            aria-checked={isReduced}
+            onClick={handleReducedToggle}
+            className="flex items-center gap-3"
+          >
+            <div
+              className={`relative h-6 w-11 rounded-full transition-colors ${
+                isReduced
+                  ? "bg-primary-700 dark:bg-primary-500"
+                  : "bg-gray-300 dark:bg-gray-600"
+              }`}
+            >
+              <div
+                className={`absolute top-0.5 h-5 w-5 rounded-full bg-white shadow transition-transform ${
+                  isReduced ? "translate-x-[22px]" : "translate-x-0.5"
+                }`}
+              />
+            </div>
+            <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
+              Tarif réduit
+            </span>
+          </button>
           {isReduced && (
-            <div className="mb-3 rounded-lg bg-gray-700 p-3 text-xs text-white dark:bg-gray-600">
+            <div className="mt-3 max-w-md rounded-lg bg-gray-100 p-3 text-center text-xs text-gray-600 dark:bg-gray-700 dark:text-gray-300">
               Réservé aux personnes à faibles revenus (précarité, étudiants, chômage, faibles retraites) acceptant de fournir à première demande des justificatifs.
             </div>
           )}
-          <ToggleSwitch
-            checked={isReduced}
-            onChange={handleReducedToggle}
-            label="Tarif réduit"
-          />
         </div>
 
         {/* Step 2: Don libre */}

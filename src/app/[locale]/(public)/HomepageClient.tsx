@@ -16,6 +16,7 @@ import { Badge, Card, Avatar, Rating, RatingStar, Timeline, TimelineBody, Timeli
 import Image from "next/image";
 import Link from "next/link";
 import { useParams } from "next/navigation";
+import { CTAButton } from "@/components/ui/CTAButton";
 import { ActionCard } from "@/components/features/actions/ActionCard";
 import { PressSection } from "@/components/features/press/PressSection";
 import { AnimatedCounter } from "@/components/animations/AnimatedCounter";
