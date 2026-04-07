@@ -4,21 +4,27 @@
 
 ---
 
-## P0 — Page Tarifs (pas fini)
+## P0 — Page Tarifs (REVERT — tout à refaire)
 
-- [x] Couleurs plans supprimées (bleu/vert/violet/jaune → gris neutre)
-- [x] Checks ✓ → var(--color-brand) (adaptatif light/dark)
-- [x] Bouton "Choisir" → var(--color-brand)
-- [x] Badge "Recommandé" → var(--color-brand)
-- [x] Badges durée → vert (économie) au lieu de bleu/violet/orange
-- [x] Boutons +/- → fond brand red
-- [x] Durée sélectionnée → fond brand red
-- [x] Toggle tarif réduit → Flowbite ToggleSwitch
-- [ ] **Bouton "Comparer les forfaits" donne un bloc blanc** — fond cassé
-- [ ] **Section B2B "Contactez-nous"** — 2 CTA différents, pas homogènes
+NOTE : Les fixes ci-dessous ont été appliqués puis REVERTÉS à cause d'un sed cassé.
+Tout doit être refait proprement dans la prochaine session.
+
+- [ ] **Couleurs plans** — bleu/vert/violet/jaune → gris neutre (pricing-engine.ts plan.color)
+- [ ] **Boutons "Choisir"** — rose Flowbite → brand red var(--color-brand). Adaptatif light (#C20520) / dark (#FF4D63)
+- [ ] **Checks ✓ features** — rose Flowbite → brand red. Utiliser var(--color-brand) pas primary-700
+- [ ] **Badge "Recommandé"** — rose Flowbite → brand red
+- [ ] **Bouton "Confirmer"** (don libre) — gris mort → brand red
+- [ ] **Badges durée -30%/-35%/-40%** — couleurs différentes → vert unique (économie)
+- [ ] **Boutons +/- bénéficiaires** — outline gris → fond brand red plein
+- [ ] **Durée sélectionnée** — border gris → fond brand red
+- [ ] **Toggle tarif réduit** — custom → Flowbite ToggleSwitch
+- [ ] **Section B2B checks** — jaune/gris incohérent → brand red unifié
+- [ ] **Section B2B "Contactez-nous"** — 2 CTA différents (gris + rouge outline) → identiques, brand red
+- [ ] **Bouton "Comparer les forfaits"** — ouvre un bloc blanc → fond correct
 - [ ] **Espacement "POUR LES CITOYENS"** — collé au hero, respire pas
 - [ ] **Les "?" (tooltips) pas alignés** — amateur
-- [ ] **Bénéficiaires mise en page** — pas beau, pas aligné proprement
+- [ ] **Bénéficiaires mise en page** — pas beau, pas aligné
+- [ ] **Filtres actions** — 10 thèmes → 4 catégories (Santé, Libertés, Consommation, Numérique). Code fait puis reverté.
 - [ ] **Vérifier dark mode complet** sur toute la page tarifs
 
 ## P0 — Design System (audit global)
