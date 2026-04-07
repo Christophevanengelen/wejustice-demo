@@ -96,7 +96,7 @@ export const PLANS: Plan[] = [
   {
     id: "mini",
     name: "Mini",
-    color: "#185FA5",
+    color: "#64748b",
     icon: "M2 20h2c1.1 0 2-.9 2-2v-8c0-1.1-.9-2-2-2H2v12zm18-12h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L13.17 1 7.59 6.59C7.22 6.95 7 7.45 7 8v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2c0-1.1-.9-2-2-2z",
     basePriceMonthly: BASES.mini,
     maxSeats: 1,
@@ -111,7 +111,7 @@ export const PLANS: Plan[] = [
   {
     id: "plus",
     name: "Plus",
-    color: "#0F6E56",
+    color: "#64748b",
     icon: "M10,1.5 L12.6,7.5 L19.2,8.1 L14.3,12.5 L15.9,19 L10,15.6 L4.1,19 L5.7,12.5 L0.8,8.1 L7.4,7.5",
     basePriceMonthly: BASES.plus,
     maxSeats: 2,
@@ -126,7 +126,7 @@ export const PLANS: Plan[] = [
   {
     id: "maxi",
     name: "Maxi",
-    color: "#534AB7",
+    color: "#64748b",
     icon: "M10,2 L17.5,5.5 L17.5,11.5 C17.5,15.5 14.2,18.5 10,20 C5.8,18.5 2.5,15.5 2.5,11.5 L2.5,5.5 Z",
     basePriceMonthly: BASES.maxi,
     maxSeats: 3,
@@ -142,7 +142,7 @@ export const PLANS: Plan[] = [
   {
     id: "aura",
     name: "Aura",
-    color: "#9A7B0A",
+    color: "#64748b",
     icon: "M2,15 L5,7 L8.5,12 L10,3.5 L11.5,12 L15,7 L18,15 Z M2,16.5 L18,16.5 L18,18 L2,18 Z",
     basePriceMonthly: BASES.aura,
     maxSeats: 4,

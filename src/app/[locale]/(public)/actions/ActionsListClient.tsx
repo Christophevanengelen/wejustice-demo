@@ -8,7 +8,17 @@ import { useParams } from "next/navigation";
 import { ActionCard } from "@/components/features/actions/ActionCard";
 import actionsData from "@/mocks/actions.json";
 
-const ALL_THEMES = Array.from(new Set(actionsData.flatMap((a) => a.themes)));
+/**
+ * Catégories de filtres — regroupement des thèmes en 5 catégories lisibles.
+ * Le backend peut avoir autant de tags qu'il veut, le front les regroupe.
+ * Chaque catégorie mappe vers les thèmes bruts du mock.
+ */
+const FILTER_CATEGORIES: { label: string; themes: string[] }[] = [
+  { label: "Santé", themes: ["santé", "santé animale", "agriculture", "environnement"] },
+  { label: "Libertés", themes: ["libertés", "transparence", "démocratie", "vie privée"] },
+  { label: "Consommation", themes: ["consommation"] },
+  { label: "Numérique", themes: ["numérique"] },
+];
 
 export function ActionsListClient() {
   const params = useParams();
@@ -22,7 +32,10 @@ export function ActionsListClient() {
         !search ||
         a.title.toLowerCase().includes(search.toLowerCase()) ||
         a.description.toLowerCase().includes(search.toLowerCase());
-      const matchTheme = !selectedTheme || a.themes.includes(selectedTheme);
+      if (!selectedTheme) return matchSearch;
+      // Trouver la catégorie sélectionnée et vérifier si l'action a un de ses thèmes
+      const cat = FILTER_CATEGORIES.find((c) => c.label === selectedTheme);
+      const matchTheme = cat ? a.themes.some((t) => cat.themes.includes(t)) : true;
       return matchSearch && matchTheme;
     });
   }, [search, selectedTheme]);
@@ -94,17 +107,17 @@ export function ActionsListClient() {
             >
               Toutes
             </button>
-            {ALL_THEMES.map((theme) => (
+            {FILTER_CATEGORIES.map((cat) => (
               <button
-                key={theme}
-                onClick={() => setSelectedTheme(selectedTheme === theme ? null : theme)}
-                className={`flex shrink-0 items-center gap-1.5 rounded-full px-4 py-2.5 text-sm capitalize transition-colors duration-150 ${
-                  selectedTheme === theme
+                key={cat.label}
+                onClick={() => setSelectedTheme(selectedTheme === cat.label ? null : cat.label)}
+                className={`flex shrink-0 items-center gap-1.5 rounded-full px-4 py-2.5 text-sm transition-colors duration-150 ${
+                  selectedTheme === cat.label
                     ? "bg-white font-semibold text-gray-900 shadow-md"
                     : "border border-white/30 bg-white/10 text-white hover:bg-white/20"
                 }`}
               >
-                {theme}
+                {cat.label}
               </button>
             ))}
           </div>

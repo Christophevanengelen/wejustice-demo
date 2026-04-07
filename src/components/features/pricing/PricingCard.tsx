@@ -49,7 +49,7 @@ export function PricingCard({ plan, price, seats, isReduced, onChoose }: Pricing
       {/* Badge Recommande */}
       {plan.recommended && !disabled && (
         <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-          <span className="whitespace-nowrap rounded-full bg-primary-700 px-3 py-1 text-xs font-semibold text-white dark:bg-primary-600">
+          <span className="whitespace-nowrap rounded-full px-3 py-1 text-xs font-semibold text-white" style={{ backgroundColor: 'var(--color-brand)' }}>
             Recommandé
           </span>
         </div>
@@ -83,7 +83,7 @@ export function PricingCard({ plan, price, seats, isReduced, onChoose }: Pricing
 
       {/* Total monthly if multi-seat */}
       {seats > 1 && !isReduced && (
-        <p className="mb-1 text-sm font-medium text-primary-700 dark:text-primary-500">
+        <p className="mb-1 text-sm font-medium" style={{ color: 'var(--color-brand)' }}>
           Total : {formatPrice(price.totalMonthly)}/mois
         </p>
       )}
@@ -112,7 +112,7 @@ export function PricingCard({ plan, price, seats, isReduced, onChoose }: Pricing
       <ul className="mb-6 flex-1 space-y-3">
         {plan.features.map((f) => (
           <li key={f.label} className="flex items-start gap-2">
-            <svg className="mt-0.5 h-4 w-4 flex-shrink-0 text-primary-700 dark:text-primary-500" viewBox="0 0 20 20">
+            <svg className="mt-0.5 h-4 w-4 flex-shrink-0" style={{ color: 'var(--color-brand)' }} viewBox="0 0 20 20">
               <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" fill="currentColor" />
             </svg>
             <div>
@@ -128,9 +128,8 @@ export function PricingCard({ plan, price, seats, isReduced, onChoose }: Pricing
       <button
         onClick={onChoose}
         disabled={disabled}
-        className={`w-full rounded-lg py-3 text-sm font-bold text-white transition-colors hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-30 ${
-          disabled ? "bg-gray-400" : "bg-primary-700 hover:bg-primary-800 dark:bg-primary-600 dark:hover:bg-primary-700"
-        }`}
+        className="w-full rounded-lg py-3 text-sm font-bold text-white transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-30"
+        style={{ backgroundColor: disabled ? '#9ca3af' : 'var(--color-brand)' }}
       >
         Choisir
       </button>

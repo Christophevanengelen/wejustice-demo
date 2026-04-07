@@ -15,7 +15,7 @@
 
 import { useState, useRef } from "react";
 import Image from "next/image";
-import { Badge, Table, TableBody, TableCell, TableHead, TableHeadCell, TableRow, Tooltip } from "flowbite-react";
+import { Badge, Table, TableBody, TableCell, TableHead, TableHeadCell, TableRow, ToggleSwitch, Tooltip } from "flowbite-react";
 import {
   PLANS,
   DURATIONS,
@@ -271,7 +271,9 @@ export function TarifsClient() {
             <div className="flex items-center gap-2">
               <button
                 onClick={handleSeatDown}
-                className={`flex h-8 w-8 items-center justify-center rounded-full border text-sm transition-colors ${seats <= 1 ? "border-gray-200 text-gray-300 dark:border-gray-700 dark:text-gray-600" : "border-gray-400 text-gray-700 hover:bg-gray-100 dark:border-gray-500 dark:text-gray-300 dark:hover:bg-gray-800"}`}
+                disabled={seats <= 1}
+                className="flex h-8 w-8 items-center justify-center rounded-full text-sm font-bold text-white transition-opacity disabled:opacity-30"
+                style={{ backgroundColor: 'var(--color-brand)' }}
               >
                 -
               </button>
@@ -280,7 +282,9 @@ export function TarifsClient() {
               </span>
               <button
                 onClick={handleSeatUp}
-                className={`flex h-8 w-8 items-center justify-center rounded-full border text-sm transition-colors ${seats >= 4 ? "border-gray-200 text-gray-300 dark:border-gray-700 dark:text-gray-600" : "border-gray-400 text-gray-700 hover:bg-gray-100 dark:border-gray-500 dark:text-gray-300 dark:hover:bg-gray-800"}`}
+                disabled={seats >= 4}
+                className="flex h-8 w-8 items-center justify-center rounded-full text-sm font-bold text-white transition-opacity disabled:opacity-30"
+                style={{ backgroundColor: 'var(--color-brand)' }}
               >
                 +
               </button>
@@ -308,17 +312,14 @@ export function TarifsClient() {
                 onClick={() => { setDuration(d.key); setSelectedPlan(null); }}
                 className={`rounded-lg px-3 py-2 text-xs font-medium transition-colors ${
                   duration === d.key
-                    ? "border border-gray-900 bg-gray-100 text-gray-900 dark:border-white dark:bg-gray-700 dark:text-white"
+                    ? "text-white"
                     : "border border-gray-200 bg-white text-gray-500 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700"
                 }`}
+                style={duration === d.key ? { backgroundColor: 'var(--color-brand)' } : undefined}
               >
                 {d.label}
                 {d.discountPercent && (
-                  <span className={`ml-1 inline-block rounded px-1.5 py-0.5 text-[10px] font-semibold ${
-                    d.key === "annual" ? "bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300" :
-                    d.key === "biannual" ? "bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-300" :
-                    "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-300"
-                  }`}>
+                  <span className="ml-1 inline-block rounded bg-green-100 px-1.5 py-0.5 text-[10px] font-semibold text-green-700 dark:bg-green-900/30 dark:text-green-300">
                     -{d.discountPercent}%
                   </span>
                 )}
@@ -374,7 +375,7 @@ export function TarifsClient() {
                     <TableHeadCell key={p.id} className="bg-gray-50 text-center dark:bg-gray-800">
                       <span className="font-bold" style={{ color: p.color }}>{p.name}</span>
                       {p.recommended && (
-                        <Badge color="purple" size="xs" className="ml-1.5 inline-flex">
+                        <Badge color="gray" size="xs" className="ml-1.5 inline-flex">
                           Recommandé
                         </Badge>
                       )}
@@ -416,24 +417,15 @@ export function TarifsClient() {
         {/* Reduced toggle */}
         <div className="mb-10">
           {isReduced && (
-            <div className="mb-3 rounded-lg bg-orange-500 p-3 text-xs text-white">
+            <div className="mb-3 rounded-lg bg-gray-700 p-3 text-xs text-white dark:bg-gray-600">
               Réservé aux personnes à faibles revenus (précarité, étudiants, chômage, faibles retraites) acceptant de fournir à première demande des justificatifs.
             </div>
           )}
-          <label className="flex cursor-pointer items-center gap-3">
-            <div className="relative">
-              <input
-                type="checkbox"
-                checked={isReduced}
-                onChange={handleReducedToggle}
-                className="sr-only"
-              />
-              <div className={`h-5 w-9 rounded-full transition-colors ${isReduced ? "bg-purple-600" : "bg-gray-300 dark:bg-gray-600"}`}>
-                <div className={`h-4 w-4 transform rounded-full bg-white shadow transition-transform ${isReduced ? "translate-x-4" : "translate-x-0.5"} mt-0.5`} />
-              </div>
-            </div>
-            <span className="text-sm text-gray-500 dark:text-gray-400">Tarif réduit</span>
-          </label>
+          <ToggleSwitch
+            checked={isReduced}
+            onChange={handleReducedToggle}
+            label="Tarif réduit"
+          />
         </div>
 
         {/* Step 2: Don libre */}
