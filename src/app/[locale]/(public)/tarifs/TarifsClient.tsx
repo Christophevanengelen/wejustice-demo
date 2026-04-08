@@ -332,18 +332,17 @@ export function TarifsClient() {
 
         {/* Cards */}
         <div className={`mb-8 flex gap-6 overflow-x-auto pb-4 lg:grid lg:overflow-visible ${visiblePlans.length <= 3 ? "lg:grid-cols-3 lg:max-w-4xl lg:mx-auto" : "lg:grid-cols-4"}`}>
-          {visiblePlans.map((plan, i) => {
+          {visiblePlans.map((plan) => {
             const priceResult = calculatePrice(plan.id, seats, duration, isReduced);
             return (
-              <ScrollReveal key={plan.id} delay={0.06 * i} distance={16}>
-                <PricingCard
-                  plan={plan}
-                  price={priceResult}
-                  seats={seats}
-                  isReduced={isReduced}
-                  onChoose={() => handleChoose(plan)}
-                />
-              </ScrollReveal>
+              <PricingCard
+                key={plan.id}
+                plan={plan}
+                price={priceResult}
+                seats={seats}
+                isReduced={isReduced}
+                onChoose={() => handleChoose(plan)}
+              />
             );
           })}
         </div>

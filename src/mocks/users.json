@@ -14,7 +14,7 @@
   },
   "admin": {
     "id": "u-admin",
-    "email": "admin@wejustice.legal",
+    "email": "admin@demo.example.com",
     "firstName": "Admin",
     "lastName": "WeJustice",
     "role": "admin",

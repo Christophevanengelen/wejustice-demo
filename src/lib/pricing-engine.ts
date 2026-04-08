@@ -75,7 +75,7 @@ const DURATION_LABELS: Record<DurationKey, string> = {
   triannual: "3 ans",
 };
 
-const DURATION_DISCOUNT_PERCENT: Record<DurationKey, number | null> = {
+const _DURATION_DISCOUNT_PERCENT: Record<DurationKey, number | null> = {
   monthly: null,
   annual: 30,
   biannual: 35,

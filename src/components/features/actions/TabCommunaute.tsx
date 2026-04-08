@@ -21,7 +21,7 @@ interface TabCommunauteProps {
   totalSignatures: number;
 }
 
-export function TabCommunaute({ actionId, signaturesThisWeek, totalSignatures }: TabCommunauteProps) {
+export function TabCommunaute({ actionId, signaturesThisWeek: _signaturesThisWeek, totalSignatures: _totalSignatures }: TabCommunauteProps) {
   const { user, isAuthenticated } = useAuthSafe();
   const [sort, setSort] = useState<SortMode>("recent");
   const [newComment, setNewComment] = useState("");

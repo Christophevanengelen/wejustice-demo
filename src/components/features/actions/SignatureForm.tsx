@@ -12,7 +12,7 @@
  */
 
 import { useState, useEffect } from "react";
-import { Badge, Tooltip } from "flowbite-react";
+import { Tooltip } from "flowbite-react";
 import { CTAButton } from "@/components/ui/CTAButton";
 import { useAuthSafe } from "@/lib/mock-auth";
 // SignatureProgress removed — progress bar is already shown in the hero zone
@@ -64,9 +64,9 @@ const TRUST_ITEMS = [
 
 export function SignatureForm({
   actionId,
-  hashtag,
-  signatureCount,
-  signatureGoal,
+  hashtag: _hashtag,
+  signatureCount: _signatureCount,
+  signatureGoal: _signatureGoal,
   signaturesThisWeek,
   hasSigned,
   onSign,
@@ -83,7 +83,7 @@ export function SignatureForm({
     e.preventDefault();
     if (!firstName.trim() || !lastName.trim() || !email.trim()) return;
     setSubmitting(true);
-    console.log("[demo] Guest signature:", { firstName, lastName, email, actionId });
+    // PII removed — was logging firstName, lastName, email
     setTimeout(() => {
       onSign();
       window.location.href = `/${locale}/actions/${actionId}/merci`;
@@ -92,24 +92,20 @@ export function SignatureForm({
 
   const handleOneClick = () => {
     setSubmitting(true);
-    console.log("[demo] 1-click signature:", { userId: user?.id, actionId });
+    // Demo mode — no backend call
     setTimeout(() => {
       onSign();
       window.location.href = `/${locale}/actions/${actionId}/merci`;
     }, 800);
   };
 
-  /* ─── Outer wrapper — propre, pas de dégradé ─── */
-  const Wrapper = ({ children }: { children: React.ReactNode }) => (
-    <div className="rounded-lg border border-gray-200 bg-white p-6 shadow-lg dark:border-white/[0.08] dark:bg-gray-900">
-      {children}
-    </div>
-  );
+  /* ─── Outer wrapper classes ─── */
+  const wrapperClass = "rounded-lg border border-gray-200 bg-white p-6 shadow-lg dark:border-white/[0.08] dark:bg-gray-900";
 
   /* ─── Path 3: Already signed ─── */
   if (hasSigned) {
     return (
-      <Wrapper>
+      <div className={wrapperClass}>
 
         <div className="mt-4 rounded-lg bg-green-50 p-4 text-center dark:bg-green-900/20">
           <svg className="mx-auto mb-2 h-8 w-8 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20">
@@ -137,14 +133,14 @@ export function SignatureForm({
         <p className="mt-3 text-center text-xs text-gray-400 dark:text-gray-500">
           {signaturesThisWeek} signatures cette semaine
         </p>
-      </Wrapper>
+      </div>
     );
   }
 
   /* ─── Path 2: Logged-in, 1-click ─── */
   if (isAuthenticated && user) {
     return (
-      <Wrapper>
+      <div className={wrapperClass}>
 
         {/* Connected info */}
         <div className="mt-4 rounded-lg bg-green-50 p-3 dark:bg-green-900/20">
@@ -196,13 +192,13 @@ export function SignatureForm({
             </Tooltip>
           ))}
         </div>
-      </Wrapper>
+      </div>
     );
   }
 
   /* ─── Path 1: Guest form ─── */
   return (
-    <Wrapper>
+    <div className={wrapperClass}>
       {/* Live social proof */}
       <div className="mt-3 flex items-center justify-center gap-2">
         <span className="relative flex h-2 w-2">
@@ -274,6 +270,6 @@ export function SignatureForm({
         <a href={`/${locale}/cgu`} target="_blank" rel="noopener noreferrer" className="underline hover:text-gray-600 dark:hover:text-gray-300">CGU</a>{" "}et la{" "}
         <a href={`/${locale}/confidentialite`} target="_blank" rel="noopener noreferrer" className="underline hover:text-gray-600 dark:hover:text-gray-300">politique de confidentialite</a>.
       </p>
-    </Wrapper>
+    </div>
   );
 }

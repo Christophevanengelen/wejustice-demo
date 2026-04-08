@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { useAuth, type DemoRole } from "@/lib/mock-auth";
 
 const ROLES: { value: DemoRole; label: string; desc: string }[] = [
@@ -84,8 +85,8 @@ export function DemoToolbar() {
           <div className="flex items-center justify-between border-t border-gray-200 pt-3 dark:border-gray-600">
             <span className="text-xs font-medium text-gray-500 dark:text-gray-400">Langue</span>
             <div className="flex gap-1">
-              <a href="/fr" className="rounded-lg px-3 py-1.5 text-xs font-medium text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700">FR</a>
-              <a href="/en" className="rounded-lg px-3 py-1.5 text-xs font-medium text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700">EN</a>
+              <Link href="/fr" className="rounded-lg px-3 py-1.5 text-xs font-medium text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700">FR</Link>
+              <Link href="/en" className="rounded-lg px-3 py-1.5 text-xs font-medium text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700">EN</Link>
             </div>
           </div>
 

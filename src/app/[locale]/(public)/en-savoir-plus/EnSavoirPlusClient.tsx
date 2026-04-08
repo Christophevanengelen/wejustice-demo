@@ -104,7 +104,7 @@ export default function EnSavoirPlusClient() {
             <h1 className="mb-4 text-4xl font-extrabold tracking-tight text-gray-900 lg:text-5xl dark:text-white">
               WeJustice, le 5ème pouvoir
             </h1>
-            <p className="mx-auto max-w-2xl text-lg text-gray-500 dark:text-gray-400">
+            <p className="mx-auto max-w-2xl text-lg text-gray-600 dark:text-gray-300">
               Nous rassemblons les citoyens pour des actions juridiques collectives.
               Ensemble, nous transformons l&apos;indignation en procédures concrètes.
             </p>
@@ -124,15 +124,10 @@ export default function EnSavoirPlusClient() {
           <div className="grid gap-8 md:grid-cols-3">
             {PILLARS.map((p, i) => (
               <ScrollReveal key={p.title} delay={0.1 * i}>
-                <Card className="h-full text-center">
-                  <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-gray-100 dark:bg-gray-700">
-                    <svg className="h-6 w-6 text-gray-600 dark:text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d={p.icon} />
-                    </svg>
-                  </div>
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white">{p.title}</h3>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">{p.description}</p>
-                </Card>
+                <div className="flex h-full flex-col rounded-lg border border-gray-200 p-6 dark:border-white/[0.08]">
+                  <h3 className="mb-2 text-lg font-bold text-gray-900 dark:text-white">{p.title}</h3>
+                  <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">{p.description}</p>
+                </div>
               </ScrollReveal>
             ))}
           </div>
@@ -305,12 +300,10 @@ export default function EnSavoirPlusClient() {
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
             {PROCESS_STEPS.map((step, i) => (
               <ScrollReveal key={step.num} delay={0.1 * i}>
-                <div className="flex h-full flex-col items-center gap-3 rounded-lg border border-gray-200 bg-white p-6 text-center dark:border-white/[0.08] dark:bg-gray-900">
-                  <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-brand text-lg font-extrabold text-white">
-                    {step.num}
-                  </div>
+                <div className="flex h-full flex-col gap-3 rounded-lg border border-gray-200 bg-white p-6 dark:border-white/[0.08] dark:bg-gray-900">
+                  <span className="text-sm font-bold text-brand">{step.num}</span>
                   <h3 className="text-base font-bold text-gray-900 dark:text-white">{step.title}</h3>
-                  <p className="text-xs text-gray-500 dark:text-gray-400">{step.desc}</p>
+                  <p className="text-xs leading-relaxed text-gray-500 dark:text-gray-400">{step.desc}</p>
                 </div>
               </ScrollReveal>
             ))}

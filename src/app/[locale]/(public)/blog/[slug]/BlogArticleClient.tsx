@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useParams } from "next/navigation";
+import DOMPurify from "isomorphic-dompurify";
 import { CTAButton } from "@/components/ui/CTAButton";
 import { ShareButtons } from "@/components/features/actions/ShareButtons";
 import blogData from "@/mocks/blog.json";
@@ -83,7 +84,7 @@ export function BlogArticleClient({ slug }: { slug: string }) {
           {/* Article body */}
           <div
             className="prose prose-gray max-w-none dark:prose-invert"
-            dangerouslySetInnerHTML={{ __html: (article as Record<string, unknown>).body as string || "<p>Cet article sera publié prochainement avec le contenu complet.</p>" }}
+            dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize((article as Record<string, unknown>).body as string || "<p>Cet article sera publié prochainement avec le contenu complet.</p>") }}
           />
 
           {/* CTA — Agissez maintenant */}
