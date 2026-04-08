@@ -8,7 +8,7 @@ type Props = {
 
 export const metadata: Metadata = {
   title: "Ensemble, faisons respecter nos droits",
-  description: "WeJustice rassemble les citoyens pour des actions juridiques collectives. Signez, rejoignez, agissez.",
+  description: "Wejustice rassemble les citoyens pour des actions juridiques collectives. Signez, rejoignez, agissez.",
 };
 
 export default async function HomePage({ params }: Props) {

@@ -68,7 +68,7 @@ export function Footer() {
         <div className="sm:flex sm:items-center sm:justify-between">
           <span className="text-sm text-gray-500 dark:text-gray-400 sm:text-center">
             &copy; {new Date().getFullYear()}{" "}
-            <Link href={`/${locale}`} className="hover:underline">WeJustice</Link>
+            <Link href={`/${locale}`} className="hover:underline">Wejustice</Link>
             . Tous droits réservés.
           </span>
           <span className="mt-4 inline-flex rounded-lg bg-yellow-50 px-3 py-1 text-xs font-medium text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-300 sm:mt-0">

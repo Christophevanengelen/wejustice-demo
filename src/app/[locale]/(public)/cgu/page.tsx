@@ -6,7 +6,7 @@ type Props = { params: Promise<{ locale: string }> };
 
 export const metadata: Metadata = {
   title: "Conditions Générales d'Utilisation",
-  description: "CGU de la plateforme WeJustice - conditions d'accès, signature, engagement et responsabilité.",
+  description: "CGU de la plateforme Wejustice - conditions d'accès, signature, engagement et responsabilité.",
   robots: { index: false, follow: true },
 };
 
@@ -38,8 +38,8 @@ export default async function CguPage({ params }: Props) {
           <h2 className="mb-3 text-lg font-bold text-gray-900 dark:text-white">1. Objet</h2>
           <p>
             Les présentes Conditions Generales d&apos;Utilisation (CGU) régissent l&apos;acces et l&apos;utilisation
-            de la plateforme WeJustice, accessible à l&apos;adresse wejustice.legal.
-            WeJustice est une plateforme d&apos;actions juridiques collectives qui permet aux citoyens
+            de la plateforme Wejustice, accessible à l&apos;adresse wejustice.legal.
+            Wejustice est une plateforme d&apos;actions juridiques collectives qui permet aux citoyens
             de signer, soutenir et suivre des actions en justice collectives.
           </p>
           <p className="mt-3">
@@ -51,7 +51,7 @@ export default async function CguPage({ params }: Props) {
         {/* 2 */}
         <section>
           <h2 className="mb-3 text-lg font-bold text-gray-900 dark:text-white">2. Description du service</h2>
-          <p>WeJustice propose les services suivants :</p>
+          <p>Wejustice propose les services suivants :</p>
           <ul className="mt-3 space-y-2 pl-5">
             <li className="flex items-start gap-2">
               <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-gray-400"></span>
@@ -125,13 +125,13 @@ export default async function CguPage({ params }: Props) {
           <h2 className="mb-3 text-lg font-bold text-gray-900 dark:text-white">5. Propriété intellectuelle</h2>
           <p>
             L&apos;ensemble des contenus de la plateforme (textes, images, logo, code source)
-            sont la propriete de WeJustice ou de ses partenaires. Toute reproduction,
+            sont la propriete de Wejustice ou de ses partenaires. Toute reproduction,
             meme partielle, est interdite sans autorisation préalable.
           </p>
           <p className="mt-3">
             Les contenus publiés par les utilisateurs (commentaires, temoignages) restent
             la propriete de leurs auteurs. En les publiant sur la plateforme, vous accordez
-            a WeJustice une licence non exclusive d&apos;utilisation dans le cadre des actions collectives.
+            a Wejustice une licence non exclusive d&apos;utilisation dans le cadre des actions collectives.
           </p>
         </section>
 
@@ -139,8 +139,8 @@ export default async function CguPage({ params }: Props) {
         <section>
           <h2 className="mb-3 text-lg font-bold text-gray-900 dark:text-white">6. Responsabilité</h2>
           <p>
-            WeJustice met tout en oeuvre pour assurer la fiabilité des informations publiées
-            sur la plateforme. Toutefois, WeJustice ne peut etre tenue responsable :
+            Wejustice met tout en oeuvre pour assurer la fiabilité des informations publiées
+            sur la plateforme. Toutefois, Wejustice ne peut etre tenue responsable :
           </p>
           <ul className="mt-3 space-y-1 pl-5">
             <li className="flex items-start gap-2"><span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-gray-400"></span>Des decisions juridiques rendues dans le cadre des actions collectives</li>
@@ -162,7 +162,7 @@ export default async function CguPage({ params }: Props) {
             <li className="flex items-start gap-2"><span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-gray-400"></span>Ne pas compromettre la sécurité de la plateforme</li>
           </ul>
           <p className="mt-3">
-            WeJustice se réserve le droit de supprimer tout contenu contraire aux présentes
+            Wejustice se réserve le droit de supprimer tout contenu contraire aux présentes
             CGU et de suspendre ou supprimer tout compte en infraction.
           </p>
         </section>
@@ -187,7 +187,7 @@ export default async function CguPage({ params }: Props) {
         <section>
           <h2 className="mb-3 text-lg font-bold text-gray-900 dark:text-white">9. Modification des CGU</h2>
           <p>
-            WeJustice se réserve le droit de modifier les présentes CGU à tout moment.
+            Wejustice se réserve le droit de modifier les présentes CGU à tout moment.
             Les utilisateurs seront informes des modifications par email ou notification
             sur la plateforme. L&apos;utilisation continue du service apres modification
             vaut acceptation des nouvelles conditions.

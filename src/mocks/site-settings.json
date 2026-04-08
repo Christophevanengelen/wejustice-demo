@@ -1,8 +1,8 @@
 {
-  "siteName": "WeJustice",
+  "siteName": "Wejustice",
   "tagline": "La justice collective, pour tous",
   "heroTitle": "Ensemble, faisons respecter nos droits",
-  "heroSubtitle": "WeJustice rassemble les citoyens pour des actions juridiques collectives. Rejoignez le mouvement.",
+  "heroSubtitle": "Wejustice rassemble les citoyens pour des actions juridiques collectives. Rejoignez le mouvement.",
   "heroCta": "D\u00e9couvrir les actions",
   "totalSignatures": 312884,
   "activeActions": 8,
@@ -10,10 +10,11 @@
   "totalActions": 8,
   "featuredActionIds": ["act-001", "act-002", "act-004", "act-006"],
   "howItWorks": [
-    { "step": 1, "title": "Signez", "description": "Rejoignez une action collective en signant gratuitement." },
-    { "step": 2, "title": "Rassemblez", "description": "Plus nous sommes nombreux, plus notre voix porte." },
-    { "step": 3, "title": "Agissez", "description": "Nos avocats engagent les procedures juridiques." },
-    { "step": 4, "title": "Gagnez", "description": "Obtenez reparation et faites changer les pratiques." }
+    { "step": 1, "title": "Signez", "description": "Faites entrer votre nom dans l'Histoire en signant la p\u00e9tition \u00e0 l'origine du proc\u00e8s." },
+    { "step": 2, "title": "Partagez", "description": "Diffusez le projet aupr\u00e8s du plus grand nombre." },
+    { "step": 3, "title": "Rejoindre", "description": "Devenez, si vous le souhaitez et que vous \u00eates \u00e9ligible, une partie \u00e0 la proc\u00e9dure." },
+    { "step": 4, "title": "Agissez", "description": "Faites partie du collectif de l'action en Justice" },
+    { "step": 5, "title": "Obtenez", "description": "Recevez une d\u00e9cision, voire des indemnit\u00e9s." }
   ],
   "socialLinks": {
     "twitter": "https://twitter.com/wejustice",

@@ -66,7 +66,7 @@ export function BlogArticleClient({ slug }: { slug: string }) {
             <ShareButtons
               url={`https://wejustice.legal/blog/${article.slug}`}
               title={article.title}
-              hashtag="WeJustice"
+              hashtag="Wejustice"
               variant="icon-row"
             />
           </div>

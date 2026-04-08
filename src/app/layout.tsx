@@ -55,7 +55,7 @@ export default function RootLayout({
   return (
     <html lang="fr" className={campton.variable} suppressHydrationWarning>
       <head>
-        <ThemeModeScript />
+        <ThemeModeScript mode="light" />
       </head>
       <body className="min-h-screen bg-white font-sans text-gray-900 antialiased dark:bg-gray-900 dark:text-white">
         {children}

@@ -48,7 +48,7 @@ export function ActionsListClient() {
         {/* Background image */}
         <Image
           src="/images/pages/wejustice_actions.jpg"
-          alt="Actions collectives WeJustice"
+          alt="Actions collectives Wejustice"
           fill
           priority
           sizes="100vw"

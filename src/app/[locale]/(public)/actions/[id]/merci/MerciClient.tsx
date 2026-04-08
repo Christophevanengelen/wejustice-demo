@@ -138,7 +138,7 @@ export function MerciClient({ actionId }: { actionId: string }) {
 
   const shareUrl = `https://wejustice.legal/actions/${action?.slug ?? actionId}`;
   const tweetText = `Je viens de signer l'action "${title}" sur @wejustice. Rejoignez-nous !`;
-  const whatsappText = `J'ai sign\u00e9 l'action "${title}" sur WeJustice. Rejoignez le mouvement : ${shareUrl}`;
+  const whatsappText = `J'ai sign\u00e9 l'action "${title}" sur Wejustice. Rejoignez le mouvement : ${shareUrl}`;
 
   const handleCopyLink = () => {
     navigator.clipboard?.writeText(shareUrl).catch(() => {});
@@ -154,7 +154,7 @@ export function MerciClient({ actionId }: { actionId: string }) {
 
   const handleShare = (platformId: string) => {
     const urls: Record<string, string> = {
-      twitter: `https://twitter.com/intent/tweet?text=${encodeURIComponent(tweetText)}&url=${encodeURIComponent(shareUrl)}&hashtags=${encodeURIComponent(action?.tag || "WeJustice")}`,
+      twitter: `https://twitter.com/intent/tweet?text=${encodeURIComponent(tweetText)}&url=${encodeURIComponent(shareUrl)}&hashtags=${encodeURIComponent(action?.tag || "Wejustice")}`,
       facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`,
       linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`,
       whatsapp: `https://wa.me/?text=${encodeURIComponent(whatsappText)}`,

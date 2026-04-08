@@ -8,7 +8,7 @@
 import type { Metadata } from "next";
 
 export const SITE_URL = "https://wejustice-demo.vercel.app";
-export const SITE_NAME = "WeJustice";
+export const SITE_NAME = "Wejustice";
 export const SITE_DESCRIPTION = "La justice collective, pour tous. Rejoignez des milliers de citoyens qui agissent ensemble.";
 export const DEFAULT_OG_IMAGE = "/images/wejustice_home_hero.png";
 export const TWITTER_HANDLE = "@wejustice";

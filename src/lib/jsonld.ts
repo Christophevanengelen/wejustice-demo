@@ -101,7 +101,7 @@ export function actionArticleJsonLd(action: ActionData, locale: string) {
       "@type": "WebPage",
       "@id": `${SITE_URL}/${locale}/actions/${action.id}`,
     },
-    keywords: [action.tag, "action collective", "justice", "WeJustice"],
+    keywords: [action.tag, "action collective", "justice", "Wejustice"],
     interactionStatistic: {
       "@type": "InteractionCounter",
       interactionType: "https://schema.org/EndorseAction",

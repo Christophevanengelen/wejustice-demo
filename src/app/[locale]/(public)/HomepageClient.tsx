@@ -12,7 +12,7 @@
  *  6. Final CTA
  */
 
-import { Badge, Card, Avatar, Rating, RatingStar, Timeline, TimelineBody, TimelineContent, TimelineItem, TimelinePoint, TimelineTime, TimelineTitle } from "flowbite-react";
+import { Badge, Card, Avatar, Timeline, TimelineBody, TimelineContent, TimelineItem, TimelinePoint, TimelineTime, TimelineTitle } from "flowbite-react";
 import Image from "next/image";
 import { useParams } from "next/navigation";
 import { CTAButton } from "@/components/ui/CTAButton";
@@ -30,15 +30,19 @@ const STEP_ICONS = [
   <svg key="sign" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
     <path strokeLinecap="round" strokeLinejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
   </svg>,
-  // 2. Rassemblez — people
+  // 2. Partagez — share
+  <svg key="share" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+    <path strokeLinecap="round" strokeLinejoin="round" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+  </svg>,
+  // 3. Rejoindre — people
   <svg key="gather" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
     <path strokeLinecap="round" strokeLinejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
   </svg>,
-  // 3. Agissez — scales of justice
+  // 4. Agissez — scales of justice
   <svg key="act" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
     <path strokeLinecap="round" strokeLinejoin="round" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" />
   </svg>,
-  // 4. Gagnez — trophy
+  // 5. Obtenez — trophy
   <svg key="win" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
     <path strokeLinecap="round" strokeLinejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
   </svg>,
@@ -126,14 +130,14 @@ export function HomepageClient() {
           </p>
 
           <div className="mb-16 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-            <CTAButton href={`/${locale}/actions`} size="xl">
-              {siteSettings.heroCta}
+            <CTAButton href={`/${locale}/tarifs`} size="xl">
+              Rejoindre
               <svg className="ml-2 -mr-1 h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
               </svg>
             </CTAButton>
-            <CTAButton href={`/${locale}/en-savoir-plus`} variant="light" size="xl" className="border-white/30 bg-white/10 text-white hover:bg-white/20 dark:border-white/30 dark:bg-white/10 dark:text-white dark:hover:bg-white/20">
-              En savoir plus
+            <CTAButton href={`/${locale}/actions`} variant="light" size="xl" className="border-white/30 bg-white/10 text-white hover:bg-white/20 dark:border-white/30 dark:bg-white/10 dark:text-white dark:hover:bg-white/20">
+              Voir les actions
             </CTAButton>
           </div>
 
@@ -210,13 +214,13 @@ export function HomepageClient() {
           <ScrollReveal>
             <div className="mx-auto mb-14 max-w-2xl text-center">
               <Badge color="gray" size="xs" className="mb-4 inline-flex">
-                4 étapes simples
+                5 étapes simples
               </Badge>
               <h2 className="mb-4 text-3xl font-bold tracking-tight text-gray-900 dark:text-white lg:text-4xl">
                 Comment ça marche
               </h2>
               <p className="text-base text-gray-500 dark:text-gray-400">
-                De la signature à la victoire, chaque étape vous rapproche de la justice.
+                De la signature au verdict, chaque étape vous rapproche de la Justice.
               </p>
             </div>
           </ScrollReveal>
@@ -224,12 +228,12 @@ export function HomepageClient() {
           {/* Desktop: horizontal cards. Mobile: Flowbite vertical Timeline. */}
 
           {/* Desktop layout — 4 columns */}
-          <div className="hidden lg:grid lg:grid-cols-4 lg:gap-8">
+          <div className="hidden lg:grid lg:grid-cols-5 lg:gap-8">
             {siteSettings.howItWorks.map(({ step, title, description }, i) => (
               <ScrollReveal key={step} delay={0.12 * i}>
                 <div className="group relative text-center">
                   {/* Connecting line */}
-                  {i < 3 && (
+                  {i < 4 && (
                     <div className="absolute left-[calc(50%+28px)] top-7 hidden h-px w-[calc(100%-56px)] bg-gray-300 dark:bg-gray-600 lg:block" />
                   )}
 
@@ -283,7 +287,7 @@ export function HomepageClient() {
           <ScrollReveal>
             <div className="mx-auto mb-14 max-w-2xl text-center">
               <h2 className="mb-4 text-3xl font-bold tracking-tight text-gray-900 dark:text-white lg:text-4xl">
-                Ils ont agi avec WeJustice
+                Ils ont agi avec nous
               </h2>
               <p className="text-base text-gray-500 dark:text-gray-400">
                 Des milliers de citoyens ont déjà obtenu gain de cause.
@@ -296,15 +300,6 @@ export function HomepageClient() {
               <ScrollReveal key={testimonial.id} delay={0.08 * i}>
                 <Card className="h-full border-gray-200 shadow-none dark:border-white/[0.08] dark:bg-gray-900">
                   <div className="flex h-full flex-col">
-                    {/* Rating stars */}
-                    <Rating className="mb-3">
-                      <RatingStar />
-                      <RatingStar />
-                      <RatingStar />
-                      <RatingStar />
-                      <RatingStar />
-                    </Rating>
-
                     {/* Quote */}
                     <blockquote className="mb-4 flex-1">
                       <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">

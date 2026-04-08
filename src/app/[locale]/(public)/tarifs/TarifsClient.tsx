@@ -49,7 +49,7 @@ const FAQ_ITEMS = [
   },
   {
     q: "Mon don libre est-il d\u00e9ductible des imp\u00f4ts ?",
-    a: "WeJustice est en cours d'obtention du statut d'int\u00e9r\u00eat g\u00e9n\u00e9ral. Nous vous tiendrons inform\u00e9 d\u00e8s que la d\u00e9ductibilit\u00e9 fiscale sera active.",
+    a: "Wejustice est en cours d'obtention du statut d'int\u00e9r\u00eat g\u00e9n\u00e9ral. Nous vous tiendrons inform\u00e9 d\u00e8s que la d\u00e9ductibilit\u00e9 fiscale sera active.",
   },
   {
     q: "Que se passe-t-il si je ne renouvelle pas ?",
@@ -501,7 +501,7 @@ export function TarifsClient() {
                 Vous êtes une organisation ?
               </h2>
               <p className="text-sm leading-relaxed text-gray-500 dark:text-gray-400">
-                Syndicats, entreprises, associations et ONG : WeJustice vous permet de lancer
+                Syndicats, entreprises, associations et ONG : Wejustice vous permet de lancer
                 des actions collectives en Justice pour défendre vos membres et votre cause.
               </p>
             </div>

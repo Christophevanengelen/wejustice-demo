@@ -11,7 +11,7 @@ const NAV_LINKS = [
   { href: "/actions", label: "Actions" },
   { href: "/tribune", label: "Tribune" },
   { href: "/blog", label: "Blog" },
-  { href: "/tarifs", label: "Tarifs" },
+  { href: "/tarifs", label: "Rejoindre" },
 ];
 
 export function Navigation() {

@@ -5,7 +5,7 @@ type Props = { params: Promise<{ locale: string }> };
 
 export const metadata: Metadata = {
   title: "Politique de confidentialité",
-  description: "Politique de confidentialité de WeJustice - traitement des données personnelles, droits RGPD.",
+  description: "Politique de confidentialité de Wejustice - traitement des données personnelles, droits RGPD.",
   robots: { index: false, follow: true },
 };
 
@@ -35,7 +35,7 @@ export default async function ConfidentialitePage({ params }: Props) {
         {/* Intro */}
         <section className="rounded-lg border-l-4 border-blue-500 bg-blue-50 p-4 dark:border-blue-400 dark:bg-blue-900/20">
           <p className="text-blue-800 dark:text-blue-300">
-            Chez WeJustice, la protection de vos donnees personnelles est une priorite.
+            Chez Wejustice, la protection de vos donnees personnelles est une priorite.
             Cette politique vous explique quelles donnees nous collectons, pourquoi,
             comment nous les protegeons, et quels sont vos droits.
           </p>
@@ -45,7 +45,7 @@ export default async function ConfidentialitePage({ params }: Props) {
         <section>
           <h2 className="mb-3 text-lg font-bold text-gray-900 dark:text-white">1. Responsable du traitement</h2>
           <div className="rounded-lg bg-gray-50 p-4 dark:bg-gray-900">
-            <p><strong className="text-gray-900 dark:text-white">WeJustice</strong></p>
+            <p><strong className="text-gray-900 dark:text-white">Wejustice</strong></p>
             <p>contact@wejustice.legal</p>
             <p>Delegue a la protection des donnees : dpo@wejustice.legal</p>
           </div>
@@ -216,7 +216,7 @@ export default async function ConfidentialitePage({ params }: Props) {
         <section>
           <h2 className="mb-3 text-lg font-bold text-gray-900 dark:text-white">7. Cookies</h2>
           <p>
-            WeJustice utilise uniquement des cookies essentiels au fonctionnement du service
+            Wejustice utilise uniquement des cookies essentiels au fonctionnement du service
             (authentification, preferences de langue, mode sombre). Nous n&apos;utilisons pas
             de cookies publicitaires ni de trackers tiers.
           </p>

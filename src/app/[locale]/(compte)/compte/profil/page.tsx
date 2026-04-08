@@ -87,7 +87,7 @@ export default function ProfilPage() {
         <Card>
           <h2 className="text-base font-bold text-gray-900 dark:text-white">Preferences</h2>
           <div className="space-y-4">
-            <ToggleSwitch checked={true} label="Recevoir la Gazette WeJustice" onChange={() => {}} disabled />
+            <ToggleSwitch checked={true} label="Recevoir la Gazette Wejustice" onChange={() => {}} disabled />
             <ToggleSwitch checked={true} label="Notifications par email" onChange={() => {}} disabled />
           </div>
         </Card>

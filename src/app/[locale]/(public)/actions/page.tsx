@@ -6,7 +6,7 @@ type Props = { params: Promise<{ locale: string }> };
 
 export const metadata: Metadata = {
   title: "Actions collectives en cours",
-  description: "Découvrez toutes les actions collectives en Justice sur WeJustice. Signez et rejoignez les combats citoyens.",
+  description: "Découvrez toutes les actions collectives en Justice sur Wejustice. Signez et rejoignez les combats citoyens.",
 };
 
 export default async function ActionsPage({ params }: Props) {

@@ -27,7 +27,7 @@ const PRESS_ARTICLES: PressItem[] = [
   {
     id: "p-1",
     publisher: "TF1",
-    title: "WeJustice revolutionne la justice collective en France",
+    title: "Wejustice revolutionne la justice collective en France",
     excerpt: "La plateforme permet aux citoyens de se regrouper pour des actions juridiques, rendant la justice accessible a tous.",
     url: "#",
     image: null,
@@ -36,8 +36,8 @@ const PRESS_ARTICLES: PressItem[] = [
   {
     id: "p-2",
     publisher: "BFM TV",
-    title: "WeJustice : quand le collectif change la donne face aux geants",
-    excerpt: "Des milliers de Francais se mobilisent via WeJustice pour faire valoir leurs droits.",
+    title: "Wejustice : quand le collectif change la donne face aux geants",
+    excerpt: "Des milliers de Francais se mobilisent via Wejustice pour faire valoir leurs droits.",
     url: "#",
     image: null,
     featured: false,
@@ -46,7 +46,7 @@ const PRESS_ARTICLES: PressItem[] = [
     id: "p-3",
     publisher: "France 24",
     title: "Justice collective : une revolution citoyenne pour tous",
-    excerpt: "WeJustice democratise l'acces a la justice en permettant des actions collectives a grande echelle.",
+    excerpt: "Wejustice democratise l'acces a la justice en permettant des actions collectives a grande echelle.",
     url: "#",
     image: null,
     featured: false,
@@ -63,7 +63,7 @@ const PRESS_ARTICLES: PressItem[] = [
   {
     id: "p-5",
     publisher: "Le Figaro",
-    title: "Actions collectives : le modele WeJustice seduit de plus en plus",
+    title: "Actions collectives : le modele Wejustice seduit de plus en plus",
     excerpt: "Avec plus de 300 000 signatures, la plateforme s'impose comme un acteur incontournable.",
     url: "#",
     image: "/press/le-figaro-article.jpg",
@@ -72,7 +72,7 @@ const PRESS_ARTICLES: PressItem[] = [
   {
     id: "p-6",
     publisher: "Les Echos",
-    title: "WeJustice leve le voile sur les pratiques abusives des entreprises",
+    title: "Wejustice leve le voile sur les pratiques abusives des entreprises",
     excerpt: "La startup juridique a deja permis de recuperer plusieurs millions d'euros pour ses membres.",
     url: "#",
     image: "/press/les-echos-article.jpg",
@@ -82,7 +82,7 @@ const PRESS_ARTICLES: PressItem[] = [
     id: "p-7",
     publisher: "Liberation",
     title: "Un modele innovant pour rendre la justice accessible a tous les citoyens",
-    excerpt: "WeJustice prouve que le collectif est plus fort que l'individu face aux injustices.",
+    excerpt: "Wejustice prouve que le collectif est plus fort que l'individu face aux injustices.",
     url: "#",
     image: "/press/liberation-article.jpg",
     featured: false,
@@ -104,7 +104,7 @@ export function PressSection() {
             On en parle dans la presse
           </h2>
           <p className="text-lg text-gray-500 dark:text-gray-400">
-            Les medias couvrent les actions collectives WeJustice
+            Les medias couvrent les actions collectives Wejustice
           </p>
         </div>
 
@@ -113,7 +113,7 @@ export function PressSection() {
           {/* Featured */}
           {featured && (
             <div className="flex flex-col justify-center">
-              {/* WeJustice picto - same size/position as prod: h-48 w-48, centered */}
+              {/* Wejustice picto - same size/position as prod: h-48 w-48, centered */}
               <div className="mb-6 flex justify-center">
                 <LogoFigma showText={false} size="lg" className="h-48 w-48" />
               </div>

@@ -47,14 +47,14 @@ const PILLARS = [
 ];
 
 const TIMELINE_EVENTS = [
-  { year: "2028", title: "Expansion mondiale", description: "WeJustice s'ouvre aux citoyens du monde entier. La justice collective sans frontières." },
+  { year: "2028", title: "Expansion mondiale", description: "Wejustice s'ouvre aux citoyens du monde entier. La justice collective sans frontières." },
   { year: "2027", title: "Expansion européenne", description: "Déploiement dans les 27 pays de l'Union européenne. Les actions collectives traversent les frontières pour peser face aux multinationales." },
-  { year: "2026", title: "Lancement de WeJustice", description: "La plateforme de justice collective accessible à tous. Le 5ème pouvoir est né.", active: true },
+  { year: "2026", title: "Lancement de Wejustice", description: "La plateforme de justice collective accessible à tous. Le 5ème pouvoir est né.", active: true },
   { year: "2025", title: "Rencontre avec Christophe van Engelen", description: "Arnaud rencontre Christophe, expert en communication digitale et expérience utilisateur. Ensemble, ils imaginent une plateforme qui combine l'expertise juridique et la puissance du design." },
   { year: "2022", title: "Acquisition de VpourVerdict.com et Cessezlefou.com", description: "Lexprecia élargit son écosystème d'actions citoyennes en acquérant deux plateformes complémentaires. L'ambition grandit : créer le 5ème pouvoir." },
   { year: "2020", title: "Ouverture de Palace.legal", description: "La plateforme Palace.legal ouvre ses portes : pétitions et actions collectives en ligne. Le cabinet découvre le potentiel du numérique pour démocratiser l'accès à la justice." },
   { year: "2017", title: "Premières actions collectives en Justice", description: "Lexprecia lance ses premières procédures juridiques collectives. Les citoyens se regroupent pour la première fois pour faire valoir leurs droits ensemble." },
-  { year: "2015", title: "Création de Lexprecia", description: "Me Arnaud Durand fonde le cabinet Lexprecia à Paris. Spécialisé en droit de la consommation et actions collectives, il pose les bases juridiques de ce qui deviendra WeJustice." },
+  { year: "2015", title: "Création de Lexprecia", description: "Me Arnaud Durand fonde le cabinet Lexprecia à Paris. Spécialisé en droit de la consommation et actions collectives, il pose les bases juridiques de ce qui deviendra Wejustice." },
 ];
 
 const TEAM = [
@@ -102,7 +102,7 @@ export default function EnSavoirPlusClient() {
           <ScrollReveal>
             <Badge color="gray" size="xs" className="mb-4 inline-flex">Notre histoire</Badge>
             <h1 className="mb-4 text-4xl font-extrabold tracking-tight text-gray-900 lg:text-5xl dark:text-white">
-              WeJustice, le 5ème pouvoir
+              Wejustice, le 5ème pouvoir
             </h1>
             <p className="mx-auto max-w-2xl text-lg text-gray-600 dark:text-gray-300">
               Nous rassemblons les citoyens pour des actions juridiques collectives.
@@ -144,7 +144,7 @@ export default function EnSavoirPlusClient() {
                 Le 5ème pouvoir prend forme
               </h2>
               <p className="mx-auto mt-3 max-w-xl text-gray-500 dark:text-gray-400">
-                Les étapes clés de l&apos;avènement de WeJustice
+                Les étapes clés de l&apos;avènement de Wejustice
               </p>
             </div>
           </ScrollReveal>
@@ -273,7 +273,7 @@ export default function EnSavoirPlusClient() {
                 </p>
               </Card>
               <Card className="border-2 border-brand">
-                <p className="mb-1 text-sm font-semibold text-brand">WeJustice</p>
+                <p className="mb-1 text-sm font-semibold text-brand">Wejustice</p>
                 <p className="text-sm text-gray-500 dark:text-gray-400">
                   Chaque signature alimente une procédure juridique réelle,
                   portée par un avocat spécialisé. Vos droits sont défendus devant les tribunaux.

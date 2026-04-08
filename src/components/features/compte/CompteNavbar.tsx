@@ -43,7 +43,7 @@ export function CompteNavbar({ onMenuClick }: CompteNavbarProps) {
               <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
             </svg>
           </button>
-          <Link href={`/${locale}`} className="flex items-center space-x-3" aria-label="Retour au site WeJustice">
+          <Link href={`/${locale}`} className="flex items-center space-x-3" aria-label="Retour au site Wejustice">
             <LogoFigma size="sm" />
           </Link>
         </div>

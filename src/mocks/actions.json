@@ -311,7 +311,7 @@
     "results": [
       { "value": "66", "unit": "modeles", "label": "Identifies non conformes par l'ANFR" },
       { "value": "60", "unit": "rappels/MAJ", "label": "Deja imposes aux fabricants" },
-      { "value": "2", "unit": "victoires", "label": "Canada + Commission UE (avant WeJustice)" }
+      { "value": "2", "unit": "victoires", "label": "Canada + Commission UE (avant Wejustice)" }
     ],
     "nextStep": {
       "title": "Audience devant le tribunal administratif de Paris",
@@ -324,7 +324,7 @@
       { "date": "2019-07-01", "label": "Plainte penale", "type": "legal", "description": "Plainte pour mise en danger de la vie d'autrui contre les fabricants" },
       { "date": "2025-05-29", "label": "Victoire Canada", "type": "legal", "description": "La Cour Supreme du Canada valide l'action collective contre Apple et Samsung" },
       { "date": "2025-08-19", "label": "Commission UE", "type": "legal", "description": "La Commission reconnait la fraude au DAS de l'iPhone 12" },
-      { "date": "2025-11-01", "label": "WeJustice rejoint", "type": "milestone", "description": "Lancement de l'action collective sur WeJustice" },
+      { "date": "2025-11-01", "label": "Wejustice rejoint", "type": "milestone", "description": "Lancement de l'action collective sur Wejustice" },
       { "date": "2026-03-15", "label": "Assemblee Nationale", "type": "legal", "description": "Sandrine Lalanne interpelle le gouvernement sur l'opacite de l'ANFR" }
     ],
     "createdAt": "2025-11-01T00:00:00Z",

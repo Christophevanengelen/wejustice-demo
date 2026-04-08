@@ -6,7 +6,7 @@ type Props = { params: Promise<{ locale: string }> };
 
 export const metadata: Metadata = {
   title: "Blog",
-  description: "Actualités, analyses juridiques et victoires citoyennes sur WeJustice.",
+  description: "Actualités, analyses juridiques et victoires citoyennes sur Wejustice.",
 };
 
 export default async function BlogPage({ params }: Props) {

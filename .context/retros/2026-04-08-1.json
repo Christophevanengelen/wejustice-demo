@@ -1,0 +1,24 @@
+{
+  "date": "2026-04-08",
+  "window": "7d",
+  "metrics": {
+    "commits": 9,
+    "prs_merged": 0,
+    "insertions": 32495,
+    "deletions": 587,
+    "net_loc": 31908,
+    "test_loc": 0,
+    "test_ratio": 0,
+    "active_days": 1,
+    "sessions": 2,
+    "deep_sessions": 1,
+    "avg_session_minutes": 42,
+    "loc_per_session_hour": 12750,
+    "feat_pct": 0.33,
+    "fix_pct": 0.33,
+    "peak_hour": 16
+  },
+  "version_range": ["0.0.0", "0.0.0"],
+  "streak_days": 1,
+  "tweetable": "Week of Apr 7: 9 commits, 32.5k LOC, 0% tests, 0 PRs, peak: 3pm PT | Streak: 1d"
+}

@@ -28,7 +28,7 @@ export function PartagerClient({ actionId }: { actionId: string }) {
           <ShareButtons
             url={shareUrl}
             title={title}
-            hashtag={action?.tag || "WeJustice"}
+            hashtag={action?.tag || "Wejustice"}
             variant="grid"
           />
         </div>
