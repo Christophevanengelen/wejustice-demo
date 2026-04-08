@@ -8,6 +8,7 @@ import { wejusticeTheme } from "@/lib/flowbite-theme";
 import { MockAuthProvider } from "@/lib/mock-auth";
 import { absoluteUrl, baseOpenGraph, baseTwitter } from "@/lib/metadata";
 import { organizationJsonLd, websiteJsonLd, safeJsonLd } from "@/lib/jsonld";
+import { ErrorBoundary } from "@/components/ui/ErrorBoundary";
 
 type Props = {
   children: React.ReactNode;
@@ -67,7 +68,9 @@ export default async function LocaleLayout({ children, params }: Props) {
             type="application/ld+json"
             dangerouslySetInnerHTML={{ __html: safeJsonLd(websiteJsonLd()) }}
           />
-          {children}
+          <ErrorBoundary>
+            {children}
+          </ErrorBoundary>
         </MockAuthProvider>
       </ThemeProvider>
     </NextIntlClientProvider>

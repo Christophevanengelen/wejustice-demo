@@ -77,12 +77,16 @@ export function SignatureForm({
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [submitting, setSubmitting] = useState(false);
+  const [isSubmitCooling, setIsSubmitCooling] = useState(false);
   const liveSigners = useLiveSigningCount();
 
   const handleGuestSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    if (isSubmitCooling) return;
     if (!firstName.trim() || !lastName.trim() || !email.trim()) return;
     setSubmitting(true);
+    setIsSubmitCooling(true);
+    setTimeout(() => setIsSubmitCooling(false), 5000);
     // PII removed — was logging firstName, lastName, email
     setTimeout(() => {
       onSign();
@@ -91,7 +95,10 @@ export function SignatureForm({
   };
 
   const handleOneClick = () => {
+    if (isSubmitCooling) return;
     setSubmitting(true);
+    setIsSubmitCooling(true);
+    setTimeout(() => setIsSubmitCooling(false), 5000);
     // Demo mode — no backend call
     setTimeout(() => {
       onSign();
@@ -163,7 +170,7 @@ export function SignatureForm({
         {/* 1-click CTA */}
         <CTAButton
           onClick={handleOneClick}
-          disabled={submitting}
+          disabled={submitting || isSubmitCooling}
           size="lg"
           fullWidth
           className="mt-4"
@@ -238,7 +245,7 @@ export function SignatureForm({
           required
           className="w-full rounded-lg border border-gray-300 bg-gray-50 px-4 py-3 text-sm text-gray-900 outline-none transition-colors focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400"
         />
-        <CTAButton type="submit" disabled={submitting} size="lg" fullWidth>
+        <CTAButton type="submit" disabled={submitting || isSubmitCooling} size="lg" fullWidth>
           {submitting ? (
             <span className="inline-flex items-center gap-2">
               <svg className="h-4 w-4 animate-spin" fill="none" viewBox="0 0 24 24">

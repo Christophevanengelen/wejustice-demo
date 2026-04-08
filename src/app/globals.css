@@ -12,47 +12,13 @@
 @config "../../tailwind.config.ts";
 @custom-variant dark (&:where(.dark, .dark *));
 
-/* ─── Campton Font Face ─── */
-@font-face {
-  font-family: "Campton";
-  src: url("/fonts/campton/Campton-Book.woff2") format("woff2");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Campton";
-  src: url("/fonts/campton/Campton-Medium.woff2") format("woff2");
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Campton";
-  src: url("/fonts/campton/Campton-SemiBold.woff2") format("woff2");
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Campton";
-  src: url("/fonts/campton/Campton-Bold.woff2") format("woff2");
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Campton";
-  src: url("/fonts/campton/Campton-ExtraBold.woff2") format("woff2");
-  font-weight: 800;
-  font-style: normal;
-  font-display: swap;
-}
+/* ─── Campton Font ───
+ * Loaded via next/font/local in layout.tsx.
+ * The --font-campton CSS variable is injected on <html> automatically.
+ * No @font-face needed here — Next.js handles preloading and self-hosting.
+ */
 
 /* ─── Base styles ─── */
-:root {
-  --font-campton: "Campton", system-ui, -apple-system, sans-serif;
-}
 
 html {
   scroll-behavior: smooth;
