@@ -23,6 +23,7 @@ interface DonLibreStepProps {
 export function DonLibreStep({ plan, price, seats, isReduced, durationLabel, onBack }: DonLibreStepProps) {
   const [donAmount, setDonAmount] = useState<number | null>(null);
   const [selectedTag, setSelectedTag] = useState<number | null>(null);
+  const [confirmed, setConfirmed] = useState(false);
 
   const tags = isReduced ? DON_TAGS_REDUCED : DON_TAGS_STANDARD;
 
@@ -51,13 +52,7 @@ export function DonLibreStep({ plan, price, seats, isReduced, durationLabel, onB
   const totalMonthly = price.totalMonthly + (donAmount || 0);
 
   const handleConfirm = () => {
-    alert(
-      `Demo : souscription au forfait ${plan.name}\n` +
-      `${seats} personne${seats > 1 ? "s" : ""} - ${durationLabel}\n` +
-      `Forfait : ${formatPrice(price.totalMonthly)}/mois\n` +
-      (donAmount ? `Don libre : +${formatPrice(donAmount)}/mois\n` : "") +
-      (price.totalUpfront ? `Montant à régler : ${formatPrice(price.totalUpfront + (donAmount || 0) * price.durationMonths)}` : `Total mensuel : ${formatPrice(totalMonthly)}`)
-    );
+    setConfirmed(true);
   };
 
   return (
@@ -159,9 +154,35 @@ export function DonLibreStep({ plan, price, seats, isReduced, durationLabel, onB
       </div>
 
       {/* Final CTA */}
-      <CTAButton onClick={handleConfirm} size="lg" fullWidth>
-        Confirmer
-      </CTAButton>
+      {confirmed ? (
+        <div className="rounded-lg bg-green-50 p-5 text-center dark:bg-green-900/20">
+          <svg className="mx-auto mb-2 h-10 w-10 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20">
+            <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+          </svg>
+          <p className="text-sm font-bold text-green-700 dark:text-green-300">
+            Souscription enregistrée (démo)
+          </p>
+          <p className="mt-1 text-xs text-green-600 dark:text-green-400">
+            Forfait {plan.name} — {seats} pers. — {durationLabel}
+          </p>
+          <p className="mt-0.5 text-xs text-green-600 dark:text-green-400">
+            {formatPrice(totalMonthly)}/mois
+            {price.totalUpfront !== null && (
+              <> — {formatPrice(price.totalUpfront + (donAmount || 0) * price.durationMonths)} à régler</>
+            )}
+          </p>
+          <button
+            onClick={() => setConfirmed(false)}
+            className="mt-3 text-xs font-medium text-green-700 underline hover:text-green-900 dark:text-green-300 dark:hover:text-green-100"
+          >
+            Modifier
+          </button>
+        </div>
+      ) : (
+        <CTAButton onClick={handleConfirm} size="lg" fullWidth>
+          Confirmer
+        </CTAButton>
+      )}
     </div>
   );
 }

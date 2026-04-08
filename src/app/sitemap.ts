@@ -28,6 +28,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/tribune", priority: 0.6, changeFrequency: "monthly" as const },
     { path: "/cgu", priority: 0.2, changeFrequency: "yearly" as const },
     { path: "/confidentialite", priority: 0.2, changeFrequency: "yearly" as const },
+    { path: "/qui-sommes-nous", priority: 0.6, changeFrequency: "monthly" as const },
   ];
 
   for (const page of staticPages) {

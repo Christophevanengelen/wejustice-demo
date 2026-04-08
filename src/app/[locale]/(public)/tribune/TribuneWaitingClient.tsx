@@ -10,7 +10,6 @@ export function TribuneWaitingClient() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!email.trim()) return;
-    console.log("[demo] Tribune notification signup:", email);
     setSubmitted(true);
   };
 
