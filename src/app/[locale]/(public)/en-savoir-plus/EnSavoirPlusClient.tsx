@@ -18,12 +18,12 @@
  */
 
 import { useParams } from "next/navigation";
-import Link from "next/link";
 import Image from "next/image";
 import {
   Badge,
   Card,
 } from "flowbite-react";
+import { CTAButton } from "@/components/ui/CTAButton";
 import { ScrollReveal } from "@/components/animations/ScrollReveal";
 
 /* ═══ DATA ═══ */
@@ -98,7 +98,7 @@ export default function EnSavoirPlusClient() {
     <div>
       {/* 1. HERO */}
       <section className="bg-white py-16 lg:py-24 dark:bg-gray-900">
-        <div className="mx-auto max-w-screen-xl px-4 text-center">
+        <div className="mx-auto max-w-screen-xl px-4 text-center lg:px-6">
           <ScrollReveal>
             <Badge color="gray" size="xs" className="mb-4 inline-flex">Notre histoire</Badge>
             <h1 className="mb-4 text-4xl font-extrabold tracking-tight text-gray-900 lg:text-5xl dark:text-white">
@@ -113,8 +113,8 @@ export default function EnSavoirPlusClient() {
       </section>
 
       {/* 2. MISSION — 3 piliers */}
-      <section className="bg-gray-50 py-16 lg:py-24 dark:bg-gray-800">
-        <div className="mx-auto max-w-screen-xl px-4">
+      <section className="bg-gray-50 py-16 lg:py-24 dark:bg-gray-900">
+        <div className="mx-auto max-w-screen-xl px-4 lg:px-6">
           <ScrollReveal>
             <h2 className="mb-4 text-center text-3xl font-bold text-gray-900 dark:text-white">Notre mission</h2>
             <p className="mx-auto mb-12 max-w-2xl text-center text-gray-500 dark:text-gray-400">
@@ -141,7 +141,7 @@ export default function EnSavoirPlusClient() {
 
       {/* 3. TIMELINE — Histoire de WeJustice (style wejustice.legal : alternance gauche/droite) */}
       <section className="bg-white py-16 lg:py-24 dark:bg-gray-900">
-        <div className="mx-auto max-w-4xl px-4">
+        <div className="mx-auto max-w-4xl px-4 lg:px-6">
           <ScrollReveal>
             <div className="mb-12 text-center">
               <p className="text-sm font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">Notre histoire</p>
@@ -167,16 +167,14 @@ export default function EnSavoirPlusClient() {
                     {/* Point sur la ligne */}
                     <div className="absolute left-6 z-10 -translate-x-1/2 md:left-1/2">
                       <div
-                        className="h-3 w-3 rounded-full border-2 border-white dark:border-gray-900"
-                        style={{ backgroundColor: 'var(--color-brand)' }}
+                        className="h-3 w-3 rounded-full border-2 border-white bg-brand dark:border-gray-900"
                       />
                     </div>
 
                     {/* Contenu — mobile toujours à droite, desktop alternance */}
                     <div className={`ml-12 md:ml-0 md:w-1/2 ${isLeft ? "md:pr-12 md:text-right" : "md:ml-auto md:pl-12 md:text-left"}`}>
                       <span
-                        className="inline-block rounded-full px-3 py-1 text-xs font-bold text-white"
-                        style={{ backgroundColor: 'var(--color-brand)' }}
+                        className="inline-block rounded-full bg-brand px-3 py-1 text-xs font-bold text-white"
                       >
                         {event.year}
                       </span>
@@ -196,8 +194,8 @@ export default function EnSavoirPlusClient() {
       </section>
 
       {/* 4. L'ÉQUIPE — design humain, cards homothétiques */}
-      <section className="bg-gray-50 py-16 lg:py-24 dark:bg-gray-800">
-        <div className="mx-auto max-w-screen-xl px-4">
+      <section className="bg-gray-50 py-16 lg:py-24 dark:bg-gray-900">
+        <div className="mx-auto max-w-screen-xl px-4 lg:px-6">
           <ScrollReveal>
             <div className="mb-12 text-center">
               <p className="text-sm font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">L&apos;équipe</p>
@@ -214,7 +212,7 @@ export default function EnSavoirPlusClient() {
           <div className="mx-auto grid auto-rows-[1fr] max-w-4xl gap-8 lg:grid-cols-2">
             {TEAM.map((member, i) => (
               <ScrollReveal key={member.name} delay={0.1 * (i + 1)} className="flex">
-                <div className="flex w-full flex-col rounded-lg border border-gray-200 bg-white p-8 dark:border-gray-700 dark:bg-gray-900">
+                <div className="flex w-full flex-col rounded-lg border border-gray-200 bg-white p-8 dark:border-white/[0.08] dark:bg-gray-900">
                   {/* Photo + nom — centré, humain */}
                   <div className="mb-6 text-center">
                     <Image
@@ -248,7 +246,7 @@ export default function EnSavoirPlusClient() {
                   </p>
 
                   {/* Citation — en bas, toujours au même niveau */}
-                  <div className="mt-6 border-t border-gray-100 pt-4 dark:border-gray-700">
+                  <div className="mt-6 border-t border-gray-100 pt-4 dark:border-white/[0.08]">
                     <p className="text-center text-sm italic text-gray-500 dark:text-gray-400">
                       &laquo; {member.quote} &raquo;
                     </p>
@@ -262,7 +260,7 @@ export default function EnSavoirPlusClient() {
 
       {/* 5. CE QUI NOUS DIFFÉRENCIE */}
       <section className="bg-white py-16 lg:py-24 dark:bg-gray-900">
-        <div className="mx-auto max-w-3xl px-4 text-center">
+        <div className="mx-auto max-w-3xl px-4 text-center lg:px-6">
           <ScrollReveal>
             <h2 className="mb-4 text-3xl font-bold text-gray-900 dark:text-white">Ce qui nous différencie</h2>
             <p className="mb-8 text-gray-500 dark:text-gray-400">
@@ -279,8 +277,8 @@ export default function EnSavoirPlusClient() {
                   L&apos;impact repose sur la pression médiatique seule.
                 </p>
               </Card>
-              <Card className="border-2 border-primary-600 dark:border-primary-400">
-                <p className="mb-1 text-sm font-semibold text-primary-600 dark:text-primary-400">WeJustice</p>
+              <Card className="border-2 border-brand">
+                <p className="mb-1 text-sm font-semibold text-brand">WeJustice</p>
                 <p className="text-sm text-gray-500 dark:text-gray-400">
                   Chaque signature alimente une procédure juridique réelle,
                   portée par un avocat spécialisé. Vos droits sont défendus devant les tribunaux.
@@ -292,11 +290,11 @@ export default function EnSavoirPlusClient() {
       </section>
 
       {/* 6. COMMENT ÇA MARCHE — 5 étapes */}
-      <section className="bg-gray-50 py-16 lg:py-24 dark:bg-gray-800">
-        <div className="mx-auto max-w-5xl px-4">
+      <section className="bg-gray-50 py-16 lg:py-24 dark:bg-gray-900">
+        <div className="mx-auto max-w-5xl px-4 lg:px-6">
           <ScrollReveal>
             <div className="mb-12 text-center">
-              <p className="text-sm font-semibold uppercase tracking-wider" style={{ color: 'var(--color-brand)' }}>Le processus</p>
+              <p className="text-sm font-semibold uppercase tracking-wider text-brand">Le processus</p>
               <h2 className="mt-2 text-3xl font-extrabold text-gray-900 dark:text-white">Comment ça marche ?</h2>
               <p className="mx-auto mt-3 max-w-2xl text-gray-500 dark:text-gray-400">
                 Des signatures au verdict, chaque étape est transparente et collective.
@@ -307,13 +305,13 @@ export default function EnSavoirPlusClient() {
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
             {PROCESS_STEPS.map((step, i) => (
               <ScrollReveal key={step.num} delay={0.1 * i}>
-                <Card className="h-full text-center">
-                  <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full text-lg font-extrabold text-white" style={{ backgroundColor: 'var(--color-brand)' }}>
+                <div className="flex h-full flex-col items-center gap-3 rounded-lg border border-gray-200 bg-white p-6 text-center dark:border-white/[0.08] dark:bg-gray-900">
+                  <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-brand text-lg font-extrabold text-white">
                     {step.num}
                   </div>
                   <h3 className="text-base font-bold text-gray-900 dark:text-white">{step.title}</h3>
                   <p className="text-xs text-gray-500 dark:text-gray-400">{step.desc}</p>
-                </Card>
+                </div>
               </ScrollReveal>
             ))}
           </div>
@@ -322,7 +320,7 @@ export default function EnSavoirPlusClient() {
 
       {/* 7. TRUST SIGNALS */}
       <section className="bg-white py-12 dark:bg-gray-900">
-        <div className="mx-auto max-w-screen-xl px-4">
+        <div className="mx-auto max-w-screen-xl px-4 lg:px-6">
           <div className="flex flex-wrap items-center justify-center gap-8">
             {[
               { label: "Données hébergées en France", icon: "M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" },
@@ -350,12 +348,9 @@ export default function EnSavoirPlusClient() {
             <p className="mx-auto mb-8 max-w-2xl text-lg">
               Rejoignez des milliers de citoyens qui font valoir leurs droits collectivement.
             </p>
-            <Link
-              href={`/${locale}/actions`}
-              className="inline-flex items-center rounded-lg bg-white px-8 py-4 text-base font-bold text-gray-900 shadow-lg transition-all hover:bg-gray-100 hover:shadow-xl"
-            >
+            <CTAButton href={`/${locale}/actions`} variant="light" size="xl">
               Découvrir les actions
-            </Link>
+            </CTAButton>
           </ScrollReveal>
         </div>
       </section>

@@ -21,32 +21,32 @@ export default function PaiementsPage() {
       title="Paiements"
       subtitle="Historique de vos paiements et contributions."
     >
-      <div className="overflow-x-auto">
-        <Table striped>
+      <div className="overflow-x-auto rounded-lg border border-gray-200 dark:border-white/[0.08]">
+        <Table>
           <TableHead>
-            <TableHeadCell>Date</TableHeadCell>
-            <TableHeadCell>Description</TableHeadCell>
-            <TableHeadCell className="text-right">Montant</TableHeadCell>
-            <TableHeadCell className="text-right">Statut</TableHeadCell>
+            <TableHeadCell className="bg-gray-50 dark:bg-gray-800">Date</TableHeadCell>
+            <TableHeadCell className="bg-gray-50 dark:bg-gray-800">Description</TableHeadCell>
+            <TableHeadCell className="bg-gray-50 text-right dark:bg-gray-800">Montant</TableHeadCell>
+            <TableHeadCell className="bg-gray-50 text-right dark:bg-gray-800">Statut</TableHeadCell>
           </TableHead>
-          <TableBody className="divide-y">
-            {userActivity.payments.map((p) => (
-              <TableRow key={p.id}>
-                <TableCell className="whitespace-nowrap">
+          <TableBody className="divide-y divide-gray-200 dark:divide-gray-700">
+            {userActivity.payments.map((p, i) => (
+              <TableRow key={p.id} className={`${i % 2 === 0 ? "bg-white dark:bg-gray-900" : "bg-gray-50 dark:bg-gray-800/50"}`}>
+                <TableCell className="whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">
                   {new Date(p.date).toLocaleDateString("fr-FR", {
                     day: "numeric",
                     month: "short",
                     year: "numeric",
                   })}
                 </TableCell>
-                <TableCell className="font-medium text-gray-900 dark:text-white">
+                <TableCell className="text-sm font-medium text-gray-900 dark:text-white">
                   {p.description}
                 </TableCell>
-                <TableCell className="text-right font-medium">
+                <TableCell className="text-right text-sm font-medium text-gray-900 dark:text-white">
                   {p.amount.toFixed(2).replace(".", ",")} EUR
                 </TableCell>
                 <TableCell className="text-right">
-                  <Badge color="success" size="xs">Paye</Badge>
+                  <Badge color="success" size="xs">Payé</Badge>
                 </TableCell>
               </TableRow>
             ))}

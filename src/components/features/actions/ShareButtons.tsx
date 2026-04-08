@@ -148,7 +148,7 @@ export function ShareButtons({
         <button
           key={platform.id}
           onClick={() => handleShare(platform)}
-          className="flex items-center gap-3 rounded-lg border border-gray-200 bg-white px-5 py-4 text-left text-sm font-medium text-gray-900 transition-colors hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:text-white dark:hover:bg-gray-700"
+          className="flex items-center gap-3 rounded-lg border border-gray-200 bg-white px-5 py-4 text-left text-sm font-medium text-gray-900 transition-colors hover:bg-gray-50 dark:border-white/[0.08] dark:bg-gray-900 dark:text-white dark:hover:border-white/[0.14] dark:hover:bg-gray-800"
         >
           <svg
             className="h-5 w-5 text-gray-400"

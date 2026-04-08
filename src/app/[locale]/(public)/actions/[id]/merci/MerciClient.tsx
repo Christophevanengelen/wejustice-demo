@@ -230,7 +230,7 @@ export function MerciClient({ actionId }: { actionId: string }) {
           initial={prefersReduced ? false : { opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: DURATION.slow, delay: 0.8, ease: EASING.smooth }}
-          className="mb-8 rounded-lg border border-gray-100 bg-gray-50 p-6 text-center dark:border-gray-700 dark:bg-gray-800/50"
+          className="mb-8 rounded-lg border border-gray-100 bg-gray-50 p-6 text-center dark:border-white/[0.08] dark:bg-gray-900"
         >
           <p className="mb-1 text-sm text-gray-500 dark:text-gray-400">Vous êtes le</p>
           <p className="text-4xl font-bold text-gray-900 dark:text-white lg:text-5xl">
@@ -244,7 +244,7 @@ export function MerciClient({ actionId }: { actionId: string }) {
           initial={prefersReduced ? false : { opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: DURATION.slow, delay: 1.0, ease: EASING.smooth }}
-          className="mb-8 rounded-lg border border-gray-100 bg-white p-6 dark:border-gray-700 dark:bg-gray-800"
+          className="mb-8 rounded-lg border border-gray-100 bg-white p-6 dark:border-white/[0.08] dark:bg-gray-900"
         >
           <p className="mb-4 text-center text-sm text-gray-600 dark:text-gray-400">
             Gr&acirc;ce à vous, nous sommes à{" "}
@@ -263,7 +263,7 @@ export function MerciClient({ actionId }: { actionId: string }) {
           initial={prefersReduced ? false : { opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: DURATION.slow, delay: 1.2, ease: EASING.smooth }}
-          className="mb-8 rounded-lg border-2 border-gray-200 bg-white p-6 dark:border-gray-600 dark:bg-gray-800"
+          className="mb-8 rounded-lg border-2 border-gray-200 bg-white p-6 dark:border-white/[0.08] dark:bg-gray-900"
         >
           <div className="mb-4 text-center">
             <h2 className="text-xl font-bold text-gray-900 dark:text-white">
@@ -350,7 +350,7 @@ export function MerciClient({ actionId }: { actionId: string }) {
           initial={prefersReduced ? false : { opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: DURATION.slow, delay: 1.4, ease: EASING.smooth }}
-          className="mb-8 rounded-lg border border-dashed border-gray-300 bg-gray-50 p-5 text-center dark:border-gray-600 dark:bg-gray-800/50"
+          className="mb-8 rounded-lg border border-dashed border-gray-300 bg-gray-50 p-5 text-center dark:border-white/[0.08] dark:bg-gray-900"
         >
           <p className="mb-2 text-sm font-medium text-gray-700 dark:text-gray-300">
             Votre lien personnel
@@ -376,7 +376,7 @@ export function MerciClient({ actionId }: { actionId: string }) {
           initial={prefersReduced ? false : { opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: DURATION.slow, delay: 1.6, ease: EASING.smooth }}
-          className="border-t border-gray-200 pt-8 text-center dark:border-gray-700"
+          className="border-t border-gray-200 pt-8 text-center dark:border-white/[0.08]"
         >
           <h2 className="mb-2 text-xl font-semibold text-gray-900 dark:text-white">
             Allez plus loin : devenez partie prenante

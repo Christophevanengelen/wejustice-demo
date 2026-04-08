@@ -17,7 +17,7 @@ export const wejusticeTheme = createTheme({
     color: {
       // "failure" = our primary CTA (brand red)
       failure:
-        "border border-transparent bg-primary-700 text-white focus:ring-4 focus:ring-primary-300 enabled:hover:bg-primary-800 dark:bg-primary-600 dark:focus:ring-primary-800 dark:enabled:hover:bg-primary-700",
+        "border border-transparent bg-brand text-white focus:ring-4 focus:ring-primary-300 enabled:hover:opacity-90 dark:focus:ring-primary-800",
       // "light" = secondary CTA (neutral)
       light:
         "border border-gray-300 bg-white text-gray-900 focus:ring-4 focus:ring-primary-300 enabled:hover:bg-gray-100 dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:focus:ring-gray-700 dark:enabled:hover:border-gray-600 dark:enabled:hover:bg-gray-700",
@@ -28,12 +28,12 @@ export const wejusticeTheme = createTheme({
   progress: {
     color: {
       // Default progress = brand red (not blue)
-      dark: "bg-primary-700 dark:bg-primary-500",
-      red: "bg-primary-700 dark:bg-primary-500",
+      dark: "bg-brand",
+      red: "bg-brand",
       // Keep other semantic colors
       green: "bg-green-600 dark:bg-green-500",
       yellow: "bg-yellow-400 dark:bg-yellow-300",
-      blue: "bg-primary-700 dark:bg-primary-500",
+      blue: "bg-brand",
     },
   },
 
@@ -42,9 +42,17 @@ export const wejusticeTheme = createTheme({
     root: {
       color: {
         failure:
-          "bg-primary-100 text-primary-800 group-hover:bg-primary-200 dark:bg-primary-900 dark:text-primary-300",
-        info: "bg-primary-100 text-primary-800 group-hover:bg-primary-200 dark:bg-primary-900 dark:text-primary-300",
+          "bg-[var(--color-brand-softer)] text-brand group-hover:bg-[var(--color-brand-soft)]",
+        info: "bg-[var(--color-brand-softer)] text-brand group-hover:bg-[var(--color-brand-soft)]",
       },
+    },
+  },
+
+  /* ─── Card ─── */
+  card: {
+    root: {
+      base: "flex rounded-lg border border-gray-200 bg-white dark:border-white/[0.08] dark:bg-gray-900",
+      children: "flex h-full flex-col justify-center gap-4 p-6",
     },
   },
 
@@ -52,8 +60,8 @@ export const wejusticeTheme = createTheme({
   navbar: {
     link: {
       active: {
-        on: "text-primary-700 dark:text-primary-500",
-        off: "text-gray-900 hover:text-primary-700 dark:text-white dark:hover:text-primary-500",
+        on: "text-brand",
+        off: "text-gray-900 hover:text-brand dark:text-white dark:hover:text-brand",
       },
     },
   },
@@ -61,7 +69,7 @@ export const wejusticeTheme = createTheme({
   /* ─── DarkThemeToggle ─── */
   darkThemeToggle: {
     root: {
-      base: "rounded-lg p-2.5 text-sm text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-700",
+      base: "inline-flex h-10 w-10 items-center justify-center rounded-lg text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-700",
     },
   },
 

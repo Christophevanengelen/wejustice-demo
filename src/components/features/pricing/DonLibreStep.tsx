@@ -61,7 +61,7 @@ export function DonLibreStep({ plan, price, seats, isReduced, durationLabel, onB
   };
 
   return (
-    <div className="mx-auto max-w-lg rounded-lg border border-gray-200 bg-white p-6 shadow-lg dark:border-gray-700 dark:bg-gray-800">
+    <div className="mx-auto max-w-lg rounded-lg border border-gray-200 bg-white p-6 shadow-lg dark:border-white/[0.08] dark:bg-gray-900 dark:hover:shadow-none">
       {/* Back */}
       <button onClick={onBack} className="mb-4 flex items-center gap-1 text-sm text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200">
         <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>

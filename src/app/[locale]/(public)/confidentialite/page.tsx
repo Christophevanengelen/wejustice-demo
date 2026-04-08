@@ -16,7 +16,7 @@ export default async function ConfidentialitePage({ params }: Props) {
   return (
     <article className="mx-auto max-w-3xl px-4 py-12 lg:py-20">
       {/* Back link */}
-      <a href={`/${locale}`} className="mb-8 inline-flex items-center gap-1 text-sm text-gray-500 hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-400">
+      <a href={`/${locale}`} className="mb-8 inline-flex items-center gap-1 text-sm text-gray-500 hover:text-brand dark:text-gray-400">
         <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
         </svg>
@@ -44,7 +44,7 @@ export default async function ConfidentialitePage({ params }: Props) {
         {/* 1 */}
         <section>
           <h2 className="mb-3 text-lg font-bold text-gray-900 dark:text-white">1. Responsable du traitement</h2>
-          <div className="rounded-lg bg-gray-50 p-4 dark:bg-gray-800">
+          <div className="rounded-lg bg-gray-50 p-4 dark:bg-gray-900">
             <p><strong className="text-gray-900 dark:text-white">WeJustice</strong></p>
             <p>contact@wejustice.legal</p>
             <p>Delegue a la protection des donnees : dpo@wejustice.legal</p>
@@ -56,7 +56,7 @@ export default async function ConfidentialitePage({ params }: Props) {
           <h2 className="mb-3 text-lg font-bold text-gray-900 dark:text-white">2. Donnees collectees</h2>
           <p className="mb-4">Nous collectons uniquement les donnees necessaires au fonctionnement du service :</p>
 
-          <div className="overflow-hidden rounded-lg border border-gray-200 dark:border-gray-700">
+          <div className="overflow-hidden rounded-lg border border-gray-200 dark:border-white/[0.08]">
             <table className="w-full text-left text-sm">
               <thead className="bg-gray-50 dark:bg-gray-800">
                 <tr>
@@ -105,7 +105,7 @@ export default async function ConfidentialitePage({ params }: Props) {
         {/* 3 */}
         <section>
           <h2 className="mb-3 text-lg font-bold text-gray-900 dark:text-white">3. Duree de conservation</h2>
-          <div className="overflow-hidden rounded-lg border border-gray-200 dark:border-gray-700">
+          <div className="overflow-hidden rounded-lg border border-gray-200 dark:border-white/[0.08]">
             <table className="w-full text-left text-sm">
               <thead className="bg-gray-50 dark:bg-gray-800">
                 <tr>
@@ -169,7 +169,7 @@ export default async function ConfidentialitePage({ params }: Props) {
               { title: "Paiements securises", desc: "Vos donnees bancaires ne transitent jamais par nos serveurs" },
               { title: "Hebergement UE", desc: "Serveurs localises en France / Union Europeenne" },
             ].map((item) => (
-              <div key={item.title} className="rounded-lg bg-gray-50 p-4 dark:bg-gray-800">
+              <div key={item.title} className="rounded-lg bg-gray-50 p-4 dark:bg-gray-900">
                 <p className="text-sm font-medium text-gray-900 dark:text-white">{item.title}</p>
                 <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">{item.desc}</p>
               </div>
@@ -193,7 +193,7 @@ export default async function ConfidentialitePage({ params }: Props) {
               { right: "Droit d'opposition", desc: "Vous opposer au traitement de vos donnees" },
               { right: "Droit de retrait", desc: "Retirer votre consentement a tout moment" },
             ].map((item) => (
-              <div key={item.right} className="flex items-start gap-3 rounded-lg border border-gray-200 p-4 dark:border-gray-700">
+              <div key={item.right} className="flex items-start gap-3 rounded-lg border border-gray-200 p-4 dark:border-white/[0.08]">
                 <svg className="mt-0.5 h-5 w-5 flex-shrink-0 text-green-500" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                 </svg>
@@ -208,7 +208,7 @@ export default async function ConfidentialitePage({ params }: Props) {
             Pour exercer vos droits, contactez notre DPO : <strong className="text-gray-900 dark:text-white">dpo@wejustice.legal</strong>
           </p>
           <p className="mt-2">
-            Vous pouvez egalement introduire une reclamation aupres de la CNIL : <a href="https://www.cnil.fr" className="font-medium text-primary-600 underline dark:text-primary-400" target="_blank" rel="noopener noreferrer">www.cnil.fr</a>
+            Vous pouvez egalement introduire une reclamation aupres de la CNIL : <a href="https://www.cnil.fr" className="font-medium text-brand underline" target="_blank" rel="noopener noreferrer">www.cnil.fr</a>
           </p>
         </section>
 
@@ -220,7 +220,7 @@ export default async function ConfidentialitePage({ params }: Props) {
             (authentification, preferences de langue, mode sombre). Nous n&apos;utilisons pas
             de cookies publicitaires ni de trackers tiers.
           </p>
-          <div className="mt-3 overflow-hidden rounded-lg border border-gray-200 dark:border-gray-700">
+          <div className="mt-3 overflow-hidden rounded-lg border border-gray-200 dark:border-white/[0.08]">
             <table className="w-full text-left text-sm">
               <thead className="bg-gray-50 dark:bg-gray-800">
                 <tr>
@@ -251,7 +251,7 @@ export default async function ConfidentialitePage({ params }: Props) {
         </section>
 
         {/* Contact */}
-        <section className="rounded-lg bg-gray-50 p-6 dark:bg-gray-800">
+        <section className="rounded-lg bg-gray-50 p-6 dark:bg-gray-900">
           <h2 className="mb-3 text-lg font-bold text-gray-900 dark:text-white">Contact</h2>
           <p>
             Pour toute question relative a la protection de vos donnees :

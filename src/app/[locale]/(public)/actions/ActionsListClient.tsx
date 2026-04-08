@@ -62,7 +62,7 @@ export function ActionsListClient() {
           }}
         />
 
-        <div className="relative z-10 mx-auto flex max-w-screen-xl flex-1 flex-col items-center justify-center px-4 py-10 text-center sm:py-20">
+        <div className="relative z-10 mx-auto flex max-w-screen-xl flex-1 flex-col items-center justify-center px-4 py-10 text-center sm:py-20 lg:px-6">
           <h1 className="mb-4 text-4xl font-bold leading-tight tracking-tight text-white lg:text-5xl">
             Actions collectives
           </h1>
@@ -142,7 +142,7 @@ export function ActionsListClient() {
               </Button>
             </div>
           ) : (
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="grid auto-rows-[1fr] gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {filtered.map((action) => (
                 <ActionCard
                   key={action.id}
@@ -163,7 +163,7 @@ export function ActionsListClient() {
           )}
 
           {/* CTA — Aller plus loin */}
-          <div className="mt-12 rounded-lg border border-gray-200 bg-gray-50 p-8 text-center dark:border-gray-700 dark:bg-gray-800">
+          <div className="mt-12 rounded-lg border border-gray-200 bg-gray-50 p-8 text-center dark:border-white/[0.08] dark:bg-gray-900">
             <h3 className="mb-2 text-lg font-bold text-gray-900 dark:text-white">
               Vous voulez aller plus loin ?
             </h3>

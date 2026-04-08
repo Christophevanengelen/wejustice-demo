@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Avatar, DarkThemeToggle, Dropdown, DropdownHeader, DropdownItem, DropdownDivider } from "flowbite-react";
+import { DarkThemeToggle, Dropdown, DropdownHeader, DropdownItem, DropdownDivider } from "flowbite-react";
 import { useParams, usePathname } from "next/navigation";
 import { useAuthSafe } from "@/lib/mock-auth";
 import { LogoFigma } from "@/components/ui/LogoFigma";
@@ -27,34 +27,72 @@ export function Navigation() {
   };
 
   return (
-    <nav className="fixed top-0 z-50 w-full border-b border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-900">
-      <div className="mx-auto flex max-w-screen-xl flex-wrap items-center p-4">
+    <nav className="fixed top-0 z-50 w-full bg-white dark:bg-gray-900">
+      <div className="mx-auto flex h-16 max-w-screen-xl items-center px-4 lg:px-6">
         {/* Logo */}
-        <Link href={`/${locale}`} className="flex items-center space-x-3">
+        <Link href={`/${locale}`} className="flex-shrink-0">
           <LogoFigma size="sm" />
         </Link>
 
-        {/* Right side: lang + dark toggle + user + hamburger */}
-        <div className="ml-auto flex items-center gap-2 md:order-2">
+        {/* Nav links — desktop, à gauche après le logo */}
+        <ul className="ml-8 hidden items-center gap-8 md:flex">
+          {NAV_LINKS.map(({ href, label }) => (
+            <li key={href}>
+              <Link
+                href={`/${locale}${href}`}
+                className={`text-sm font-medium ${
+                  isActive(href)
+                    ? "text-brand"
+                    : "text-gray-900 hover:text-brand dark:text-white dark:hover:text-brand"
+                }`}
+              >
+                {label}
+              </Link>
+            </li>
+          ))}
+        </ul>
+
+        {/* Right — all items aligned on same 40px line */}
+        <div className="ml-auto flex items-center gap-2">
           {/* Language switcher */}
-          <Link
-            href={`/${locale === "fr" ? "en" : "fr"}${pathname.replace(/^\/(fr|en)/, "")}`}
-            className="rounded-lg px-2 py-1.5 text-xs font-semibold uppercase text-gray-500 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700"
-            title={locale === "fr" ? "Switch to English" : "Passer en français"}
+          <Dropdown
+            arrowIcon={false}
+            inline
+            label={
+              <span className="inline-flex h-10 items-center gap-1.5 rounded-lg px-2 text-sm font-medium text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
+                {locale === "fr" ? (
+                  <svg className="h-3.5 w-3.5 rounded-sm" viewBox="0 0 36 24"><rect width="12" height="24" fill="#002654"/><rect x="12" width="12" height="24" fill="#fff"/><rect x="24" width="12" height="24" fill="#CE1126"/></svg>
+                ) : (
+                  <svg className="h-3.5 w-3.5 rounded-sm" viewBox="0 0 36 24"><clipPath id="gb"><rect width="36" height="24" rx="2"/></clipPath><g clipPath="url(#gb)"><rect width="36" height="24" fill="#012169"/><path d="M0 0L36 24M36 0L0 24" stroke="#fff" strokeWidth="4"/><path d="M0 0L36 24M36 0L0 24" stroke="#C8102E" strokeWidth="2.5"/><path d="M18 0V24M0 12H36" stroke="#fff" strokeWidth="6"/><path d="M18 0V24M0 12H36" stroke="#C8102E" strokeWidth="3.5"/></g></svg>
+                )}
+                {locale === "fr" ? "FR" : "EN"}
+              </span>
+            }
           >
-            {locale === "fr" ? "EN" : "FR"}
-          </Link>
+            <DropdownItem as={Link} href={`/fr${pathname.replace(/^\/(fr|en)/, "")}`} className={locale === "fr" ? "font-semibold" : ""}>
+              <span className="inline-flex items-center gap-2">
+                <svg className="h-3.5 w-3.5 rounded-sm" viewBox="0 0 36 24"><rect width="12" height="24" fill="#002654"/><rect x="12" width="12" height="24" fill="#fff"/><rect x="24" width="12" height="24" fill="#CE1126"/></svg>
+                Français
+              </span>
+            </DropdownItem>
+            <DropdownItem as={Link} href={`/en${pathname.replace(/^\/(fr|en)/, "")}`} className={locale === "en" ? "font-semibold" : ""}>
+              <span className="inline-flex items-center gap-2">
+                <svg className="h-3.5 w-3.5 rounded-sm" viewBox="0 0 36 24"><clipPath id="gb2"><rect width="36" height="24" rx="2"/></clipPath><g clipPath="url(#gb2)"><rect width="36" height="24" fill="#012169"/><path d="M0 0L36 24M36 0L0 24" stroke="#fff" strokeWidth="4"/><path d="M0 0L36 24M36 0L0 24" stroke="#C8102E" strokeWidth="2.5"/><path d="M18 0V24M0 12H36" stroke="#fff" strokeWidth="6"/><path d="M18 0V24M0 12H36" stroke="#C8102E" strokeWidth="3.5"/></g></svg>
+                English
+              </span>
+            </DropdownItem>
+          </Dropdown>
 
-          <div title="Mode sombre/clair">
-            <DarkThemeToggle />
-          </div>
+          {/* Dark mode toggle */}
+          <DarkThemeToggle />
 
+          {/* User avatar / login */}
           {isAuthenticated && user ? (
             <Dropdown
               arrowIcon={false}
               inline
               label={
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-brand text-sm font-bold text-white" style={{ backgroundColor: 'var(--color-brand)' }}>
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-brand text-sm font-bold text-white">
                   {user.firstName[0]}{user.lastName[0]}
                 </div>
               }
@@ -75,7 +113,7 @@ export function Navigation() {
           ) : (
             <Link
               href={`/${locale}/compte`}
-              className="rounded-lg px-4 py-2 text-sm font-medium text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+              className="inline-flex h-10 items-center rounded-lg px-4 text-sm font-medium text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
             >
               Se connecter
             </Link>
@@ -85,7 +123,7 @@ export function Navigation() {
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
             type="button"
-            className="inline-flex h-10 w-10 items-center justify-center rounded-lg p-2 text-sm text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 md:hidden dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-lg text-gray-500 hover:bg-gray-100 md:hidden dark:text-gray-400 dark:hover:bg-gray-700"
             aria-controls="navbar-demo"
             aria-expanded={mobileOpen}
           >
@@ -95,24 +133,22 @@ export function Navigation() {
             </svg>
           </button>
         </div>
+      </div>
 
-        {/* Nav links */}
-        <div
-          className={`${mobileOpen ? "" : "hidden"} w-full items-center md:order-1 md:ml-8 md:flex md:w-auto`}
-          id="navbar-demo"
-        >
-          <ul className="mt-4 flex flex-col rounded-lg border border-gray-100 bg-gray-50 p-4 font-medium md:mt-0 md:flex-row md:space-x-8 md:border-0 md:bg-transparent md:p-0 dark:border-gray-700 dark:bg-gray-800 md:dark:bg-transparent">
+      {/* Mobile nav */}
+      {mobileOpen && (
+        <div className="border-t border-gray-200 bg-gray-50 px-4 py-4 dark:border-white/[0.08] dark:bg-gray-900 md:hidden">
+          <ul className="space-y-2">
             {NAV_LINKS.map(({ href, label }) => (
               <li key={href}>
                 <Link
                   href={`/${locale}${href}`}
                   onClick={() => setMobileOpen(false)}
-                  className={`block rounded-sm px-3 py-2 md:p-0 ${
+                  className={`block rounded-lg px-3 py-2 text-sm font-medium ${
                     isActive(href)
-                      ? "bg-primary-700 text-white md:bg-transparent md:text-primary-700 md:dark:text-primary-500"
-                      : "text-gray-900 hover:bg-gray-100 md:hover:bg-transparent md:hover:text-primary-700 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent md:dark:hover:text-primary-500"
+                      ? "text-brand"
+                      : "text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-800"
                   }`}
-                  aria-current={isActive(href) ? "page" : undefined}
                 >
                   {label}
                 </Link>
@@ -120,7 +156,7 @@ export function Navigation() {
             ))}
           </ul>
         </div>
-      </div>
+      )}
     </nav>
   );
 }

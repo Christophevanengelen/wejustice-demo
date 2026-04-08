@@ -40,17 +40,17 @@ export function PricingCard({ plan, price, seats, isReduced, onChoose }: Pricing
     <div
       className={`relative flex w-72 flex-shrink-0 flex-col rounded-lg border p-6 transition-shadow lg:w-auto lg:flex-shrink ${
         disabled
-          ? "border-gray-200 bg-gray-50 opacity-40 dark:border-gray-700 dark:bg-gray-800"
+          ? "border-gray-200 bg-gray-50 opacity-40 dark:border-white/[0.08] dark:bg-gray-900"
           : plan.recommended
-            ? "border-2 bg-white shadow-lg dark:bg-gray-800"
-            : "border-gray-200 bg-white shadow-sm dark:border-gray-700 dark:bg-gray-800"
+            ? "border-2 bg-white shadow-lg dark:bg-gray-900 dark:hover:shadow-none"
+            : "border-gray-200 bg-white shadow-sm dark:border-white/[0.08] dark:bg-gray-900"
       }`}
       style={plan.recommended && !disabled ? { borderColor: 'var(--color-brand)' } : undefined}
     >
       {/* Badge Recommande */}
       {plan.recommended && !disabled && (
         <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-          <span className="whitespace-nowrap rounded-full px-3 py-1 text-xs font-semibold text-white" style={{ backgroundColor: 'var(--color-brand)' }}>
+          <span className="whitespace-nowrap rounded-full bg-brand px-3 py-1 text-xs font-semibold text-white">
             Recommandé
           </span>
         </div>
@@ -75,7 +75,7 @@ export function PricingCard({ plan, price, seats, isReduced, onChoose }: Pricing
 
       {/* Total monthly if multi-seat */}
       {seats > 1 && !isReduced && (
-        <p className="mb-1 text-sm font-medium" style={{ color: 'var(--color-brand)' }}>
+        <p className="mb-1 text-sm font-medium text-brand">
           Total : {formatPrice(price.totalMonthly)}/mois
         </p>
       )}
@@ -98,13 +98,13 @@ export function PricingCard({ plan, price, seats, isReduced, onChoose }: Pricing
       <p className="mb-4 text-xs text-gray-500 dark:text-gray-400">{plan.maxActions}</p>
 
       {/* Divider */}
-      <hr className="mb-4 border-gray-200 dark:border-gray-700" />
+      <hr className="mb-4 border-gray-200 dark:border-white/[0.08]" />
 
       {/* Features - all 4, no factorization */}
       <ul className="mb-6 flex-1 space-y-3">
         {plan.features.map((f) => (
           <li key={f.label} className="flex items-start gap-2">
-            <svg className="mt-0.5 h-4 w-4 flex-shrink-0" style={{ color: 'var(--color-brand)' }} viewBox="0 0 20 20">
+            <svg className="mt-0.5 h-4 w-4 flex-shrink-0 text-brand" viewBox="0 0 20 20">
               <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" fill="currentColor" />
             </svg>
             <div>

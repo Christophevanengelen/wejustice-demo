@@ -20,7 +20,7 @@ export function TribuneWaitingClient() {
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: "url(/images/pages/wejustice_tribune.jpg)" }} />
         <div className="absolute inset-0" style={{ background: "linear-gradient(to right, rgba(3, 7, 18, 0.85) 0%, rgba(3, 7, 18, 0.70) 50%, rgba(3, 7, 18, 0.55) 100%)" }} />
-        <div className="relative z-10 mx-auto max-w-screen-xl px-4 py-16 text-center lg:py-24">
+        <div className="relative z-10 mx-auto max-w-screen-xl px-4 py-16 text-center lg:px-6 lg:py-24">
           <span className="mb-6 inline-flex rounded-full bg-white/10 px-4 py-1.5 text-sm font-medium text-white backdrop-blur-sm">
             Bientôt disponible
           </span>
@@ -87,7 +87,7 @@ export function TribuneWaitingClient() {
                 desc: "Votre dossier est publié après modération. Les citoyens votent : Soutien, Opposition ou Abstention. L'organisation ciblée peut exercer son droit de réponse.",
               },
             ].map(({ icon, title, desc }) => (
-              <div key={title} className="rounded-lg border border-gray-200 bg-gray-50 p-6 dark:border-gray-700 dark:bg-gray-800">
+              <div key={title} className="rounded-lg border border-gray-200 bg-gray-50 p-6 dark:border-white/[0.08] dark:bg-gray-900">
                 <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-gray-100 dark:bg-gray-700">
                   <svg className="h-6 w-6 text-gray-600 dark:text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                     <path strokeLinecap="round" strokeLinejoin="round" d={icon} />
@@ -102,7 +102,7 @@ export function TribuneWaitingClient() {
       </section>
 
       {/* ─── Les 5 etapes du dossier ─── */}
-      <section className="bg-gray-50 py-16 dark:bg-gray-800 lg:py-24">
+      <section className="bg-gray-50 py-16 dark:bg-gray-900 lg:py-24">
         <div className="mx-auto max-w-screen-xl px-4 lg:px-6">
           <h2 className="mb-12 text-center text-3xl font-bold text-gray-900 dark:text-white">
             Un dossier structuré en 5 étapes
@@ -116,7 +116,7 @@ export function TribuneWaitingClient() {
               { step: 5, title: "Soumettre à la modération", desc: "Votre dossier est relu par l'équipe. Si valide, il est publié et soumis au vote de la communauté." },
             ].map(({ step, title, desc }) => (
               <div key={step} className="flex gap-4 rounded-lg bg-white p-5 dark:bg-gray-900">
-                <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-gray-900 text-sm font-bold text-white dark:bg-white dark:text-gray-900">
+                <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-brand text-sm font-bold text-white">
                   {step}
                 </div>
                 <div>
@@ -145,7 +145,7 @@ export function TribuneWaitingClient() {
               { icon: "M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z", title: "Journalistes", desc: "Documentez des affaires d'intérêt public avec une structure juridique rigoureuse." },
               { icon: "M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z", title: "Associations", desc: "Portez des causes collectives avec le soutien et le vote de la communauté." },
             ].map(({ icon, title, desc }) => (
-              <div key={title} className="rounded-lg border border-gray-200 p-6 text-center dark:border-gray-700">
+              <div key={title} className="rounded-lg border border-gray-200 p-6 text-center dark:border-white/[0.08]">
                 <div className="mb-4 mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-gray-100 dark:bg-gray-800">
                   <svg className="h-7 w-7 text-gray-600 dark:text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                     <path strokeLinecap="round" strokeLinejoin="round" d={icon} />
@@ -160,7 +160,7 @@ export function TribuneWaitingClient() {
       </section>
 
       {/* ─── Droit de reponse ─── */}
-      <section className="bg-gray-50 py-16 dark:bg-gray-800 lg:py-24">
+      <section className="bg-gray-50 py-16 dark:bg-gray-900 lg:py-24">
         <div className="mx-auto max-w-screen-xl px-4 lg:flex lg:items-center lg:gap-12 lg:px-6">
           <div className="flex-1">
             <h2 className="mb-4 text-3xl font-bold text-gray-900 dark:text-white">
@@ -199,7 +199,7 @@ export function TribuneWaitingClient() {
                   <p className="text-xs text-gray-500 dark:text-gray-400">Publié il y a 3 jours</p>
                 </div>
               </div>
-              <div className="mb-4 rounded-lg bg-gray-50 p-4 dark:bg-gray-800">
+              <div className="mb-4 rounded-lg bg-gray-50 p-4 dark:bg-gray-900">
                 <p className="text-xs font-medium text-gray-500 dark:text-gray-400">Vote de la communauté</p>
                 <div className="mt-2 flex gap-4">
                   <div className="text-center">
@@ -227,7 +227,7 @@ export function TribuneWaitingClient() {
 
       {/* ─── CTA final ─── */}
       <section className="cta-brand-block">
-        <div className="mx-auto max-w-screen-xl px-4 py-16 text-center lg:py-24">
+        <div className="mx-auto max-w-screen-xl px-4 py-16 text-center lg:px-6 lg:py-24">
           <h2 className="mb-4 text-3xl font-bold">
             Une injustice à dénoncer ?
           </h2>
@@ -247,12 +247,9 @@ export function TribuneWaitingClient() {
                 required
                 className="hero-glass-input flex-1"
               />
-              <button
-                type="submit"
-                className="rounded-lg bg-white px-6 py-3 text-sm font-bold text-gray-900 transition-colors hover:bg-gray-100"
-              >
+              <CTAButton type="submit" variant="light" size="lg">
                 Me prévenir
-              </button>
+              </CTAButton>
             </form>
           )}
         </div>

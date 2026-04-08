@@ -96,7 +96,7 @@ export function PressSection() {
   const col2 = others.slice(3, 6);
 
   return (
-    <section className="bg-gray-50 py-16 dark:bg-gray-800 lg:py-24">
+    <section className="bg-gray-50 py-16 dark:bg-gray-900 lg:py-24">
       <div className="mx-auto max-w-screen-xl px-4 lg:px-6">
         {/* Header */}
         <div className="mx-auto mb-12 max-w-2xl text-center">
@@ -126,21 +126,21 @@ export function PressSection() {
               <p className="mb-4 text-sm text-gray-500 dark:text-gray-400">
                 {featured.excerpt}
               </p>
-              <a href={featured.url} className="text-sm font-medium text-primary-600 hover:underline dark:text-primary-400">
+              <a href={featured.url} className="text-sm font-medium text-brand hover:underline">
                 Lire l&apos;article →
               </a>
             </div>
           )}
 
           {/* Column 1 */}
-          <div className="space-y-6 border-l border-gray-200 pl-8 dark:border-gray-700">
+          <div className="space-y-6 border-l border-gray-200 pl-8 dark:border-white/[0.08]">
             {col1.map((item) => (
               <PressCard key={item.id} item={item} />
             ))}
           </div>
 
           {/* Column 2 */}
-          <div className="space-y-6 border-l border-gray-200 pl-8 dark:border-gray-700">
+          <div className="space-y-6 border-l border-gray-200 pl-8 dark:border-white/[0.08]">
             {col2.map((item) => (
               <PressCard key={item.id} item={item} />
             ))}
@@ -150,14 +150,14 @@ export function PressSection() {
         {/* Mobile: stacked cards */}
         <div className="space-y-4 lg:hidden">
           {PRESS_ARTICLES.map((item) => (
-            <div key={item.id} className="rounded-lg border border-gray-200 bg-white p-4 dark:border-gray-700 dark:bg-gray-900">
+            <div key={item.id} className="rounded-lg border border-gray-200 bg-white p-4 dark:border-white/[0.08] dark:bg-gray-900">
               <p className="mb-1 text-xs font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400">
                 {item.publisher}
               </p>
               <h3 className="mb-2 text-base font-bold text-gray-900 dark:text-white">
                 {item.title}
               </h3>
-              <a href={item.url} className="text-xs font-medium text-primary-600 hover:underline dark:text-primary-400">
+              <a href={item.url} className="text-xs font-medium text-brand hover:underline">
                 Lire l&apos;article →
               </a>
             </div>
@@ -180,7 +180,7 @@ function PressCard({ item }: { item: PressItem }) {
       <p className="mb-2 text-xs text-gray-500 dark:text-gray-400 line-clamp-2">
         {item.excerpt}
       </p>
-      <a href={item.url} className="text-xs font-medium text-primary-600 hover:underline dark:text-primary-400">
+      <a href={item.url} className="text-xs font-medium text-brand hover:underline">
         Lire l&apos;article →
       </a>
     </div>

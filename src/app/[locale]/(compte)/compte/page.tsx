@@ -149,7 +149,7 @@ export default function CompteDashboard() {
           <h2 className="text-lg font-bold text-gray-900 dark:text-white">Derniere activite</h2>
           <Link
             href={`/${locale}/compte/notifications`}
-            className="text-xs font-medium text-primary-600 hover:underline dark:text-primary-400"
+            className="text-xs font-medium text-brand hover:underline"
           >
             Voir tout ({unread} non lues)
           </Link>

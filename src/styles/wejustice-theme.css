@@ -249,18 +249,21 @@
    ========================================================================== */
 .dark {
     /* --- 5. SURFACES (Dark) ---
-       Material Design 3: deeper = darker, elevated = lighter */
-    --color-surface-page:       #0f172a;  /* slate-900 */
-    --color-surface-section:    #131c2e;  /* between slate-900 and slate-800 */
-    --color-surface-card:       #1e293b;  /* slate-800 */
-    --color-surface-input:      #0f172a;  /* slate-900 (sunken) */
+       Vercel/Linear pattern: uniform base, minimal card lift.
+       Cards are only 1 step lighter than page — just enough to read.
+       Borders do the heavy lifting for structure, not bg contrast.
+       NO shadows in dark mode — flat and clean. */
+    --color-surface-page:       #0f172a;  /* slate-900 — everything */
+    --color-surface-section:    #0f172a;  /* same as page */
+    --color-surface-card:       #131c2e;  /* barely lighter — cards blend in */
+    --color-surface-input:      #0c1220;  /* slightly darker — sunken */
     --color-surface-overlay:    rgba(2, 6, 23, 0.80);
-    --color-surface-hover:      #1e293b;  /* slate-800 */
-    --color-surface-active:     #334155;  /* slate-700 */
-    --color-surface-raised:     #1e293b;
-    --color-surface-sunken:     #0f172a;
-    --color-surface-interactive: #1e293b;
-    --color-surface-interactive-hover: #334155;
+    --color-surface-hover:      #1a2435;  /* subtle lift on hover */
+    --color-surface-active:     #1e293b;  /* slate-800 on press */
+    --color-surface-raised:     #1e293b;  /* modals, dropdowns */
+    --color-surface-sunken:     #0c1220;
+    --color-surface-interactive: #131c2e;
+    --color-surface-interactive-hover: #1a2435;
 
     /* --- 6. TEXT (Dark) ---
        Not pure white. slate-100 for headings, slate-300 for body. */
@@ -272,10 +275,11 @@
     --color-text-link:          #FF4D63;
 
     /* --- 7. BORDERS (Dark) ---
-       Lighter than surfaces to create definition. */
-    --color-border-subtle:      #1e293b;  /* slate-800 */
-    --color-border-default:     #334155;  /* slate-700 */
-    --color-border-strong:      #475569;  /* slate-600 */
+       Vercel pattern: white at low opacity for structure without weight.
+       Subtle = barely visible dividers. Default = card borders. Strong = focus. */
+    --color-border-subtle:      rgba(241, 245, 249, 0.06);  /* white ~6% */
+    --color-border-default:     rgba(241, 245, 249, 0.10);  /* white ~10% — card edges */
+    --color-border-strong:      rgba(241, 245, 249, 0.16);  /* white ~16% — focus, active */
 
     /* --- 8. BRAND (Dark) ---
        Lightened for contrast on dark surfaces.

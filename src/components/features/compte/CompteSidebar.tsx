@@ -101,7 +101,7 @@ export function CompteSidebar({ isOpen, onClose }: CompteSidebarProps) {
   ];
 
   const sidebarContent = (
-    <div className="flex h-full flex-col bg-white dark:bg-gray-800">
+    <div className="flex h-full flex-col bg-white dark:bg-gray-900">
       {/* Badge forfait en haut */}
       {user && (
         <div className="px-4 pb-3 pt-4">
@@ -169,7 +169,7 @@ export function CompteSidebar({ isOpen, onClose }: CompteSidebarProps) {
   return (
     <>
       {/* Desktop — fixed left, SOUS la navbar (top-16), UNE seule border-r */}
-      <aside className="fixed top-16 bottom-0 left-0 z-20 hidden w-64 border-r border-gray-200 lg:block dark:border-gray-700">
+      <aside className="fixed top-16 bottom-0 left-0 z-20 hidden w-64 border-r border-gray-200 lg:block dark:border-white/[0.08]">
         {sidebarContent}
       </aside>
 
@@ -183,7 +183,7 @@ export function CompteSidebar({ isOpen, onClose }: CompteSidebarProps) {
             aria-hidden="true"
           />
           {/* Sidebar mobile — même contenu, au-dessus du backdrop */}
-          <aside className="fixed top-16 bottom-0 left-0 z-40 w-64 border-r border-gray-200 dark:border-gray-700">
+          <aside className="fixed top-16 bottom-0 left-0 z-40 w-64 border-r border-gray-200 dark:border-white/[0.08]">
             {sidebarContent}
           </aside>
         </>

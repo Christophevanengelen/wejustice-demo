@@ -38,7 +38,7 @@ export function ActionCard({
   return (
     <Link
       href={`/${locale}/actions/${id}`}
-      className="group flex flex-col overflow-hidden rounded-lg border border-gray-200 bg-white transition-shadow hover:shadow-lg dark:border-gray-700 dark:bg-gray-800"
+      className="group flex flex-col overflow-hidden rounded-lg border border-gray-200 bg-white transition-colors hover:shadow-lg dark:border-white/[0.08] dark:bg-gray-900 dark:hover:border-white/[0.14] dark:hover:shadow-none"
     >
       {/* Image with overlay on hover */}
       <div className="relative h-48 overflow-hidden">

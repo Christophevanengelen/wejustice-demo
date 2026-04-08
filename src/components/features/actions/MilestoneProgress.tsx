@@ -80,8 +80,7 @@ export function MilestoneProgress({
       <div>
         <div className="h-1.5 w-full overflow-hidden rounded-full bg-gray-200 dark:bg-gray-700">
           <motion.div
-            className="h-full rounded-full"
-            style={{ backgroundColor: "var(--color-brand)" }}
+            className="h-full rounded-full bg-brand"
             initial={{ width: 0 }}
             animate={{ width: `${animatedPct}%` }}
             transition={{ duration: prefersReduced ? 0 : 1.2, ease: EASING.smooth }}
@@ -100,8 +99,7 @@ export function MilestoneProgress({
       {/* Barre de progression */}
       <div className="h-3 w-full overflow-hidden rounded-full bg-gray-200 dark:bg-gray-700">
         <motion.div
-          className="h-full rounded-full"
-          style={{ backgroundColor: "var(--color-brand)" }}
+          className="h-full rounded-full bg-brand"
           initial={{ width: 0 }}
           animate={{ width: `${animatedPct}%` }}
           transition={{ duration: prefersReduced ? 0 : 1.5, ease: EASING.smooth }}

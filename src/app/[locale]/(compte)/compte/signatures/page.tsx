@@ -79,7 +79,7 @@ export default function SignaturesPage() {
                   {/* Titre cliquable */}
                   <Link
                     href={`/${locale}/actions/${action.id}`}
-                    className="text-base font-bold text-gray-900 hover:text-primary-600 dark:text-white dark:hover:text-primary-400"
+                    className="text-base font-bold text-gray-900 hover:text-brand dark:text-white"
                   >
                     {action.title}
                   </Link>

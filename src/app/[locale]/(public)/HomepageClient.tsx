@@ -14,7 +14,6 @@
 
 import { Badge, Card, Avatar, Rating, RatingStar, Timeline, TimelineBody, TimelineContent, TimelineItem, TimelinePoint, TimelineTime, TimelineTitle } from "flowbite-react";
 import Image from "next/image";
-import Link from "next/link";
 import { useParams } from "next/navigation";
 import { CTAButton } from "@/components/ui/CTAButton";
 import { ActionCard } from "@/components/features/actions/ActionCard";
@@ -114,7 +113,7 @@ export function HomepageClient() {
             background: 'linear-gradient(to right, rgba(3, 7, 18, 0.80) 0%, rgba(3, 7, 18, 0.65) 50%, rgba(3, 7, 18, 0.50) 100%)',
           }}
         />
-        <div className="relative z-10 mx-auto flex max-w-screen-xl flex-1 flex-col items-center justify-center px-4 py-16 text-center lg:px-12">
+        <div className="relative z-10 mx-auto flex max-w-screen-xl flex-1 flex-col items-center justify-center px-4 py-16 text-center lg:px-6">
           <span className="mb-6 inline-flex items-center gap-1 rounded-full bg-white/15 px-4 py-1.5 text-sm font-medium text-white backdrop-blur-sm">
             {siteSettings.activeActions} actions collectives en cours
           </span>
@@ -127,38 +126,26 @@ export function HomepageClient() {
           </p>
 
           <div className="mb-16 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-            <CTAButton href={`/${locale}/actions`} size="xl" className="shadow-lg hover:shadow-xl">
+            <CTAButton href={`/${locale}/actions`} size="xl">
               {siteSettings.heroCta}
               <svg className="ml-2 -mr-1 h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
               </svg>
             </CTAButton>
-            <Link
-              href={`/${locale}/en-savoir-plus`}
-              className="rounded-lg border border-white/30 bg-white/10 px-6 py-3.5 text-base font-medium text-white backdrop-blur-sm transition-all hover:bg-white/20"
-            >
+            <CTAButton href={`/${locale}/en-savoir-plus`} variant="light" size="xl" className="border-white/30 bg-white/10 text-white hover:bg-white/20 dark:border-white/30 dark:bg-white/10 dark:text-white dark:hover:bg-white/20">
               En savoir plus
-            </Link>
+            </CTAButton>
           </div>
 
-          {/* ─── Stats — Animated counters with icons and gradient borders ─── */}
-          <dl className="grid grid-cols-1 gap-4 sm:grid-cols-3 sm:gap-6 lg:gap-10">
+          {/* Stats — Flowbite social-proof pattern */}
+          <dl className="grid gap-8 text-white sm:grid-cols-3">
             {STAT_CONFIG.map((stat, i) => (
               <ScrollReveal key={stat.key} delay={0.15 * i} direction="up" distance={20}>
-                <div className="group relative overflow-hidden rounded-lg border border-white/10 bg-white/5 px-6 py-5 backdrop-blur-md transition-all duration-300 hover:border-white/25 hover:bg-white/10">
-                  {/* Gradient accent top */}
-                  <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/40 to-transparent" />
-                  <div className="flex items-center justify-center gap-3">
-                    <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-white/10 text-white/70 transition-colors group-hover:bg-white/15 group-hover:text-white">
-                      {stat.icon}
-                    </span>
-                    <div className="text-left">
-                      <dt className="text-2xl font-bold tracking-tight text-white md:text-3xl">
-                        <AnimatedCounter value={stat.value} duration={2.5} />
-                      </dt>
-                      <dd className="text-xs text-white/60">{stat.label}</dd>
-                    </div>
-                  </div>
+                <div className="flex flex-col">
+                  <dt className="mb-2 text-3xl font-extrabold tracking-tight md:text-4xl">
+                    <AnimatedCounter value={stat.value} duration={2.5} />
+                  </dt>
+                  <dd className="text-sm text-white/60">{stat.label}</dd>
                 </div>
               </ScrollReveal>
             ))}
@@ -182,9 +169,9 @@ export function HomepageClient() {
             </div>
           </ScrollReveal>
 
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid auto-rows-[1fr] gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {featuredActions.slice(0, 3).map((action, i) => (
-              <ScrollReveal key={action.id} delay={0.1 * i}>
+              <ScrollReveal key={action.id} delay={0.1 * i} className="flex">
                 <ActionCard
                   id={action.id}
                   title={action.title}
@@ -218,7 +205,7 @@ export function HomepageClient() {
       {/* ════════════════════════════════════════════════════════════
           HOW IT WORKS — Flowbite Timeline with stagger
           ════════════════════════════════════════════════════════════ */}
-      <section className="bg-gray-50 py-16 dark:bg-gray-800 lg:py-24">
+      <section className="bg-gray-50 py-16 dark:bg-gray-900 lg:py-24">
         <div className="mx-auto max-w-screen-xl px-4 lg:px-6">
           <ScrollReveal>
             <div className="mx-auto mb-14 max-w-2xl text-center">
@@ -247,12 +234,12 @@ export function HomepageClient() {
                   )}
 
                   {/* Step circle */}
-                  <div className="relative z-10 mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-full text-white" style={{ backgroundColor: 'var(--color-brand)' }}>
+                  <div className="relative z-10 mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-full bg-brand text-white">
                     {STEP_ICONS[i]}
                   </div>
 
                   {/* Card */}
-                  <div className="rounded-lg border border-gray-200 bg-white p-5 dark:border-gray-700 dark:bg-gray-900">
+                  <div className="rounded-lg border border-gray-200 bg-white p-5 dark:border-white/[0.08] dark:bg-gray-900">
                     <span className="mb-1 block text-xs font-semibold uppercase tracking-widest text-gray-400 dark:text-gray-500">
                       Étape {step}
                     </span>
@@ -307,7 +294,7 @@ export function HomepageClient() {
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {featuredTestimonials.map((testimonial, i) => (
               <ScrollReveal key={testimonial.id} delay={0.08 * i}>
-                <Card className="h-full border-gray-200 dark:border-gray-700">
+                <Card className="h-full border-gray-200 shadow-none dark:border-white/[0.08] dark:bg-gray-900">
                   <div className="flex h-full flex-col">
                     {/* Rating stars */}
                     <Rating className="mb-3">
@@ -335,7 +322,7 @@ export function HomepageClient() {
                     )}
 
                     {/* Author */}
-                    <div className="flex items-center gap-3 border-t border-gray-100 pt-4 dark:border-gray-700">
+                    <div className="flex items-center gap-3 border-t border-gray-100 pt-4 dark:border-white/[0.08]">
                       <Avatar
                         placeholderInitials={testimonial.name.charAt(0)}
                         rounded
@@ -375,12 +362,9 @@ export function HomepageClient() {
             <p className="mx-auto mb-8 max-w-2xl text-lg">
               Rejoignez des milliers de citoyens qui font valoir leurs droits collectivement.
             </p>
-            <Link
-              href={`/${locale}/actions`}
-              className="inline-flex items-center rounded-lg bg-white px-8 py-4 text-base font-bold text-gray-900 shadow-lg transition-all hover:bg-gray-100 hover:shadow-xl"
-            >
+            <CTAButton href={`/${locale}/actions`} variant="light" size="xl">
               Découvrir les actions
-            </Link>
+            </CTAButton>
           </ScrollReveal>
         </div>
       </section>

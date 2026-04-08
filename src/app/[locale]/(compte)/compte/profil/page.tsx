@@ -76,7 +76,7 @@ export default function ProfilPage() {
             </div>
             <Link
               href={`/${locale}/tarifs`}
-              className="text-xs font-medium text-primary-600 hover:underline dark:text-primary-400"
+              className="text-xs font-medium text-brand hover:underline"
             >
               Changer de forfait
             </Link>

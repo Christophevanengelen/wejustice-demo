@@ -61,7 +61,7 @@ export function StickySignCTA({
     <AnimatePresence>
       {show && (
         <motion.div
-          className="fixed bottom-0 left-0 right-0 z-50 border-t border-gray-200 bg-white p-4 shadow-2xl lg:hidden dark:border-gray-700 dark:bg-gray-800"
+          className="fixed bottom-0 left-0 right-0 z-50 border-t border-gray-200 bg-white p-4 shadow-2xl lg:hidden dark:border-white/[0.08] dark:bg-gray-800"
           initial={prefersReduced ? { opacity: 0 } : { y: 100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           exit={prefersReduced ? { opacity: 0 } : { y: 100, opacity: 0 }}
@@ -87,8 +87,8 @@ export function StickySignCTA({
           </div>
           <div className="mb-3 h-1.5 w-full overflow-hidden rounded-full bg-gray-200 dark:bg-gray-700">
             <div
-              className="h-full rounded-full transition-all"
-              style={{ width: `${pct}%`, backgroundColor: 'var(--color-brand)' }}
+              className="h-full rounded-full bg-brand transition-all"
+              style={{ width: `${pct}%` }}
             />
           </div>
 

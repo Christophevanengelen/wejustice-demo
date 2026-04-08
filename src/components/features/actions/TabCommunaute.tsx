@@ -86,15 +86,15 @@ export function TabCommunaute({ actionId, signaturesThisWeek, totalSignatures }:
           </div>
         </div>
       ) : (
-        <div className="mb-8 rounded-lg bg-gray-50 p-5 text-center dark:bg-gray-800">
+        <div className="mb-8 rounded-lg bg-gray-50 p-5 text-center dark:bg-gray-900">
           <p className="text-sm text-gray-500 dark:text-gray-400">
-            <a href="#" className="font-medium text-primary-600 underline dark:text-primary-400">Connectez-vous</a> pour participer a la discussion
+            <a href="#" className="font-medium text-brand underline">Connectez-vous</a> pour participer à la discussion
           </p>
         </div>
       )}
 
       {/* ─── Sort ─── */}
-      <div className="mb-4 flex items-center gap-3 border-b border-gray-200 pb-3 dark:border-gray-700">
+      <div className="mb-4 flex items-center gap-3 border-b border-gray-200 pb-3 dark:border-white/[0.08]">
         <span className="text-xs text-gray-500 dark:text-gray-400">Trier par :</span>
         <button
           onClick={() => setSort("recent")}
@@ -120,7 +120,7 @@ export function TabCommunaute({ actionId, signaturesThisWeek, totalSignatures }:
       {/* ─── Load more (mock) ─── */}
       {allComments.length >= 8 && (
         <div className="mt-6 text-center">
-          <button className="text-sm font-medium text-primary-600 hover:text-primary-700 dark:text-primary-400">
+          <button className="text-sm font-medium text-brand hover:opacity-80">
             Voir plus de messages
           </button>
         </div>

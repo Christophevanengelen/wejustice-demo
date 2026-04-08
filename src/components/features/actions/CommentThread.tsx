@@ -69,7 +69,7 @@ function SingleComment({ author, avatarColor, date, text, likes: initialLikes, i
         <div className="mb-1 flex items-center gap-2">
           <span className="text-sm font-medium text-gray-900 dark:text-white">{author}</span>
           {isTeam && (
-            <span className="rounded px-1.5 py-0.5 text-[10px] font-bold text-white" style={{ backgroundColor: 'var(--color-brand)' }}>
+            <span className="rounded bg-brand px-1.5 py-0.5 text-[10px] font-bold text-white">
               EQUIPE
             </span>
           )}
@@ -84,7 +84,7 @@ function SingleComment({ author, avatarColor, date, text, likes: initialLikes, i
           onClick={toggleLike}
           className={`inline-flex items-center gap-1 text-xs transition-colors ${
             liked
-              ? "text-primary-600 dark:text-primary-400"
+              ? "text-brand"
               : "text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-300"
           }`}
         >
@@ -111,7 +111,7 @@ export function CommentThread(props: CommentProps) {
           {!showReplies ? (
             <button
               onClick={() => setShowReplies(true)}
-              className="ml-11 mt-2 text-xs font-medium text-primary-600 hover:text-primary-700 dark:text-primary-400"
+              className="ml-11 mt-2 text-xs font-medium text-brand hover:opacity-80"
             >
               Voir {props.replies.length} reponse{props.replies.length > 1 ? "s" : ""}
             </button>

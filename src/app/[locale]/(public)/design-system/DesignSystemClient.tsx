@@ -136,8 +136,7 @@ export function DesignSystemClient() {
             <p className="text-sm text-gray-500 dark:text-gray-400">CTA principal :</p>
             <a
               href="#"
-              className="inline-flex items-center rounded-lg px-6 py-3 text-sm font-bold text-white transition-colors hover:opacity-90"
-              style={{ backgroundColor: 'var(--color-brand)' }}
+              className="inline-flex items-center rounded-lg bg-brand px-6 py-3 text-sm font-bold text-white transition-colors hover:opacity-90"
             >
               Découvrir les actions →
             </a>

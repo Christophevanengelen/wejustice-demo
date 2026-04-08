@@ -74,7 +74,7 @@ export function TabSuivi({ currentSignatures, timeline, funds, results, nextStep
                   </div>
 
                   {/* Content */}
-                  <div className={`mb-4 flex-1 rounded-lg p-4 ${style.bg || "bg-gray-50 dark:bg-gray-800"}`}>
+                  <div className={`mb-4 flex-1 rounded-lg p-4 ${style.bg || "bg-gray-50 dark:bg-gray-900"}`}>
                     <div className="mb-1 flex items-center gap-2">
                       <p className="text-xs text-gray-400 dark:text-gray-500">
                         {new Date(event.date).toLocaleDateString("fr-FR", { day: "numeric", month: "long", year: "numeric" })}

@@ -30,11 +30,10 @@ export function CompteNavbar({ onMenuClick }: CompteNavbarProps) {
   const initials = user ? `${user.firstName[0]}${user.lastName[0]}` : "";
 
   return (
-    <nav className="fixed top-0 right-0 left-0 z-30 border-b border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-800">
-      <div className="flex h-16 items-center justify-between px-4">
-        {/* Left — hamburger (mobile only) + logo (toujours cliquable vers le site) */}
+    <nav className="fixed top-0 right-0 left-0 z-30 border-b border-gray-200 bg-white dark:border-white/[0.08] dark:bg-gray-900">
+      <div className="mx-auto flex max-w-screen-xl flex-wrap items-center p-4">
+        {/* Left — hamburger (mobile only) + logo */}
         <div className="flex items-center gap-3">
-          {/* Hamburger — visible uniquement sur mobile (lg:hidden) */}
           <button
             onClick={onMenuClick}
             className="rounded-lg p-2 text-gray-500 hover:bg-gray-100 hover:text-gray-900 lg:hidden dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
@@ -44,25 +43,41 @@ export function CompteNavbar({ onMenuClick }: CompteNavbarProps) {
               <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
             </svg>
           </button>
-          {/* Logo — cliquable vers la page d'accueil du site */}
-          <Link href={`/${locale}`} aria-label="Retour au site WeJustice">
-            <LogoFigma size="xs" />
+          <Link href={`/${locale}`} className="flex items-center space-x-3" aria-label="Retour au site WeJustice">
+            <LogoFigma size="sm" />
           </Link>
         </div>
 
+        {/* Center — nav links (same as public nav) */}
+        <div className="ml-8 hidden items-center md:flex">
+          <ul className="flex flex-row space-x-8 font-medium">
+            {[
+              { href: `/${locale}/actions`, label: "Actions" },
+              { href: `/${locale}/tribune`, label: "Tribune" },
+              { href: `/${locale}/blog`, label: "Blog" },
+              { href: `/${locale}/tarifs`, label: "Tarifs" },
+            ].map(({ href, label }) => (
+              <li key={href}>
+                <Link
+                  href={href}
+                  className="text-gray-900 hover:text-brand dark:text-white dark:hover:text-brand"
+                >
+                  {label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+
         {/* Right — dark mode toggle + avatar dropdown */}
-        <div className="flex items-center gap-3">
+        <div className="ml-auto flex items-center gap-2">
           <DarkThemeToggle />
           {user && (
             <Dropdown
               arrowIcon={false}
               inline
               label={
-                /* Avatar : cercle brand red, initiales blanches, rounded-full */
-                <div
-                  className="flex h-10 w-10 items-center justify-center rounded-full text-sm font-bold text-white"
-                  style={{ backgroundColor: "var(--color-brand)" }}
-                >
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-brand text-sm font-bold text-white">
                   {initials}
                 </div>
               }
@@ -75,6 +90,7 @@ export function CompteNavbar({ onMenuClick }: CompteNavbarProps) {
                   {user.email}
                 </span>
               </DropdownHeader>
+              <DropdownItem as={Link} href={`/${locale}/compte`}>Mon compte</DropdownItem>
               <DropdownItem as={Link} href={`/${locale}/compte/profil`}>Mon profil</DropdownItem>
               <DropdownItem as={Link} href={`/${locale}/compte/paiements`}>Paiements</DropdownItem>
               <DropdownDivider />

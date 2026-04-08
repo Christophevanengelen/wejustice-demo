@@ -101,7 +101,7 @@ export function SignatureForm({
 
   /* ─── Outer wrapper — propre, pas de dégradé ─── */
   const Wrapper = ({ children }: { children: React.ReactNode }) => (
-    <div className="rounded-lg border border-gray-200 bg-white p-6 shadow-lg dark:border-gray-700 dark:bg-gray-800">
+    <div className="rounded-lg border border-gray-200 bg-white p-6 shadow-lg dark:border-white/[0.08] dark:bg-gray-900">
       {children}
     </div>
   );

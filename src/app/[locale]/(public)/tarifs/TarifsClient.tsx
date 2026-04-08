@@ -112,7 +112,7 @@ const COMPARISON_FEATURES = [
 function FaqItem({ q, a }: { q: string; a: string }) {
   const [open, setOpen] = useState(false);
   return (
-    <div className="border-b border-gray-200 dark:border-gray-700">
+    <div className="border-b border-gray-200 dark:border-white/[0.08]">
       <button
         onClick={() => setOpen(!open)}
         className="flex w-full items-center justify-between py-4 text-left"
@@ -214,7 +214,7 @@ export function TarifsClient() {
             background: 'linear-gradient(to bottom, rgba(3, 7, 18, 0.75) 0%, rgba(3, 7, 18, 0.60) 50%, rgba(3, 7, 18, 0.80) 100%)',
           }}
         />
-        <div className="relative z-10 mx-auto flex max-w-screen-xl flex-1 flex-col items-center justify-center px-4 py-10 text-center sm:py-16">
+        <div className="relative z-10 mx-auto flex max-w-screen-xl flex-1 flex-col items-center justify-center px-4 py-10 text-center sm:py-16 lg:px-6">
           <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-white/60">
             Forfaits Libertés
           </p>
@@ -276,8 +276,7 @@ export function TarifsClient() {
               <button
                 onClick={handleSeatDown}
                 disabled={seats <= 1}
-                className="flex h-8 w-8 items-center justify-center rounded-full text-sm font-bold text-white transition-opacity disabled:opacity-30"
-                style={{ backgroundColor: 'var(--color-brand)' }}
+                className="flex h-8 w-8 items-center justify-center rounded-full bg-brand text-sm font-bold text-white transition-opacity disabled:opacity-30"
               >
                 -
               </button>
@@ -287,8 +286,7 @@ export function TarifsClient() {
               <button
                 onClick={handleSeatUp}
                 disabled={seats >= 4}
-                className="flex h-8 w-8 items-center justify-center rounded-full text-sm font-bold text-white transition-opacity disabled:opacity-30"
-                style={{ backgroundColor: 'var(--color-brand)' }}
+                className="flex h-8 w-8 items-center justify-center rounded-full bg-brand text-sm font-bold text-white transition-opacity disabled:opacity-30"
               >
                 +
               </button>
@@ -317,7 +315,7 @@ export function TarifsClient() {
                 className={`rounded-lg px-3 py-2 text-xs font-medium transition-colors ${
                   duration === d.key
                     ? "text-white"
-                    : "border border-gray-200 bg-white text-gray-500 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700"
+                    : "border border-gray-200 bg-white text-gray-500 hover:bg-gray-50 dark:border-white/[0.08] dark:bg-gray-900 dark:text-gray-400 dark:hover:border-white/[0.14] dark:hover:bg-gray-800"
                 }`}
                 style={duration === d.key ? { backgroundColor: 'var(--color-brand)' } : undefined}
               >
@@ -371,7 +369,7 @@ export function TarifsClient() {
         {/* Comparison table — Flowbite Table */}
         {showComparison && (
           <ScrollReveal distance={12}>
-            <div className="mb-10 overflow-x-auto rounded-lg border border-gray-200 bg-gray-50 dark:border-gray-700 dark:bg-gray-800">
+            <div className="mb-10 overflow-x-auto rounded-lg border border-gray-200 bg-gray-50 dark:border-white/[0.08] dark:bg-gray-900">
               <Table>
                 <TableHead>
                   <TableHeadCell className="bg-gray-50 dark:bg-gray-800">Fonctionnalité</TableHeadCell>
@@ -388,7 +386,7 @@ export function TarifsClient() {
                 </TableHead>
                 <TableBody className="divide-y">
                   {COMPARISON_FEATURES.map((feat) => (
-                    <TableRow key={feat.label} className="bg-white dark:border-gray-700 dark:bg-gray-900">
+                    <TableRow key={feat.label} className="bg-white dark:border-white/[0.08] dark:bg-gray-900">
                       <TableCell className="whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white">
                         {feat.label}
                       </TableCell>
@@ -399,7 +397,7 @@ export function TarifsClient() {
                     </TableRow>
                   ))}
                   {/* Price row */}
-                  <TableRow className="bg-gray-50 font-semibold dark:border-gray-700 dark:bg-gray-800">
+                  <TableRow className="bg-gray-50 font-semibold dark:border-white/[0.08] dark:bg-gray-800">
                     <TableCell className="text-sm font-bold text-gray-900 dark:text-white">
                       Prix / mois
                     </TableCell>
@@ -429,7 +427,7 @@ export function TarifsClient() {
             <div
               className={`relative h-6 w-11 rounded-full transition-colors ${
                 isReduced
-                  ? "bg-primary-700 dark:bg-primary-500"
+                  ? "bg-brand"
                   : "bg-gray-300 dark:bg-gray-600"
               }`}
             >
@@ -467,7 +465,7 @@ export function TarifsClient() {
 
       {/* ═══ TRUST BADGES BAR ═══ */}
       <ScrollReveal>
-        <div className="border-y border-gray-200 bg-gray-50 py-8 dark:border-gray-700 dark:bg-gray-800/50">
+        <div className="border-y border-gray-200 bg-gray-50 py-8 dark:border-white/[0.08] dark:bg-gray-900">
           <div className="mx-auto grid max-w-screen-xl grid-cols-2 gap-6 px-4 lg:grid-cols-4 lg:px-6">
             {TRUST_BADGES.map((badge) => (
               <div key={badge.label} className="flex items-center gap-3">
@@ -485,7 +483,7 @@ export function TarifsClient() {
       </ScrollReveal>
 
       {/* ═══ SECTION 3 : ORGANISATIONS ═══ */}
-      <div className="border-t border-gray-200 bg-gray-50 py-16 dark:border-gray-700 dark:bg-gray-800/30">
+      <div className="border-t border-gray-200 bg-gray-50 py-16 dark:border-white/[0.08] dark:bg-gray-900/30">
         <div className="mx-auto max-w-screen-xl px-4 lg:px-6">
 
           {/* Section label */}

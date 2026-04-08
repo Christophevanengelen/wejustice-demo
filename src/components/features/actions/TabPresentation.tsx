@@ -73,7 +73,7 @@ export function TabPresentation({ problem, evidence, demands, currentSignatures,
           <div className="grid auto-rows-[1fr] gap-4 sm:grid-cols-3">
             {problem.keyFacts.map((fact, i) => (
               <ScrollReveal key={fact.label} delay={0.08 * i} className="flex">
-                <div className="flex w-full flex-col items-center justify-center rounded-lg border border-gray-200 bg-white p-5 text-center dark:border-gray-700 dark:bg-gray-800">
+                <div className="flex w-full flex-col items-center justify-center rounded-lg border border-gray-200 bg-white p-5 text-center dark:border-white/[0.08] dark:bg-gray-900">
                   <p className="text-2xl font-bold text-gray-900 dark:text-white">
                     {/^\d+$/.test(fact.value.replace(/\s/g, "")) ? (
                       <AnimatedCounter value={parseInt(fact.value.replace(/\s/g, ""), 10)} duration={1.8} />
@@ -107,7 +107,7 @@ export function TabPresentation({ problem, evidence, demands, currentSignatures,
                 const iconConfig = EVIDENCE_ICONS[item.type] || EVIDENCE_ICONS.report;
                 return (
                   <ScrollReveal key={item.title} delay={0.06 * i}>
-                    <Card className="border-gray-200 transition-all duration-200 hover:shadow-sm dark:border-gray-700">
+                    <Card className="border-gray-200 transition-all duration-200 hover:shadow-sm dark:border-white/[0.08] dark:bg-gray-900 dark:hover:shadow-none">
                       <div className="flex items-start gap-4">
                         <div className={`flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-gray-100 dark:bg-gray-700 ${iconConfig.color}`}>
                           <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
@@ -143,12 +143,12 @@ export function TabPresentation({ problem, evidence, demands, currentSignatures,
               </svg>
               Nos demandes
             </h3>
-            <div className="rounded-lg border border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800">
+            <div className="rounded-lg border border-gray-200 bg-white p-6 dark:border-white/[0.08] dark:bg-gray-900">
               <ul className="space-y-4">
                 {demands.map((demand, i) => (
                   <ScrollReveal key={i} delay={0.05 * i} distance={12}>
                     <li className="flex items-start gap-3">
-                      <span className="mt-0.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full text-white" style={{ backgroundColor: 'var(--color-brand)' }}>
+                      <span className="mt-0.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-brand text-white">
                         <svg className="h-3 w-3" fill="currentColor" viewBox="0 0 20 20">
                           <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                         </svg>
@@ -189,7 +189,7 @@ export function TabPresentation({ problem, evidence, demands, currentSignatures,
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {victimTestimonials.map((t, i) => (
                 <ScrollReveal key={t.name} delay={0.06 * i}>
-                  <Card className="h-full border-gray-200 dark:border-gray-700">
+                  <Card className="h-full border-gray-200 dark:border-white/[0.08] dark:bg-gray-900">
                     <div className="flex h-full flex-col">
                       <Rating className="mb-2" size="sm">
                         <RatingStar />
@@ -203,7 +203,7 @@ export function TabPresentation({ problem, evidence, demands, currentSignatures,
                           &ldquo;{t.quote}&rdquo;
                         </p>
                       </blockquote>
-                      <div className="mt-3 flex items-center justify-between border-t border-gray-100 pt-3 dark:border-gray-700">
+                      <div className="mt-3 flex items-center justify-between border-t border-gray-100 pt-3 dark:border-white/[0.08]">
                         <span className="text-sm font-semibold text-gray-900 dark:text-white">{t.name}</span>
                         {t.amount && (
                           <Badge color="success" size="xs">
@@ -266,7 +266,7 @@ export function TabPresentation({ problem, evidence, demands, currentSignatures,
             </svg>
             L&apos;equipe juridique
           </h3>
-          <Card className="border-gray-200 dark:border-gray-700">
+          <Card className="border-gray-200 dark:border-white/[0.08] dark:bg-gray-900">
             <div className="flex items-start gap-4">
               <Avatar placeholderInitials={lawyer.name.charAt(4)} rounded size="md" />
               <div className="flex-1">
@@ -281,7 +281,7 @@ export function TabPresentation({ problem, evidence, demands, currentSignatures,
               </div>
             </div>
           </Card>
-          <div className="mt-3 rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800">
+          <div className="mt-3 rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-white/[0.08] dark:bg-gray-900">
             <p className="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">Entite visee</p>
             <p className="mt-1 text-sm font-medium text-gray-900 dark:text-white">{target}</p>
           </div>
@@ -298,7 +298,7 @@ export function TabPresentation({ problem, evidence, demands, currentSignatures,
             <div className="grid gap-4 sm:grid-cols-3">
               {howItWorks.map(({ step, title, description }, i) => (
                 <ScrollReveal key={step} delay={0.08 * i}>
-                  <div className="flex gap-3 rounded-lg border border-gray-200 bg-white p-4 dark:border-gray-700 dark:bg-gray-800">
+                  <div className="flex gap-3 rounded-lg border border-gray-200 bg-white p-4 dark:border-white/[0.08] dark:bg-gray-900">
                     <div className="step-circle flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full text-sm font-bold">
                       {step}
                     </div>

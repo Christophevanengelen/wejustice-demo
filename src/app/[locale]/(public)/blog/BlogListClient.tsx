@@ -28,7 +28,7 @@ export function BlogListClient() {
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: "url(/images/pages/wejustice_blog.jpg)" }} />
         <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(3, 7, 18, 0.75) 0%, rgba(3, 7, 18, 0.60) 50%, rgba(3, 7, 18, 0.80) 100%)" }} />
-        <div className="relative z-10 mx-auto flex max-w-screen-xl flex-1 flex-col items-center justify-center px-4 py-10 text-center sm:py-20">
+        <div className="relative z-10 mx-auto flex max-w-screen-xl flex-1 flex-col items-center justify-center px-4 py-10 text-center sm:py-20 lg:px-6">
           <h1 className="mb-4 text-4xl font-bold leading-tight tracking-tight text-white lg:text-5xl">
             Blog
           </h1>
@@ -88,7 +88,7 @@ export function BlogListClient() {
                 <span className="mb-3 inline-flex w-fit rounded-full bg-green-50 px-3 py-1 text-xs font-medium text-green-700 dark:bg-green-900/30 dark:text-green-400">
                   Article a la une
                 </span>
-                <h2 className="mb-4 text-2xl font-bold text-gray-900 group-hover:text-primary-600 dark:text-white dark:group-hover:text-primary-400 lg:text-3xl">
+                <h2 className="mb-4 text-2xl font-bold text-gray-900 group-hover:text-brand dark:text-white lg:text-3xl">
                   {featured.title}
                 </h2>
                 <p className="mb-6 text-gray-500 dark:text-gray-400">
@@ -112,7 +112,7 @@ export function BlogListClient() {
       )}
 
       {/* ─── Articles Grid ─── */}
-      <section className={`py-12 lg:py-16 ${featured && !search && !selectedCat ? "bg-gray-50 dark:bg-gray-800" : "bg-white dark:bg-gray-900"}`}>
+      <section className={`py-12 lg:py-16 ${featured && !search && !selectedCat ? "bg-gray-50 dark:bg-gray-900" : "bg-white dark:bg-gray-900"}`}>
         <div className="mx-auto max-w-screen-xl px-4 lg:px-6">
           <p className="mb-6 text-sm text-gray-500 dark:text-gray-400">
             {filtered.length} article{filtered.length > 1 ? "s" : ""}
@@ -128,7 +128,7 @@ export function BlogListClient() {
           ) : (
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {filtered.filter((a) => !(a.featured && !search && !selectedCat)).map((article) => (
-                <a key={article.id} href={`/${locale}/blog/${article.slug}`} className="group flex flex-col overflow-hidden rounded-lg border border-gray-200 bg-white transition-shadow hover:shadow-lg dark:border-gray-700 dark:bg-gray-900">
+                <a key={article.id} href={`/${locale}/blog/${article.slug}`} className="group flex flex-col overflow-hidden rounded-lg border border-gray-200 bg-white transition-shadow hover:shadow-lg dark:border-white/[0.08] dark:bg-gray-900">
                   <div className="relative h-48 overflow-hidden">
                     <Image src={article.image} alt={article.title} fill className="object-cover transition-transform duration-300 group-hover:scale-105" />
                     <div className="absolute left-3 top-3">
@@ -136,7 +136,7 @@ export function BlogListClient() {
                     </div>
                   </div>
                   <div className="flex flex-1 flex-col p-5">
-                    <h3 className="mb-2 text-lg font-bold text-gray-900 group-hover:text-primary-600 dark:text-white dark:group-hover:text-primary-400">
+                    <h3 className="mb-2 text-lg font-bold text-gray-900 group-hover:text-brand dark:text-white">
                       {article.title}
                     </h3>
                     <p className="mb-4 flex-1 text-sm leading-relaxed text-gray-500 dark:text-gray-400 line-clamp-3">

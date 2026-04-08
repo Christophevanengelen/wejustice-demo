@@ -82,10 +82,18 @@ html.dark {
  * Dark mode: keeps brand red (not brand-strong which is too dark).
  */
 
-/* Brand utility classes — adaptatif light (#C20520) / dark (#FF4D63) */
-.bg-brand { background-color: var(--color-brand); }
-.text-brand { color: var(--color-brand); }
-.border-brand { border-color: var(--color-brand); }
+/* Brand utility classes — adaptatif light (#C20520) / dark (#FF4D63)
+ *
+ * Tailwind 4 @theme sets --color-brand: #C20520 on :root in @layer theme.
+ * .dark {} overrides it to #FF4D63, but var() in @layer utilities resolves
+ * against the theme layer. Fix: hardcode dark values here.
+ */
+.bg-brand { background-color: #C20520; }
+:where(.dark, .dark *).bg-brand { background-color: #FF4D63; }
+.text-brand { color: #C20520; }
+:where(.dark, .dark *).text-brand { color: #FF4D63; }
+.border-brand { border-color: #C20520; }
+:where(.dark, .dark *).border-brand { border-color: #FF4D63; }
 
 /* Full-width CTA section (e.g. "Prêt à agir") */
 .cta-brand-block {

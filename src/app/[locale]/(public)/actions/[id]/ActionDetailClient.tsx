@@ -204,7 +204,7 @@ export function ActionDetailClient({ actionId }: { actionId: string }) {
             </div>
 
             {/* Tabs — premium underline style */}
-            <div className="mb-8 border-b border-gray-200 dark:border-gray-700">
+            <div className="mb-8 border-b border-gray-200 dark:border-white/[0.08]">
               <nav className="flex gap-1">
                 {TABS.map(({ id, label, desc }) => (
                   <button
@@ -220,7 +220,7 @@ export function ActionDetailClient({ actionId }: { actionId: string }) {
                     <span className="mt-0.5 text-2xs text-gray-400 dark:text-gray-500">{desc}</span>
                     {/* Active indicator */}
                     {activeTab === id && (
-                      <span className="absolute inset-x-0 bottom-0 h-0.5 rounded-full" style={{ backgroundColor: 'var(--color-brand)' }} />
+                      <span className="absolute inset-x-0 bottom-0 h-0.5 rounded-full bg-brand" />
                     )}
                   </button>
                 ))}

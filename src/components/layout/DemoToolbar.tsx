@@ -20,7 +20,7 @@ export function DemoToolbar() {
       {/* Floating toggle */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-4 right-4 z-[9999] flex h-12 w-12 items-center justify-center rounded-full bg-primary-600 text-white shadow-lg transition-colors hover:bg-primary-700 dark:bg-primary-500 dark:hover:bg-primary-600"
+        className="fixed bottom-4 right-4 z-[9999] flex h-12 w-12 items-center justify-center rounded-full bg-brand text-white shadow-lg transition-colors hover:opacity-90"
         aria-label="Demo controls"
       >
         <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -57,11 +57,11 @@ export function DemoToolbar() {
                 onClick={() => setDemoRole(value)}
                 className={`flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-left text-sm transition-colors ${
                   demoRole === value
-                    ? "bg-primary-50 text-primary-700 dark:bg-primary-900/30 dark:text-primary-400"
+                    ? "bg-[var(--color-brand-softer)] text-brand"
                     : "text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700"
                 }`}
               >
-                <div className={`h-2 w-2 rounded-full ${demoRole === value ? "bg-primary-600 dark:bg-primary-400" : "bg-gray-300 dark:bg-gray-600"}`} />
+                <div className={`h-2 w-2 rounded-full ${demoRole === value ? "bg-brand" : "bg-gray-300 dark:bg-gray-600"}`} />
                 <div>
                   <span className="font-medium">{label}</span>
                   <p className="text-xs text-gray-500 dark:text-gray-400">{desc}</p>

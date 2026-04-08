@@ -131,7 +131,7 @@ export default function NotificationsPage() {
                   {cta && (
                     <Link
                       href={cta.href}
-                      className="mt-2 inline-flex text-xs font-medium text-primary-600 hover:underline dark:text-primary-400"
+                      className="mt-2 inline-flex text-xs font-medium text-brand hover:underline"
                     >
                       {cta.label} →
                     </Link>

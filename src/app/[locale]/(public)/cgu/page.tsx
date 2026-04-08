@@ -17,7 +17,7 @@ export default async function CguPage({ params }: Props) {
   return (
     <article className="mx-auto max-w-3xl px-4 py-12 lg:py-20">
       {/* Back link */}
-      <Link href={`/${locale}`} className="mb-8 inline-flex items-center gap-1 text-sm text-gray-500 hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-400">
+      <Link href={`/${locale}`} className="mb-8 inline-flex items-center gap-1 text-sm text-gray-500 hover:text-brand dark:text-gray-400">
         <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
         </svg>
@@ -75,7 +75,7 @@ export default async function CguPage({ params }: Props) {
         {/* 3 */}
         <section>
           <h2 className="mb-3 text-lg font-bold text-gray-900 dark:text-white">3. Acces a la plateforme</h2>
-          <div className="overflow-hidden rounded-lg border border-gray-200 dark:border-gray-700">
+          <div className="overflow-hidden rounded-lg border border-gray-200 dark:border-white/[0.08]">
             <table className="w-full text-left text-sm">
               <thead className="bg-gray-50 dark:bg-gray-800">
                 <tr>
@@ -172,7 +172,7 @@ export default async function CguPage({ params }: Props) {
           <h2 className="mb-3 text-lg font-bold text-gray-900 dark:text-white">8. Donnees personnelles</h2>
           <p>
             Le traitement de vos données personnelles est décrit dans notre{" "}
-            <Link href={`/${locale}/confidentialite`} className="font-medium text-primary-600 underline dark:text-primary-400">
+            <Link href={`/${locale}/confidentialite`} className="font-medium text-brand underline">
               Politique de confidentialité
             </Link>.
           </p>
@@ -205,7 +205,7 @@ export default async function CguPage({ params }: Props) {
         </section>
 
         {/* Contact */}
-        <section className="rounded-lg bg-gray-50 p-6 dark:bg-gray-800">
+        <section className="rounded-lg bg-gray-50 p-6 dark:bg-gray-900">
           <h2 className="mb-3 text-lg font-bold text-gray-900 dark:text-white">Contact</h2>
           <p>
             Pour toute question relative aux présentes CGU, contactez-nous :

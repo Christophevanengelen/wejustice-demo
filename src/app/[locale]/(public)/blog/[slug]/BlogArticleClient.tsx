@@ -16,9 +16,9 @@ export function BlogArticleClient({ slug }: { slug: string }) {
     return (
       <div className="py-32 text-center">
         <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Article introuvable</h1>
-        <Link href={`/${locale}/blog`} className="mt-6 inline-block rounded-lg border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:text-gray-300">
+        <CTAButton href={`/${locale}/blog`} variant="light" size="sm" className="mt-6">
           Retour au blog
-        </Link>
+        </CTAButton>
       </div>
     );
   }
@@ -87,7 +87,7 @@ export function BlogArticleClient({ slug }: { slug: string }) {
           />
 
           {/* CTA — Agissez maintenant */}
-          <div className="mt-12 rounded-lg border border-gray-200 bg-gray-50 p-8 text-center dark:border-gray-700 dark:bg-gray-800">
+          <div className="mt-12 rounded-lg border border-gray-200 bg-gray-50 p-8 text-center dark:border-white/[0.08] dark:bg-gray-900">
             <h3 className="mb-2 text-xl font-bold text-gray-900 dark:text-white">
               Agissez maintenant
             </h3>
@@ -103,20 +103,20 @@ export function BlogArticleClient({ slug }: { slug: string }) {
 
       {/* ─── Related articles ─── */}
       {related.length > 0 && (
-        <section className="bg-gray-50 py-12 dark:bg-gray-800 lg:py-16">
+        <section className="bg-gray-50 py-12 dark:bg-gray-900 lg:py-16">
           <div className="mx-auto max-w-screen-xl px-4 lg:px-6">
             <h2 className="mb-8 text-2xl font-bold text-gray-900 dark:text-white">
               &Agrave; lire aussi
             </h2>
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {related.map((a) => (
-                <Link key={a.id} href={`/${locale}/blog/${a.slug}`} className="group flex flex-col overflow-hidden rounded-lg border border-gray-200 bg-white transition-shadow hover:shadow-lg dark:border-gray-700 dark:bg-gray-900">
+                <Link key={a.id} href={`/${locale}/blog/${a.slug}`} className="group flex flex-col overflow-hidden rounded-lg border border-gray-200 bg-white transition-shadow hover:shadow-lg dark:border-white/[0.08] dark:bg-gray-900 dark:hover:border-white/[0.14] dark:hover:shadow-none">
                   <div className="relative h-40 overflow-hidden">
                     <Image src={a.image} alt={a.title} fill className="object-cover transition-transform duration-300 group-hover:scale-105" />
                   </div>
                   <div className="flex flex-1 flex-col p-4">
                     <span className="mb-2 text-xs font-medium text-gray-500 dark:text-gray-400">{a.category}</span>
-                    <h3 className="mb-2 text-base font-bold text-gray-900 group-hover:text-primary-600 dark:text-white line-clamp-2">{a.title}</h3>
+                    <h3 className="mb-2 text-base font-bold text-gray-900 group-hover:text-brand dark:text-white line-clamp-2">{a.title}</h3>
                     <p className="mt-auto text-xs text-gray-400 dark:text-gray-500">
                       {new Date(a.date).toLocaleDateString("fr-FR", { day: "numeric", month: "short", year: "numeric" })} - {a.readTime} min
                     </p>
