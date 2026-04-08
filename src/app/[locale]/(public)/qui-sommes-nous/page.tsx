@@ -15,10 +15,10 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     title,
     description,
     alternates: {
-      canonical: absoluteUrl(`/${locale}/en-savoir-plus`),
-      languages: { fr: absoluteUrl("/fr/en-savoir-plus"), en: absoluteUrl("/en/en-savoir-plus") },
+      canonical: absoluteUrl(`/${locale}/qui-sommes-nous`),
+      languages: { fr: absoluteUrl("/fr/qui-sommes-nous"), en: absoluteUrl("/en/qui-sommes-nous") },
     },
-    openGraph: { ...baseOpenGraph(locale), title, description, url: absoluteUrl(`/${locale}/en-savoir-plus`) },
+    openGraph: { ...baseOpenGraph(locale), title, description, url: absoluteUrl(`/${locale}/qui-sommes-nous`) },
     twitter: { ...baseTwitter(), title, description },
   };
 }

@@ -11,7 +11,7 @@ const LINKS = {
     { href: "/blog", label: "Blog" },
   ],
   about: [
-    { href: "/en-savoir-plus", label: "Qui sommes-nous" },
+    { href: "/qui-sommes-nous", label: "Qui sommes-nous" },
     { href: "/tarifs", label: "Tarifs" },
   ],
   legal: [

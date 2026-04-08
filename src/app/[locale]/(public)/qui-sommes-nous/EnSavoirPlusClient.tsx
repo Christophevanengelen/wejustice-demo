@@ -30,38 +30,36 @@ import { ScrollReveal } from "@/components/animations/ScrollReveal";
 
 const PILLARS = [
   {
-    title: "Transparence",
-    description: "Chaque action affiche son avancement, ses objectifs et l'utilisation des fonds. Aucune zone d'ombre.",
+    title: "Suivi en direct",
+    description: "Tout citoyen peut suivre les actions et leurs avancées.",
     icon: "M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.64 0 8.577 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.64 0-8.577-3.007-9.963-7.178z M15 12a3 3 0 11-6 0 3 3 0 016 0z",
   },
   {
     title: "Accessibilité",
-    description: "Agir en justice ne devrait pas être réservé à ceux qui en ont les moyens. Nos forfaits mutualisés rendent la procédure accessible à tous.",
+    description: "Agir en justice ne devrait pas être réservé à ceux qui le plus de moyens. Grâce à la force du nombre nos inscrits agissent collectivement en Justice.",
     icon: "M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z",
   },
   {
-    title: "Impact",
-    description: "Nos actions ont des conséquences juridiques réelles. Chaque signature alimente une procédure portée par des avocats spécialisés.",
+    title: "Changer le Monde",
+    description: "Nous menons des combats ambitieux et nous ne lâcherons rien.",
     icon: "M12 3v17.25m0 0c-1.472 0-2.882.265-4.185.75M12 20.25c1.472 0 2.882.265 4.185.75M18.75 4.97A48.416 48.416 0 0012 4.5c-2.291 0-4.545.16-6.75.47m13.5 0c1.01.143 2.01.317 3 .52m-3-.52l2.62 10.726c.122.499-.106 1.028-.589 1.202a5.988 5.988 0 01-2.031.352 5.988 5.988 0 01-2.031-.352c-.483-.174-.711-.703-.59-1.202L18.75 4.971zm-13.5 0L7.87 15.697c.122.499-.107 1.028-.59 1.202a5.989 5.989 0 01-2.03.352 5.989 5.989 0 01-2.031-.352c-.483-.174-.711-.703-.59-1.202L5.25 4.971z",
   },
 ];
 
 const TIMELINE_EVENTS = [
-  { year: "2028", title: "Expansion mondiale", description: "Wejustice s'ouvre aux citoyens du monde entier. La justice collective sans frontières." },
-  { year: "2027", title: "Expansion européenne", description: "Déploiement dans les 27 pays de l'Union européenne. Les actions collectives traversent les frontières pour peser face aux multinationales." },
   { year: "2026", title: "Lancement de Wejustice", description: "La plateforme de justice collective accessible à tous. Le 5ème pouvoir est né.", active: true },
   { year: "2025", title: "Rencontre avec Christophe van Engelen", description: "Arnaud rencontre Christophe, expert en communication digitale et expérience utilisateur. Ensemble, ils imaginent une plateforme qui combine l'expertise juridique et la puissance du design." },
-  { year: "2022", title: "Acquisition de VpourVerdict.com et Cessezlefou.com", description: "Lexprecia élargit son écosystème d'actions citoyennes en acquérant deux plateformes complémentaires. L'ambition grandit : créer le 5ème pouvoir." },
-  { year: "2020", title: "Ouverture de Palace.legal", description: "La plateforme Palace.legal ouvre ses portes : pétitions et actions collectives en ligne. Le cabinet découvre le potentiel du numérique pour démocratiser l'accès à la justice." },
-  { year: "2017", title: "Premières actions collectives en Justice", description: "Lexprecia lance ses premières procédures juridiques collectives. Les citoyens se regroupent pour la première fois pour faire valoir leurs droits ensemble." },
-  { year: "2015", title: "Création de Lexprecia", description: "Me Arnaud Durand fonde le cabinet Lexprecia à Paris. Spécialisé en droit de la consommation et actions collectives, il pose les bases juridiques de ce qui deviendra Wejustice." },
+  { year: "2022", title: "Fusion avec VpourVerdict.com et Cessezlefeu.com", description: "Lexprecia élargit son écosystème d'actions citoyennes en acquérant deux plateformes complémentaires. L'ambition grandit : créer le 5ème pouvoir." },
+  { year: "2020", title: "Ouverture de Palace.legal", description: "La plateforme Palace.legal ouvre ses portes : pétitions et actions collectives en ligne. Le cabinet confirme son domaine principal d'activité." },
+  { year: "2017", title: "Premières actions collectives en Justice", description: "Lexprecia lance ses premières procédures juridiques collectives. Les citoyens se regroupent pour faire valoir leurs droits ensemble." },
+  { year: "2015", title: "Création de Lexprecia", description: "Me Arnaud Durand fonde le cabinet Lexprecia à Paris qui deviendra une référence en matière d'actions collectives en Justice avec des milliers de citoyens défendus." },
 ];
 
 const TEAM = [
   {
     name: "Me Arnaud Durand",
     role: "Avocat référent — Cabinet Lexprecia",
-    bio: "Avocat au barreau de Paris depuis 2015, spécialisé en droit de la consommation et actions collectives. Plus de 50 procédures collectives portées, des victoires significatives contre des multinationales.",
+    bio: "Avocat au Barreau de Paris depuis plus de 10 ans, Arnaud Durand œuvre essentiellement dans des affaires sensibles en matière de santé, libertés individuelles et droits fondamentaux, principalement dans le cadre d'actions collectives en Justice.",
     initials: "AD",
     photo: "/images/team/arnaud.jpg",
     quote: "Les citoyens ont le droit d'agir ensemble. Mon rôle est de leur donner les armes juridiques pour le faire.",
@@ -70,7 +68,7 @@ const TEAM = [
   },
   {
     name: "Christophe van Engelen",
-    role: "Expert CX & Communication — Co-fondateur",
+    role: "Expert CX & Communication — Consultant",
     bio: "Spécialiste en expérience utilisateur et communication digitale basé à Bruxelles. Transforme des idées complexes en produits intuitifs qui mobilisent. Son obsession : que chaque citoyen puisse agir en 30 secondes.",
     initials: "CVE",
     photo: "/images/team/christophe.jpg",
@@ -102,13 +100,47 @@ export default function EnSavoirPlusClient() {
           <ScrollReveal>
             <Badge color="gray" size="xs" className="mb-4 inline-flex">Notre histoire</Badge>
             <h1 className="mb-4 text-4xl font-extrabold tracking-tight text-gray-900 lg:text-5xl dark:text-white">
-              Wejustice, le 5ème pouvoir
+              Wejustice, le 5<sup className="text-lg">ème</sup> pouvoir
             </h1>
             <p className="mx-auto max-w-2xl text-lg text-gray-600 dark:text-gray-300">
               Nous rassemblons les citoyens pour des actions juridiques collectives.
               Ensemble, nous transformons l&apos;indignation en procédures concrètes.
             </p>
           </ScrollReveal>
+        </div>
+      </section>
+
+      {/* 1b. LE 5ÈME POUVOIR — Explainer section */}
+      <section className="bg-white py-16 lg:py-24 dark:bg-gray-900">
+        <div className="mx-auto max-w-screen-xl px-4 lg:px-6">
+          <ScrollReveal>
+            <div className="mb-12 text-center">
+              <h2 className="mb-4 text-3xl font-bold text-gray-900 dark:text-white">
+                Le 5<sup className="text-lg">ème</sup> pouvoir
+              </h2>
+              <p className="mx-auto max-w-3xl text-gray-500 dark:text-gray-400">
+                Dans nos sociétés démocratiques, il y a traditionnellement trois premiers pouvoirs. Wejustice veut en créer un cinquième.
+              </p>
+            </div>
+          </ScrollReveal>
+
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
+            {[
+              { num: "01", title: "Le Législatif", desc: "Il vote les lois qui encadrent notre société." },
+              { num: "02", title: "L\u2019Exécutif", desc: "Il applique les lois et gouverne au quotidien." },
+              { num: "03", title: "Le Judiciaire", desc: "Il tranche les litiges et rend la Justice." },
+              { num: "04", title: "La Presse", desc: "Le 4ème pouvoir : elle informe et exerce un contre-pouvoir." },
+              { num: "05", title: "Les Citoyens", desc: "Le 5ème pouvoir : ensemble, nous transformons la résistance en moyens d\u2019actions concrètes, activant et saisissant la Justice." },
+            ].map((step, i) => (
+              <ScrollReveal key={step.num} delay={0.1 * i}>
+                <div className={`flex h-full flex-col gap-3 rounded-lg p-6 ${i === 4 ? "border-2 border-brand" : "border border-gray-200 dark:border-white/[0.08]"}`}>
+                  <span className="text-2xl font-bold text-brand">{step.num}</span>
+                  <h3 className="text-base font-bold text-gray-900 dark:text-white">{step.title}</h3>
+                  <p className="text-xs leading-relaxed text-gray-500 dark:text-gray-400">{step.desc}</p>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -141,7 +173,7 @@ export default function EnSavoirPlusClient() {
             <div className="mb-12 text-center">
               <p className="text-sm font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">Notre histoire</p>
               <h2 className="mt-2 text-3xl font-extrabold text-gray-900 dark:text-white">
-                Le 5ème pouvoir prend forme
+                Le 5<sup className="text-lg">ème</sup> pouvoir prend forme
               </h2>
               <p className="mx-auto mt-3 max-w-xl text-gray-500 dark:text-gray-400">
                 Les étapes clés de l&apos;avènement de Wejustice
@@ -198,7 +230,7 @@ export default function EnSavoirPlusClient() {
                 Deux expertises, une mission
               </h2>
               <p className="mx-auto mt-3 max-w-2xl text-gray-500 dark:text-gray-400">
-                La justice ne devrait pas être un privilège. Pour la rendre accessible,
+                La Justice ne devrait pas être un privilège. Pour la rendre accessible,
                 il faut l&apos;expertise juridique et la capacité à mobiliser.
               </p>
             </div>
@@ -259,7 +291,7 @@ export default function EnSavoirPlusClient() {
           <ScrollReveal>
             <h2 className="mb-4 text-3xl font-bold text-gray-900 dark:text-white">Ce qui nous différencie</h2>
             <p className="mb-8 text-gray-500 dark:text-gray-400">
-              Contrairement aux plateformes de pétitions classiques, nous ne nous arrêtons pas à la mobilisation.
+              Contrairement aux vieilles plateformes de pétitions, nous ne nous arrêtons pas à la signature : c&apos;est notre point de départ. Ensuite, nous agissons en Justice.
             </p>
           </ScrollReveal>
 
