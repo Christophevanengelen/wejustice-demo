@@ -118,8 +118,8 @@ export function HomepageClient() {
           }}
         />
         <div className="relative z-10 mx-auto flex max-w-screen-xl flex-1 flex-col items-center justify-center px-4 py-16 text-center lg:px-6">
-          <span className="mb-6 inline-flex items-center gap-1 rounded-full bg-white/15 px-4 py-1.5 text-sm font-medium text-white backdrop-blur-sm">
-            {siteSettings.activeActions} actions collectives en cours
+          <span className="mb-6 inline-flex items-center gap-1 rounded-full bg-green-500/20 px-4 py-1.5 text-sm font-medium text-green-300 backdrop-blur-sm">
+            {siteSettings.activeActions} actions collectives ouvertes
           </span>
 
           <h1 className="mb-6 text-4xl font-bold leading-tight tracking-tight text-white md:text-5xl lg:text-6xl">
@@ -130,14 +130,11 @@ export function HomepageClient() {
           </p>
 
           <div className="mb-16 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-            <CTAButton href={`/${locale}/tarifs`} size="xl">
-              Rejoindre
-              <svg className="ml-2 -mr-1 h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
-              </svg>
-            </CTAButton>
-            <CTAButton href={`/${locale}/actions`} variant="light" size="xl" className="border-white/30 bg-white/10 text-white hover:bg-white/20 dark:border-white/30 dark:bg-white/10 dark:text-white dark:hover:bg-white/20">
+            <CTAButton href={`/${locale}/actions`} size="xl">
               Voir les actions
+            </CTAButton>
+            <CTAButton href={`/${locale}/tarifs`} variant="light" size="xl" className="border-white/30 bg-white/10 text-white hover:bg-white/20 dark:border-white/30 dark:bg-white/10 dark:text-white dark:hover:bg-white/20">
+              Rejoindre
             </CTAButton>
           </div>
 
@@ -165,10 +162,10 @@ export function HomepageClient() {
           <ScrollReveal>
             <div className="mx-auto mb-12 max-w-2xl text-center">
               <h2 className="mb-4 text-3xl font-bold tracking-tight text-gray-900 dark:text-white lg:text-4xl">
-                Actions en cours
+                Vos actions
               </h2>
               <p className="text-lg text-gray-500 dark:text-gray-400">
-                Rejoignez les actions qui vous concernent
+                Signez
               </p>
             </div>
           </ScrollReveal>
@@ -352,7 +349,7 @@ export function HomepageClient() {
         <div className="mx-auto max-w-screen-xl px-4 py-16 text-center lg:px-6 lg:py-24">
           <ScrollReveal>
             <h2 className="mb-4 text-3xl font-bold tracking-tight lg:text-4xl">
-              Prêt à agir ?
+              Agissez maintenant !
             </h2>
             <p className="mx-auto mb-8 max-w-2xl text-lg">
               Rejoignez des milliers de citoyens qui font valoir leurs droits collectivement.
