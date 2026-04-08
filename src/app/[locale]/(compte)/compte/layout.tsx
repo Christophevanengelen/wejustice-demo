@@ -18,7 +18,6 @@
 import { useState } from "react";
 import { CompteSidebar } from "@/components/features/compte/CompteSidebar";
 import { CompteNavbar } from "@/components/features/compte/CompteNavbar";
-import { DemoToolbar } from "@/components/layout/DemoToolbar";
 import { ScrollToTop } from "@/components/animations/ScrollToTop";
 
 export default function CompteLayout({ children }: { children: React.ReactNode }) {
@@ -39,7 +38,6 @@ export default function CompteLayout({ children }: { children: React.ReactNode }
           {children}
         </div>
       </main>
-      <DemoToolbar />
       <ScrollToTop />
     </div>
   );

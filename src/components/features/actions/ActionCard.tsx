@@ -32,7 +32,7 @@ export function ActionCard({
   lawyer,
   image,
   locale,
-  showLawyer = true,
+  showLawyer = false,
   signaturesThisWeek = 0,
 }: ActionCardProps) {
   return (

@@ -29,10 +29,16 @@ export function ActionsListClient() {
 
   const filtered = useMemo(() => {
     return actionsData.filter((a) => {
-      const matchSearch =
-        !search ||
-        a.title.toLowerCase().includes(search.toLowerCase()) ||
-        a.description.toLowerCase().includes(search.toLowerCase());
+      const q = search.toLowerCase();
+      const keywords = (a as Record<string, unknown>).keywords as string[] | undefined;
+      const searchable = [
+        a.title,
+        a.description,
+        a.tag,
+        a.themes.join(" "),
+        keywords ? keywords.join(" ") : "",
+      ].join(" ").toLowerCase();
+      const matchSearch = !search || searchable.includes(q);
       if (!selectedTheme) return matchSearch;
       // Trouver la catégorie sélectionnée et vérifier si l'action a un de ses thèmes
       const cat = FILTER_CATEGORIES.find((c) => c.label === selectedTheme);
