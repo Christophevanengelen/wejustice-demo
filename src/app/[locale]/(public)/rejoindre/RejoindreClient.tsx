@@ -39,7 +39,7 @@ export function RejoindreClient() {
             Rejoignez le 5<sup className="text-lg">ème</sup> pouvoir
           </h1>
           <p className="mx-auto max-w-2xl text-base text-white/80 sm:text-lg">
-            Créez votre compte gratuit. Signez des pétitions, soutenez des actions collectives en Justice, et devenez acteur du changement.
+            Signez des pétitions en un clic, suivez les actions et leur avancée, et rejoignez une communauté de citoyens qui partagent vos convictions.
           </p>
         </div>
       </section>
