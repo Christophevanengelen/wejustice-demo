@@ -120,7 +120,7 @@ export function PricingCard({ plan, price, seats, isReduced, onChoose }: Pricing
             <div>
               <span className="text-xs text-gray-700 dark:text-gray-300">{f.label}</span>
               {f.tooltip && <InfoTooltip text={f.tooltip} />}
-              <div className="text-xs font-medium text-gray-900 dark:text-white">{f.value}</div>
+              {f.value && <div className="text-xs font-medium text-gray-900 dark:text-white">{f.value}</div>}
             </div>
           </li>
         ))}
