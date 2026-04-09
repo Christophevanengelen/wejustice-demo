@@ -173,7 +173,7 @@ export function TarifsClient() {
 
   const donLibreRef = useRef<HTMLDivElement>(null);
 
-  const visiblePlans = isReduced ? PLANS.filter((p) => p.id !== "aura") : PLANS;
+  const visiblePlans = PLANS;
 
   const handleChoose = (plan: Plan) => {
     setSignupPlan(plan.id);

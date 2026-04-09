@@ -44,12 +44,13 @@ const BASES: Record<string, number> = {
   mini: 8.40,
   plus: 14.60,
   maxi: 24.80,
-  aura: 58.00,
+  aura: 34.00,
 };
 
-const DISCOUNT_SEAT = {
-  duo: 0.40,  // 2 persons: -40%
-  trio: 0.50, // 3 persons: -50%
+const DISCOUNT_SEAT: Record<number, number> = {
+  2: 0.40,  // duo: -40%
+  3: 0.50,  // trio: -50%
+  4: 0.60,  // quad: -60%
 };
 
 const DISCOUNT_DURATION: Record<DurationKey, number> = {
@@ -103,9 +104,9 @@ export const PLANS: Plan[] = [
     maxActions: "Jusqu'à 1 action",
     features: [
       { label: "Recevoir notre Gazette", value: "" },
-      { label: "Support en ligne", value: "", tooltip: TOOLTIP_SUPPORT },
+      { label: "Support technique en ligne", value: "", tooltip: TOOLTIP_SUPPORT },
       { label: "Soutenir nos actions", value: "Jusqu'à 1 action", tooltip: TOOLTIP_ACTIONS },
-      { label: "Rejoindre les procès", value: "Possible", tooltip: TOOLTIP_ELIGIBILITY },
+      { label: "Rejoindre les procès", value: "Possible si éligible", tooltip: TOOLTIP_ELIGIBILITY },
     ],
   },
   {
@@ -118,9 +119,9 @@ export const PLANS: Plan[] = [
     maxActions: "Jusqu'à 2 actions",
     features: [
       { label: "Recevoir notre Gazette", value: "" },
-      { label: "Support en ligne", value: "", tooltip: TOOLTIP_SUPPORT },
+      { label: "Support technique en ligne", value: "", tooltip: TOOLTIP_SUPPORT },
       { label: "Soutenir nos actions", value: "Jusqu'à 2 actions", tooltip: TOOLTIP_ACTIONS },
-      { label: "Rejoindre les procès", value: "Possible", tooltip: TOOLTIP_ELIGIBILITY },
+      { label: "Rejoindre les procès", value: "Possible si éligible", tooltip: TOOLTIP_ELIGIBILITY },
     ],
   },
   {
@@ -134,9 +135,9 @@ export const PLANS: Plan[] = [
     recommended: true,
     features: [
       { label: "Recevoir notre Gazette", value: "" },
-      { label: "Support en ligne", value: "", tooltip: TOOLTIP_SUPPORT },
+      { label: "Support technique en ligne", value: "", tooltip: TOOLTIP_SUPPORT },
       { label: "Soutenir nos actions", value: "Jusqu'à 5 actions", tooltip: TOOLTIP_ACTIONS },
-      { label: "Rejoindre les procès", value: "Possible", tooltip: TOOLTIP_ELIGIBILITY },
+      { label: "Rejoindre les procès", value: "Possible si éligible", tooltip: TOOLTIP_ELIGIBILITY },
     ],
   },
   {
@@ -149,9 +150,9 @@ export const PLANS: Plan[] = [
     maxActions: "Illimité",
     features: [
       { label: "Recevoir notre Gazette", value: "" },
-      { label: "Support en ligne", value: "", tooltip: TOOLTIP_SUPPORT },
+      { label: "Support technique en ligne", value: "", tooltip: TOOLTIP_SUPPORT },
       { label: "Soutenir nos actions", value: "Illimité ∞", tooltip: TOOLTIP_ACTIONS },
-      { label: "Rejoindre les procès", value: "Possible", tooltip: TOOLTIP_ELIGIBILITY },
+      { label: "Rejoindre les procès", value: "Possible si éligible", tooltip: TOOLTIP_ELIGIBILITY },
     ],
   },
 ];
@@ -197,29 +198,10 @@ export function calculatePrice(
   }
 
   const isDisabled = !isReduced && seats > plan.maxSeats;
-  const isAura = plan.id === "aura";
   const months = DURATION_MONTHS[duration];
   const durationDiscount = DISCOUNT_DURATION[duration];
 
-  if (isAura) {
-    // Aura: fixed price regardless of seats
-    const base = plan.basePriceMonthly;
-    const monthly = round10(base * (1 - durationDiscount));
-    const perPerson = round10(monthly / seats);
-    const totalUpfront = duration === "monthly" ? null : round10(monthly * months);
-    const savingsVsMonthly = duration === "monthly" ? 0 : round10(base * months - monthly * months);
-
-    return {
-      pricePerPersonMonthly: perPerson,
-      totalMonthly: monthly,
-      totalUpfront,
-      savings: savingsVsMonthly,
-      durationMonths: months,
-      isDisabled,
-    };
-  }
-
-  // Mini/Plus/Maxi
+  // All plans use the same calculation
   const base = plan.basePriceMonthly;
 
   if (isReduced) {
@@ -240,7 +222,7 @@ export function calculatePrice(
   }
 
   // Standard: apply seat discount then duration discount
-  const seatDiscount = seats === 1 ? 0 : seats === 2 ? DISCOUNT_SEAT.duo : DISCOUNT_SEAT.trio;
+  const seatDiscount = seats === 1 ? 0 : (DISCOUNT_SEAT[seats] || 0);
   const afterSeat = round10(base * (1 - seatDiscount));
   const monthly = round10(afterSeat * (1 - durationDiscount));
   const totalMonthly = round10(monthly * seats);
@@ -264,7 +246,7 @@ export function calculatePrice(
  * Check if a card should be disabled for the given seat count.
  */
 export function isCardDisabled(planId: string, seats: number, isReduced: boolean): boolean {
-  if (isReduced && planId === "aura") return true; // Aura hidden in reduced
+  // All plans available in reduced mode
   const plan = PLANS.find((p) => p.id === planId);
   if (!plan) return true;
   if (isReduced) return false; // reduced = 1 seat, always fits
