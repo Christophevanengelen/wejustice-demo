@@ -69,7 +69,7 @@ const TEAM = [
   {
     name: "Christophe van Engelen",
     role: "Expert CX & Communication — Consultant",
-    bio: "Spécialiste en expérience utilisateur et communication digitale basé à Bruxelles. Transforme des idées complexes en produits intuitifs qui mobilisent. Son obsession : que chaque citoyen puisse agir en 30 secondes.",
+    bio: "15 ans dans le digital au service des grandes marques. Aujourd'hui, il met cette expertise au service d'une cause : rendre la Justice accessible à tous. Basé à Bruxelles, il conçoit les outils qui transforment l'indignation en action concrète.",
     initials: "CVE",
     photo: "/images/team/christophe.jpg",
     quote: "La justice est un sujet trop sérieux pour être mal communiqué. Si l'UX est mauvaise, les citoyens ne s'engagent pas.",
