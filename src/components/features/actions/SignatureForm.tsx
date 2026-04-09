@@ -78,6 +78,7 @@ export function SignatureForm({
   const [email, setEmail] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [isSubmitCooling, setIsSubmitCooling] = useState(false);
+  const [pendingEmailVerification, setPendingEmailVerification] = useState(false);
   const liveSigners = useLiveSigningCount();
 
   const handleGuestSubmit = (e: React.FormEvent) => {
@@ -87,11 +88,15 @@ export function SignatureForm({
     setSubmitting(true);
     setIsSubmitCooling(true);
     setTimeout(() => setIsSubmitCooling(false), 5000);
-    // PII removed — was logging firstName, lastName, email
     setTimeout(() => {
-      onSign();
-      window.location.href = `/${locale}/actions/${actionId}/merci`;
+      setSubmitting(false);
+      setPendingEmailVerification(true);
     }, 800);
+  };
+
+  const handleConfirmEmail = () => {
+    onSign();
+    window.location.href = `/${locale}/actions/${actionId}/merci`;
   };
 
   const handleOneClick = () => {
@@ -198,6 +203,43 @@ export function SignatureForm({
               </span>
             </Tooltip>
           ))}
+        </div>
+      </div>
+    );
+  }
+
+  /* ─── Path 1b: Email verification pending ─── */
+  if (pendingEmailVerification) {
+    return (
+      <div className={wrapperClass}>
+        <div className="py-4 text-center">
+          <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-blue-100 dark:bg-blue-900/30">
+            <svg className="h-7 w-7 text-blue-600 dark:text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+            </svg>
+          </div>
+          <h3 className="mb-2 text-lg font-bold text-gray-900 dark:text-white">
+            Vérifiez votre email
+          </h3>
+          <p className="mb-1 text-sm text-gray-500 dark:text-gray-400">
+            Un email de confirmation a été envoyé à
+          </p>
+          <p className="mb-4 text-sm font-semibold text-gray-900 dark:text-white">
+            {email}
+          </p>
+          <p className="mb-6 text-xs text-gray-400 dark:text-gray-500">
+            Cliquez sur le lien dans l&apos;email pour valider votre signature.
+            Vérifiez vos spams si vous ne le trouvez pas.
+          </p>
+          <CTAButton onClick={handleConfirmEmail} size="md" fullWidth>
+            J&apos;ai confirmé mon email (démo)
+          </CTAButton>
+          <button
+            onClick={() => setPendingEmailVerification(false)}
+            className="mt-3 text-xs text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"
+          >
+            Modifier mon adresse email
+          </button>
         </div>
       </div>
     );
