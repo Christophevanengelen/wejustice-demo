@@ -230,9 +230,6 @@ export function TarifsClient() {
           }}
         />
         <div className="relative z-10 mx-auto flex max-w-screen-xl flex-1 flex-col items-center justify-center px-4 py-10 text-center sm:py-16 lg:px-6">
-          <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-white/60">
-            Forfaits Libertés
-          </p>
           <h1 className="mb-4 text-3xl font-bold leading-tight tracking-tight text-white lg:text-5xl">
             Activez le 5<sup className="text-lg">e</sup> pouvoir
           </h1>

@@ -69,7 +69,7 @@ export function ActionsListClient() {
         />
 
         <div className="relative z-10 mx-auto flex max-w-screen-xl flex-1 flex-col items-center justify-center px-4 py-10 text-center sm:py-20 lg:px-6">
-          <h1 className="mb-4 text-4xl font-bold leading-tight tracking-tight text-white lg:text-5xl">
+          <h1 className="mb-4 text-3xl font-bold leading-tight tracking-tight text-white lg:text-5xl">
             Actions collectives
           </h1>
           <p className="mx-auto mb-8 max-w-2xl text-base text-white/80 sm:text-lg">
