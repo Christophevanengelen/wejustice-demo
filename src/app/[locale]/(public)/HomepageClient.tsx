@@ -125,15 +125,13 @@ export function HomepageClient() {
           <h1 className="mb-6 text-4xl font-bold leading-tight tracking-tight text-white md:text-5xl lg:text-6xl">
             {siteSettings.heroTitle}
           </h1>
-          <p className="mx-auto mb-10 max-w-2xl text-lg text-white/80 sm:text-xl lg:text-2xl">
-            {siteSettings.heroSubtitle}
-          </p>
+          <p className="mx-auto mb-10 max-w-2xl text-lg text-white/80 sm:text-xl lg:text-2xl" dangerouslySetInnerHTML={{ __html: siteSettings.heroSubtitle }} />
 
           <div className="mb-16 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
             <CTAButton href={`/${locale}/actions`} size="xl">
               Voir les actions
             </CTAButton>
-            <CTAButton href={`/${locale}/tarifs`} variant="light" size="xl" className="border-white/30 bg-white/10 text-white hover:bg-white/20 dark:border-white/30 dark:bg-white/10 dark:text-white dark:hover:bg-white/20">
+            <CTAButton href={`/${locale}/rejoindre`} variant="light" size="xl" className="border-white/30 bg-white/10 text-white hover:bg-white/20 dark:border-white/30 dark:bg-white/10 dark:text-white dark:hover:bg-white/20">
               Rejoindre
             </CTAButton>
           </div>
