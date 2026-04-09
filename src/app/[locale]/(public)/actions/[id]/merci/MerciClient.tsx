@@ -17,7 +17,7 @@
  */
 
 import { useEffect, useMemo, useState } from "react";
-import { useParams } from "next/navigation";
+import { useParams, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import { CTAButton } from "@/components/ui/CTAButton";
@@ -100,8 +100,10 @@ function generateReferralCode(): string {
 
 export function MerciClient({ actionId }: { actionId: string }) {
   const params = useParams();
+  const searchParams = useSearchParams();
   const locale = (params?.locale as string) || "fr";
   const prefersReduced = useReducedMotion();
+  const verifyEmail = searchParams?.get("verify");
 
   const action = actionsData.find((a) => a.id === actionId || a.slug === actionId);
   const title = action?.title || "cette action";
@@ -171,6 +173,20 @@ export function MerciClient({ actionId }: { actionId: string }) {
 
   return (
     <section className="bg-white dark:bg-gray-900">
+      {/* Bandeau validation email (guest uniquement) */}
+      {verifyEmail && (
+        <div className="border-b border-blue-200 bg-blue-50 px-4 py-3 dark:border-blue-800 dark:bg-blue-900/30">
+          <div className="mx-auto flex max-w-screen-md items-center gap-3">
+            <svg className="h-5 w-5 shrink-0 text-blue-600 dark:text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+            </svg>
+            <p className="text-sm text-blue-700 dark:text-blue-300">
+              Un email de confirmation a été envoyé à <strong>{verifyEmail}</strong>. Cliquez sur le lien pour valider votre signature.
+            </p>
+          </div>
+        </div>
+      )}
+
       <div className="mx-auto max-w-screen-md px-4 py-12 lg:py-20">
         {/* ═══ 1. ANIMATED SUCCESS ═══ */}
         <div className="relative mb-8 flex flex-col items-center text-center">
