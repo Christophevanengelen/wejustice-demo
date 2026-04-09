@@ -361,6 +361,38 @@ export function TarifsClient() {
           })}
         </div>
 
+        {/* Reduced toggle */}
+        <div className="mb-8 flex flex-col items-center">
+          <button
+            role="switch"
+            aria-checked={isReduced}
+            onClick={handleReducedToggle}
+            className="flex items-center gap-3"
+          >
+            <div
+              className={`relative h-6 w-11 rounded-full transition-colors ${
+                isReduced
+                  ? "bg-brand"
+                  : "bg-gray-300 dark:bg-gray-600"
+              }`}
+            >
+              <div
+                className={`absolute top-0.5 h-5 w-5 rounded-full bg-white shadow transition-transform ${
+                  isReduced ? "translate-x-[22px]" : "translate-x-0.5"
+                }`}
+              />
+            </div>
+            <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
+              Tarif réduit
+            </span>
+          </button>
+          {isReduced && (
+            <div className="mt-3 max-w-md rounded-lg bg-gray-100 p-3 text-center text-xs text-gray-600 dark:bg-gray-700 dark:text-gray-300">
+              Réservé aux personnes à faibles revenus (précarité, étudiants, chômage, faibles retraites) acceptant de fournir à première demande des justificatifs.
+            </div>
+          )}
+        </div>
+
         {/* Comparison table toggle */}
         <ScrollReveal>
           <div className="mb-8 text-center">
@@ -427,38 +459,6 @@ export function TarifsClient() {
               </table>
             </div>
         )}
-
-        {/* Reduced toggle */}
-        <div className="mb-10 flex flex-col items-center">
-          <button
-            role="switch"
-            aria-checked={isReduced}
-            onClick={handleReducedToggle}
-            className="flex items-center gap-3"
-          >
-            <div
-              className={`relative h-6 w-11 rounded-full transition-colors ${
-                isReduced
-                  ? "bg-brand"
-                  : "bg-gray-300 dark:bg-gray-600"
-              }`}
-            >
-              <div
-                className={`absolute top-0.5 h-5 w-5 rounded-full bg-white shadow transition-transform ${
-                  isReduced ? "translate-x-[22px]" : "translate-x-0.5"
-                }`}
-              />
-            </div>
-            <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
-              Tarif réduit
-            </span>
-          </button>
-          {isReduced && (
-            <div className="mt-3 max-w-md rounded-lg bg-gray-100 p-3 text-center text-xs text-gray-600 dark:bg-gray-700 dark:text-gray-300">
-              Réservé aux personnes à faibles revenus (précarité, étudiants, chômage, faibles retraites) acceptant de fournir à première demande des justificatifs.
-            </div>
-          )}
-        </div>
 
         {/* Step 2: Don libre */}
         {selectedPlan && (
