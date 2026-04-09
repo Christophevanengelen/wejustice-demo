@@ -309,24 +309,24 @@ export function MerciClient({ actionId }: { actionId: string }) {
             })}
           </div>
 
-          {/* Message + URL à copier-coller */}
+          {/* Message complet à copier-coller (texte + URL fusionnés) */}
           <div className="mt-4 rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-white/[0.08] dark:bg-gray-800">
-            <p className="mb-2 text-xs font-medium text-gray-500 dark:text-gray-400">Message à partager :</p>
-            <p className="mb-3 text-sm text-gray-700 dark:text-gray-300">
-              {tweetText}
-            </p>
-            <button
-              onClick={handleCopyLink}
-              className="flex w-full items-center gap-2 rounded-lg border border-gray-200 bg-white px-3 py-2 text-left transition-colors hover:bg-gray-100 dark:border-white/[0.08] dark:bg-gray-900 dark:hover:bg-gray-700"
-            >
-              <svg className="h-4 w-4 shrink-0 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
-              </svg>
-              <span className="flex-1 truncate text-xs text-gray-500 dark:text-gray-400">{shareUrl}</span>
-              <span className={`shrink-0 text-xs font-medium ${copiedLink ? "text-green-600 dark:text-green-400" : "text-gray-400"}`}>
+            <div className="flex items-start justify-between gap-3">
+              <p className="text-sm text-gray-700 dark:text-gray-300">
+                {tweetText}{" "}
+                <span className="text-gray-500 dark:text-gray-400">{shareUrl}</span>
+              </p>
+              <button
+                onClick={() => {
+                  navigator.clipboard?.writeText(`${tweetText} ${shareUrl}`).catch(() => {});
+                  setCopiedLink(true);
+                  setTimeout(() => setCopiedLink(false), 2000);
+                }}
+                className="shrink-0 rounded-lg border border-gray-200 bg-white px-3 py-1.5 text-xs font-medium text-gray-600 transition-colors hover:bg-gray-100 dark:border-white/[0.08] dark:bg-gray-900 dark:text-gray-300 dark:hover:bg-gray-700"
+              >
                 {copiedLink ? "Copié !" : "Copier"}
-              </span>
-            </button>
+              </button>
+            </div>
           </div>
         </motion.div>
 
