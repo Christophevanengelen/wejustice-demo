@@ -107,6 +107,11 @@ html.dark {
  * Rule: always use text-white/80, never text-gray-400 (too dark on images).
  */
 
+/* ─── Cursor pointer on all interactive elements ─── */
+button, [role="button"], [role="switch"], a, select, [type="checkbox"], [type="radio"], summary {
+  cursor: pointer;
+}
+
 /* ─── Smooth scrollbar ─── */
 ::-webkit-scrollbar {
   width: 8px;

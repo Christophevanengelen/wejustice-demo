@@ -56,7 +56,7 @@ const variantClasses: Record<CTAVariant, string> = {
 };
 
 const baseClasses =
-  "inline-flex items-center justify-center gap-2 rounded-lg font-semibold transition-colors focus:outline-none disabled:cursor-not-allowed disabled:opacity-50";
+  "inline-flex items-center justify-center gap-2 rounded-lg font-semibold cursor-pointer transition-colors focus:outline-none disabled:cursor-not-allowed disabled:opacity-50";
 
 export const CTAButton = forwardRef<HTMLButtonElement, CTAButtonProps>(
   function CTAButton(

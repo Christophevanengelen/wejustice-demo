@@ -88,7 +88,7 @@ export function ActionCard({
           )}
 
           {/* Signature count + trending on same line */}
-          <div className="mb-1 flex items-baseline gap-2">
+          <div className="mb-1 flex items-center gap-2">
             <span className="text-xs font-medium text-gray-700 dark:text-gray-300">
               {signatures.current.toLocaleString("fr-FR")} signatures
             </span>

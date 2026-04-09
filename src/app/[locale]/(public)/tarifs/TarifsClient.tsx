@@ -288,46 +288,6 @@ export function TarifsClient() {
         </div>
       </section>
 
-      {/* ═══ REJOINDRE GRATUITEMENT ═══ */}
-      <section className="border-b border-gray-200 bg-white py-12 dark:border-white/[0.08] dark:bg-gray-900 lg:py-16">
-        <div className="mx-auto max-w-screen-xl px-4 lg:px-6">
-          <ScrollReveal>
-            <div className="mx-auto max-w-2xl">
-              <div className="rounded-lg border-2 p-8 text-center" style={{ borderColor: 'var(--color-brand)' }}>
-                <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-green-100 px-4 py-1.5 text-sm font-semibold text-green-700 dark:bg-green-900/30 dark:text-green-300">
-                  <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                  100% gratuit
-                </div>
-                <h2 className="mb-3 text-2xl font-bold text-gray-900 dark:text-white lg:text-3xl">
-                  Commencez gratuitement
-                </h2>
-                <p className="mx-auto mb-6 max-w-lg text-base leading-relaxed text-gray-600 dark:text-gray-300">
-                  Creez votre compte, signez des petitions en illimite et suivez les actions en temps reel. Sans carte bancaire.
-                </p>
-                <ul className="mx-auto mb-8 flex max-w-md flex-col gap-3 text-left">
-                  {["Signatures illimitees", "Suivi des actions en temps reel", "Communaute de citoyens engages"].map((feature) => (
-                    <li key={feature} className="flex items-center gap-3">
-                      <svg className="h-5 w-5 flex-shrink-0 text-green-500" viewBox="0 0 20 20" fill="currentColor">
-                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                      </svg>
-                      <span className="text-sm font-medium text-gray-700 dark:text-gray-300">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-                <CTAButton
-                  size="xl"
-                  onClick={() => { setSignupPlan("free"); setShowSignup(true); }}
-                >
-                  Creer mon compte gratuit
-                </CTAButton>
-              </div>
-            </div>
-          </ScrollReveal>
-        </div>
-      </section>
-
       {/* ═══ SECTION 2 : CITOYENS - CONFIGURATOR + CARDS ═══ */}
       <div className="mx-auto max-w-screen-xl px-4 pb-10 pt-12 lg:px-6">
 
@@ -544,6 +504,35 @@ export function TarifsClient() {
             />
           </div>
         )}
+      </div>
+
+      {/* ═══ REJOINDRE GRATUITEMENT (discreet) ═══ */}
+      <div className="mx-auto max-w-screen-xl px-4 pb-10 lg:px-6">
+        <div className="mx-auto max-w-lg rounded-lg border border-gray-200 p-6 text-center dark:border-white/[0.08]">
+          <h3 className="mb-2 text-lg font-bold text-gray-900 dark:text-white">
+            Rejoindre gratuitement
+          </h3>
+          <p className="mb-4 text-sm text-gray-500 dark:text-gray-400">
+            Créez votre compte gratuit pour signer des pétitions en illimité.
+          </p>
+          <ul className="mx-auto mb-5 flex max-w-xs flex-col gap-1.5 text-left">
+            {["Signatures illimitées", "Suivi en temps réel", "Communauté citoyenne"].map((feature) => (
+              <li key={feature} className="flex items-center gap-2">
+                <svg className="h-3.5 w-3.5 flex-shrink-0 text-green-500" viewBox="0 0 20 20" fill="currentColor">
+                  <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                </svg>
+                <span className="text-xs text-gray-600 dark:text-gray-400">{feature}</span>
+              </li>
+            ))}
+          </ul>
+          <CTAButton
+            variant="outline"
+            size="md"
+            onClick={() => { setSignupPlan("free"); setShowSignup(true); }}
+          >
+            Créer mon compte gratuit
+          </CTAButton>
+        </div>
       </div>
 
       {/* ═══ TRUST BADGES BAR ═══ */}
