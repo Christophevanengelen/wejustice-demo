@@ -54,9 +54,9 @@ const DISCOUNT_SEAT = {
 
 const DISCOUNT_DURATION: Record<DurationKey, number> = {
   monthly: 0,
-  annual: 0.30,    // -30%
+  annual: 0.25,    // -25%
   biannual: 0.35,  // -35%
-  triannual: 0.40, // -40%
+  triannual: 0.45, // -45%
 };
 
 const DISCOUNT_REDUCED = 0.50; // -50% for reduced tariff
@@ -168,9 +168,9 @@ export const TOOLTIPS = {
 
 export const DURATIONS: { key: DurationKey; label: string; discountPercent: number | null }[] = [
   { key: "monthly", label: DURATION_LABELS.monthly, discountPercent: null },
-  { key: "annual", label: DURATION_LABELS.annual, discountPercent: 30 },
+  { key: "annual", label: DURATION_LABELS.annual, discountPercent: 25 },
   { key: "biannual", label: DURATION_LABELS.biannual, discountPercent: 35 },
-  { key: "triannual", label: DURATION_LABELS.triannual, discountPercent: 40 },
+  { key: "triannual", label: DURATION_LABELS.triannual, discountPercent: 45 },
 ];
 
 export const DON_TAGS_STANDARD = [10, 20, 50, 100, 500, 1000, 2000];
