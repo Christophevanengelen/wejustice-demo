@@ -1,6 +1,7 @@
 import { Navigation } from "@/components/layout/Navigation";
 import { Footer } from "@/components/layout/Footer";
 import { ScrollToTop } from "@/components/animations/ScrollToTop";
+import { DemoToolbar } from "@/components/layout/DemoToolbar";
 
 /**
  * Public layout — Navigation globale + Footer.
@@ -15,6 +16,7 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
         <main className="flex-1 pt-[72px]">{children}</main>
         <Footer />
       </div>
+      <DemoToolbar />
       <ScrollToTop />
     </>
   );

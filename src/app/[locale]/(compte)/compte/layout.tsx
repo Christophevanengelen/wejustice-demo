@@ -19,6 +19,7 @@ import { useState } from "react";
 import { CompteSidebar } from "@/components/features/compte/CompteSidebar";
 import { CompteNavbar } from "@/components/features/compte/CompteNavbar";
 import { ScrollToTop } from "@/components/animations/ScrollToTop";
+import { DemoToolbar } from "@/components/layout/DemoToolbar";
 
 export default function CompteLayout({ children }: { children: React.ReactNode }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -38,6 +39,7 @@ export default function CompteLayout({ children }: { children: React.ReactNode }
           {children}
         </div>
       </main>
+      <DemoToolbar />
       <ScrollToTop />
     </div>
   );
