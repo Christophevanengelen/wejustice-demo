@@ -101,27 +101,32 @@ export function PricingCard({ plan, price, seats, isReduced, onChoose }: Pricing
         </p>
       )}
 
-      {/* Actions count */}
-      <p className="mb-4 text-xs text-gray-500 dark:text-gray-400">{plan.maxActions}</p>
-
       {/* Divider */}
       <hr className="mb-4 border-gray-200 dark:border-white/[0.08]" />
 
-      {/* Features - all 4, no factorization */}
-      <ul className="mb-6 flex-1 space-y-3">
-        {plan.features.map((f) => (
-          <li key={f.label} className="flex items-start gap-2">
-            <svg className="mt-0.5 h-4 w-4 flex-shrink-0 text-brand" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" fill="currentColor" />
-            </svg>
-            <div>
-              <span className="text-xs text-gray-700 dark:text-gray-300">{f.label}</span>
-              {f.tooltip && <InfoTooltip text={f.tooltip} />}
-              <div className="text-xs font-medium text-gray-900 dark:text-white">{f.value}</div>
-            </div>
-          </li>
-        ))}
-      </ul>
+      {/* What differentiates this plan */}
+      <div className="mb-6 flex-1 space-y-2">
+        <div className="flex items-center gap-2">
+          <svg className="h-4 w-4 flex-shrink-0 text-brand" viewBox="0 0 20 20">
+            <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" fill="currentColor" />
+          </svg>
+          <span className="text-sm font-medium text-gray-900 dark:text-white">{plan.maxActions}</span>
+        </div>
+        <div className="flex items-center gap-2">
+          <svg className="h-4 w-4 flex-shrink-0 text-brand" viewBox="0 0 20 20">
+            <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" fill="currentColor" />
+          </svg>
+          <span className="text-xs text-gray-700 dark:text-gray-300">
+            {plan.maxSeats === 1 ? "1 bénéficiaire" : `Jusqu\u2019à ${plan.maxSeats} bénéficiaires`}
+          </span>
+        </div>
+        <div className="flex items-center gap-2">
+          <svg className="h-4 w-4 flex-shrink-0 text-brand" viewBox="0 0 20 20">
+            <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" fill="currentColor" />
+          </svg>
+          <span className="text-xs text-gray-700 dark:text-gray-300">Gazette + Support inclus</span>
+        </div>
+      </div>
 
       {/* CTA */}
       <CTAButton
