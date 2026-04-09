@@ -81,11 +81,11 @@ export function PricingCard({ plan, price, seats, isReduced, onChoose }: Pricing
       )}
 
       {/* Engagement duration */}
-      {price.durationMonths > 1 && (
-        <p className="mb-1 text-xs text-gray-500 dark:text-gray-400">
-          Je m&apos;engage pour {price.durationMonths === 12 ? "1 an" : price.durationMonths === 24 ? "2 ans" : "3 ans"}
-        </p>
-      )}
+      <p className="mb-1 text-xs text-gray-500 dark:text-gray-400">
+        {price.durationMonths === 1
+          ? "Sans engagement"
+          : `Je m'engage pour ${price.durationMonths === 12 ? "1 an" : price.durationMonths === 24 ? "2 ans" : "3 ans"}`}
+      </p>
 
       {/* Upfront payment if duration > monthly */}
       {price.totalUpfront !== null && (
