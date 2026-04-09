@@ -396,9 +396,8 @@ export function TarifsClient() {
           </div>
         </ScrollReveal>
 
-        {/* Comparison table — Flowbite Table */}
+        {/* Comparison table — Flowbite Table (no ScrollReveal — toggled content) */}
         {showComparison && (
-          <ScrollReveal distance={12}>
             <div className="mb-10 overflow-x-auto rounded-lg border border-gray-200 bg-gray-50 dark:border-white/[0.08] dark:bg-gray-900">
               <Table>
                 <TableHead>
@@ -443,7 +442,6 @@ export function TarifsClient() {
                 </TableBody>
               </Table>
             </div>
-          </ScrollReveal>
         )}
 
         {/* Reduced toggle */}
