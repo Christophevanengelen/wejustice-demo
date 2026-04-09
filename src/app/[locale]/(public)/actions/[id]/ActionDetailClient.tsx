@@ -231,6 +231,7 @@ export function ActionDetailClient({ actionId }: { actionId: string }) {
             {activeTab === "presentation" && (
               <TabPresentation
                 problem={action.problem}
+                petitionContent={(action as Record<string, unknown>).content as string | undefined}
                 evidence={action.evidence}
                 demands={action.demands}
                 currentSignatures={currentSigs}
