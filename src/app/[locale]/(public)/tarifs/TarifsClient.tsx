@@ -249,7 +249,7 @@ export function TarifsClient() {
               <p className="mt-1 text-xs text-white/60">Indépendant</p>
             </div>
             <div className="rounded-lg border border-white/15 bg-white/10 p-5 backdrop-blur-sm">
-              <p className="text-2xl font-bold text-white">Vous</p>
+              <p className="text-2xl font-bold text-brand">Vous</p>
               <p className="mt-1 text-xs text-white/60">Êtes le 5<sup>ème</sup> pouvoir</p>
             </div>
           </div>
