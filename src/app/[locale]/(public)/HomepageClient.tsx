@@ -163,7 +163,7 @@ export function HomepageClient() {
                 Vos actions
               </h2>
               <p className="text-lg text-gray-500 dark:text-gray-400">
-                Signez
+                Signez les pétitions, voire rejoignez les actions
               </p>
             </div>
           </ScrollReveal>
