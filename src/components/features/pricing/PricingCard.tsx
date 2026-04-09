@@ -101,17 +101,25 @@ export function PricingCard({ plan, price, seats, isReduced, onChoose }: Pricing
         </p>
       )}
 
-      {/* Actions count + seats */}
-      <p className="mb-1 text-xs text-gray-500 dark:text-gray-400">{plan.maxActions}</p>
-      <p className="mb-4 text-xs text-gray-500 dark:text-gray-400">
-        {plan.maxSeats === 1 ? "1 personne" : `${plan.maxSeats} personnes`}
-      </p>
+      {/* Actions count */}
+      <p className="mb-4 text-xs text-gray-500 dark:text-gray-400">{plan.maxActions}</p>
 
       {/* Divider */}
       <hr className="mb-4 border-gray-200 dark:border-white/[0.08]" />
 
-      {/* Features - all 4, no factorization */}
+      {/* Features */}
       <ul className="mb-6 flex-1 space-y-3">
+        <li className="flex items-start gap-2">
+          <svg className="mt-0.5 h-4 w-4 flex-shrink-0 text-green-500" viewBox="0 0 20 20">
+            <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" fill="currentColor" />
+          </svg>
+          <div>
+            <span className="text-xs text-gray-700 dark:text-gray-300">Bénéficiaires</span>
+            <div className="text-xs font-medium text-gray-900 dark:text-white">
+              {plan.maxSeats === 1 ? "1 personne" : `${plan.maxSeats} personnes`}
+            </div>
+          </div>
+        </li>
         {plan.features.map((f) => (
           <li key={f.label} className="flex items-start gap-2">
             <svg className="mt-0.5 h-4 w-4 flex-shrink-0 text-green-500" viewBox="0 0 20 20">
