@@ -8,7 +8,7 @@ import { actionArticleJsonLd, breadcrumbJsonLd, safeJsonLd } from "@/lib/jsonld"
 type Props = { params: Promise<{ locale: string; id: string }> };
 
 export function generateStaticParams() {
-  return actionsData.map((a) => ({ id: a.id }));
+  return actionsData.map((a) => ({ id: a.slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   const description = action.description.slice(0, 160);
-  const url = absoluteUrl(`/${locale}/actions/${action.id}`);
+  const url = absoluteUrl(`/${locale}/actions/${action.slug}`);
   const imageUrl = action.image || "/images/actions/default.png";
 
   return {
@@ -29,8 +29,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     alternates: {
       canonical: url,
       languages: {
-        fr: absoluteUrl(`/fr/actions/${action.id}`),
-        en: absoluteUrl(`/en/actions/${action.id}`),
+        fr: absoluteUrl(`/fr/actions/${action.slug}`),
+        en: absoluteUrl(`/en/actions/${action.slug}`),
       },
     },
     openGraph: {
@@ -75,7 +75,7 @@ export default async function ActionDetailPage({ params }: Props) {
             dangerouslySetInnerHTML={{ __html: safeJsonLd(breadcrumbJsonLd([
               { name: "Accueil", href: `/${locale}` },
               { name: "Actions", href: `/${locale}/actions` },
-              { name: action.title, href: `/${locale}/actions/${action.id}` },
+              { name: action.title, href: `/${locale}/actions/${action.slug}` },
             ])) }}
           />
         </>

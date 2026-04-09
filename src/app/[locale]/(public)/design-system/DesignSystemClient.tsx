@@ -149,6 +149,7 @@ export function DesignSystemClient() {
         <div className="grid max-w-sm gap-6">
           <ActionCard
             id={sampleAction.id}
+            slug={sampleAction.slug}
             title={sampleAction.title}
             description={sampleAction.description}
             status={sampleAction.status}

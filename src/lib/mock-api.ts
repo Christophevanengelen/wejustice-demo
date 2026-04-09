@@ -61,10 +61,10 @@ function matchRoute(path: string): unknown {
   // GET /auth/user-state/
   if (clean.startsWith("auth/user-state")) {
     return {
-      signedActions: ["act-001", "act-002"],
+      signedActions: ["dejavu-transparence-vaccins", "ultimatum-linky-refus"],
       totalSignatures: 2,
       participations: [],
-      favorites: ["act-004"],
+      favorites: ["phonegate-ondes-ill\u00E9gales"],
     };
   }
 

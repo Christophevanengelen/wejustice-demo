@@ -8,7 +8,7 @@
   "activeActions": 8,
   "totalMembers": 45200,
   "totalActions": 8,
-  "featuredActionIds": ["act-001", "act-002", "act-004", "act-006"],
+  "featuredActionSlugs": ["dejavu-transparence-vaccins", "ultimatum-linky-refus", "phonegate-ondes-ill\u00e9gales", "voxact-censure-reseaux-sociaux"],
   "howItWorks": [
     { "step": 1, "title": "Signez", "description": "Signez la <strong>pétition</strong> et faites entrer votre nom dans l'Histoire." },
     { "step": 2, "title": "Partagez", "description": "Aidez à la <strong>diffusion</strong> du projet pour lui donner de l'impact." },

@@ -8,6 +8,7 @@ import { ThemeTags } from "@/components/ui/ThemeTags";
 
 interface ActionCardProps {
   id: string;
+  slug: string;
   title: string;
   description: string;
   status: string;
@@ -23,6 +24,7 @@ interface ActionCardProps {
 
 export function ActionCard({
   id,
+  slug,
   title,
   description,
   status,
@@ -37,7 +39,7 @@ export function ActionCard({
 }: ActionCardProps) {
   return (
     <Link
-      href={`/${locale}/actions/${id}`}
+      href={`/${locale}/actions/${slug}`}
       className="group flex flex-col overflow-hidden rounded-lg border border-gray-200 bg-white transition-colors hover:shadow-lg dark:border-white/[0.08] dark:bg-gray-900 dark:hover:border-white/[0.14] dark:hover:shadow-none"
     >
       {/* Image with overlay on hover */}

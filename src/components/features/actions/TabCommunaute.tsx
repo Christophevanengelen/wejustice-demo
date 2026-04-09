@@ -27,7 +27,7 @@ export function TabCommunaute({ actionId, signaturesThisWeek: _signaturesThisWee
   const [newComment, setNewComment] = useState("");
   const [localComments, setLocalComments] = useState<typeof comments>([]);
 
-  const comments = (commentsData as Record<string, typeof commentsData["act-001"]>)[actionId] || [];
+  const comments = (commentsData as Record<string, typeof commentsData["dejavu-transparence-vaccins"]>)[actionId] || [];
   const allComments = [...localComments, ...comments];
 
   const sorted = sort === "popular"

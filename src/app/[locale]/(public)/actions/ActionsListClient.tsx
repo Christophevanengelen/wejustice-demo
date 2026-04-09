@@ -153,6 +153,7 @@ export function ActionsListClient() {
                 <ActionCard
                   key={action.id}
                   id={action.id}
+                  slug={action.slug}
                   title={action.title}
                   description={action.description}
                   status={action.status}

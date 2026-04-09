@@ -46,7 +46,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   for (const action of actionsData) {
     for (const locale of LOCALES) {
       entries.push({
-        url: url(`/${locale}/actions/${action.id}`),
+        url: url(`/${locale}/actions/${action.slug}`),
         lastModified: new Date("2026-04-07"),
         changeFrequency: "weekly",
         priority: action.featured ? 0.9 : 0.7,

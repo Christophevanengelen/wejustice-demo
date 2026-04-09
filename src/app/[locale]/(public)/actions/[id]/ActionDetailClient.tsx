@@ -192,7 +192,7 @@ export function ActionDetailClient({ actionId }: { actionId: string }) {
             {/* ─── Mobile: Signature form FIRST (above the fold) ─── */}
             <div className="mb-6 lg:hidden">
               <SignatureForm
-                actionId={action.id}
+                actionId={action.slug}
                 hashtag={action.tag}
                 signatureCount={currentSigs}
                 signatureGoal={action.signatures.goal}
@@ -254,7 +254,7 @@ export function ActionDetailClient({ actionId }: { actionId: string }) {
 
             {activeTab === "communaute" && (
               <TabCommunaute
-                actionId={action.id}
+                actionId={action.slug}
                 signaturesThisWeek={action.signaturesThisWeek}
                 totalSignatures={currentSigs}
               />
@@ -265,7 +265,7 @@ export function ActionDetailClient({ actionId }: { actionId: string }) {
           <div className="hidden lg:mt-0 lg:block lg:w-96 lg:flex-shrink-0">
             <div className="sticky top-24">
               <SignatureForm
-                actionId={action.id}
+                actionId={action.slug}
                 hashtag={action.tag}
                 signatureCount={currentSigs}
                 signatureGoal={action.signatures.goal}
@@ -283,7 +283,7 @@ export function ActionDetailClient({ actionId }: { actionId: string }) {
           MOBILE STICKY CTA (lg:hidden)
           ═══════════════════════════════════════════════ */}
       <StickySignCTA
-        actionId={action.id}
+        actionId={action.slug}
         hashtag={action.tag}
         signatureCount={currentSigs}
         signatureGoal={action.signatures.goal}

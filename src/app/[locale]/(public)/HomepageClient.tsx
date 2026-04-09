@@ -173,6 +173,7 @@ export function HomepageClient() {
               <ScrollReveal key={action.id} delay={0.1 * i} className="flex">
                 <ActionCard
                   id={action.id}
+                  slug={action.slug}
                   title={action.title}
                   description={action.description}
                   status={action.status}

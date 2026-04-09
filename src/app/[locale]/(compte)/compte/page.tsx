@@ -39,7 +39,7 @@ export default function CompteDashboard() {
   const recentNotifs = [...userActivity.notifications]
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
     .slice(0, 3);
-  const rejointesActions = actionsData.filter((a) => userActivity.actionsRejointes.includes(a.id));
+  const rejointesActions = actionsData.filter((a) => userActivity.actionsRejointes.includes(a.slug));
 
   if (!hasSignedActions) {
     return (
@@ -125,7 +125,7 @@ export default function CompteDashboard() {
           {rejointesActions.map((action) => (
             <Card key={action.id}>
               <Link
-                href={`/${locale}/actions/${action.id}`}
+                href={`/${locale}/actions/${action.slug}`}
                 className="flex items-center gap-4 transition-opacity hover:opacity-80"
               >
                 {/* Image — même taille que sur /signatures (h-16 w-24) */}

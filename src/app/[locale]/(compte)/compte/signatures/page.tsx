@@ -28,7 +28,7 @@ export default function SignaturesPage() {
   const locale = (params?.locale as string) || "fr";
   useAuthSafe();
 
-  const signedActions = actionsData.filter((a) => userActivity.signatures.includes(a.id));
+  const signedActions = actionsData.filter((a) => userActivity.signatures.includes(a.slug));
   const canJoin = canJoinAction(userActivity.plan, userActivity.actionsRejointes);
 
   return (
@@ -38,13 +38,13 @@ export default function SignaturesPage() {
     >
       <div className="space-y-4">
         {signedActions.map((action) => {
-          const isRejointe = userActivity.actionsRejointes.includes(action.id);
+          const isRejointe = userActivity.actionsRejointes.includes(action.slug);
           return (
             <Card key={action.id} className="overflow-hidden">
               <div className="flex flex-col gap-4 sm:flex-row sm:items-start">
                 {/* Image — Next.js Image, rounded-lg, même style que ActionCard */}
                 <Link
-                  href={`/${locale}/actions/${action.id}`}
+                  href={`/${locale}/actions/${action.slug}`}
                   className="relative block h-32 w-full shrink-0 overflow-hidden rounded-lg sm:h-28 sm:w-40"
                 >
                   <Image
@@ -78,7 +78,7 @@ export default function SignaturesPage() {
 
                   {/* Titre cliquable */}
                   <Link
-                    href={`/${locale}/actions/${action.id}`}
+                    href={`/${locale}/actions/${action.slug}`}
                     className="text-base font-bold text-gray-900 hover:text-brand dark:text-white"
                   >
                     {action.title}
@@ -96,7 +96,7 @@ export default function SignaturesPage() {
 
                   {/* CTA — vrais boutons Flowbite, pas des labels */}
                   <div className="mt-3 flex items-center gap-2">
-                    <Button as={Link} href={`/${locale}/actions/${action.id}`} color="gray" size="xs">
+                    <Button as={Link} href={`/${locale}/actions/${action.slug}`} color="gray" size="xs">
                       Voir l&apos;action
                     </Button>
                     {isRejointe ? (

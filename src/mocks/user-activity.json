@@ -2,11 +2,11 @@
   "plan": "maxi",
   "planLabel": "Maxi",
   "planColor": "#534AB7",
-  "actionsRejointes": ["act-001", "act-002", "act-003"],
+  "actionsRejointes": ["dejavu-transparence-vaccins", "ultimatum-linky-refus", "dermatose-nodulaire-stop-abattage"],
   "maxActions": 5,
   "seats": { "used": 2, "max": 3 },
   "inviteCode": "WJ-MAXI-7K3F",
-  "signatures": ["act-001", "act-002", "act-003", "act-004", "act-005"],
+  "signatures": ["dejavu-transparence-vaccins", "ultimatum-linky-refus", "dermatose-nodulaire-stop-abattage", "phonegate-ondes-ill\u00e9gales", "glyphosate-stop-empoisonnement"],
   "notifications": [
     { "id": "n-1", "type": "bienvenue", "title": "Bienvenue sur Wejustice !", "body": "Votre compte a \u00e9t\u00e9 cr\u00e9\u00e9 avec succ\u00e8s. Explorez nos actions collectives.", "date": "2026-03-25T10:00:00Z", "read": true },
     { "id": "n-2", "type": "action", "title": "DejaVu : la Commission fait appel", "body": "La Commission europ\u00e9enne a d\u00e9pos\u00e9 un appel contre sa condamnation du 17 juillet 2024.", "date": "2026-04-06T14:00:00Z", "read": false },
