@@ -252,7 +252,7 @@ export function TarifsClient() {
             <p className="mb-6 text-base leading-relaxed text-gray-600 dark:text-gray-300">
               Wejustice ne reçoit aucune subvention, aucun financement public, aucune aide privée.
               Notre indépendance totale est le prix de notre liberté d&apos;action.
-              Nous ne vivons que par le soutien de nos membres — c&apos;est la seule façon
+              Nous ne vivons que par le soutien de nos membres. C&apos;est la seule façon
               pour le 5<sup>ème</sup> pouvoir d&apos;exister et de rester accessible au plus grand nombre.
             </p>
             <div className="mx-auto grid max-w-2xl gap-6 sm:grid-cols-3">

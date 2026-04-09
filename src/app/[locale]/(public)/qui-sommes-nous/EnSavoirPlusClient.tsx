@@ -58,7 +58,7 @@ const TIMELINE_EVENTS = [
 const TEAM = [
   {
     name: "Me Arnaud Durand",
-    role: "Avocat référent — Cabinet Lexprecia",
+    role: "Avocat référent, Cabinet Lexprecia",
     bio: "Avocat au Barreau de Paris depuis plus de 10 ans, Arnaud Durand œuvre essentiellement dans des affaires sensibles en matière de santé, libertés individuelles et droits fondamentaux, principalement dans le cadre d'actions collectives en Justice.",
     initials: "AD",
     photo: "/images/team/arnaud.jpg",
@@ -68,7 +68,7 @@ const TEAM = [
   },
   {
     name: "Christophe van Engelen",
-    role: "Expert CX & Communication — Consultant",
+    role: "Expert CX & Communication, Consultant",
     bio: "15 ans dans le digital au service des grandes marques. Aujourd'hui, il met cette expertise au service d'une cause : rendre la Justice accessible à tous. Basé à Bruxelles, il conçoit les outils qui transforment l'indignation en action concrète.",
     initials: "CVE",
     photo: "/images/team/christophe.jpg",
