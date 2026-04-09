@@ -80,6 +80,13 @@ export function PricingCard({ plan, price, seats, isReduced, onChoose }: Pricing
         </p>
       )}
 
+      {/* Engagement duration */}
+      {price.durationMonths > 1 && (
+        <p className="mb-1 text-xs text-gray-500 dark:text-gray-400">
+          Je m&apos;engage pour {price.durationMonths === 12 ? "1 an" : price.durationMonths === 24 ? "2 ans" : "3 ans"}
+        </p>
+      )}
+
       {/* Upfront payment if duration > monthly */}
       {price.totalUpfront !== null && (
         <p className="mb-1 text-sm font-medium text-gray-900 dark:text-white">
