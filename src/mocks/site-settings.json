@@ -10,11 +10,11 @@
   "totalActions": 8,
   "featuredActionIds": ["act-001", "act-002", "act-004", "act-006"],
   "howItWorks": [
-    { "step": 1, "title": "Signez", "description": "Signez la p\u00e9tition et faites entrer votre nom dans l'Histoire." },
-    { "step": 2, "title": "Partagez", "description": "Aidez \u00e0 la diffusion du projet pour lui donner de l'impact." },
-    { "step": 3, "title": "Rejoignez", "description": "\u00c9ligible et motiv\u00e9 ? Devenez, en plus, une v\u00e9ritable partie \u00e0 la proc\u00e9dure." },
-    { "step": 4, "title": "Agissez", "description": "Soutenez Wejustice en vous inscrivant et en rejoignant les actions." },
-    { "step": 5, "title": "R\u00e9coltez", "description": "Obtenez une d\u00e9cision de justice, voire des indemnit\u00e9s en cas de succ\u00e8s." }
+    { "step": 1, "title": "Signez", "description": "Signez la <strong>pétition</strong> et faites entrer votre nom dans l'Histoire." },
+    { "step": 2, "title": "Partagez", "description": "Aidez à la <strong>diffusion</strong> du projet pour lui donner de l'impact." },
+    { "step": 3, "title": "Rejoignez", "description": "Éligible et motivé ? Devenez, en plus, une véritable <strong>partie</strong> à la procédure." },
+    { "step": 4, "title": "Agissez", "description": "Soutenez Wejustice en <strong>rejoignant</strong> les actions." },
+    { "step": 5, "title": "Récoltez", "description": "Obtenez une décision de justice, voire des <strong>indemnités</strong> en cas de succès." }
   ],
   "socialLinks": {
     "twitter": "https://twitter.com/wejustice",

@@ -247,9 +247,7 @@ export function HomepageClient() {
                     <h3 className="mb-2 text-lg font-bold text-gray-900 dark:text-white">
                       {title}
                     </h3>
-                    <p className="text-sm leading-relaxed text-gray-500 dark:text-gray-400">
-                      {description}
-                    </p>
+                    <p className="text-sm leading-relaxed text-gray-500 dark:text-gray-400" dangerouslySetInnerHTML={{ __html: description }} />
                   </div>
                 </div>
               </ScrollReveal>
@@ -266,7 +264,7 @@ export function HomepageClient() {
                     <TimelineContent>
                       <TimelineTime>Étape {step}</TimelineTime>
                       <TimelineTitle>{title}</TimelineTitle>
-                      <TimelineBody>{description}</TimelineBody>
+                      <TimelineBody><span dangerouslySetInnerHTML={{ __html: description }} /></TimelineBody>
                     </TimelineContent>
                   </TimelineItem>
                 </ScrollReveal>
@@ -287,7 +285,7 @@ export function HomepageClient() {
                 Ils ont agi avec nous
               </h2>
               <p className="text-base text-gray-500 dark:text-gray-400">
-                Des milliers de citoyens ont déjà obtenu gain de cause.
+                Des milliers de citoyens ont déjà agi avec nous.
               </p>
             </div>
           </ScrollReveal>
