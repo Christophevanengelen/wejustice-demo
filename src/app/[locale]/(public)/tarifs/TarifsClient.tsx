@@ -16,7 +16,7 @@
 import { useState, useRef, type FormEvent } from "react";
 import Image from "next/image";
 import { useParams } from "next/navigation";
-import { Badge, Table, TableBody, TableCell, TableHead, TableHeadCell, TableRow, Tooltip } from "flowbite-react";
+import { Tooltip } from "flowbite-react";
 import { CTAButton } from "@/components/ui/CTAButton";
 import { ScrollReveal } from "@/components/animations/ScrollReveal";
 import {
@@ -411,51 +411,52 @@ export function TarifsClient() {
           </div>
         </ScrollReveal>
 
-        {/* Comparison table — Flowbite Table (no ScrollReveal — toggled content) */}
+        {/* Comparison table — HTML natif (Flowbite Table cassait le dark mode) */}
         {showComparison && (
-            <div className="mb-10 overflow-x-auto rounded-lg border border-gray-200 bg-gray-50 dark:border-white/[0.08] dark:bg-gray-900">
-              <Table>
-                <TableHead>
-                  <TableHeadCell className="bg-gray-50 dark:bg-gray-800">Fonctionnalité</TableHeadCell>
-                  {PLANS.map((p) => (
-                    <TableHeadCell key={p.id} className="bg-gray-50 text-center dark:bg-gray-800">
-                      <span className="font-bold text-gray-900 dark:text-white">{p.name}</span>
-                      {p.recommended && (
-                        <Badge color="gray" size="xs" className="ml-1.5 inline-flex">
-                          Recommandé
-                        </Badge>
-                      )}
-                    </TableHeadCell>
-                  ))}
-                </TableHead>
-                <TableBody className="divide-y">
+            <div className="mb-10 overflow-x-auto rounded-lg border border-gray-200 dark:border-white/[0.08]">
+              <table className="w-full text-left text-sm">
+                <thead>
+                  <tr className="border-b border-gray-200 bg-gray-50 text-xs uppercase text-gray-700 dark:border-white/[0.08] dark:bg-gray-800 dark:text-gray-300">
+                    <th className="px-6 py-4">Fonctionnalité</th>
+                    {PLANS.map((p) => (
+                      <th key={p.id} className="px-4 py-4 text-center">
+                        <span className="font-bold normal-case text-gray-900 dark:text-white">{p.name}</span>
+                        {p.recommended && (
+                          <span className="ml-1.5 rounded-full bg-gray-200 px-2 py-0.5 text-[10px] font-medium text-gray-600 dark:bg-gray-700 dark:text-gray-300">
+                            Recommandé
+                          </span>
+                        )}
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-gray-200 dark:divide-white/[0.08]">
                   {COMPARISON_FEATURES.map((feat) => (
-                    <TableRow key={feat.label} className="bg-white dark:border-white/[0.08] dark:bg-gray-900">
-                      <TableCell className="whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white">
+                    <tr key={feat.label} className="bg-white dark:bg-gray-900">
+                      <td className="whitespace-nowrap px-6 py-4 text-sm font-medium text-gray-900 dark:text-white">
                         {feat.label}
-                      </TableCell>
-                      <TableCell className="text-center"><CellValue val={feat.mini} /></TableCell>
-                      <TableCell className="text-center"><CellValue val={feat.plus} /></TableCell>
-                      <TableCell className="text-center"><CellValue val={feat.maxi} /></TableCell>
-                      <TableCell className="text-center"><CellValue val={feat.aura} /></TableCell>
-                    </TableRow>
+                      </td>
+                      <td className="px-4 py-4 text-center"><CellValue val={feat.mini} /></td>
+                      <td className="px-4 py-4 text-center"><CellValue val={feat.plus} /></td>
+                      <td className="px-4 py-4 text-center"><CellValue val={feat.maxi} /></td>
+                      <td className="px-4 py-4 text-center"><CellValue val={feat.aura} /></td>
+                    </tr>
                   ))}
-                  {/* Price row */}
-                  <TableRow className="bg-gray-50 font-semibold dark:border-white/[0.08] dark:bg-gray-800">
-                    <TableCell className="text-sm font-bold text-gray-900 dark:text-white">
+                  <tr className="bg-gray-50 font-semibold dark:bg-gray-800">
+                    <td className="px-6 py-4 text-sm font-bold text-gray-900 dark:text-white">
                       Prix / mois
-                    </TableCell>
+                    </td>
                     {PLANS.map((p) => {
                       const pr = calculatePrice(p.id, 1, "annual", false);
                       return (
-                        <TableCell key={p.id} className="text-center text-sm font-bold text-gray-900 dark:text-white">
+                        <td key={p.id} className="px-4 py-4 text-center text-sm font-bold text-gray-900 dark:text-white">
                           {pr.pricePerPersonMonthly.toFixed(2).replace(".", ",")} EUR
-                        </TableCell>
+                        </td>
                       );
                     })}
-                  </TableRow>
-                </TableBody>
-              </Table>
+                  </tr>
+                </tbody>
+              </table>
             </div>
         )}
 
