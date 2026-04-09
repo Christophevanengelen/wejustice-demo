@@ -267,36 +267,46 @@ export function MerciClient({ actionId }: { actionId: string }) {
         >
           <div className="mb-4 text-center">
             <h2 className="text-xl font-bold text-gray-900 dark:text-white">
-              Multipliez votre impact
+              Décuplez votre impact
             </h2>
             <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
               Chaque partage = en moyenne 3 nouvelles signatures
             </p>
           </div>
 
-          {/* Share buttons grid */}
+          {/* Share buttons grid — <a href> pour permettre clic droit / copier le lien */}
           <div className="grid gap-3 sm:grid-cols-2">
-            {SHARE_PLATFORMS.map((platform) => (
-              <button
-                key={platform.id}
-                onClick={() => handleShare(platform.id)}
-                className={`flex items-center gap-3 rounded-lg px-4 py-3.5 text-left transition-all ${platform.bgClass} ${platform.textClass}`}
-              >
-                <svg
-                  className="h-5 w-5 shrink-0"
-                  fill={platform.fill ? "currentColor" : "none"}
-                  viewBox="0 0 24 24"
-                  stroke={platform.fill ? "none" : "currentColor"}
-                  strokeWidth={platform.fill ? 0 : 1.5}
+            {SHARE_PLATFORMS.map((platform) => {
+              const urls: Record<string, string> = {
+                twitter: `https://twitter.com/intent/tweet?text=${encodeURIComponent(tweetText)}&url=${encodeURIComponent(shareUrl)}&hashtags=${encodeURIComponent(action?.tag || "Wejustice")}`,
+                facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`,
+                linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`,
+                whatsapp: `https://wa.me/?text=${encodeURIComponent(whatsappText)}`,
+              };
+              return (
+                <a
+                  key={platform.id}
+                  href={urls[platform.id]}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`flex items-center gap-3 rounded-lg px-4 py-3.5 text-left transition-all ${platform.bgClass} ${platform.textClass}`}
                 >
-                  <path strokeLinecap="round" strokeLinejoin="round" d={platform.icon} />
-                </svg>
-                <div className="min-w-0 flex-1">
-                  <span className="block text-sm font-medium">{platform.label}</span>
-                  <span className="block text-xs opacity-70">{platform.reach} verront votre partage</span>
-                </div>
-              </button>
-            ))}
+                  <svg
+                    className="h-5 w-5 shrink-0"
+                    fill={platform.fill ? "currentColor" : "none"}
+                    viewBox="0 0 24 24"
+                    stroke={platform.fill ? "none" : "currentColor"}
+                    strokeWidth={platform.fill ? 0 : 1.5}
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" d={platform.icon} />
+                  </svg>
+                  <div className="min-w-0 flex-1">
+                    <span className="block text-sm font-medium">{platform.label}</span>
+                    <span className="block text-xs opacity-70">{platform.reach} verront votre partage</span>
+                  </div>
+                </a>
+              );
+            })}
           </div>
 
           {/* Copy link */}
