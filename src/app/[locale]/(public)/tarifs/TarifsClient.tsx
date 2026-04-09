@@ -242,10 +242,41 @@ export function TarifsClient() {
         </div>
       </section>
 
+      {/* ═══ POURQUOI UN ABONNEMENT ═══ */}
+      <section className="border-b border-gray-200 bg-gray-50 py-12 dark:border-white/[0.08] dark:bg-gray-900 lg:py-16">
+        <div className="mx-auto max-w-screen-xl px-4 lg:px-6">
+          <div className="mx-auto max-w-3xl text-center">
+            <h2 className="mb-4 text-2xl font-bold text-gray-900 dark:text-white lg:text-3xl">
+              Pourquoi votre soutien est essentiel
+            </h2>
+            <p className="mb-6 text-base leading-relaxed text-gray-600 dark:text-gray-300">
+              Wejustice ne reçoit aucune subvention, aucun financement public, aucune aide privée.
+              Notre indépendance totale est le prix de notre liberté d&apos;action.
+              Nous ne vivons que par le soutien de nos membres — c&apos;est la seule façon
+              pour le 5<sup>ème</sup> pouvoir d&apos;exister et de rester accessible au plus grand nombre.
+            </p>
+            <div className="mx-auto grid max-w-2xl gap-6 sm:grid-cols-3">
+              <div className="rounded-lg border border-gray-200 bg-white p-5 dark:border-white/[0.08] dark:bg-gray-900">
+                <p className="text-2xl font-bold text-gray-900 dark:text-white">0 €</p>
+                <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">De subvention publique</p>
+              </div>
+              <div className="rounded-lg border border-gray-200 bg-white p-5 dark:border-white/[0.08] dark:bg-gray-900">
+                <p className="text-2xl font-bold text-gray-900 dark:text-white">100%</p>
+                <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">Indépendant</p>
+              </div>
+              <div className="rounded-lg border border-gray-200 bg-white p-5 dark:border-white/[0.08] dark:bg-gray-900">
+                <p className="text-2xl font-bold text-brand">Vous</p>
+                <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">Êtes le 5<sup>ème</sup> pouvoir</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ═══ SECTION 2 : CITOYENS - CONFIGURATOR + CARDS ═══ */}
       <div className="mx-auto max-w-screen-xl px-4 pb-10 pt-12 lg:px-6">
 
-        {/* Section header — même structure que "Pour les organisations" */}
+        {/* Section header */}
         <div className="mb-10 text-center">
           <p className="text-sm font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">
             Pour les citoyens
@@ -254,7 +285,7 @@ export function TarifsClient() {
             Choisissez votre forfait
           </h2>
           <p className="mx-auto mt-3 max-w-2xl text-gray-500 dark:text-gray-400">
-            Soutenez la justice collective et devenez partie prenante des actions en cours.
+            Votre abonnement finance les procédures, les avocats et les outils qui rendent la Justice accessible.
           </p>
         </div>
 
