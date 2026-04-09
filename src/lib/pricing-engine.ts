@@ -102,8 +102,8 @@ export const PLANS: Plan[] = [
     maxSeats: 1,
     maxActions: "Jusqu'à 1 action",
     features: [
-      { label: "Recevoir notre Gazette", value: "Inclus" },
-      { label: "Support en ligne", value: "Inclus", tooltip: TOOLTIP_SUPPORT },
+      { label: "Recevoir notre Gazette", value: "✓" },
+      { label: "Support en ligne", value: "✓", tooltip: TOOLTIP_SUPPORT },
       { label: "Soutenir nos actions", value: "Jusqu'à 1 action", tooltip: TOOLTIP_ACTIONS },
       { label: "Rejoindre les procès", value: "Possible", tooltip: TOOLTIP_ELIGIBILITY },
     ],
@@ -117,8 +117,8 @@ export const PLANS: Plan[] = [
     maxSeats: 2,
     maxActions: "Jusqu'à 2 actions",
     features: [
-      { label: "Recevoir notre Gazette", value: "Inclus" },
-      { label: "Support en ligne", value: "Inclus", tooltip: TOOLTIP_SUPPORT },
+      { label: "Recevoir notre Gazette", value: "✓" },
+      { label: "Support en ligne", value: "✓", tooltip: TOOLTIP_SUPPORT },
       { label: "Soutenir nos actions", value: "Jusqu'à 2 actions", tooltip: TOOLTIP_ACTIONS },
       { label: "Rejoindre les procès", value: "Possible", tooltip: TOOLTIP_ELIGIBILITY },
     ],
@@ -133,8 +133,8 @@ export const PLANS: Plan[] = [
     maxActions: "Jusqu'à 5 actions",
     recommended: true,
     features: [
-      { label: "Recevoir notre Gazette", value: "Inclus" },
-      { label: "Support en ligne", value: "Inclus", tooltip: TOOLTIP_SUPPORT },
+      { label: "Recevoir notre Gazette", value: "✓" },
+      { label: "Support en ligne", value: "✓", tooltip: TOOLTIP_SUPPORT },
       { label: "Soutenir nos actions", value: "Jusqu'à 5 actions", tooltip: TOOLTIP_ACTIONS },
       { label: "Rejoindre les procès", value: "Possible", tooltip: TOOLTIP_ELIGIBILITY },
     ],
@@ -148,8 +148,8 @@ export const PLANS: Plan[] = [
     maxSeats: 4,
     maxActions: "Illimité",
     features: [
-      { label: "Recevoir notre Gazette", value: "Inclus" },
-      { label: "Support en ligne", value: "Inclus", tooltip: TOOLTIP_SUPPORT },
+      { label: "Recevoir notre Gazette", value: "✓" },
+      { label: "Support en ligne", value: "✓", tooltip: TOOLTIP_SUPPORT },
       { label: "Soutenir nos actions", value: "Illimité ∞", tooltip: TOOLTIP_ACTIONS },
       { label: "Rejoindre les procès", value: "Possible", tooltip: TOOLTIP_ELIGIBILITY },
     ],
