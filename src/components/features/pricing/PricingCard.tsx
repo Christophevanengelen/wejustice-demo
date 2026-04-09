@@ -101,9 +101,6 @@ export function PricingCard({ plan, price, seats, isReduced, onChoose }: Pricing
         </p>
       )}
 
-      {/* Actions count */}
-      <p className="mb-4 text-xs text-gray-500 dark:text-gray-400">{plan.maxActions}</p>
-
       {/* Divider */}
       <hr className="mb-4 border-gray-200 dark:border-white/[0.08]" />
 
