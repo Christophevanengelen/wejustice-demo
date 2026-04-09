@@ -231,55 +231,26 @@ export function TarifsClient() {
         />
         <div className="relative z-10 mx-auto flex max-w-screen-xl flex-1 flex-col items-center justify-center px-4 py-10 text-center sm:py-16 lg:px-6">
           <h1 className="mb-4 text-3xl font-bold leading-tight tracking-tight text-white lg:text-5xl">
-            Activez le 5<sup className="text-lg">e</sup> pouvoir
+            Pourquoi votre soutien est essentiel
           </h1>
-          <p className="mx-auto mb-6 max-w-2xl text-base text-white/80 sm:text-lg">
-            Chaque citoyen peut agir en Justice pour défendre ses droits.
-            Choisissez votre forfait, rejoignez les actions, et devenez acteur du changement.
+          <p className="mx-auto mb-8 max-w-2xl text-base leading-relaxed text-white/80 sm:text-lg">
+            Wejustice ne reçoit aucune subvention, aucun financement public, aucune aide privée.
+            Notre indépendance totale est le prix de notre liberté d&apos;action.
+            Nous ne vivons que par le soutien de nos membres. C&apos;est la seule façon
+            pour le 5<sup className="text-xs">ème</sup> pouvoir d&apos;exister et de rester accessible au plus grand nombre.
           </p>
-          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs text-white/60">
-            <span className="flex items-center gap-1.5">
-              <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
-              Paiement sécurisé
-            </span>
-            <span className="flex items-center gap-1.5">
-              <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-              Sans engagement
-            </span>
-            <span className="flex items-center gap-1.5">
-              <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
-              +15 000 citoyens
-            </span>
-          </div>
-        </div>
-      </section>
-
-      {/* ═══ POURQUOI UN ABONNEMENT ═══ */}
-      <section className="border-b border-gray-200 bg-gray-50 py-12 dark:border-white/[0.08] dark:bg-gray-900 lg:py-16">
-        <div className="mx-auto max-w-screen-xl px-4 lg:px-6">
-          <div className="mx-auto max-w-3xl text-center">
-            <h2 className="mb-4 text-2xl font-bold text-gray-900 dark:text-white lg:text-3xl">
-              Pourquoi votre soutien est essentiel
-            </h2>
-            <p className="mb-6 text-base leading-relaxed text-gray-600 dark:text-gray-300">
-              Wejustice ne reçoit aucune subvention, aucun financement public, aucune aide privée.
-              Notre indépendance totale est le prix de notre liberté d&apos;action.
-              Nous ne vivons que par le soutien de nos membres. C&apos;est la seule façon
-              pour le 5<sup>ème</sup> pouvoir d&apos;exister et de rester accessible au plus grand nombre.
-            </p>
-            <div className="mx-auto grid max-w-2xl gap-6 sm:grid-cols-3">
-              <div className="rounded-lg border border-gray-200 bg-white p-5 dark:border-white/[0.08] dark:bg-gray-900">
-                <p className="text-2xl font-bold text-gray-900 dark:text-white">0 €</p>
-                <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">De subvention publique</p>
-              </div>
-              <div className="rounded-lg border border-gray-200 bg-white p-5 dark:border-white/[0.08] dark:bg-gray-900">
-                <p className="text-2xl font-bold text-gray-900 dark:text-white">100%</p>
-                <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">Indépendant</p>
-              </div>
-              <div className="rounded-lg border border-gray-200 bg-white p-5 dark:border-white/[0.08] dark:bg-gray-900">
-                <p className="text-2xl font-bold text-brand">Vous</p>
-                <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">Êtes le 5<sup>ème</sup> pouvoir</p>
-              </div>
+          <div className="mx-auto grid max-w-2xl gap-6 sm:grid-cols-3">
+            <div className="rounded-lg border border-white/15 bg-white/10 p-5 backdrop-blur-sm">
+              <p className="text-2xl font-bold text-white">0 €</p>
+              <p className="mt-1 text-xs text-white/60">De subvention publique</p>
+            </div>
+            <div className="rounded-lg border border-white/15 bg-white/10 p-5 backdrop-blur-sm">
+              <p className="text-2xl font-bold text-white">100%</p>
+              <p className="mt-1 text-xs text-white/60">Indépendant</p>
+            </div>
+            <div className="rounded-lg border border-white/15 bg-white/10 p-5 backdrop-blur-sm">
+              <p className="text-2xl font-bold text-white">Vous</p>
+              <p className="mt-1 text-xs text-white/60">Êtes le 5<sup>ème</sup> pouvoir</p>
             </div>
           </div>
         </div>
