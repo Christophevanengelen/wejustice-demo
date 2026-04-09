@@ -322,27 +322,6 @@ export function MerciClient({ actionId }: { actionId: string }) {
           </div>
         </motion.div>
 
-        {/* ═══ 5. LIVE "SIGNED AFTER YOU" COUNTER ═══ */}
-        {afterYouCount > 0 && (
-          <motion.div
-            initial={prefersReduced ? false : { opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: DURATION.normal, ease: EASING.smooth }}
-            className="mb-8 flex items-center justify-center gap-2 rounded-lg bg-green-50 py-3 text-sm dark:bg-green-900/20"
-          >
-            <span className="relative flex h-2 w-2">
-              {!prefersReduced && (
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75" />
-              )}
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500" />
-            </span>
-            <span className="text-green-700 dark:text-green-400">
-              <span className="font-bold">{afterYouCount}</span>{" "}
-              {afterYouCount === 1 ? "personne a signé" : "personnes ont signé"} après vous
-            </span>
-          </motion.div>
-        )}
-
         {/* ═══ 7. UPSELL ═══ */}
         <motion.div
           initial={prefersReduced ? false : { opacity: 0, y: 16 }}
