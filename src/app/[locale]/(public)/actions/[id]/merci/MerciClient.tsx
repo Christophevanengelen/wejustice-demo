@@ -225,37 +225,29 @@ export function MerciClient({ actionId }: { actionId: string }) {
           </motion.p>
         </div>
 
-        {/* ═══ 2. SOCIAL PROOF COUNTER ═══ */}
+        {/* ═══ 2. COMPTEUR + PROGRESSION (fusionnés) ═══ */}
         <motion.div
           initial={prefersReduced ? false : { opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: DURATION.slow, delay: 0.8, ease: EASING.smooth }}
-          className="mb-8 rounded-lg border border-gray-100 bg-gray-50 p-6 text-center dark:border-white/[0.08] dark:bg-gray-900"
+          className="mb-8 rounded-lg border border-gray-100 bg-gray-50 p-6 dark:border-white/[0.08] dark:bg-gray-900"
         >
-          <p className="mb-1 text-sm text-gray-500 dark:text-gray-400">Vous êtes le</p>
-          <p className="text-4xl font-bold text-gray-900 dark:text-white lg:text-5xl">
-            <AnimatedCounter value={currentSigs} duration={2} suffix="e" />
-          </p>
-          <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">signataire</p>
-        </motion.div>
-
-        {/* ═══ 3. IMPACT MESSAGE + MILESTONE PROGRESS ═══ */}
-        <motion.div
-          initial={prefersReduced ? false : { opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: DURATION.slow, delay: 1.0, ease: EASING.smooth }}
-          className="mb-8 rounded-lg border border-gray-100 bg-white p-6 dark:border-white/[0.08] dark:bg-gray-900"
-        >
-          <p className="mb-4 text-center text-sm text-gray-600 dark:text-gray-400">
-            Gr&acirc;ce à vous, nous sommes à{" "}
-            <span className="font-bold text-gray-900 dark:text-white">{pct}%</span> de l&apos;objectif.
-            Plus que{" "}
+          <p className="text-center text-sm text-gray-500 dark:text-gray-400">
+            Vous êtes le{" "}
+            <span className="text-lg font-bold text-gray-900 dark:text-white">
+              <AnimatedCounter value={currentSigs} duration={2} />
+              <sup className="text-xs">e</sup>
+            </span>{" "}
+            signataire. Plus que{" "}
             <span className="font-bold text-gray-900 dark:text-white">
               {remaining.toLocaleString("fr-FR")}
             </span>{" "}
-            signatures.
+            pour atteindre{" "}
+            <span className="font-bold text-gray-900 dark:text-white">{pct < 100 ? "l\u2019objectif" : "la victoire"}</span>.
           </p>
-          <MilestoneProgress currentSignatures={currentSigs} goalSignatures={goalSigs} />
+          <div className="mt-4">
+            <MilestoneProgress currentSignatures={currentSigs} goalSignatures={goalSigs} />
+          </div>
         </motion.div>
 
         {/* ═══ 4. VIRAL SHARE BLOCK ═══ */}
