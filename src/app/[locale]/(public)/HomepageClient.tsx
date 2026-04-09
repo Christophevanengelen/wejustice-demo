@@ -131,7 +131,7 @@ export function HomepageClient() {
             <CTAButton href={`/${locale}/actions`} size="xl">
               Voir les actions
             </CTAButton>
-            <CTAButton href={`/${locale}/rejoindre`} variant="light" size="xl" className="border-white/30 bg-white/10 text-white hover:bg-white/20 dark:border-white/30 dark:bg-white/10 dark:text-white dark:hover:bg-white/20">
+            <CTAButton href={`/${locale}/tarifs`} variant="light" size="xl" className="border-white/30 bg-white/10 text-white hover:bg-white/20 dark:border-white/30 dark:bg-white/10 dark:text-white dark:hover:bg-white/20">
               Rejoindre
             </CTAButton>
           </div>

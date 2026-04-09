@@ -12,12 +12,14 @@
  * - Dark mode complet
  */
 
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { useAuthSafe } from "@/lib/mock-auth";
 import { getMaxActions } from "@/lib/pricing-engine";
 import { ComptePageShell } from "@/components/features/compte/ComptePageShell";
+import { CTAButton } from "@/components/ui/CTAButton";
 import { Card, Badge, Progress, Alert } from "flowbite-react";
 import userActivity from "@/mocks/user-activity.json";
 import actionsData from "@/mocks/actions.json";
@@ -26,6 +28,7 @@ export default function CompteDashboard() {
   const params = useParams();
   const locale = (params?.locale as string) || "fr";
   const { user } = useAuthSafe();
+  const [hasSignedActions] = useState(false);
 
   const maxActions = getMaxActions(userActivity.plan);
   const rejointes = userActivity.actionsRejointes.length;
@@ -37,6 +40,50 @@ export default function CompteDashboard() {
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
     .slice(0, 3);
   const rejointesActions = actionsData.filter((a) => userActivity.actionsRejointes.includes(a.id));
+
+  if (!hasSignedActions) {
+    return (
+      <ComptePageShell
+        title={`Bonjour ${user?.firstName || "Jean"} !`}
+        subtitle="Nouveau membre"
+      >
+        <div className="mx-auto max-w-2xl py-8 text-center">
+          <div className="rounded-lg border border-gray-200 bg-white p-8 dark:border-white/[0.08] dark:bg-gray-900 lg:p-12">
+            {/* Welcome icon */}
+            <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-brand/10">
+              <svg className="h-8 w-8 text-brand" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+              </svg>
+            </div>
+
+            <h2 className="mb-3 text-2xl font-bold text-gray-900 dark:text-white lg:text-3xl">
+              Bienvenue sur Wejustice !
+            </h2>
+            <p className="mx-auto mb-8 max-w-md text-base leading-relaxed text-gray-500 dark:text-gray-400">
+              Vous n&apos;avez pas encore signe d&apos;action. C&apos;est le moment de faire entendre votre voix.
+            </p>
+
+            <CTAButton href={`/${locale}/actions`} size="xl">
+              Signer toutes les actions ouvertes en un clic
+            </CTAButton>
+
+            <p className="mt-6 text-sm text-gray-500 dark:text-gray-400">
+              Ou parcourez les actions pour choisir celles qui vous concernent.
+            </p>
+            <Link
+              href={`/${locale}/actions`}
+              className="mt-2 inline-flex items-center gap-1 text-sm font-medium text-brand hover:underline"
+            >
+              Voir les actions
+              <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 14 10">
+                <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
+              </svg>
+            </Link>
+          </div>
+        </div>
+      </ComptePageShell>
+    );
+  }
 
   return (
     <ComptePageShell

@@ -13,9 +13,12 @@
  * 7. FAQ (Flowbite Accordion pattern)
  */
 
-import { useState, useRef } from "react";
+import { useState, useRef, type FormEvent } from "react";
 import Image from "next/image";
+import { useParams } from "next/navigation";
 import { Badge, Table, TableBody, TableCell, TableHead, TableHeadCell, TableRow, Tooltip } from "flowbite-react";
+import { CTAButton } from "@/components/ui/CTAButton";
+import { ScrollReveal } from "@/components/animations/ScrollReveal";
 import {
   PLANS,
   DURATIONS,
@@ -27,7 +30,6 @@ import {
 import { PricingCard } from "@/components/features/pricing/PricingCard";
 import { DonLibreStep } from "@/components/features/pricing/DonLibreStep";
 import { OrganisationsTable } from "@/components/features/pricing/OrganisationsTable";
-import { ScrollReveal } from "@/components/animations/ScrollReveal";
 
 /* ─── FAQ Data ─── */
 const FAQ_ITEMS = [
@@ -159,22 +161,35 @@ function CellValue({ val }: { val: boolean | string }) {
 
 /* ─── Main Component ─── */
 export function TarifsClient() {
+  const params = useParams();
+  const locale = (params?.locale as string) || "fr";
   const [seats, setSeats] = useState(1);
   const [duration, setDuration] = useState<DurationKey>("annual");
   const [isReduced, setIsReduced] = useState(false);
   const [selectedPlan, setSelectedPlan] = useState<Plan | null>(null);
   const [showComparison, setShowComparison] = useState(false);
+  const [showSignup, setShowSignup] = useState(false);
+  const [signupPlan, setSignupPlan] = useState<string | null>(null);
 
   const donLibreRef = useRef<HTMLDivElement>(null);
 
   const visiblePlans = isReduced ? PLANS.filter((p) => p.id !== "aura") : PLANS;
 
   const handleChoose = (plan: Plan) => {
+    setSignupPlan(plan.id);
+    setShowSignup(true);
     setSelectedPlan(plan);
-    setTimeout(() => {
-      donLibreRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
-    }, 100);
   };
+
+  const handleSignupSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    // Demo mode — redirect to /compte
+    window.location.href = `/${locale}/compte`;
+  };
+
+  const signupPlanLabel = signupPlan === "free"
+    ? "Gratuit"
+    : PLANS.find((p) => p.id === signupPlan)?.name || "";
 
   const handleReducedToggle = () => {
     const next = !isReduced;
@@ -270,6 +285,46 @@ export function TarifsClient() {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* ═══ REJOINDRE GRATUITEMENT ═══ */}
+      <section className="border-b border-gray-200 bg-white py-12 dark:border-white/[0.08] dark:bg-gray-900 lg:py-16">
+        <div className="mx-auto max-w-screen-xl px-4 lg:px-6">
+          <ScrollReveal>
+            <div className="mx-auto max-w-2xl">
+              <div className="rounded-lg border-2 p-8 text-center" style={{ borderColor: 'var(--color-brand)' }}>
+                <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-green-100 px-4 py-1.5 text-sm font-semibold text-green-700 dark:bg-green-900/30 dark:text-green-300">
+                  <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  100% gratuit
+                </div>
+                <h2 className="mb-3 text-2xl font-bold text-gray-900 dark:text-white lg:text-3xl">
+                  Commencez gratuitement
+                </h2>
+                <p className="mx-auto mb-6 max-w-lg text-base leading-relaxed text-gray-600 dark:text-gray-300">
+                  Creez votre compte, signez des petitions en illimite et suivez les actions en temps reel. Sans carte bancaire.
+                </p>
+                <ul className="mx-auto mb-8 flex max-w-md flex-col gap-3 text-left">
+                  {["Signatures illimitees", "Suivi des actions en temps reel", "Communaute de citoyens engages"].map((feature) => (
+                    <li key={feature} className="flex items-center gap-3">
+                      <svg className="h-5 w-5 flex-shrink-0 text-green-500" viewBox="0 0 20 20" fill="currentColor">
+                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                      </svg>
+                      <span className="text-sm font-medium text-gray-700 dark:text-gray-300">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+                <CTAButton
+                  size="xl"
+                  onClick={() => { setSignupPlan("free"); setShowSignup(true); }}
+                >
+                  Creer mon compte gratuit
+                </CTAButton>
+              </div>
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 
@@ -557,6 +612,67 @@ export function TarifsClient() {
           </div>
         </div>
       </div>
+
+      {/* ═══ SIGNUP MODAL ═══ */}
+      {showSignup && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
+          <div className="w-full max-w-md rounded-lg bg-white p-8 dark:bg-gray-900">
+            <h2 className="mb-2 text-xl font-bold text-gray-900 dark:text-white">
+              Creez votre compte
+            </h2>
+            <p className="mb-6 text-sm text-gray-500 dark:text-gray-400">
+              Plan : <span className="font-semibold text-gray-900 dark:text-white">{signupPlanLabel}</span>
+            </p>
+            <form onSubmit={handleSignupSubmit} className="space-y-4">
+              <div>
+                <label htmlFor="signup-prenom" className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">
+                  Prenom
+                </label>
+                <input
+                  id="signup-prenom"
+                  type="text"
+                  placeholder="Votre prenom"
+                  required
+                  className="w-full rounded-lg border border-gray-300 bg-gray-50 px-4 py-2.5 text-sm text-gray-900 focus:border-brand focus:ring-1 focus:ring-brand dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:placeholder-gray-400 dark:focus:border-brand dark:focus:ring-brand"
+                />
+              </div>
+              <div>
+                <label htmlFor="signup-nom" className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">
+                  Nom
+                </label>
+                <input
+                  id="signup-nom"
+                  type="text"
+                  placeholder="Votre nom"
+                  required
+                  className="w-full rounded-lg border border-gray-300 bg-gray-50 px-4 py-2.5 text-sm text-gray-900 focus:border-brand focus:ring-1 focus:ring-brand dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:placeholder-gray-400 dark:focus:border-brand dark:focus:ring-brand"
+                />
+              </div>
+              <div>
+                <label htmlFor="signup-email" className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">
+                  Email
+                </label>
+                <input
+                  id="signup-email"
+                  type="email"
+                  placeholder="votre@email.com"
+                  required
+                  className="w-full rounded-lg border border-gray-300 bg-gray-50 px-4 py-2.5 text-sm text-gray-900 focus:border-brand focus:ring-1 focus:ring-brand dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:placeholder-gray-400 dark:focus:border-brand dark:focus:ring-brand"
+                />
+              </div>
+              <CTAButton type="submit" fullWidth size="lg">
+                Creer mon compte
+              </CTAButton>
+            </form>
+            <button
+              onClick={() => setShowSignup(false)}
+              className="mt-4 w-full text-center text-sm font-medium text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
+            >
+              Fermer
+            </button>
+          </div>
+        </div>
+      )}
 
     </div>
   );
