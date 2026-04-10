@@ -9,6 +9,7 @@
  */
 
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 
 interface Reply {
   id: string;
@@ -48,6 +49,7 @@ function relativeDate(dateStr: string): string {
 function SingleComment({ author, avatarColor, date, text, likes: initialLikes, isTeam, isReply = false }: CommentProps & { isReply?: boolean }) {
   const [liked, setLiked] = useState(false);
   const [likeCount, setLikeCount] = useState(initialLikes);
+  const t = useTranslations("actionDetail");
 
   const toggleLike = () => {
     setLiked(!liked);
@@ -70,7 +72,7 @@ function SingleComment({ author, avatarColor, date, text, likes: initialLikes, i
           <span className="text-sm font-medium text-gray-900 dark:text-white">{author}</span>
           {isTeam && (
             <span className="rounded bg-brand px-1.5 py-0.5 text-[10px] font-bold text-white">
-              EQUIPE
+              {t("teamBadge")}
             </span>
           )}
           <span className="text-xs text-gray-400 dark:text-gray-500">{relativeDate(date)}</span>
@@ -100,6 +102,7 @@ function SingleComment({ author, avatarColor, date, text, likes: initialLikes, i
 
 export function CommentThread(props: CommentProps) {
   const [showReplies, setShowReplies] = useState(props.replies.length <= 2);
+  const t = useTranslations("actionDetail");
 
   return (
     <div className="py-4">
@@ -113,7 +116,7 @@ export function CommentThread(props: CommentProps) {
               onClick={() => setShowReplies(true)}
               className="ml-11 mt-2 text-xs font-medium text-brand hover:opacity-80"
             >
-              Voir {props.replies.length} reponse{props.replies.length > 1 ? "s" : ""}
+              {props.replies.length > 1 ? t("viewRepliesPlural", { count: props.replies.length }) : t("viewReplies", { count: props.replies.length })}
             </button>
           ) : (
             props.replies.map((reply) => (

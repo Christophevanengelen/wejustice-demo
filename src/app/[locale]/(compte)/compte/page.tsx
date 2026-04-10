@@ -16,6 +16,7 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useParams } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { useAuthSafe } from "@/lib/mock-auth";
 import { getMaxActions } from "@/lib/pricing-engine";
 import { ComptePageShell } from "@/components/features/compte/ComptePageShell";
@@ -28,6 +29,8 @@ export default function CompteDashboard() {
   const params = useParams();
   const locale = (params?.locale as string) || "fr";
   const { user } = useAuthSafe();
+  const t = useTranslations("compte");
+  const tc = useTranslations("common");
   const [hasSignedActions] = useState(false);
 
   const maxActions = getMaxActions(userActivity.plan);
@@ -44,8 +47,8 @@ export default function CompteDashboard() {
   if (!hasSignedActions) {
     return (
       <ComptePageShell
-        title={`Bonjour ${user?.firstName || "Jean"} !`}
-        subtitle="Nouveau membre"
+        title={t("hello", { name: user?.firstName || "Jean" })}
+        subtitle={t("newMember")}
       >
         <div className="mx-auto max-w-2xl py-8 text-center">
           <div className="rounded-lg border border-gray-200 bg-white p-8 dark:border-white/[0.08] dark:bg-gray-900 lg:p-12">
@@ -57,24 +60,24 @@ export default function CompteDashboard() {
             </div>
 
             <h2 className="mb-3 text-2xl font-bold text-gray-900 dark:text-white lg:text-3xl">
-              Bienvenue sur Wejustice !
+              {t("welcome")}
             </h2>
             <p className="mx-auto mb-8 max-w-md text-base leading-relaxed text-gray-500 dark:text-gray-400">
-              Vous n&apos;avez pas encore signe d&apos;action. C&apos;est le moment de faire entendre votre voix.
+              {t("noSignedActions")}
             </p>
 
             <CTAButton href={`/${locale}/actions`} size="xl">
-              Signer toutes les actions ouvertes en un clic
+              {t("signAllActions")}
             </CTAButton>
 
             <p className="mt-6 text-sm text-gray-500 dark:text-gray-400">
-              Ou parcourez les actions pour choisir celles qui vous concernent.
+              {t("browseActions")}
             </p>
             <Link
               href={`/${locale}/actions`}
               className="mt-2 inline-flex items-center gap-1 text-sm font-medium text-brand hover:underline"
             >
-              Voir les actions
+              {t("actionsJoined")}
               <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 14 10">
                 <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
               </svg>
@@ -87,8 +90,8 @@ export default function CompteDashboard() {
 
   return (
     <ComptePageShell
-      title={`Bonjour ${user?.firstName || "Jean"} !`}
-      subtitle={`${user?.grade || "Citoyen engage"} | Forfait ${userActivity.planLabel}`}
+      title={t("hello", { name: user?.firstName || "Jean" })}
+      subtitle={`${user?.grade || t("citizenEngaged")} | ${t("plan", { plan: userActivity.planLabel })}`}
     >
       {/* Stats cards — 3 colonnes sur desktop */}
       <div className="mb-8 grid gap-4 sm:grid-cols-3">
@@ -96,7 +99,7 @@ export default function CompteDashboard() {
           <p className="text-3xl font-bold text-gray-900 dark:text-white">
             {rejointes} / {maxActions === Infinity ? "\u221E" : maxActions}
           </p>
-          <p className="text-xs text-gray-500 dark:text-gray-400">Actions rejointes</p>
+          <p className="text-xs text-gray-500 dark:text-gray-400">{t("actionsJoined")}</p>
           {maxActions !== Infinity && (
             <Progress
               progress={Math.min(100, (rejointes / maxActions) * 100)}
@@ -109,18 +112,18 @@ export default function CompteDashboard() {
           <p className="text-3xl font-bold text-gray-900 dark:text-white">
             {seatsUsed} / {seatsMax}
           </p>
-          <p className="text-xs text-gray-500 dark:text-gray-400">Seats utilises</p>
+          <p className="text-xs text-gray-500 dark:text-gray-400">{t("seatsUsed")}</p>
           <Progress progress={(seatsUsed / seatsMax) * 100} color="red" size="sm" />
         </Card>
         <Card>
           <p className="text-3xl font-bold text-gray-900 dark:text-white">{sigCount}</p>
-          <p className="text-xs text-gray-500 dark:text-gray-400">Signatures gratuites</p>
+          <p className="text-xs text-gray-500 dark:text-gray-400">{t("freeSignatures")}</p>
         </Card>
       </div>
 
       {/* Actions rejointes — avec Next.js Image */}
       <div className="mb-8">
-        <h2 className="mb-4 text-lg font-bold text-gray-900 dark:text-white">Actions rejointes</h2>
+        <h2 className="mb-4 text-lg font-bold text-gray-900 dark:text-white">{t("actionsJoined")}</h2>
         <div className="space-y-3">
           {rejointesActions.map((action) => (
             <Card key={action.id}>
@@ -150,7 +153,7 @@ export default function CompteDashboard() {
                   </p>
                   <p className="text-xs text-gray-500 dark:text-gray-400">#{action.tag}</p>
                 </div>
-                <Badge color="green" size="xs">Vous participez</Badge>
+                <Badge color="green" size="xs">{t("youParticipate")}</Badge>
               </Link>
             </Card>
           ))}
@@ -170,9 +173,9 @@ export default function CompteDashboard() {
 
       {/* Code invitation */}
       <Card className="mb-8">
-        <h2 className="text-base font-bold text-gray-900 dark:text-white">Inviter des proches</h2>
+        <h2 className="text-base font-bold text-gray-900 dark:text-white">{t("inviteTitle")}</h2>
         <p className="text-xs text-gray-500 dark:text-gray-400">
-          Partagez ce code avec vos proches pour qu&apos;ils beneficient de votre forfait.
+          {t("inviteDesc")}
         </p>
         <div className="flex items-center gap-3">
           <code className="rounded-lg bg-gray-100 px-4 py-2 font-mono text-sm font-bold text-gray-900 dark:bg-gray-700 dark:text-white">
@@ -182,7 +185,7 @@ export default function CompteDashboard() {
             onClick={() => { navigator.clipboard?.writeText(userActivity.inviteCode); }}
             className="rounded-lg border border-gray-300 px-3 py-2 text-xs font-medium text-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:text-gray-300 dark:hover:bg-gray-700"
           >
-            Copier
+            {tc("copy")}
           </button>
         </div>
         <p className="text-xs text-gray-400 dark:text-gray-500">
@@ -193,12 +196,12 @@ export default function CompteDashboard() {
       {/* Dernière activité — notifications récentes */}
       <div>
         <div className="mb-4 flex items-center justify-between">
-          <h2 className="text-lg font-bold text-gray-900 dark:text-white">Derniere activite</h2>
+          <h2 className="text-lg font-bold text-gray-900 dark:text-white">{t("recentActivity")}</h2>
           <Link
             href={`/${locale}/compte/notifications`}
             className="text-xs font-medium text-brand hover:underline"
           >
-            Voir tout ({unread} non lues)
+            {t("viewAll", { count: unread })}
           </Link>
         </div>
         <div className="space-y-2">

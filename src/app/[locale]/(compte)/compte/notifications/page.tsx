@@ -9,6 +9,7 @@
 
 import Link from "next/link";
 import { useParams } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { Card } from "flowbite-react";
 import { ComptePageShell } from "@/components/features/compte/ComptePageShell";
 import userActivity from "@/mocks/user-activity.json";
@@ -72,6 +73,7 @@ const DEFAULT_STYLE = CATEGORY_STYLE.action;
 export default function NotificationsPage() {
   const params = useParams();
   const locale = (params?.locale as string) || "fr";
+  const t = useTranslations("compte");
 
   /* Sort by date desc */
   const sorted = [...userActivity.notifications].sort(
@@ -81,8 +83,8 @@ export default function NotificationsPage() {
 
   return (
     <ComptePageShell
-      title="Notifications"
-      subtitle={`${unreadCount} non lue${unreadCount > 1 ? "s" : ""}`}
+      title={t("notificationsTitle")}
+      subtitle={unreadCount > 1 ? t("unreadCountPlural", { count: unreadCount }) : t("unreadCount", { count: unreadCount })}
     >
       <div className="space-y-3">
         {sorted.map((n) => {

@@ -8,6 +8,7 @@
  */
 
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import { CTAButton } from "@/components/ui/CTAButton";
 import { useAuthSafe } from "@/lib/mock-auth";
 import { CommentThread } from "./CommentThread";
@@ -23,6 +24,7 @@ interface TabCommunauteProps {
 
 export function TabCommunaute({ actionId, signaturesThisWeek: _signaturesThisWeek, totalSignatures: _totalSignatures }: TabCommunauteProps) {
   const { user, isAuthenticated } = useAuthSafe();
+  const t = useTranslations("actionDetail");
   const [sort, setSort] = useState<SortMode>("recent");
   const [newComment, setNewComment] = useState("");
   const [localComments, setLocalComments] = useState<typeof comments>([]);
@@ -57,8 +59,8 @@ export function TabCommunaute({ actionId, signaturesThisWeek: _signaturesThisWee
     <div>
       {/* ─── Stats bar — messages et participants uniquement ─── */}
       <div className="mb-6 flex flex-wrap items-center gap-4 text-sm text-gray-500 dark:text-gray-400">
-        <span className="font-medium text-gray-900 dark:text-white">{totalMessages} messages</span>
-        <span>{uniqueAuthors} participants</span>
+        <span className="font-medium text-gray-900 dark:text-white">{t("messages", { count: totalMessages })}</span>
+        <span>{t("participants", { count: uniqueAuthors })}</span>
       </div>
 
       {/* ─── Composer ─── */}
@@ -74,13 +76,13 @@ export function TabCommunaute({ actionId, signaturesThisWeek: _signaturesThisWee
             <textarea
               value={newComment}
               onChange={(e) => setNewComment(e.target.value)}
-              placeholder="Partagez votre avis, votre experience..."
+              placeholder={t("composerPlaceholder")}
               rows={3}
               className="w-full resize-none rounded-lg border border-gray-300 bg-gray-50 px-4 py-3 text-sm text-gray-900 outline-none transition-colors focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400"
             />
             <div className="mt-2 flex justify-end">
               <CTAButton onClick={handlePost} disabled={!newComment.trim()} size="sm">
-                Publier
+                {t("publish")}
               </CTAButton>
             </div>
           </div>
@@ -88,25 +90,25 @@ export function TabCommunaute({ actionId, signaturesThisWeek: _signaturesThisWee
       ) : (
         <div className="mb-8 rounded-lg bg-gray-50 p-5 text-center dark:bg-gray-900">
           <p className="text-sm text-gray-500 dark:text-gray-400">
-            <a href="#" className="font-medium text-brand underline">Connectez-vous</a> pour participer à la discussion
+            <a href="#" className="font-medium text-brand underline">{t("loginToComment")}</a>{t("loginToCommentSuffix")}
           </p>
         </div>
       )}
 
       {/* ─── Sort ─── */}
       <div className="mb-4 flex items-center gap-3 border-b border-gray-200 pb-3 dark:border-white/[0.08]">
-        <span className="text-xs text-gray-500 dark:text-gray-400">Trier par :</span>
+        <span className="text-xs text-gray-500 dark:text-gray-400">{t("sortBy")}</span>
         <button
           onClick={() => setSort("recent")}
           className={`text-xs font-medium ${sort === "recent" ? "text-gray-900 dark:text-white" : "text-gray-400 hover:text-gray-600 dark:text-gray-500"}`}
         >
-          Plus recents
+          {t("sortRecent")}
         </button>
         <button
           onClick={() => setSort("popular")}
           className={`text-xs font-medium ${sort === "popular" ? "text-gray-900 dark:text-white" : "text-gray-400 hover:text-gray-600 dark:text-gray-500"}`}
         >
-          Plus populaires
+          {t("sortPopular")}
         </button>
       </div>
 
@@ -121,7 +123,7 @@ export function TabCommunaute({ actionId, signaturesThisWeek: _signaturesThisWee
       {allComments.length >= 8 && (
         <div className="mt-6 text-center">
           <button className="text-sm font-medium text-brand hover:opacity-80">
-            Voir plus de messages
+            {t("loadMore")}
           </button>
         </div>
       )}

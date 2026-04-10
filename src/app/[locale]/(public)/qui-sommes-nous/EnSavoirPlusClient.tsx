@@ -19,6 +19,7 @@
 
 import { useParams } from "next/navigation";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 import {
   Badge,
   Card,
@@ -91,6 +92,7 @@ const PROCESS_STEPS = [
 export default function EnSavoirPlusClient() {
   const params = useParams();
   const locale = (params?.locale as string) || "fr";
+  const t = useTranslations("about");
 
   return (
     <div>
@@ -98,7 +100,7 @@ export default function EnSavoirPlusClient() {
       <section className="bg-white py-16 lg:py-24 dark:bg-gray-900">
         <div className="mx-auto max-w-screen-xl px-4 text-center lg:px-6">
           <ScrollReveal>
-            <Badge color="gray" size="xs" className="mb-4 inline-flex">Notre histoire</Badge>
+            <Badge color="gray" size="xs" className="mb-4 inline-flex">{t("ourStory")}</Badge>
             <h1 className="mb-4 text-4xl font-extrabold tracking-tight text-gray-900 lg:text-5xl dark:text-white">
               Wejustice, le 5<sup className="text-lg">ème</sup> pouvoir
             </h1>
@@ -148,9 +150,9 @@ export default function EnSavoirPlusClient() {
       <section className="bg-gray-50 py-16 lg:py-24 dark:bg-gray-900">
         <div className="mx-auto max-w-screen-xl px-4 lg:px-6">
           <ScrollReveal>
-            <h2 className="mb-4 text-center text-3xl font-bold text-gray-900 dark:text-white">Notre mission</h2>
+            <h2 className="mb-4 text-center text-3xl font-bold text-gray-900 dark:text-white">{t("ourMission")}</h2>
             <p className="mx-auto mb-12 max-w-2xl text-center text-gray-500 dark:text-gray-400">
-              Trois piliers guident chacune de nos décisions.
+              {t("missionDesc")}
             </p>
           </ScrollReveal>
           <div className="grid gap-8 md:grid-cols-3">
@@ -289,7 +291,7 @@ export default function EnSavoirPlusClient() {
       <section className="bg-white py-16 lg:py-24 dark:bg-gray-900">
         <div className="mx-auto max-w-3xl px-4 text-center lg:px-6">
           <ScrollReveal>
-            <h2 className="mb-4 text-3xl font-bold text-gray-900 dark:text-white">Ce qui nous différencie</h2>
+            <h2 className="mb-4 text-3xl font-bold text-gray-900 dark:text-white">{t("differentiator")}</h2>
             <p className="mb-8 text-gray-500 dark:text-gray-400">
               Contrairement aux vieilles plateformes de pétitions, nous ne nous arrêtons pas à la signature : c&apos;est notre point de départ. Ensuite, nous agissons en Justice.
             </p>
@@ -368,13 +370,13 @@ export default function EnSavoirPlusClient() {
         <div className="mx-auto max-w-screen-xl px-4 py-16 text-center lg:px-6 lg:py-24">
           <ScrollReveal>
             <h2 className="mb-4 text-3xl font-bold tracking-tight lg:text-4xl">
-              Prêt à agir ?
+              {t("ctaTitle")}
             </h2>
             <p className="mx-auto mb-8 max-w-2xl text-lg">
-              Rejoignez des milliers de citoyens qui font valoir leurs droits collectivement.
+              {t("ctaDesc")}
             </p>
             <CTAButton href={`/${locale}/actions`} variant="light" size="xl">
-              Découvrir les actions
+              {t("ctaButton")}
             </CTAButton>
           </ScrollReveal>
         </div>

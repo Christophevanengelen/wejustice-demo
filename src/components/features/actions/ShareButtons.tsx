@@ -14,6 +14,7 @@
  */
 
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 
 interface ShareButtonsProps {
   url: string;
@@ -69,7 +70,7 @@ const PLATFORMS: Platform[] = [
   },
   {
     id: "email",
-    label: "Par email",
+    label: "email",
     icon: "M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z",
     stroke: true,
     getUrl: (url, title) =>
@@ -77,7 +78,7 @@ const PLATFORMS: Platform[] = [
   },
   {
     id: "copy",
-    label: "Copier le lien",
+    label: "copyLink",
     icon: "M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z",
     stroke: true,
     getUrl: () => null,
@@ -92,6 +93,7 @@ export function ShareButtons({
   onShare,
 }: ShareButtonsProps) {
   const [copied, setCopied] = useState(false);
+  const t = useTranslations("share");
 
   const handleShare = (platform: Platform) => {
     if (platform.id === "copy") {
@@ -123,8 +125,8 @@ export function ShareButtons({
             key={platform.id}
             onClick={() => handleShare(platform)}
             className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-white/70 transition-colors hover:bg-white/20 hover:text-white"
-            aria-label={platform.id === "copy" && copied ? "Lien copié" : platform.label}
-            title={platform.id === "copy" && copied ? "Copié !" : platform.label}
+            aria-label={platform.id === "copy" && copied ? t("linkCopied") : t(platform.label as "twitter" | "facebook" | "linkedin" | "whatsapp" | "email" | "copyLink")}
+            title={platform.id === "copy" && copied ? t("linkCopied") : t(platform.label as "twitter" | "facebook" | "linkedin" | "whatsapp" | "email" | "copyLink")}
           >
             <svg
               className="h-4 w-4"
@@ -159,7 +161,7 @@ export function ShareButtons({
           >
             <path strokeLinecap="round" strokeLinejoin="round" d={platform.icon} />
           </svg>
-          {platform.id === "copy" && copied ? "Lien copié !" : platform.label}
+          {platform.id === "copy" && copied ? t("linkCopied") : t(platform.label as "twitter" | "facebook" | "linkedin" | "whatsapp" | "email" | "copyLink")}
         </button>
       ))}
     </div>

@@ -2,19 +2,21 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { useAuth, type DemoRole } from "@/lib/mock-auth";
 
-const ROLES: { value: DemoRole; label: string; desc: string }[] = [
-  { value: "anonymous", label: "Anonyme", desc: "Visiteur non connecte" },
-  { value: "free", label: "Gratuit (L0)", desc: "Marie Libre - signataire" },
-  { value: "member", label: "Membre (L1)", desc: "Jean Dupont - citoyen engage" },
-  { value: "admin", label: "Admin", desc: "Dashboard administration" },
-  { value: "lawyer", label: "Avocat", desc: "Me. Sophie Martin" },
+const ROLES: { value: DemoRole; labelKey: string; descKey: string }[] = [
+  { value: "anonymous", labelKey: "anonymous", descKey: "anonymousDesc" },
+  { value: "free", labelKey: "free", descKey: "freeDesc" },
+  { value: "member", labelKey: "member", descKey: "memberDesc" },
+  { value: "admin", labelKey: "admin", descKey: "adminDesc" },
+  { value: "lawyer", labelKey: "lawyer", descKey: "lawyerDesc" },
 ];
 
 export function DemoToolbar() {
   const { demoRole, setDemoRole, user } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
+  const t = useTranslations("demo");
 
   return (
     <>
@@ -35,7 +37,7 @@ export function DemoToolbar() {
         <div className="fixed bottom-20 right-4 z-[9999] w-80 rounded-lg border border-gray-200 bg-white p-4 shadow-2xl dark:border-gray-600 dark:bg-gray-800">
           <div className="mb-3 flex items-center justify-between">
             <h3 className="text-sm font-bold uppercase tracking-wider text-gray-900 dark:text-white">
-              Demo Mode
+              {t("title")}
             </h3>
             <button
               onClick={() => setIsOpen(false)}
@@ -49,10 +51,10 @@ export function DemoToolbar() {
 
           {/* Role selector */}
           <p className="mb-2 text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">
-            Role utilisateur
+            {t("userRole")}
           </p>
           <div className="mb-4 space-y-1">
-            {ROLES.map(({ value, label, desc }) => (
+            {ROLES.map(({ value, labelKey, descKey }) => (
               <button
                 key={value}
                 onClick={() => setDemoRole(value)}
@@ -64,8 +66,8 @@ export function DemoToolbar() {
               >
                 <div className={`h-2 w-2 rounded-full ${demoRole === value ? "bg-brand" : "bg-gray-300 dark:bg-gray-600"}`} />
                 <div>
-                  <span className="font-medium">{label}</span>
-                  <p className="text-xs text-gray-500 dark:text-gray-400">{desc}</p>
+                  <span className="font-medium">{t(labelKey as "anonymous" | "free" | "member" | "admin" | "lawyer")}</span>
+                  <p className="text-xs text-gray-500 dark:text-gray-400">{t(descKey as "anonymousDesc" | "freeDesc" | "memberDesc" | "adminDesc" | "lawyerDesc")}</p>
                 </div>
               </button>
             ))}
@@ -75,7 +77,7 @@ export function DemoToolbar() {
           {user && (
             <div className="mb-3 rounded-lg bg-gray-50 p-3 dark:bg-gray-700">
               <p className="text-xs text-gray-500 dark:text-gray-400">
-                Connecte en tant que <strong className="text-gray-900 dark:text-white">{user.firstName} {user.lastName}</strong>
+                {t("connectedAs")} <strong className="text-gray-900 dark:text-white">{user.firstName} {user.lastName}</strong>
               </p>
               <p className="text-xs text-gray-500 dark:text-gray-400">{user.email} - {user.role} / {user.plan}</p>
             </div>
@@ -83,7 +85,7 @@ export function DemoToolbar() {
 
           {/* Language */}
           <div className="flex items-center justify-between border-t border-gray-200 pt-3 dark:border-gray-600">
-            <span className="text-xs font-medium text-gray-500 dark:text-gray-400">Langue</span>
+            <span className="text-xs font-medium text-gray-500 dark:text-gray-400">{t("language")}</span>
             <div className="flex gap-1">
               <Link href="/fr" className="rounded-lg px-3 py-1.5 text-xs font-medium text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700">FR</Link>
               <Link href="/en" className="rounded-lg px-3 py-1.5 text-xs font-medium text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700">EN</Link>
@@ -92,7 +94,7 @@ export function DemoToolbar() {
 
           {/* Demo badge */}
           <div className="mt-3 rounded-lg bg-yellow-50 p-2 text-center text-xs font-medium text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-300">
-            Donnees fictives - aucune API reelle
+            {t("mockData")}
           </div>
         </div>
       )}

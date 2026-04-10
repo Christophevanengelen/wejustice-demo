@@ -17,6 +17,7 @@ import { useState } from "react";
 import { Button, Badge } from "flowbite-react";
 import Link from "next/link";
 import { useParams } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { useAuthSafe } from "@/lib/mock-auth";
 import { getStatusLabel } from "@/components/ui/StatusBadge";
 import { SignatureForm } from "@/components/features/actions/SignatureForm";
@@ -34,16 +35,17 @@ import actionsData from "@/mocks/actions.json";
 
 type TabId = "presentation" | "suivi" | "communaute";
 
-const TABS: { id: TabId; label: string; desc: string }[] = [
-  { id: "presentation", label: "L'action", desc: "Comprendre le combat" },
-  { id: "suivi", label: "Suivi & resultats", desc: "Transparence totale" },
-  { id: "communaute", label: "Communauté", desc: "Échangez ensemble" },
-];
-
 export function ActionDetailClient({ actionId }: { actionId: string }) {
   const params = useParams();
   const locale = (params?.locale as string) || "fr";
+  const t = useTranslations("actionDetail");
   const { user } = useAuthSafe();
+
+  const TABS: { id: TabId; label: string; desc: string }[] = [
+    { id: "presentation", label: t("tabAction"), desc: t("tabActionDesc") },
+    { id: "suivi", label: t("tabFollowUp"), desc: t("tabFollowUpDesc") },
+    { id: "communaute", label: t("tabCommunity"), desc: t("tabCommunityDesc") },
+  ];
   const [hasSigned, setHasSigned] = useState(false);
   const [sigCount, setSigCount] = useState(0);
   const [activeTab, setActiveTab] = useState<TabId>("presentation");
@@ -63,9 +65,9 @@ export function ActionDetailClient({ actionId }: { actionId: string }) {
   if (!action) {
     return (
       <div className="py-32 text-center">
-        <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Action introuvable</h1>
+        <h1 className="text-2xl font-bold text-gray-900 dark:text-white">{t("notFound")}</h1>
         <Button as={Link} href={`/${locale}/actions`} color="light" className="mt-6">
-          Retour aux actions
+          {t("tabAction")}
         </Button>
       </div>
     );
@@ -153,10 +155,10 @@ export function ActionDetailClient({ actionId }: { actionId: string }) {
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500" />
             </span>
-            <span className="text-xs text-white/70">{liveReaders} personnes lisent cette page</span>
+            <span className="text-xs text-white/70">{t("readingPage", { count: liveReaders })}</span>
           </div>
           <div className="flex items-center gap-2">
-            <span className="text-xs text-white/60">Partager :</span>
+            <span className="text-xs text-white/60">{t("shareLabel")}</span>
             <ShareButtons
               url={`https://wejustice.legal/actions/${action.slug}`}
               title={action.title}

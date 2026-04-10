@@ -14,6 +14,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useParams } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { useAuthSafe } from "@/lib/mock-auth";
 import { canJoinAction } from "@/lib/pricing-engine";
 import { ComptePageShell } from "@/components/features/compte/ComptePageShell";
@@ -26,6 +27,7 @@ import actionsData from "@/mocks/actions.json";
 export default function SignaturesPage() {
   const params = useParams();
   const locale = (params?.locale as string) || "fr";
+  const t = useTranslations("compte");
   useAuthSafe();
 
   const signedActions = actionsData.filter((a) => userActivity.signatures.includes(a.slug));
@@ -33,8 +35,8 @@ export default function SignaturesPage() {
 
   return (
     <ComptePageShell
-      title="Mes signatures"
-      subtitle={`${signedActions.length} action${signedActions.length > 1 ? "s" : ""} signee${signedActions.length > 1 ? "s" : ""}`}
+      title={t("signaturesTitle")}
+      subtitle={signedActions.length > 1 ? t("signaturesCountPlural", { count: signedActions.length }) : t("signaturesCount", { count: signedActions.length })}
     >
       <div className="space-y-4">
         {signedActions.map((action) => {
@@ -72,7 +74,7 @@ export default function SignaturesPage() {
                     </span>
                     <StatusBadge status={action.status} size="xs" />
                     {isRejointe && (
-                      <Badge color="green" size="xs">Vous participez</Badge>
+                      <Badge color="green" size="xs">{t("youParticipate")}</Badge>
                     )}
                   </div>
 
@@ -97,20 +99,20 @@ export default function SignaturesPage() {
                   {/* CTA — vrais boutons Flowbite, pas des labels */}
                   <div className="mt-3 flex items-center gap-2">
                     <Button as={Link} href={`/${locale}/actions/${action.slug}`} color="gray" size="xs">
-                      Voir l&apos;action
+                      {t("viewAction")}
                     </Button>
                     {isRejointe ? (
                       <span className="text-xs font-medium text-green-600 dark:text-green-400">
-                        Deja rejoint
+                        {t("alreadyJoined")}
                       </span>
                     ) : canJoin ? (
                       <CTAButton href="https://palace.legal" size="sm">
-                        Rejoindre
+                        {t("join")}
                       </CTAButton>
                     ) : (
                       <span className="text-xs text-amber-600 dark:text-amber-400">
                         <Link href={`/${locale}/tarifs`} className="underline">
-                          Passez au forfait superieur
+                          {t("upgradePlan")}
                         </Link>
                       </span>
                     )}

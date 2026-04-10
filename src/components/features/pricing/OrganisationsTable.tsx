@@ -7,18 +7,19 @@
  * Pas de tableau comparatif — les deux profils ont les mêmes features.
  */
 
+import { useTranslations } from "next-intl";
 import { CTAButton } from "@/components/ui/CTAButton";
 
-const BENEFITS = [
-  "Lancez des actions collectives en Justice au nom de vos membres",
-  "Mobilisez votre communauté grâce à nos outils de signature et de partage",
-  "Bénéficiez d'un accompagnement dédié par un gestionnaire de projet",
-  "Intégrez les actions directement sur votre site Internet",
-  "Soutenez de 100 à 250 000 bénéficiaires selon votre structure",
-  "Accédez à un tableau de bord avec les statistiques en temps réel",
-];
-
 export function OrganisationsTable() {
+  const t = useTranslations("organisations");
+  const BENEFITS = [
+    t("benefit1"),
+    t("benefit2"),
+    t("benefit3"),
+    t("benefit4"),
+    t("benefit5"),
+    t("benefit6"),
+  ];
   return (
     <div className="mx-auto max-w-2xl">
       <div className="rounded-lg border border-gray-200 bg-white p-8 dark:border-white/[0.08] dark:bg-gray-900">
@@ -37,10 +38,10 @@ export function OrganisationsTable() {
         {/* CTA unique */}
         <div className="text-center">
           <CTAButton href="https://calendly.com/wejustice" size="lg">
-            Prendre rendez-vous
+            {t("cta")}
           </CTAButton>
           <p className="mt-3 text-xs text-gray-500 dark:text-gray-400">
-            Discutez de votre projet avec un expert en actions collectives
+            {t("ctaDesc")}
           </p>
         </div>
       </div>

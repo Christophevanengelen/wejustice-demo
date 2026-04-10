@@ -12,6 +12,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import { CTAButton } from "@/components/ui/CTAButton";
 
 interface StickySignCTAProps {
@@ -34,6 +35,7 @@ export function StickySignCTA({
   const [visible, setVisible] = useState(false);
   const [dismissed, setDismissed] = useState(false);
   const prefersReduced = useReducedMotion();
+  const t = useTranslations("sticky");
 
   const pct = Math.min(100, Math.round((signatureCount / signatureGoal) * 100));
 
@@ -71,7 +73,7 @@ export function StickySignCTA({
           <button
             onClick={handleDismiss}
             className="absolute right-3 top-2 p-1 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"
-            aria-label="Fermer"
+            aria-label={t("closeLabel")}
           >
             <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -94,7 +96,7 @@ export function StickySignCTA({
 
           {/* CTA */}
           <CTAButton onClick={onSign} size="md" fullWidth>
-            Signer maintenant
+            {t("signNow")}
           </CTAButton>
         </motion.div>
       )}

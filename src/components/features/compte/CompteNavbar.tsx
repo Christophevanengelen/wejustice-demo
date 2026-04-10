@@ -16,6 +16,7 @@
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { DarkThemeToggle, Dropdown, DropdownHeader, DropdownItem, DropdownDivider } from "flowbite-react";
+import { useTranslations } from "next-intl";
 import { useAuthSafe } from "@/lib/mock-auth";
 import { LogoFigma } from "@/components/ui/LogoFigma";
 import { NotificationBell } from "@/components/ui/NotificationBell";
@@ -29,6 +30,7 @@ export function CompteNavbar({ onMenuClick }: CompteNavbarProps) {
   const params = useParams();
   const locale = (params?.locale as string) || "fr";
   const initials = user ? `${user.firstName[0]}${user.lastName[0]}` : "";
+  const t = useTranslations("compte.navbar");
 
   return (
     <nav className="fixed top-0 right-0 left-0 z-30 border-b border-gray-200 bg-white dark:border-white/[0.08] dark:bg-gray-900">
@@ -38,13 +40,13 @@ export function CompteNavbar({ onMenuClick }: CompteNavbarProps) {
           <button
             onClick={onMenuClick}
             className="rounded-lg p-2 text-gray-500 hover:bg-gray-100 hover:text-gray-900 lg:hidden dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-            aria-label="Ouvrir le menu"
+            aria-label={t("openMenu")}
           >
             <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
             </svg>
           </button>
-          <Link href={`/${locale}`} className="flex items-center space-x-3" aria-label="Retour au site Wejustice">
+          <Link href={`/${locale}`} className="flex items-center space-x-3" aria-label={t("backToSite")}>
             <LogoFigma size="sm" />
           </Link>
         </div>
@@ -92,11 +94,11 @@ export function CompteNavbar({ onMenuClick }: CompteNavbarProps) {
                   {user.email}
                 </span>
               </DropdownHeader>
-              <DropdownItem as={Link} href={`/${locale}/compte`}>Mon compte</DropdownItem>
-              <DropdownItem as={Link} href={`/${locale}/compte/profil`}>Mon profil</DropdownItem>
-              <DropdownItem as={Link} href={`/${locale}/compte/paiements`}>Paiements</DropdownItem>
+              <DropdownItem as={Link} href={`/${locale}/compte`}>{t("myAccount")}</DropdownItem>
+              <DropdownItem as={Link} href={`/${locale}/compte/profil`}>{t("myProfile")}</DropdownItem>
+              <DropdownItem as={Link} href={`/${locale}/compte/paiements`}>{t("payments")}</DropdownItem>
               <DropdownDivider />
-              <DropdownItem as={Link} href={`/${locale}`}>Retour au site</DropdownItem>
+              <DropdownItem as={Link} href={`/${locale}`}>{t("backToSiteShort")}</DropdownItem>
             </Dropdown>
           )}
         </div>

@@ -40,10 +40,6 @@ export function PricingCard({ plan, price, isReduced, onChoose }: PricingCardPro
   const seatsLabel = plan.maxSeats === 1 ? t("for1Person") : plan.maxSeats === 2 ? t("upTo2Persons") : t("upTo3Persons");
   const seatsDesc = plan.maxSeats === 1 ? t("for1PersonDesc") : plan.maxSeats === 2 ? t("upTo2PersonsDesc") : t("upTo3PersonsDesc");
 
-  const durationLabel = price.durationMonths === 1
-    ? t("noCommitment")
-    : t("engageFor", { duration: price.durationMonths === 12 ? t("annual") : price.durationMonths === 24 ? t("biannual") : t("triannual") });
-
   return (
     <div
       className={`relative flex w-72 flex-shrink-0 flex-col rounded-lg border p-6 transition-shadow lg:w-auto lg:flex-shrink ${
@@ -81,18 +77,6 @@ export function PricingCard({ plan, price, isReduced, onChoose }: PricingCardPro
         </span>
       </div>
 
-      {/* Engagement duration */}
-      <p className="mb-1 text-xs text-gray-500 dark:text-gray-400">
-        {durationLabel}
-      </p>
-
-      {/* Upfront payment */}
-      {price.totalUpfront !== null && (
-        <p className="mb-1 text-sm font-medium text-gray-900 dark:text-white">
-          {t("payNow", { amount: formatPrice(price.totalUpfront) })}
-        </p>
-      )}
-
       {/* Savings */}
       {price.savings > 0 && (
         <p className="mb-2 text-xs font-medium text-green-600 dark:text-green-400">
@@ -110,10 +94,10 @@ export function PricingCard({ plan, price, isReduced, onChoose }: PricingCardPro
             <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" fill="currentColor" />
           </svg>
           <div>
-            <span className="text-xs font-medium text-gray-900 dark:text-white">
+            <span className="text-xs text-gray-700 dark:text-gray-300">
               {seatsLabel}
             </span>
-            <div className="text-xs text-gray-500 dark:text-gray-400">
+            <div className="text-xs font-medium text-gray-900 dark:text-white">
               {seatsDesc}
             </div>
           </div>

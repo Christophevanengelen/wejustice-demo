@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { setRequestLocale } from "next-intl/server";
+import { setRequestLocale, getTranslations } from "next-intl/server";
 
 type Props = { params: Promise<{ locale: string }> };
 
@@ -13,6 +13,7 @@ export const metadata: Metadata = {
 export default async function CguPage({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
+  const t = await getTranslations("legal");
 
   return (
     <article className="mx-auto max-w-3xl px-4 py-12 lg:py-20">
@@ -21,15 +22,20 @@ export default async function CguPage({ params }: Props) {
         <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
         </svg>
-        Retour à l&apos;accueil
+        {t("backToHome")}
       </Link>
 
       <h1 className="mb-2 text-3xl font-bold text-gray-900 dark:text-white lg:text-4xl">
-        Conditions Générales d&apos;Utilisation
+        {t("cguTitle")}
       </h1>
       <p className="mb-10 text-sm text-gray-500 dark:text-gray-400">
-        Dernière mise à jour : 1er avril 2026
+        {t("cguLastUpdated")}
       </p>
+      {locale === "en" && (
+        <div className="mb-8 rounded-lg border-l-4 border-blue-500 bg-blue-50 p-4 dark:border-blue-400 dark:bg-blue-900/20">
+          <p className="text-sm text-blue-700 dark:text-blue-300">{t("frenchLawNotice")}</p>
+        </div>
+      )}
 
       <div className="space-y-10 text-sm leading-relaxed text-gray-600 dark:text-gray-400">
 

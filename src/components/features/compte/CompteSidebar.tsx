@@ -21,6 +21,7 @@
 import { usePathname, useParams } from "next/navigation";
 import Link from "next/link";
 import { Badge } from "flowbite-react";
+import { useTranslations } from "next-intl";
 import { useAuthSafe } from "@/lib/mock-auth";
 import userActivity from "@/mocks/user-activity.json";
 import type { ComponentProps, FC } from "react";
@@ -82,6 +83,7 @@ export function CompteSidebar({ isOpen, onClose }: CompteSidebarProps) {
   const params = useParams();
   const locale = (params?.locale as string) || "fr";
   const { user } = useAuthSafe();
+  const t = useTranslations("compte.sidebar");
 
   const unreadCount = userActivity.notifications.filter((n) => !n.read).length;
 
@@ -93,11 +95,11 @@ export function CompteSidebar({ isOpen, onClose }: CompteSidebarProps) {
 
   /* Items de navigation de la sidebar */
   const navItems: NavItem[] = [
-    { href: "/compte", label: "Tableau de bord", icon: HomeIcon },
-    { href: "/compte/signatures", label: "Mes signatures", icon: DocumentIcon },
-    { href: "/compte/notifications", label: "Notifications", icon: BellIcon, badge: unreadCount },
-    { href: "/compte/profil", label: "Mon profil", icon: UserIcon },
-    { href: "/compte/paiements", label: "Paiements", icon: CreditCardIcon },
+    { href: "/compte", label: t("dashboard"), icon: HomeIcon },
+    { href: "/compte/signatures", label: t("signatures"), icon: DocumentIcon },
+    { href: "/compte/notifications", label: t("notifications"), icon: BellIcon, badge: unreadCount },
+    { href: "/compte/profil", label: t("profile"), icon: UserIcon },
+    { href: "/compte/paiements", label: t("payments"), icon: CreditCardIcon },
   ];
 
   const sidebarContent = (
@@ -160,7 +162,7 @@ export function CompteSidebar({ isOpen, onClose }: CompteSidebarProps) {
           className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-gray-600 transition-colors hover:bg-gray-50 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
         >
           <ArrowLeftIcon className="h-5 w-5 shrink-0" />
-          <span>Retour au site</span>
+          <span>{t("backToSite")}</span>
         </Link>
       </div>
     </div>

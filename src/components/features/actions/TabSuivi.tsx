@@ -7,6 +7,7 @@
  * Part of the component library (features/actions/).
  */
 
+import { useTranslations } from "next-intl";
 // MilestoneTracker retire du suivi - deja visible dans TabPresentation
 
 interface TimelineEvent {
@@ -36,6 +37,7 @@ const EVENT_STYLES: Record<string, { dot: string; bg: string; icon: string }> = 
 };
 
 export function TabSuivi({ currentSignatures, timeline, funds: _funds, results: _results, nextStep }: TabSuiviProps) {
+  const t = useTranslations("actionDetail");
   return (
     <div className="space-y-10">
       {/* Intro */}
@@ -50,7 +52,7 @@ export function TabSuivi({ currentSignatures, timeline, funds: _funds, results: 
       {timeline.length > 0 && (
         <section>
           <h3 className="mb-2 text-base font-bold text-gray-900 dark:text-white">
-            Journal de bord
+            {t("journalTitle")}
           </h3>
           <p className="mb-6 text-xs text-gray-500 dark:text-gray-400">
             Chaque etape documentee. Nos actions et les reponses de l&apos;adversaire.
@@ -81,7 +83,7 @@ export function TabSuivi({ currentSignatures, timeline, funds: _funds, results: 
                       </p>
                       {isAdversaire && (
                         <span className="rounded px-1.5 py-0.5 text-[10px] font-bold uppercase text-red-600 bg-red-100 dark:text-red-400 dark:bg-red-900/30">
-                          Adversaire
+                          {t("adversary")}
                         </span>
                       )}
                     </div>

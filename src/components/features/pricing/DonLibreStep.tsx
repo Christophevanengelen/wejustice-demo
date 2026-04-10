@@ -69,19 +69,11 @@ export function DonLibreStep({ plan, price, isReduced, durationLabel, onBack }: 
         <div className="flex items-center justify-between">
           <div>
             <span className="text-sm font-bold" style={{ color: plan.color }}>{plan.name}</span>
-            <span className="ml-2 text-xs text-gray-500 dark:text-gray-400">
-              {durationLabel}
-            </span>
           </div>
           <span className="text-lg font-bold text-gray-900 dark:text-white">
             {formatPrice(price.totalMonthly)}<span className="text-xs font-normal text-gray-500">/mois</span>
           </span>
         </div>
-        {price.totalUpfront !== null && (
-          <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
-            Réglez maintenant {formatPrice(price.totalUpfront)}
-          </p>
-        )}
       </div>
 
       {/* Don libre */}
@@ -162,13 +154,10 @@ export function DonLibreStep({ plan, price, isReduced, durationLabel, onBack }: 
             Souscription enregistrée (démo)
           </p>
           <p className="mt-1 text-xs text-green-600 dark:text-green-400">
-            Forfait {plan.name} — {durationLabel}
+            Forfait {plan.name}
           </p>
           <p className="mt-0.5 text-xs text-green-600 dark:text-green-400">
             {formatPrice(totalMonthly)}/mois
-            {price.totalUpfront !== null && (
-              <> — {formatPrice(price.totalUpfront + (donAmount || 0) * price.durationMonths)} à régler</>
-            )}
           </p>
           <button
             onClick={() => setConfirmed(false)}

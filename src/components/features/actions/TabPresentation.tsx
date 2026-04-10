@@ -11,6 +11,7 @@
  */
 
 import { Card, Avatar, Badge, Rating, RatingStar } from "flowbite-react";
+import { useTranslations } from "next-intl";
 import { MilestoneTracker } from "./MilestoneTracker";
 import { ScrollReveal } from "@/components/animations/ScrollReveal";
 import { AnimatedCounter } from "@/components/animations/AnimatedCounter";
@@ -51,13 +52,15 @@ const EVIDENCE_ICONS: Record<string, { path: string; color: string }> = {
   },
 };
 
-const EVIDENCE_TYPE_LABELS: Record<string, string> = {
-  report: "Rapport",
-  legal: "Juridique",
-  media: "Presse",
-};
+// Evidence type labels are now handled via translations in the component
 
 export function TabPresentation({ problem, petitionContent, evidence, demands, currentSignatures, victimTestimonials, initiator, lawyer, target, howItWorks }: TabPresentationProps) {
+  const t = useTranslations("actionDetail");
+  const EVIDENCE_TYPE_LABELS: Record<string, string> = {
+    report: t("evidenceReport"),
+    legal: t("evidenceLegal"),
+    media: t("evidenceMedia"),
+  };
   return (
     <div className="space-y-12">
       {/* ─── 1. LE PROBLEME ─── */}
@@ -101,7 +104,7 @@ export function TabPresentation({ problem, petitionContent, evidence, demands, c
               <svg className="h-5 w-5 text-brand" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
               </svg>
-              Texte de la pétition
+              {t("petitionText")}
             </h3>
             <div
               className="prose prose-sm prose-gray max-w-none dark:prose-invert"
@@ -119,7 +122,7 @@ export function TabPresentation({ problem, petitionContent, evidence, demands, c
               <svg className="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
               </svg>
-              Sources et preuves
+              {t("evidenceTitle")}
             </h3>
             <div className="space-y-3">
               {evidence.map((item, i) => {
@@ -160,7 +163,7 @@ export function TabPresentation({ problem, petitionContent, evidence, demands, c
               <svg className="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
-              Nos demandes
+              {t("ourDemands")}
             </h3>
             <div className="rounded-lg border border-gray-200 bg-white p-6 dark:border-white/[0.08] dark:bg-gray-900">
               <ul className="space-y-4">
@@ -186,7 +189,7 @@ export function TabPresentation({ problem, petitionContent, evidence, demands, c
       <ScrollReveal>
         <section>
           <h3 className="mb-2 text-base font-bold text-gray-900 dark:text-white">
-            Chaque signature nous rapproche de l&apos;objectif
+            {t("milestoneGoal")}
           </h3>
           <p className="mb-4 text-xs text-gray-500 dark:text-gray-400">
             A chaque palier atteint, une nouvelle etape juridique se declenche.
@@ -203,7 +206,7 @@ export function TabPresentation({ problem, petitionContent, evidence, demands, c
               <svg className="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 01-.825-.242m9.345-8.334a2.126 2.126 0 00-.476-.095 48.64 48.64 0 00-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0011.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155" />
               </svg>
-              Ils temoignent
+              {t("theyTestify")}
             </h3>
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {victimTestimonials.map((t, i) => (
@@ -244,7 +247,7 @@ export function TabPresentation({ problem, petitionContent, evidence, demands, c
         <ScrollReveal>
           <section>
             <h3 className="mb-4 text-base font-bold text-gray-900 dark:text-white">
-              A l&apos;initiative de cette action
+              {t("initiatedBy")}
             </h3>
             <Card className="border-2 border-blue-200 bg-blue-50 dark:border-blue-800 dark:bg-blue-900/20">
               <div className="flex items-start gap-4">
@@ -283,7 +286,7 @@ export function TabPresentation({ problem, petitionContent, evidence, demands, c
             <svg className="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z" />
             </svg>
-            L&apos;equipe juridique
+            {t("legalTeam")}
           </h3>
           <Card className="border-gray-200 dark:border-white/[0.08] dark:bg-gray-900">
             <div className="flex items-start gap-4">
@@ -301,7 +304,7 @@ export function TabPresentation({ problem, petitionContent, evidence, demands, c
             </div>
           </Card>
           <div className="mt-3 rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-white/[0.08] dark:bg-gray-900">
-            <p className="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">Entite visee</p>
+            <p className="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">{t("targetEntity")}</p>
             <p className="mt-1 text-sm font-medium text-gray-900 dark:text-white">{target}</p>
           </div>
         </section>
@@ -312,7 +315,7 @@ export function TabPresentation({ problem, petitionContent, evidence, demands, c
         <ScrollReveal>
           <section>
             <h3 className="mb-4 text-base font-bold text-gray-900 dark:text-white">
-              Comment ca marche
+              {t("howItWorks")}
             </h3>
             <div className="grid gap-4 sm:grid-cols-3">
               {howItWorks.map(({ step, title, description }, i) => (

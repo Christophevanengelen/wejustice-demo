@@ -20,6 +20,7 @@ import Link from "next/link";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import DOMPurify from "isomorphic-dompurify";
+import { useTranslations } from "next-intl";
 import { CTAButton } from "@/components/ui/CTAButton";
 import { ShareButtons } from "@/components/features/actions/ShareButtons";
 import blogData from "@/mocks/blog.json";
@@ -27,6 +28,7 @@ import blogData from "@/mocks/blog.json";
 export function BlogArticleClient({ slug }: { slug: string }) {
   const params = useParams();
   const locale = (params?.locale as string) || "fr";
+  const t = useTranslations("blog");
   const article = blogData.find((a) => a.slug === slug);
   const [readProgress, setReadProgress] = useState(0);
 
@@ -44,9 +46,9 @@ export function BlogArticleClient({ slug }: { slug: string }) {
   if (!article) {
     return (
       <div className="py-32 text-center">
-        <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Article introuvable</h1>
+        <h1 className="text-2xl font-bold text-gray-900 dark:text-white">{t("notFound")}</h1>
         <CTAButton href={`/${locale}/blog`} variant="light" size="sm" className="mt-6">
-          Retour au blog
+          {t("backToBlog")}
         </CTAButton>
       </div>
     );
@@ -93,7 +95,7 @@ export function BlogArticleClient({ slug }: { slug: string }) {
             <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
             </svg>
-            Blog
+            {t("title")}
           </Link>
 
           {/* Category */}
@@ -120,7 +122,7 @@ export function BlogArticleClient({ slug }: { slug: string }) {
               </div>
             </div>
             <span className="text-xs text-white/40">·</span>
-            <span className="text-xs text-white/50">{article.readTime} min {locale === "en" ? "read" : "de lecture"}</span>
+            <span className="text-xs text-white/50">{article.readTime} min {t("read")}</span>
           </div>
         </div>
       </section>
@@ -146,7 +148,7 @@ export function BlogArticleClient({ slug }: { slug: string }) {
               {/* Share after article */}
               <div className="mt-12 flex items-center gap-3 border-t border-gray-200 pt-8 dark:border-white/[0.08]">
                 <span className="text-sm font-medium text-gray-500 dark:text-gray-400">
-                  {locale === "en" ? "Share this article:" : "Partager cet article :"}
+                  {t("shareArticle")}
                 </span>
                 <ShareButtons
                   url={`https://wejustice.legal/blog/${article.slug}`}
@@ -159,13 +161,13 @@ export function BlogArticleClient({ slug }: { slug: string }) {
               {/* CTA */}
               <div className="mt-12 rounded-lg border border-gray-200 bg-gray-50 p-8 text-center dark:border-white/[0.08] dark:bg-gray-900">
                 <h3 className="mb-2 text-xl font-bold text-gray-900 dark:text-white">
-                  {locale === "en" ? "Take action now" : "Agissez maintenant"}
+                  {t("takeAction")}
                 </h3>
                 <p className="mb-6 text-sm text-gray-500 dark:text-gray-400">
-                  {locale === "en" ? "Join collective actions that advance justice." : "Rejoignez les actions collectives qui font avancer la justice."}
+                  {t("takeActionDesc")}
                 </p>
                 <CTAButton href={`/${locale}/actions`} size="lg">
-                  {locale === "en" ? "Discover actions" : "Découvrir les actions"}
+                  {t("discoverActions")}
                 </CTAButton>
               </div>
             </div>
@@ -177,7 +179,7 @@ export function BlogArticleClient({ slug }: { slug: string }) {
                 {headings.length > 0 && (
                   <div>
                     <h4 className="mb-3 text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-gray-500">
-                      {locale === "en" ? "In this article" : "Dans cet article"}
+                      {t("inThisArticle")}
                     </h4>
                     <nav className="space-y-2">
                       {headings.map((h) => (
@@ -196,7 +198,7 @@ export function BlogArticleClient({ slug }: { slug: string }) {
                 {/* Share */}
                 <div>
                   <h4 className="mb-3 text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-gray-500">
-                    {locale === "en" ? "Share" : "Partager"}
+                    {t("share")}
                   </h4>
                   <ShareButtons
                     url={`https://wejustice.legal/blog/${article.slug}`}
@@ -229,7 +231,7 @@ export function BlogArticleClient({ slug }: { slug: string }) {
         <section className="border-t border-gray-200 bg-gray-50 py-12 dark:border-white/[0.08] dark:bg-gray-900 lg:py-16">
           <div className="mx-auto max-w-screen-xl px-4 lg:px-6">
             <h2 className="mb-8 text-2xl font-bold text-gray-900 dark:text-white">
-              {locale === "en" ? "Related articles" : "À lire aussi"}
+              {t("relatedArticles")}
             </h2>
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {related.map((a) => (

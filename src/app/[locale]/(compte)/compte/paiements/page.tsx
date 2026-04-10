@@ -11,23 +11,25 @@
  * - Dark mode complet
  */
 
+import { useTranslations } from "next-intl";
 import { ComptePageShell } from "@/components/features/compte/ComptePageShell";
 import { Badge, Table, TableBody, TableCell, TableHead, TableHeadCell, TableRow } from "flowbite-react";
 import userActivity from "@/mocks/user-activity.json";
 
 export default function PaiementsPage() {
+  const t = useTranslations("compte");
   return (
     <ComptePageShell
-      title="Paiements"
-      subtitle="Historique de vos paiements et contributions."
+      title={t("paymentsTitle")}
+      subtitle={t("paymentsSubtitle")}
     >
       <div className="overflow-x-auto rounded-lg border border-gray-200 dark:border-white/[0.08]">
         <Table>
           <TableHead>
-            <TableHeadCell className="bg-gray-50 dark:bg-gray-800">Date</TableHeadCell>
-            <TableHeadCell className="bg-gray-50 dark:bg-gray-800">Description</TableHeadCell>
-            <TableHeadCell className="bg-gray-50 text-right dark:bg-gray-800">Montant</TableHeadCell>
-            <TableHeadCell className="bg-gray-50 text-right dark:bg-gray-800">Statut</TableHeadCell>
+            <TableHeadCell className="bg-gray-50 dark:bg-gray-800">{t("date")}</TableHeadCell>
+            <TableHeadCell className="bg-gray-50 dark:bg-gray-800">{t("description")}</TableHeadCell>
+            <TableHeadCell className="bg-gray-50 text-right dark:bg-gray-800">{t("amount")}</TableHeadCell>
+            <TableHeadCell className="bg-gray-50 text-right dark:bg-gray-800">{t("statusLabel")}</TableHeadCell>
           </TableHead>
           <TableBody className="divide-y divide-gray-200 dark:divide-gray-700">
             {userActivity.payments.map((p, i) => (
@@ -46,7 +48,7 @@ export default function PaiementsPage() {
                   {p.amount.toFixed(2).replace(".", ",")} EUR
                 </TableCell>
                 <TableCell className="text-right">
-                  <Badge color="success" size="xs">Payé</Badge>
+                  <Badge color="success" size="xs">{t("paid")}</Badge>
                 </TableCell>
               </TableRow>
             ))}
