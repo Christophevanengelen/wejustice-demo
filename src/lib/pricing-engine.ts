@@ -98,9 +98,9 @@ export const PLANS: Plan[] = [
     maxActions: "Jusqu'à 1 action",
     features: [
       { label: "Recevoir notre Gazette", value: "" },
-      { label: "Support technique en ligne", value: "", tooltip: TOOLTIP_SUPPORT },
+      { label: "Support en ligne", value: "Tickets illimités hors juridique", tooltip: TOOLTIP_SUPPORT },
       { label: "Soutenir nos actions", value: "Jusqu'à 1 action", tooltip: TOOLTIP_ACTIONS },
-      { label: "Rejoindre les procès", value: "Possible si éligible", tooltip: TOOLTIP_ELIGIBILITY },
+      { label: "Devenir une partie", value: "Bénéficier d'une défense, si éligible", tooltip: TOOLTIP_ELIGIBILITY },
     ],
   },
   {
@@ -113,9 +113,9 @@ export const PLANS: Plan[] = [
     maxActions: "Jusqu'à 2 actions",
     features: [
       { label: "Recevoir notre Gazette", value: "" },
-      { label: "Support technique en ligne", value: "", tooltip: TOOLTIP_SUPPORT },
+      { label: "Support en ligne", value: "Tickets illimités hors juridique", tooltip: TOOLTIP_SUPPORT },
       { label: "Soutenir nos actions", value: "Jusqu'à 2 actions", tooltip: TOOLTIP_ACTIONS },
-      { label: "Rejoindre les procès", value: "Possible si éligible", tooltip: TOOLTIP_ELIGIBILITY },
+      { label: "Devenir une partie", value: "Bénéficier d'une défense, si éligible", tooltip: TOOLTIP_ELIGIBILITY },
     ],
   },
   {
@@ -129,9 +129,9 @@ export const PLANS: Plan[] = [
     recommended: true,
     features: [
       { label: "Recevoir notre Gazette", value: "" },
-      { label: "Support technique en ligne", value: "", tooltip: TOOLTIP_SUPPORT },
+      { label: "Support en ligne", value: "Tickets illimités hors juridique", tooltip: TOOLTIP_SUPPORT },
       { label: "Soutenir nos actions", value: "Jusqu'à 5 actions", tooltip: TOOLTIP_ACTIONS },
-      { label: "Rejoindre les procès", value: "Possible si éligible", tooltip: TOOLTIP_ELIGIBILITY },
+      { label: "Devenir une partie", value: "Bénéficier d'une défense, si éligible", tooltip: TOOLTIP_ELIGIBILITY },
     ],
   },
   {
@@ -144,9 +144,9 @@ export const PLANS: Plan[] = [
     maxActions: "Illimité",
     features: [
       { label: "Recevoir notre Gazette", value: "" },
-      { label: "Support technique en ligne", value: "", tooltip: TOOLTIP_SUPPORT },
+      { label: "Support en ligne", value: "Tickets illimités hors juridique", tooltip: TOOLTIP_SUPPORT },
       { label: "Soutenir nos actions", value: "Illimité ∞", tooltip: TOOLTIP_ACTIONS },
-      { label: "Rejoindre les procès", value: "Possible si éligible", tooltip: TOOLTIP_ELIGIBILITY },
+      { label: "Devenir une partie", value: "Bénéficier d'une défense, si éligible", tooltip: TOOLTIP_ELIGIBILITY },
     ],
   },
 ];

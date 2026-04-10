@@ -125,8 +125,13 @@ export function PricingCard({ plan, price, isReduced, onChoose }: PricingCardPro
             </svg>
             <div>
               <span className="text-xs text-gray-700 dark:text-gray-300">{f.label}</span>
-              {f.tooltip && <InfoTooltip text={f.tooltip} />}
-              {f.value && <div className="text-xs font-medium text-gray-900 dark:text-white">{f.value}</div>}
+              {f.value && (
+                <div className="text-xs font-medium text-gray-900 dark:text-white">
+                  {f.value}
+                  {f.tooltip && <InfoTooltip text={f.tooltip} />}
+                </div>
+              )}
+              {!f.value && f.tooltip && <InfoTooltip text={f.tooltip} />}
             </div>
           </li>
         ))}
