@@ -46,7 +46,6 @@ function ConfettiPiece({ delay, x }: { delay: number; x: number }) {
 const SHARE_PLATFORMS = [
   {
     id: "twitter",
-    label: "Twitter / X",
     reachKey: "twitter" as const,
     bgClass: "bg-black hover:bg-gray-800 dark:bg-white dark:hover:bg-gray-200",
     textClass: "text-white dark:text-black",
@@ -55,7 +54,6 @@ const SHARE_PLATFORMS = [
   },
   {
     id: "whatsapp",
-    label: "WhatsApp",
     reachKey: "whatsapp" as const,
     bgClass: "bg-green-600 hover:bg-green-700",
     textClass: "text-white",
@@ -64,7 +62,6 @@ const SHARE_PLATFORMS = [
   },
   {
     id: "facebook",
-    label: "Facebook",
     reachKey: "facebook" as const,
     bgClass: "bg-blue-600 hover:bg-blue-700",
     textClass: "text-white",
@@ -73,7 +70,6 @@ const SHARE_PLATFORMS = [
   },
   {
     id: "linkedin",
-    label: "LinkedIn",
     reachKey: "linkedin" as const,
     bgClass: "bg-blue-700 hover:bg-blue-800",
     textClass: "text-white",
@@ -97,6 +93,7 @@ export function MerciClient({ actionId }: { actionId: string }) {
   const prefersReduced = useReducedMotion();
   const verifyEmail = searchParams?.get("verify");
   const t = useTranslations("merci");
+  const tShare = useTranslations("share");
 
   const action = actionsData.find((a) => a.id === actionId || a.slug === actionId);
   // TODO: action content translations will come from backend CMS
@@ -280,7 +277,7 @@ export function MerciClient({ actionId }: { actionId: string }) {
                     <path strokeLinecap="round" strokeLinejoin="round" d={platform.icon} />
                   </svg>
                   <div className="min-w-0 flex-1">
-                    <span className="block text-sm font-medium">{platform.label}</span>
+                    <span className="block text-sm font-medium">{tShare(platform.id)}</span>
                     <span className="block text-xs opacity-70">{t(`reach.${platform.reachKey}`)} {t("willSee")}</span>
                   </div>
                 </a>

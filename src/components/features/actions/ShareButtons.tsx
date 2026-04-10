@@ -25,8 +25,8 @@ interface ShareButtonsProps {
 }
 
 interface Platform {
+  /** Unique identifier — also used as i18n key in "share" namespace (except "copy" → "copyLink") */
   id: string;
-  label: string;
   /** SVG path(s) */
   icon: string;
   /** true = use stroke (email, copy), false = use fill (social icons) */
@@ -35,10 +35,14 @@ interface Platform {
   getUrl: (url: string, title: string, hashtag: string) => string | null;
 }
 
+/** Map platform.id to its i18n key in the "share" namespace */
+function platformI18nKey(id: string): string {
+  return id === "copy" ? "copyLink" : id;
+}
+
 const PLATFORMS: Platform[] = [
   {
     id: "twitter",
-    label: "Twitter / X",
     icon: "M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z",
     stroke: false,
     getUrl: (url, title, hashtag) =>
@@ -46,7 +50,6 @@ const PLATFORMS: Platform[] = [
   },
   {
     id: "facebook",
-    label: "Facebook",
     icon: "M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z",
     stroke: false,
     getUrl: (url) =>
@@ -54,7 +57,6 @@ const PLATFORMS: Platform[] = [
   },
   {
     id: "linkedin",
-    label: "LinkedIn",
     icon: "M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2zM4 6a2 2 0 110-4 2 2 0 010 4z",
     stroke: false,
     getUrl: (url, title) =>
@@ -62,7 +64,6 @@ const PLATFORMS: Platform[] = [
   },
   {
     id: "whatsapp",
-    label: "WhatsApp",
     icon: "M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z",
     stroke: false,
     getUrl: (url, title) =>
@@ -70,7 +71,6 @@ const PLATFORMS: Platform[] = [
   },
   {
     id: "email",
-    label: "email",
     icon: "M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z",
     stroke: true,
     getUrl: (url, title) =>
@@ -78,7 +78,6 @@ const PLATFORMS: Platform[] = [
   },
   {
     id: "copy",
-    label: "copyLink",
     icon: "M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z",
     stroke: true,
     getUrl: () => null,
@@ -125,8 +124,8 @@ export function ShareButtons({
             key={platform.id}
             onClick={() => handleShare(platform)}
             className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-white/70 transition-colors hover:bg-white/20 hover:text-white"
-            aria-label={platform.id === "copy" && copied ? t("linkCopied") : t(platform.label as "twitter" | "facebook" | "linkedin" | "whatsapp" | "email" | "copyLink")}
-            title={platform.id === "copy" && copied ? t("linkCopied") : t(platform.label as "twitter" | "facebook" | "linkedin" | "whatsapp" | "email" | "copyLink")}
+            aria-label={platform.id === "copy" && copied ? t("linkCopied") : t(platformI18nKey(platform.id))}
+            title={platform.id === "copy" && copied ? t("linkCopied") : t(platformI18nKey(platform.id))}
           >
             <svg
               className="h-4 w-4"
@@ -161,7 +160,7 @@ export function ShareButtons({
           >
             <path strokeLinecap="round" strokeLinejoin="round" d={platform.icon} />
           </svg>
-          {platform.id === "copy" && copied ? t("linkCopied") : t(platform.label as "twitter" | "facebook" | "linkedin" | "whatsapp" | "email" | "copyLink")}
+          {platform.id === "copy" && copied ? t("linkCopied") : t(platformI18nKey(platform.id))}
         </button>
       ))}
     </div>
