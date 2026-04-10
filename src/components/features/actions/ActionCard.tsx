@@ -2,9 +2,9 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { StatusBadge } from "@/components/ui/StatusBadge";
 import { MilestoneProgress } from "@/components/features/actions/MilestoneProgress";
-import { ThemeTags } from "@/components/ui/ThemeTags";
 
 interface ActionCardProps {
   id: string;
@@ -37,6 +37,9 @@ export function ActionCard({
   showLawyer = false,
   signaturesThisWeek = 0,
 }: ActionCardProps) {
+  const t = useTranslations("actions");
+  // TODO: action content translations will come from backend CMS
+
   return (
     <Link
       href={`/${locale}/actions/${slug}`}
@@ -66,11 +69,11 @@ export function ActionCard({
       </div>
 
       <div className="flex flex-1 flex-col p-5">
-        {/* Tag + thèmes — une seule ligne, pas de wrap, max 2 thèmes */}
+        {/* Tag + themes */}
         <p className="mb-3 truncate text-xs text-gray-500 dark:text-gray-400">
           <span className="font-semibold text-gray-900 dark:text-white">#{tag}</span>
-          {themes.slice(0, 2).map((t) => (
-            <span key={t}> · <span className="capitalize">{t}</span></span>
+          {themes.slice(0, 2).map((thm) => (
+            <span key={thm}> · <span className="capitalize">{thm}</span></span>
           ))}
         </p>
 
@@ -92,14 +95,14 @@ export function ActionCard({
           {/* Signature count + trending on same line */}
           <div className="mb-1 flex items-center gap-2">
             <span className="text-xs font-medium text-gray-700 dark:text-gray-300">
-              {signatures.current.toLocaleString("fr-FR")} signatures
+              {signatures.current.toLocaleString(locale === "en" ? "en-US" : "fr-FR")} {t("signatures")}
             </span>
             {signaturesThisWeek > 0 && (
               <span className="inline-flex items-center gap-0.5 text-[10px] font-medium text-orange-500 dark:text-orange-400">
                 <svg className="h-2.5 w-2.5" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M12.395 2.553a1 1 0 00-1.45-.385c-.345.23-.614.558-.822.88-.214.33-.403.713-.57 1.116-.334.804-.614 1.768-.84 2.734a31.365 31.365 0 00-.613 3.58 2.64 2.64 0 01-.945-1.067c-.328-.68-.398-1.534-.398-2.654A1 1 0 005.05 6.05 6.981 6.981 0 003 11a7 7 0 1011.95-4.95c-.592-.591-.98-.985-1.348-1.467-.363-.476-.724-1.063-1.207-2.03zM12.12 15.12A3 3 0 017 13s.879.5 2.5.5c0-1 .5-4 1.25-4.5.5 1 .786 1.293 1.371 1.879A2.99 2.99 0 0113 13a2.99 2.99 0 01-.879 2.121z" clipRule="evenodd" />
                 </svg>
-                +{signaturesThisWeek}/sem.
+                {t("perWeek", { count: signaturesThisWeek })}
               </span>
             )}
           </div>

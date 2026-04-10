@@ -2,21 +2,13 @@
 
 /**
  * TarifsClient - Premium pricing page with comparison table.
- *
- * Marketing-grade layout:
- * 1. Hero with value proposition + trust signals
- * 2. Configurator (duration) + 4 plan cards
- * 3. Comparison table toggle (Flowbite Table)
- * 4. Don libre step (after CTA)
- * 5. Trust badges bar
- * 6. Organisations section
- * 7. FAQ (Flowbite Accordion pattern)
  */
 
 import { useState, useRef, type FormEvent } from "react";
 import Image from "next/image";
 import { useParams } from "next/navigation";
 import { Tooltip } from "flowbite-react";
+import { useTranslations } from "next-intl";
 import { CTAButton } from "@/components/ui/CTAButton";
 import { ScrollReveal } from "@/components/animations/ScrollReveal";
 import {
@@ -31,85 +23,30 @@ import { PricingCard } from "@/components/features/pricing/PricingCard";
 import { DonLibreStep } from "@/components/features/pricing/DonLibreStep";
 import { OrganisationsTable } from "@/components/features/pricing/OrganisationsTable";
 
-/* ─── FAQ Data ─── */
-const FAQ_ITEMS = [
-  {
-    q: "Quelle est la diff\u00e9rence entre signer et rejoindre ?",
-    a: "Signer une action est gratuit et illimit\u00e9 : cela exprime votre soutien. Rejoindre signifie devenir partie prenante de l'action en Justice, ce qui est encadr\u00e9 par votre forfait.",
-  },
-  {
-    q: "Puis-je changer de forfait en cours de route ?",
-    a: "Oui, vous pouvez passer \u00e0 un forfait sup\u00e9rieur \u00e0 tout moment. La diff\u00e9rence sera calcul\u00e9e au prorata de votre engagement restant.",
-  },
-  {
-    q: "Qu'est-ce que le tarif r\u00e9duit ?",
-    a: "Le tarif r\u00e9duit (-50%) est r\u00e9serv\u00e9 aux personnes en situation de pr\u00e9carit\u00e9 (ch\u00f4mage, \u00e9tudiants, faibles retraites). Un justificatif peut \u00eatre demand\u00e9.",
-  },
-  {
-    q: "Comment fonctionne le forfait groupe ?",
-    a: "Avec les forfaits Maxi (2 pers.) ou Aura (3 pers.), vous financez l'abonnement de vos proches. Chacun a son propre compte et ses propres actions.",
-  },
-  {
-    q: "Mon don libre est-il d\u00e9ductible des imp\u00f4ts ?",
-    a: "Wejustice est en cours d'obtention du statut d'int\u00e9r\u00eat g\u00e9n\u00e9ral. Nous vous tiendrons inform\u00e9 d\u00e8s que la d\u00e9ductibilit\u00e9 fiscale sera active.",
-  },
-  {
-    q: "Que se passe-t-il si je ne renouvelle pas ?",
-    a: "Vos signatures restent actives. Vous ne pourrez simplement plus rejoindre de nouvelles actions tant que vous n'aurez pas r\u00e9activ\u00e9 un forfait.",
-  },
-];
+/* --- Check/Cross icons for comparison table --- */
+function CheckIcon() {
+  return (
+    <svg className="mx-auto h-4 w-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+    </svg>
+  );
+}
 
-/* ─── Trust badges ─── */
-const TRUST_BADGES = [
-  {
-    icon: (
-      <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
-      </svg>
-    ),
-    label: "Paiement s\u00e9curis\u00e9",
-    desc: "Chiffrement SSL 256-bit",
-  },
-  {
-    icon: (
-      <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-      </svg>
-    ),
-    label: "Sans engagement",
-    desc: "R\u00e9siliable \u00e0 tout moment",
-  },
-  {
-    icon: (
-      <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-      </svg>
-    ),
-    label: "Satisfait ou rembours\u00e9",
-    desc: "Garantie 30 jours",
-  },
-  {
-    icon: (
-      <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" />
-      </svg>
-    ),
-    label: "+15 000 citoyens",
-    desc: "Communaut\u00e9 active",
-  },
-];
+function CrossIcon() {
+  return (
+    <svg className="mx-auto h-4 w-4 text-gray-300 dark:text-gray-600" fill="currentColor" viewBox="0 0 20 20">
+      <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
+    </svg>
+  );
+}
 
-/* ─── Comparison table features ─── */
-const COMPARISON_FEATURES = [
-  { label: "Gazette mensuelle", mini: true, plus: true, maxi: true, aura: true },
-  { label: "Support en ligne", mini: true, plus: true, maxi: true, aura: true },
-  { label: "Actions rejoignables", mini: "1", plus: "2", maxi: "5", aura: "Illimit\u00e9" },
-  { label: "Rejoindre les proces", mini: true, plus: true, maxi: true, aura: true },
-  { label: "B\u00e9n\u00e9ficiaires max", mini: "1", plus: "1", maxi: "2", aura: "3" },
-  { label: "Tarif r\u00e9duit disponible", mini: true, plus: true, maxi: true, aura: false },
-];
+function CellValue({ val }: { val: boolean | string }) {
+  if (val === true) return <CheckIcon />;
+  if (val === false) return <CrossIcon />;
+  return <span className="text-xs font-medium text-gray-700 dark:text-gray-300">{val}</span>;
+}
 
-/* ─── FAQ Item component ─── */
+/* --- FAQ Item component --- */
 function FaqItem({ q, a }: { q: string; a: string }) {
   const [open, setOpen] = useState(false);
   return (
@@ -135,33 +72,11 @@ function FaqItem({ q, a }: { q: string; a: string }) {
   );
 }
 
-/* ─── Check/Cross icons for comparison table ─── */
-function CheckIcon() {
-  return (
-    <svg className="mx-auto h-4 w-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-    </svg>
-  );
-}
-
-function CrossIcon() {
-  return (
-    <svg className="mx-auto h-4 w-4 text-gray-300 dark:text-gray-600" fill="currentColor" viewBox="0 0 20 20">
-      <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
-    </svg>
-  );
-}
-
-function CellValue({ val }: { val: boolean | string }) {
-  if (val === true) return <CheckIcon />;
-  if (val === false) return <CrossIcon />;
-  return <span className="text-xs font-medium text-gray-700 dark:text-gray-300">{val}</span>;
-}
-
-/* ─── Main Component ─── */
+/* --- Main Component --- */
 export function TarifsClient() {
   const params = useParams();
   const locale = (params?.locale as string) || "fr";
+  const t = useTranslations("tarifs");
   const [duration, setDuration] = useState<DurationKey>("annual");
   const [isReduced, setIsReduced] = useState(false);
   const [selectedPlan, setSelectedPlan] = useState<Plan | null>(null);
@@ -181,12 +96,11 @@ export function TarifsClient() {
 
   const handleSignupSubmit = (e: FormEvent) => {
     e.preventDefault();
-    // Demo mode — redirect to /compte
     window.location.href = `/${locale}/compte`;
   };
 
   const signupPlanLabel = signupPlan === "free"
-    ? "Gratuit"
+    ? t("free")
     : PLANS.find((p) => p.id === signupPlan)?.name || "";
 
   const handleReducedToggle = () => {
@@ -199,14 +113,82 @@ export function TarifsClient() {
 
   const currentDuration = DURATIONS.find((d) => d.key === duration)!;
 
+  /* Translated duration labels for the selector */
+  const DURATION_LABELS: Record<DurationKey, string> = {
+    monthly: t("monthly"),
+    annual: t("annual"),
+    biannual: t("biannual"),
+    triannual: t("triannual"),
+  };
+
+  /* FAQ items from translations */
+  const FAQ_ITEMS = [
+    { q: t("faq1q"), a: t("faq1a") },
+    { q: t("faq2q"), a: t("faq2a") },
+    { q: t("faq3q"), a: t("faq3a") },
+    { q: t("faq4q"), a: t("faq4a") },
+    { q: t("faq5q"), a: t("faq5a") },
+    { q: t("faq6q"), a: t("faq6a") },
+  ];
+
+  /* Trust badges */
+  const TRUST_BADGES = [
+    {
+      icon: (
+        <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+        </svg>
+      ),
+      label: t("trustSecure"),
+      desc: t("trustSecureDesc"),
+    },
+    {
+      icon: (
+        <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+      ),
+      label: t("trustNoCommitment"),
+      desc: t("trustNoCommitmentDesc"),
+    },
+    {
+      icon: (
+        <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+      ),
+      label: t("trustGuarantee"),
+      desc: t("trustGuaranteeDesc"),
+    },
+    {
+      icon: (
+        <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" />
+        </svg>
+      ),
+      label: t("trustCommunity"),
+      desc: t("trustCommunityDesc"),
+    },
+  ];
+
+  /* Comparison table features */
+  const COMPARISON_FEATURES = [
+    { label: t("comparisonNewsletter"), mini: true, plus: true, maxi: true, aura: true },
+    { label: t("comparisonSupport"), mini: true, plus: true, maxi: true, aura: true },
+    { label: t("comparisonActions"), mini: "1", plus: "2", maxi: "5", aura: t("unlimited") },
+    { label: t("comparisonLawsuit"), mini: true, plus: true, maxi: true, aura: true },
+    { label: t("comparisonMaxSeats"), mini: "1", plus: "1", maxi: "2", aura: "3" },
+    { label: t("comparisonReduced"), mini: true, plus: true, maxi: true, aura: false },
+  ];
+
   return (
     <div className="bg-white dark:bg-gray-900">
 
-      {/* ═══ SECTION 1 : HERO ═══ */}
+      {/* === SECTION 1 : HERO === */}
       <section className="relative flex min-h-[40vh] flex-col overflow-hidden">
         <Image
           src="/images/pages/wejustice_actions.jpg"
-          alt="Citoyens mobilisés pour la justice collective"
+          alt={t("heroTitle")}
           fill
           priority
           sizes="100vw"
@@ -220,51 +202,46 @@ export function TarifsClient() {
         />
         <div className="relative z-10 mx-auto flex max-w-screen-xl flex-1 flex-col items-center justify-center px-4 py-10 text-center sm:py-16 lg:px-6">
           <h1 className="mb-4 text-3xl font-bold leading-tight tracking-tight text-white lg:text-5xl">
-            Pourquoi votre soutien est essentiel
+            {t("heroTitle")}
           </h1>
-          <p className="mx-auto mb-8 max-w-2xl text-base leading-relaxed text-white/80 sm:text-lg">
-            Wejustice ne reçoit aucune subvention, aucun financement public, aucune aide privée.
-            Notre indépendance totale est le prix de notre liberté d&apos;action.
-            Nous ne vivons que par le soutien de nos membres. C&apos;est la seule façon
-            pour le 5<sup className="text-xs">ème</sup> pouvoir d&apos;exister et de rester accessible au plus grand nombre.
-          </p>
+          <p className="mx-auto mb-8 max-w-2xl text-base leading-relaxed text-white/80 sm:text-lg" dangerouslySetInnerHTML={{ __html: t("heroText") }} />
           <div className="mx-auto grid max-w-2xl gap-6 sm:grid-cols-3">
             <div className="rounded-lg border border-white/15 bg-white/10 p-5 backdrop-blur-sm">
-              <p className="text-2xl font-bold text-white">0 €</p>
-              <p className="mt-1 text-xs text-white/60">De subvention publique</p>
+              <p className="text-2xl font-bold text-white">0 EUR</p>
+              <p className="mt-1 text-xs text-white/60">{t("noSubsidy")}</p>
             </div>
             <div className="rounded-lg border border-white/15 bg-white/10 p-5 backdrop-blur-sm">
               <p className="text-2xl font-bold text-white">100%</p>
-              <p className="mt-1 text-xs text-white/60">Indépendant</p>
+              <p className="mt-1 text-xs text-white/60">{t("independent")}</p>
             </div>
             <div className="rounded-lg border border-white/15 bg-white/10 p-5 backdrop-blur-sm">
-              <p className="text-2xl font-bold text-brand">Vous</p>
-              <p className="mt-1 text-xs text-white/60">Êtes le 5<sup>ème</sup> pouvoir</p>
+              <p className="text-2xl font-bold text-brand">{locale === "en" ? "You" : "Vous"}</p>
+              <p className="mt-1 text-xs text-white/60" dangerouslySetInnerHTML={{ __html: t("youAre") }} />
             </div>
           </div>
         </div>
       </section>
 
-      {/* ═══ SECTION 2 : CITOYENS - CONFIGURATOR + CARDS ═══ */}
+      {/* === SECTION 2 : CONFIGURATOR + CARDS === */}
       <div className="mx-auto max-w-screen-xl px-4 pb-10 pt-12 lg:px-6">
 
         {/* Section header */}
         <div className="mb-10 text-center">
           <p className="text-sm font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">
-            Pour les citoyens
+            {t("forCitizens")}
           </p>
           <h2 className="mt-2 text-3xl font-extrabold text-gray-900 dark:text-white">
-            Choisissez votre forfait
+            {t("choosePlan")}
           </h2>
           <p className="mx-auto mt-3 max-w-2xl text-gray-500 dark:text-gray-400">
-            Votre abonnement finance les procédures, les avocats et les outils qui rendent la Justice accessible.
+            {t("choosePlanSubtitle")}
           </p>
         </div>
 
         {/* Duration selector */}
         <div className="mb-8 flex flex-wrap items-center justify-center gap-3">
           <span className="flex items-center gap-1.5 text-sm text-gray-500 dark:text-gray-400">
-            Durée
+            {t("durationLabel")}
             <Tooltip content={TOOLTIPS.duration}>
               <span className="inline-flex cursor-help items-center text-gray-400 dark:text-gray-500">
                 <svg width="14" height="14" viewBox="0 0 20 20">
@@ -286,7 +263,7 @@ export function TarifsClient() {
                 }`}
                 style={duration === d.key ? { backgroundColor: 'var(--color-brand)' } : undefined}
               >
-                {d.label}
+                {DURATION_LABELS[d.key]}
                 {d.discountPercent && (
                   <span className="ml-1 inline-block rounded bg-green-100 px-1.5 py-0.5 text-[10px] font-semibold text-green-700 dark:bg-green-900/30 dark:text-green-300">
                     -{d.discountPercent}%
@@ -323,9 +300,7 @@ export function TarifsClient() {
           >
             <div
               className={`relative h-6 w-11 rounded-full transition-colors ${
-                isReduced
-                  ? "bg-brand"
-                  : "bg-gray-300 dark:bg-gray-600"
+                isReduced ? "bg-brand" : "bg-gray-300 dark:bg-gray-600"
               }`}
             >
               <div
@@ -335,12 +310,12 @@ export function TarifsClient() {
               />
             </div>
             <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
-              Tarif réduit
+              {t("reducedRate")}
             </span>
           </button>
           {isReduced && (
             <div className="mt-3 max-w-md rounded-lg bg-gray-100 p-3 text-center text-xs text-gray-600 dark:bg-gray-700 dark:text-gray-300">
-              Réservé aux personnes à faibles revenus (précarité, étudiants, chômage, faibles retraites) acceptant de fournir à première demande des justificatifs.
+              {t("reducedRateInfo")}
             </div>
           )}
         </div>
@@ -355,7 +330,7 @@ export function TarifsClient() {
               <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25H12" />
               </svg>
-              {showComparison ? "Masquer la comparaison" : "Comparer les forfaits"}
+              {showComparison ? t("hideComparison") : t("compare")}
               <svg className={`h-3 w-3 transition-transform duration-200 ${showComparison ? "rotate-180" : ""}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
               </svg>
@@ -363,19 +338,19 @@ export function TarifsClient() {
           </div>
         </ScrollReveal>
 
-        {/* Comparison table — HTML natif (Flowbite Table cassait le dark mode) */}
+        {/* Comparison table */}
         {showComparison && (
             <div className="mb-10 overflow-x-auto rounded-lg border border-gray-200 dark:border-white/[0.08]">
               <table className="w-full text-left text-sm">
                 <thead>
                   <tr className="border-b border-gray-200 bg-gray-50 text-xs uppercase text-gray-700 dark:border-white/[0.08] dark:bg-gray-800 dark:text-gray-300">
-                    <th className="px-6 py-4">Fonctionnalité</th>
+                    <th className="px-6 py-4">{t("featureLabel")}</th>
                     {PLANS.map((p) => (
                       <th key={p.id} className="px-4 py-4 text-center">
                         <span className="font-bold normal-case text-gray-900 dark:text-white">{p.name}</span>
                         {p.recommended && (
                           <span className="ml-1.5 rounded-full bg-gray-200 px-2 py-0.5 text-[10px] font-medium text-gray-600 dark:bg-gray-700 dark:text-gray-300">
-                            Recommandé
+                            {t("recommended")}
                           </span>
                         )}
                       </th>
@@ -396,7 +371,7 @@ export function TarifsClient() {
                   ))}
                   <tr className="bg-gray-50 font-semibold dark:bg-gray-800">
                     <td className="px-6 py-4 text-sm font-bold text-gray-900 dark:text-white">
-                      Prix / mois
+                      {t("pricePerMonth")}
                     </td>
                     {PLANS.map((p) => {
                       const pr = calculatePrice(p.id, 1, "annual", false);
@@ -426,17 +401,17 @@ export function TarifsClient() {
         )}
       </div>
 
-      {/* ═══ REJOINDRE GRATUITEMENT (discreet) ═══ */}
+      {/* === JOIN FREE === */}
       <div className="mx-auto max-w-screen-xl px-4 pb-10 lg:px-6">
         <div className="mx-auto max-w-lg rounded-lg border border-gray-200 p-6 text-center dark:border-white/[0.08]">
           <h3 className="mb-2 text-lg font-bold text-gray-900 dark:text-white">
-            Rejoindre gratuitement
+            {t("joinFreeTitle")}
           </h3>
           <p className="mb-4 text-sm text-gray-500 dark:text-gray-400">
-            Créez votre compte gratuit pour signer des pétitions en illimité.
+            {t("joinFreeSubtitle")}
           </p>
           <ul className="mx-auto mb-5 flex max-w-xs flex-col gap-1.5 text-left">
-            {["Signatures illimitées", "Suivi en temps réel", "Communauté citoyenne"].map((feature) => (
+            {[t("joinFreeFeature1"), t("joinFreeFeature2"), t("joinFreeFeature3")].map((feature) => (
               <li key={feature} className="flex items-center gap-2">
                 <svg className="h-3.5 w-3.5 flex-shrink-0 text-green-500" viewBox="0 0 20 20" fill="currentColor">
                   <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
@@ -450,12 +425,12 @@ export function TarifsClient() {
             size="md"
             onClick={() => { setSignupPlan("free"); setShowSignup(true); }}
           >
-            Créer mon compte gratuit
+            {t("createFreeAccount")}
           </CTAButton>
         </div>
       </div>
 
-      {/* ═══ TRUST BADGES BAR ═══ */}
+      {/* === TRUST BADGES BAR === */}
       <ScrollReveal>
         <div className="border-y border-gray-200 bg-gray-50 py-8 dark:border-white/[0.08] dark:bg-gray-900">
           <div className="mx-auto grid max-w-screen-xl grid-cols-2 gap-6 px-4 lg:grid-cols-4 lg:px-6">
@@ -474,42 +449,36 @@ export function TarifsClient() {
         </div>
       </ScrollReveal>
 
-      {/* ═══ SECTION 3 : ORGANISATIONS ═══ */}
+      {/* === SECTION 3 : ORGANISATIONS === */}
       <div className="border-t border-gray-200 bg-gray-50 py-16 dark:border-white/[0.08] dark:bg-gray-900/30">
         <div className="mx-auto max-w-screen-xl px-4 lg:px-6">
-
-          {/* Section label */}
           <div className="mb-4 flex items-center gap-3">
             <div className="h-px flex-1 bg-gray-200 dark:bg-gray-700" />
             <span className="text-xs font-semibold uppercase tracking-widest text-gray-400 dark:text-gray-500">
-              Pour les organisations
+              {t("forOrganizations")}
             </span>
             <div className="h-px flex-1 bg-gray-200 dark:bg-gray-700" />
           </div>
-
-          {/* Intro text */}
           <ScrollReveal>
             <div className="mx-auto mb-10 max-w-xl text-center">
               <h2 className="mb-3 text-2xl font-bold text-gray-900 dark:text-white lg:text-3xl">
-                Vous êtes une organisation ?
+                {t("orgTitle")}
               </h2>
               <p className="text-sm leading-relaxed text-gray-500 dark:text-gray-400">
-                Syndicats, entreprises, associations et ONG : Wejustice vous permet de lancer
-                des actions collectives en Justice pour défendre vos membres et votre cause.
+                {t("orgSubtitle")}
               </p>
             </div>
           </ScrollReveal>
-
           <OrganisationsTable />
         </div>
       </div>
 
-      {/* ═══ SECTION 4 : FAQ ═══ */}
+      {/* === SECTION 4 : FAQ === */}
       <div className="mx-auto max-w-screen-xl px-4 py-16 lg:px-6">
         <div className="mx-auto max-w-2xl">
           <ScrollReveal>
             <h2 className="mb-8 text-center text-2xl font-bold text-gray-900 dark:text-white">
-              Questions fréquentes
+              {t("faqTitle")}
             </h2>
           </ScrollReveal>
           <div>
@@ -522,62 +491,62 @@ export function TarifsClient() {
         </div>
       </div>
 
-      {/* ═══ SIGNUP MODAL ═══ */}
+      {/* === SIGNUP MODAL === */}
       {showSignup && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
           <div className="w-full max-w-md rounded-lg bg-white p-8 dark:bg-gray-900">
             <h2 className="mb-2 text-xl font-bold text-gray-900 dark:text-white">
-              Creez votre compte
+              {t("signupTitle")}
             </h2>
             <p className="mb-6 text-sm text-gray-500 dark:text-gray-400">
-              Plan : <span className="font-semibold text-gray-900 dark:text-white">{signupPlanLabel}</span>
+              {t("signupPlanLabel")} <span className="font-semibold text-gray-900 dark:text-white">{signupPlanLabel}</span>
             </p>
             <form onSubmit={handleSignupSubmit} className="space-y-4">
               <div>
                 <label htmlFor="signup-prenom" className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">
-                  Prenom
+                  {t("signupFirstName")}
                 </label>
                 <input
                   id="signup-prenom"
                   type="text"
-                  placeholder="Votre prenom"
+                  placeholder={t("signupFirstNamePlaceholder")}
                   required
                   className="w-full rounded-lg border border-gray-300 bg-gray-50 px-4 py-2.5 text-sm text-gray-900 focus:border-brand focus:ring-1 focus:ring-brand dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:placeholder-gray-400 dark:focus:border-brand dark:focus:ring-brand"
                 />
               </div>
               <div>
                 <label htmlFor="signup-nom" className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">
-                  Nom
+                  {t("signupLastName")}
                 </label>
                 <input
                   id="signup-nom"
                   type="text"
-                  placeholder="Votre nom"
+                  placeholder={t("signupLastNamePlaceholder")}
                   required
                   className="w-full rounded-lg border border-gray-300 bg-gray-50 px-4 py-2.5 text-sm text-gray-900 focus:border-brand focus:ring-1 focus:ring-brand dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:placeholder-gray-400 dark:focus:border-brand dark:focus:ring-brand"
                 />
               </div>
               <div>
                 <label htmlFor="signup-email" className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">
-                  Email
+                  {t("signupEmail")}
                 </label>
                 <input
                   id="signup-email"
                   type="email"
-                  placeholder="votre@email.com"
+                  placeholder={t("signupEmailPlaceholder")}
                   required
                   className="w-full rounded-lg border border-gray-300 bg-gray-50 px-4 py-2.5 text-sm text-gray-900 focus:border-brand focus:ring-1 focus:ring-brand dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:placeholder-gray-400 dark:focus:border-brand dark:focus:ring-brand"
                 />
               </div>
               <CTAButton type="submit" fullWidth size="lg">
-                Creer mon compte
+                {t("signupSubmit")}
               </CTAButton>
             </form>
             <button
               onClick={() => setShowSignup(false)}
               className="mt-4 w-full text-center text-sm font-medium text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
             >
-              Fermer
+              {t("close")}
             </button>
           </div>
         </div>

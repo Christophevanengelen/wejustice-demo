@@ -1,7 +1,7 @@
 "use client";
 
 /**
- * PressSection - "On en parle dans la presse"
+ * PressSection - "In the press"
  *
  * Displays press coverage with outlet names, article titles, and links.
  * Desktop: 3-column grid (featured + 2 columns of 3).
@@ -11,6 +11,7 @@
  * Part of the component library (features/press/).
  */
 
+import { useTranslations } from "next-intl";
 import { LogoFigma } from "@/components/ui/LogoFigma";
 
 interface PressItem {
@@ -23,6 +24,7 @@ interface PressItem {
   featured: boolean;
 }
 
+// TODO: press content translations will come from backend CMS
 const PRESS_ARTICLES: PressItem[] = [
   {
     id: "p-1",
@@ -90,6 +92,7 @@ const PRESS_ARTICLES: PressItem[] = [
 ];
 
 export function PressSection() {
+  const t = useTranslations("home");
   const featured = PRESS_ARTICLES.find((a) => a.featured);
   const others = PRESS_ARTICLES.filter((a) => !a.featured);
   const col1 = others.slice(0, 3);
@@ -101,10 +104,10 @@ export function PressSection() {
         {/* Header */}
         <div className="mx-auto mb-12 max-w-2xl text-center">
           <h2 className="mb-4 text-3xl font-bold tracking-tight text-gray-900 dark:text-white lg:text-4xl">
-            On en parle dans la presse
+            {t("pressTitle")}
           </h2>
           <p className="text-lg text-gray-500 dark:text-gray-400">
-            Les medias couvrent les actions collectives Wejustice
+            {t("pressSubtitle")}
           </p>
         </div>
 
@@ -113,7 +116,6 @@ export function PressSection() {
           {/* Featured */}
           {featured && (
             <div className="flex flex-col justify-center">
-              {/* Wejustice picto - same size/position as prod: h-48 w-48, centered */}
               <div className="mb-6 flex justify-center">
                 <LogoFigma showText={false} size="lg" className="h-48 w-48" />
               </div>
@@ -127,7 +129,7 @@ export function PressSection() {
                 {featured.excerpt}
               </p>
               <a href={featured.url} className="text-sm font-medium text-brand hover:underline">
-                Lire l&apos;article →
+                {t("readArticle")} &rarr;
               </a>
             </div>
           )}
@@ -135,14 +137,14 @@ export function PressSection() {
           {/* Column 1 */}
           <div className="space-y-6 border-l border-gray-200 pl-8 dark:border-white/[0.08]">
             {col1.map((item) => (
-              <PressCard key={item.id} item={item} />
+              <PressCard key={item.id} item={item} readLabel={t("readArticle")} />
             ))}
           </div>
 
           {/* Column 2 */}
           <div className="space-y-6 border-l border-gray-200 pl-8 dark:border-white/[0.08]">
             {col2.map((item) => (
-              <PressCard key={item.id} item={item} />
+              <PressCard key={item.id} item={item} readLabel={t("readArticle")} />
             ))}
           </div>
         </div>
@@ -158,7 +160,7 @@ export function PressSection() {
                 {item.title}
               </h3>
               <a href={item.url} className="text-xs font-medium text-brand hover:underline">
-                Lire l&apos;article →
+                {t("readArticle")} &rarr;
               </a>
             </div>
           ))}
@@ -168,7 +170,7 @@ export function PressSection() {
   );
 }
 
-function PressCard({ item }: { item: PressItem }) {
+function PressCard({ item, readLabel }: { item: PressItem; readLabel: string }) {
   return (
     <div>
       <p className="mb-1 text-xs font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400">
@@ -181,7 +183,7 @@ function PressCard({ item }: { item: PressItem }) {
         {item.excerpt}
       </p>
       <a href={item.url} className="text-xs font-medium text-brand hover:underline">
-        Lire l&apos;article →
+        {readLabel} &rarr;
       </a>
     </div>
   );

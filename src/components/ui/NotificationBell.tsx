@@ -14,6 +14,7 @@
 import { useState, useRef, useEffect, useCallback } from "react";
 import Link from "next/link";
 import { useParams } from "next/navigation";
+import { useTranslations } from "next-intl";
 import userActivity from "@/mocks/user-activity.json";
 
 /* ------------------------------------------------------------------ */
@@ -78,16 +79,19 @@ const DEFAULT_CONFIG = CATEGORY_CONFIG.action;
 /*  Relative date helper                                               */
 /* ------------------------------------------------------------------ */
 
-function relativeDate(dateStr: string): string {
-  const now = new Date();
-  const date = new Date(dateStr);
-  const diffMs = now.getTime() - date.getTime();
-  const diffH = Math.floor(diffMs / 3600000);
-  const diffD = Math.floor(diffH / 24);
-  if (diffH < 1) return "maintenant";
-  if (diffH < 24) return `${diffH}h`;
-  if (diffD < 7) return `${diffD}j`;
-  return `${Math.floor(diffD / 7)} sem.`;
+function useRelativeDate() {
+  const t = useTranslations("notifications");
+  return (dateStr: string): string => {
+    const now = new Date();
+    const date = new Date(dateStr);
+    const diffMs = now.getTime() - date.getTime();
+    const diffH = Math.floor(diffMs / 3600000);
+    const diffD = Math.floor(diffH / 24);
+    if (diffH < 1) return t("now");
+    if (diffH < 24) return t("hoursAgo", { count: diffH });
+    if (diffD < 7) return t("daysAgo", { count: diffD });
+    return t("weeksAgo", { count: Math.floor(diffD / 7) });
+  };
 }
 
 /* ------------------------------------------------------------------ */
@@ -97,6 +101,8 @@ function relativeDate(dateStr: string): string {
 export function NotificationBell() {
   const params = useParams();
   const locale = (params?.locale as string) || "fr";
+  const t = useTranslations("notifications");
+  const relativeDate = useRelativeDate();
 
   const [isOpen, setIsOpen] = useState(false);
   const [readIds, setReadIds] = useState<Set<string>>(new Set());
@@ -141,7 +147,7 @@ export function NotificationBell() {
         type="button"
         onClick={toggleDropdown}
         className="relative inline-flex h-10 w-10 items-center justify-center rounded-lg text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-        aria-label={`Notifications${unreadCount > 0 ? ` (${unreadCount} non lues)` : ""}`}
+        aria-label={`${t("title")}${unreadCount > 0 ? ` (${t("unread", { count: unreadCount })})` : ""}`}
         aria-expanded={isOpen}
         aria-haspopup="true"
       >
@@ -166,9 +172,9 @@ export function NotificationBell() {
         <div className="absolute right-0 top-12 z-50 w-80 overflow-hidden rounded-lg border border-gray-200 bg-white shadow-lg dark:border-white/[0.08] dark:bg-gray-900 sm:w-96">
           {/* Header */}
           <div className="flex items-center justify-between border-b border-gray-200 px-4 py-3 dark:border-white/[0.08]">
-            <h3 className="text-sm font-semibold text-gray-900 dark:text-white">Notifications</h3>
+            <h3 className="text-sm font-semibold text-gray-900 dark:text-white">{t("title")}</h3>
             <span className="text-xs text-gray-500 dark:text-gray-400">
-              {allNotifications.length} total
+              {t("total", { count: allNotifications.length })}
             </span>
           </div>
 
@@ -176,6 +182,7 @@ export function NotificationBell() {
           <div className="max-h-80 overflow-y-auto">
             {displayedNotifications.map((n) => {
               const config = CATEGORY_CONFIG[n.type] || DEFAULT_CONFIG;
+              // TODO: notification content translations will come from backend
               return (
                 <Link
                   key={n.id}
@@ -221,7 +228,7 @@ export function NotificationBell() {
             onClick={() => setIsOpen(false)}
             className="flex items-center justify-center border-t border-gray-200 px-4 py-3 text-sm font-medium text-brand hover:bg-gray-50 dark:border-white/[0.08] dark:hover:bg-gray-800"
           >
-            Voir toutes les notifications
+            {t("viewAll")}
           </Link>
         </div>
       )}

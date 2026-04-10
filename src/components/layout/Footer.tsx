@@ -2,27 +2,35 @@
 
 import Link from "next/link";
 import { useParams } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { LogoFigma } from "@/components/ui/LogoFigma";
-
-const LINKS = {
-  actions: [
-    { href: "/actions", label: "Toutes les actions" },
-    { href: "/tribune", label: "Tribune" },
-    { href: "/blog", label: "Blog" },
-  ],
-  about: [
-    { href: "/qui-sommes-nous", label: "Qui sommes-nous" },
-    { href: "/tarifs", label: "Tarifs" },
-  ],
-  legal: [
-    { href: "/confidentialite", label: "Confidentialité" },
-    { href: "/cgu", label: "CGU" },
-  ],
-};
 
 export function Footer() {
   const params = useParams();
   const locale = (params?.locale as string) || "fr";
+  const t = useTranslations("footer");
+
+  const LINKS = {
+    actions: [
+      { href: "/actions", label: t("allActions") },
+      { href: "/tribune", label: t("tribune") },
+      { href: "/blog", label: t("blog") },
+    ],
+    about: [
+      { href: "/qui-sommes-nous", label: t("whoAreWe") },
+      { href: "/tarifs", label: t("pricing") },
+    ],
+    legal: [
+      { href: "/confidentialite", label: t("privacy") },
+      { href: "/cgu", label: t("terms") },
+    ],
+  };
+
+  const TITLES: Record<string, string> = {
+    actions: t("actionsTitle"),
+    about: t("aboutTitle"),
+    legal: t("legalTitle"),
+  };
 
   return (
     <footer className="border-t border-gray-200 bg-white dark:border-white/[0.08] dark:bg-gray-900">
@@ -34,7 +42,7 @@ export function Footer() {
               <LogoFigma size="sm" />
             </Link>
             <p className="mt-4 max-w-xs text-sm text-gray-500 dark:text-gray-400">
-              De la pétition à l'action.
+              {t("tagline")}
             </p>
           </div>
 
@@ -43,7 +51,7 @@ export function Footer() {
             {Object.entries(LINKS).map(([title, links]) => (
               <div key={title}>
                 <h2 className="mb-6 text-sm font-semibold uppercase text-gray-900 dark:text-white">
-                  {title === "actions" ? "Actions" : title === "about" ? "\u00c0 propos" : "L\u00e9gal"}
+                  {TITLES[title]}
                 </h2>
                 <ul className="space-y-4 text-gray-500 dark:text-gray-400">
                   {links.map(({ href, label }) => (
@@ -66,7 +74,7 @@ export function Footer() {
 
         <div className="sm:flex sm:items-center sm:justify-between">
           <span className="text-sm text-gray-500 dark:text-gray-400 sm:text-center">
-            &copy; {new Date().getFullYear()} Lexprecia &bull; Tous droits réservés.
+            &copy; {new Date().getFullYear()} {t("copyright")}
           </span>
         </div>
       </div>

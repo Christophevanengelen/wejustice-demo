@@ -5,28 +5,20 @@
  *
  * This is not a "thank you" page. It is a GROWTH ENGINE.
  * Every element is designed to maximize sharing and re-engagement.
- *
- * Composition:
- * 1. Animated success (confetti checkmark, Framer Motion)
- * 2. Social proof counter ("Vous êtes le Xe signataire !")
- * 3. Impact message (progress toward goal)
- * 4. Viral share block (Twitter, WhatsApp, Facebook, LinkedIn, copy link)
- * 5. Live counter ("X personnes ont signe apres vous")
- * 6. Personal referral code
- * 7. Upsell toward /tarifs
  */
 
 import { useEffect, useMemo, useState } from "react";
 import { useParams, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import { CTAButton } from "@/components/ui/CTAButton";
 import { AnimatedCounter } from "@/components/animations";
 import { EASING, DURATION } from "@/components/animations";
 import { MilestoneProgress } from "@/components/features/actions/MilestoneProgress";
 import actionsData from "@/mocks/actions.json";
 
-/* ── Confetti particle ── */
+/* -- Confetti particle -- */
 function ConfettiPiece({ delay, x }: { delay: number; x: number }) {
   const color = useMemo(() => {
     const colors = ["#C20520", "#16A34A", "#3B82F6", "#F59E0B", "#8B5CF6", "#EC4899"];
@@ -50,12 +42,12 @@ function ConfettiPiece({ delay, x }: { delay: number; x: number }) {
   );
 }
 
-/* ── Share platform config ── */
+/* -- Share platform config -- */
 const SHARE_PLATFORMS = [
   {
     id: "twitter",
     label: "Twitter / X",
-    reach: "~450 personnes",
+    reachKey: "twitter" as const,
     bgClass: "bg-black hover:bg-gray-800 dark:bg-white dark:hover:bg-gray-200",
     textClass: "text-white dark:text-black",
     icon: "M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z",
@@ -64,7 +56,7 @@ const SHARE_PLATFORMS = [
   {
     id: "whatsapp",
     label: "WhatsApp",
-    reach: "~120 personnes",
+    reachKey: "whatsapp" as const,
     bgClass: "bg-green-600 hover:bg-green-700",
     textClass: "text-white",
     icon: "M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z",
@@ -73,7 +65,7 @@ const SHARE_PLATFORMS = [
   {
     id: "facebook",
     label: "Facebook",
-    reach: "~300 personnes",
+    reachKey: "facebook" as const,
     bgClass: "bg-blue-600 hover:bg-blue-700",
     textClass: "text-white",
     icon: "M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z",
@@ -82,7 +74,7 @@ const SHARE_PLATFORMS = [
   {
     id: "linkedin",
     label: "LinkedIn",
-    reach: "~200 personnes",
+    reachKey: "linkedin" as const,
     bgClass: "bg-blue-700 hover:bg-blue-800",
     textClass: "text-white",
     icon: "M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2zM4 6a2 2 0 110-4 2 2 0 010 4z",
@@ -90,7 +82,7 @@ const SHARE_PLATFORMS = [
   },
 ];
 
-/* ── Generate referral code ── */
+/* -- Generate referral code -- */
 function generateReferralCode(): string {
   const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
   const part1 = Array.from({ length: 2 }, () => chars[Math.floor(Math.random() * chars.length)]).join("");
@@ -104,17 +96,17 @@ export function MerciClient({ actionId }: { actionId: string }) {
   const locale = (params?.locale as string) || "fr";
   const prefersReduced = useReducedMotion();
   const verifyEmail = searchParams?.get("verify");
+  const t = useTranslations("merci");
 
   const action = actionsData.find((a) => a.id === actionId || a.slug === actionId);
+  // TODO: action content translations will come from backend CMS
   const title = action?.title || "cette action";
   const currentSigs = action?.signatures.current ?? 0;
   const goalSigs = action?.signatures.goal ?? 500000;
 
-  // Generate referral code once per mount
   const [referralCode] = useState(generateReferralCode);
   const referralUrl = `wejustice.legal/r/${referralCode}`;
 
-  // "Signed after you" live counter
   const [afterYouCount, setAfterYouCount] = useState(0);
   useEffect(() => {
     const interval = setInterval(() => {
@@ -123,11 +115,9 @@ export function MerciClient({ actionId }: { actionId: string }) {
     return () => clearInterval(interval);
   }, []);
 
-  // Copy states
   const [copiedLink, setCopiedLink] = useState(false);
   const [copiedReferral, setCopiedReferral] = useState(false);
 
-  // Confetti pieces
   const confettiPieces = useMemo(
     () =>
       Array.from({ length: 30 }, (_, i) => ({
@@ -139,58 +129,39 @@ export function MerciClient({ actionId }: { actionId: string }) {
   );
 
   const shareUrl = `https://wejustice.legal/actions/${action?.slug ?? actionId}`;
-  const tweetText = `Je viens de signer l'action "${title}" sur @wejustice. Rejoignez-nous !`;
-  const whatsappText = `J'ai sign\u00e9 l'action "${title}" sur Wejustice. Rejoignez le mouvement : ${shareUrl}`;
+  const tweetText = locale === "en"
+    ? `I just signed the action "${title}" on @wejustice. Join us!`
+    : `Je viens de signer l'action "${title}" sur @wejustice. Rejoignez-nous !`;
+  const whatsappText = locale === "en"
+    ? `I signed the action "${title}" on Wejustice. Join the movement: ${shareUrl}`
+    : `J'ai signe l'action "${title}" sur Wejustice. Rejoignez le mouvement : ${shareUrl}`;
 
   const handleCopyLink = () => {
-    navigator.clipboard?.writeText(shareUrl).catch(() => {});
+    navigator.clipboard?.writeText(`${tweetText} ${shareUrl}`).catch(() => {});
     setCopiedLink(true);
     setTimeout(() => setCopiedLink(false), 2500);
   };
 
-  const handleCopyReferral = () => {
-    navigator.clipboard?.writeText(`https://${referralUrl}`).catch(() => {});
-    setCopiedReferral(true);
-    setTimeout(() => setCopiedReferral(false), 2500);
-  };
-
-  const handleShare = (platformId: string) => {
-    const urls: Record<string, string> = {
-      twitter: `https://twitter.com/intent/tweet?text=${encodeURIComponent(tweetText)}&url=${encodeURIComponent(shareUrl)}&hashtags=${encodeURIComponent(action?.tag || "Wejustice")}`,
-      facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`,
-      linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`,
-      whatsapp: `https://wa.me/?text=${encodeURIComponent(whatsappText)}`,
-    };
-    const url = urls[platformId];
-    if (url) {
-      window.open(url, "_blank", "noopener,noreferrer,width=600,height=500");
-    }
-  };
-
-  // Impact message
   const pct = Math.round((currentSigs / goalSigs) * 100);
   const remaining = goalSigs - currentSigs;
 
   return (
     <section className="bg-white dark:bg-gray-900">
-      {/* Bandeau validation email (guest uniquement) */}
+      {/* Email verification banner (guest only) */}
       {verifyEmail && (
         <div className="border-b border-blue-200 bg-blue-50 px-4 py-3 dark:border-blue-800 dark:bg-blue-900/30">
           <div className="mx-auto flex max-w-screen-md items-center gap-3">
             <svg className="h-5 w-5 shrink-0 text-blue-600 dark:text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
             </svg>
-            <p className="text-sm text-blue-700 dark:text-blue-300">
-              Un email de confirmation a été envoyé à <strong>{verifyEmail}</strong>. Cliquez sur le lien pour valider votre signature.
-            </p>
+            <p className="text-sm text-blue-700 dark:text-blue-300" dangerouslySetInnerHTML={{ __html: t("emailVerification", { email: verifyEmail }) }} />
           </div>
         </div>
       )}
 
       <div className="mx-auto max-w-screen-md px-4 py-12 lg:py-20">
-        {/* ═══ 1. ANIMATED SUCCESS ═══ */}
+        {/* === 1. ANIMATED SUCCESS === */}
         <div className="relative mb-8 flex flex-col items-center text-center">
-          {/* Confetti */}
           {!prefersReduced && (
             <div className="pointer-events-none absolute inset-x-0 top-0 h-96 overflow-hidden">
               {confettiPieces.map((p) => (
@@ -199,7 +170,6 @@ export function MerciClient({ actionId }: { actionId: string }) {
             </div>
           )}
 
-          {/* Checkmark circle */}
           <motion.div
             initial={prefersReduced ? false : { scale: 0, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
@@ -228,7 +198,7 @@ export function MerciClient({ actionId }: { actionId: string }) {
             transition={{ duration: DURATION.slow, delay: 0.4, ease: EASING.smooth }}
             className="mb-2 text-3xl font-bold text-gray-900 dark:text-white lg:text-4xl"
           >
-            Merci pour votre signature !
+            {t("title")}
           </motion.h1>
 
           <motion.p
@@ -237,11 +207,11 @@ export function MerciClient({ actionId }: { actionId: string }) {
             transition={{ duration: DURATION.slow, delay: 0.6, ease: EASING.smooth }}
             className="text-lg text-gray-500 dark:text-gray-400"
           >
-            Votre soutien pour «{title}» a bien été enregistré.
+            {t("supportRegistered", { title })}
           </motion.p>
         </div>
 
-        {/* ═══ 2. COMPTEUR + PROGRESSION (fusionnés) ═══ */}
+        {/* === 2. COUNTER + PROGRESS === */}
         <motion.div
           initial={prefersReduced ? false : { opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
@@ -249,24 +219,26 @@ export function MerciClient({ actionId }: { actionId: string }) {
           className="mb-8 rounded-lg border border-gray-100 bg-gray-50 p-6 dark:border-white/[0.08] dark:bg-gray-900"
         >
           <p className="text-center text-sm text-gray-500 dark:text-gray-400">
-            Vous êtes le{" "}
+            {t("youAreSignatory")}{" "}
             <span className="text-lg font-bold text-gray-900 dark:text-white">
               <AnimatedCounter value={currentSigs} duration={2} />
-              <sup className="text-xs">e</sup>
+              <sup className="text-xs">
+                {locale === "en" ? "th" : "e"}
+              </sup>
             </span>{" "}
-            signataire. Plus que{" "}
+            {t("signatory")}. {t("moreToGo")}{" "}
             <span className="font-bold text-gray-900 dark:text-white">
-              {remaining.toLocaleString("fr-FR")}
+              {remaining.toLocaleString(locale === "en" ? "en-US" : "fr-FR")}
             </span>{" "}
-            pour atteindre{" "}
-            <span className="font-bold text-gray-900 dark:text-white">{pct < 100 ? "l\u2019objectif" : "la victoire"}</span>.
+            {t("toReach")}{" "}
+            <span className="font-bold text-gray-900 dark:text-white">{pct < 100 ? t("theGoal") : t("victory")}</span>.
           </p>
           <div className="mt-4">
             <MilestoneProgress currentSignatures={currentSigs} goalSignatures={goalSigs} />
           </div>
         </motion.div>
 
-        {/* ═══ 4. VIRAL SHARE BLOCK ═══ */}
+        {/* === 4. VIRAL SHARE BLOCK === */}
         <motion.div
           initial={prefersReduced ? false : { opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
@@ -275,14 +247,13 @@ export function MerciClient({ actionId }: { actionId: string }) {
         >
           <div className="mb-4 text-center">
             <h2 className="text-xl font-bold text-gray-900 dark:text-white">
-              Décuplez votre impact
+              {t("multiplyImpact")}
             </h2>
             <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
-              Chaque partage = en moyenne 3 nouvelles signatures
+              {t("shareAverage")}
             </p>
           </div>
 
-          {/* Share buttons grid — <a href> pour permettre clic droit / copier le lien */}
           <div className="grid gap-3 sm:grid-cols-2">
             {SHARE_PLATFORMS.map((platform) => {
               const urls: Record<string, string> = {
@@ -310,14 +281,14 @@ export function MerciClient({ actionId }: { actionId: string }) {
                   </svg>
                   <div className="min-w-0 flex-1">
                     <span className="block text-sm font-medium">{platform.label}</span>
-                    <span className="block text-xs opacity-70">{platform.reach} verront votre partage</span>
+                    <span className="block text-xs opacity-70">{t(`reach.${platform.reachKey}`)} {t("willSee")}</span>
                   </div>
                 </a>
               );
             })}
           </div>
 
-          {/* Message complet à copier-coller (texte + URL fusionnés) */}
+          {/* Copy message block */}
           <div className="mt-4 rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-white/[0.08] dark:bg-gray-800">
             <div className="flex items-start justify-between gap-3">
               <p className="text-sm text-gray-700 dark:text-gray-300">
@@ -325,20 +296,16 @@ export function MerciClient({ actionId }: { actionId: string }) {
                 <span className="text-gray-500 dark:text-gray-400">{shareUrl}</span>
               </p>
               <button
-                onClick={() => {
-                  navigator.clipboard?.writeText(`${tweetText} ${shareUrl}`).catch(() => {});
-                  setCopiedLink(true);
-                  setTimeout(() => setCopiedLink(false), 2000);
-                }}
+                onClick={handleCopyLink}
                 className="shrink-0 rounded-lg border border-gray-200 bg-white px-3 py-1.5 text-xs font-medium text-gray-600 transition-colors hover:bg-gray-100 dark:border-white/[0.08] dark:bg-gray-900 dark:text-gray-300 dark:hover:bg-gray-700"
               >
-                {copiedLink ? "Copié !" : "Copier"}
+                {copiedLink ? t("copied") : t("copy")}
               </button>
             </div>
           </div>
         </motion.div>
 
-        {/* ═══ 7. UPSELL ═══ */}
+        {/* === 7. UPSELL === */}
         <motion.div
           initial={prefersReduced ? false : { opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
@@ -346,18 +313,17 @@ export function MerciClient({ actionId }: { actionId: string }) {
           className="border-t border-gray-200 pt-8 text-center dark:border-white/[0.08]"
         >
           <h2 className="mb-2 text-xl font-semibold text-gray-900 dark:text-white">
-            Allez plus loin : devenez partie prenante
+            {t("upsellTitle")}
           </h2>
           <p className="mb-6 text-sm text-gray-500 dark:text-gray-400">
-            Votre signature exprime votre soutien. Pour devenir partie prenante
-            de la procedure juridique, choisissez votre forfait.
+            {t("upsellText")}
           </p>
           <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
             <CTAButton href={`/${locale}/tarifs`} size="lg">
-              Découvrir les forfaits
+              {t("discoverPlans")}
             </CTAButton>
             <CTAButton href={`/${locale}/actions`} size="lg" variant="light">
-              Découvrir d&apos;autres actions
+              {t("discoverActions")}
             </CTAButton>
           </div>
         </motion.div>

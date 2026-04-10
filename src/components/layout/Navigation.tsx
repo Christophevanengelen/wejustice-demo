@@ -4,16 +4,10 @@ import { useState } from "react";
 import Link from "next/link";
 import { DarkThemeToggle, Dropdown, DropdownHeader, DropdownItem, DropdownDivider } from "flowbite-react";
 import { useParams, usePathname } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { useAuthSafe } from "@/lib/mock-auth";
 import { LogoFigma } from "@/components/ui/LogoFigma";
 import { NotificationBell } from "@/components/ui/NotificationBell";
-
-const NAV_LINKS = [
-  { href: "/actions", label: "Actions" },
-  { href: "/tribune", label: "Tribune" },
-  { href: "/blog", label: "Blog" },
-  { href: "/tarifs", label: "Rejoindre" },
-];
 
 export function Navigation() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -21,6 +15,14 @@ export function Navigation() {
   const params = useParams();
   const locale = (params?.locale as string) || "fr";
   const { user, isAuthenticated } = useAuthSafe();
+  const t = useTranslations("nav");
+
+  const NAV_LINKS = [
+    { href: "/actions", label: t("actions") },
+    { href: "/tribune", label: t("tribune") },
+    { href: "/blog", label: t("blog") },
+    { href: "/tarifs", label: t("pricing") },
+  ];
 
   const isActive = (href: string) => {
     const cleanPath = pathname.replace(/^\/(fr|en)/, "") || "/";
@@ -35,7 +37,7 @@ export function Navigation() {
           <LogoFigma size="sm" />
         </Link>
 
-        {/* Nav links — desktop, à gauche après le logo */}
+        {/* Nav links — desktop */}
         <ul className="ml-8 hidden items-center gap-8 md:flex">
           {NAV_LINKS.map(({ href, label }) => (
             <li key={href}>
@@ -73,13 +75,13 @@ export function Navigation() {
             <DropdownItem as={Link} href={`/fr${pathname.replace(/^\/(fr|en)/, "")}`} className={locale === "fr" ? "font-semibold" : ""}>
               <span className="inline-flex items-center gap-2">
                 <svg className="h-3.5 w-3.5 rounded-sm" viewBox="0 0 36 24"><rect width="12" height="24" fill="#002654"/><rect x="12" width="12" height="24" fill="#fff"/><rect x="24" width="12" height="24" fill="#CE1126"/></svg>
-                Français
+                {t("french")}
               </span>
             </DropdownItem>
             <DropdownItem as={Link} href={`/en${pathname.replace(/^\/(fr|en)/, "")}`} className={locale === "en" ? "font-semibold" : ""}>
               <span className="inline-flex items-center gap-2">
                 <svg className="h-3.5 w-3.5 rounded-sm" viewBox="0 0 36 24"><clipPath id="gb2"><rect width="36" height="24" rx="2"/></clipPath><g clipPath="url(#gb2)"><rect width="36" height="24" fill="#012169"/><path d="M0 0L36 24M36 0L0 24" stroke="#fff" strokeWidth="4"/><path d="M0 0L36 24M36 0L0 24" stroke="#C8102E" strokeWidth="2.5"/><path d="M18 0V24M0 12H36" stroke="#fff" strokeWidth="6"/><path d="M18 0V24M0 12H36" stroke="#C8102E" strokeWidth="3.5"/></g></svg>
-                English
+                {t("english")}
               </span>
             </DropdownItem>
           </Dropdown>
@@ -109,17 +111,17 @@ export function Navigation() {
                   {user.email}
                 </span>
               </DropdownHeader>
-              <DropdownItem as={Link} href={`/${locale}/compte`}>Mon compte</DropdownItem>
-              <DropdownItem as={Link} href={`/${locale}/compte/signatures`}>Mes signatures</DropdownItem>
+              <DropdownItem as={Link} href={`/${locale}/compte`}>{t("myAccount")}</DropdownItem>
+              <DropdownItem as={Link} href={`/${locale}/compte/signatures`}>{t("mySignatures")}</DropdownItem>
               <DropdownDivider />
-              <DropdownItem>Déconnexion</DropdownItem>
+              <DropdownItem>{t("logout")}</DropdownItem>
             </Dropdown>
           ) : (
             <Link
               href={`/${locale}/compte`}
               className="inline-flex h-10 items-center rounded-lg px-4 text-sm font-medium text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
             >
-              Se connecter
+              {t("login")}
             </Link>
           )}
 
@@ -131,7 +133,7 @@ export function Navigation() {
             aria-controls="navbar-demo"
             aria-expanded={mobileOpen}
           >
-            <span className="sr-only">Menu</span>
+            <span className="sr-only">{t("menu")}</span>
             <svg className="h-5 w-5" fill="none" viewBox="0 0 17 14">
               <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 1h15M1 7h15M1 13h15" />
             </svg>

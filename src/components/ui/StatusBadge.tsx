@@ -1,23 +1,38 @@
 "use client";
 
 import { Badge } from "flowbite-react";
+import { useTranslations } from "next-intl";
 
-const STATUS_MAP: Record<string, { label: string; color: "green" | "blue" | "yellow" | "indigo" | "red" | "purple" | "gray" }> = {
-  collecting: { label: "Ouverte", color: "green" },
-  goal_reached: { label: "Ouverte", color: "green" },
-  formal_notice: { label: "En cours", color: "blue" },
-  negotiation: { label: "En cours", color: "blue" },
-  legal_action: { label: "En cours", color: "blue" },
-  won: { label: "Terminée", color: "gray" },
-  partial: { label: "Terminée", color: "gray" },
-  closed: { label: "Terminée", color: "gray" },
+const STATUS_COLORS: Record<string, "green" | "blue" | "yellow" | "indigo" | "red" | "purple" | "gray"> = {
+  collecting: "green",
+  goal_reached: "green",
+  formal_notice: "blue",
+  negotiation: "blue",
+  legal_action: "blue",
+  won: "gray",
+  partial: "gray",
+  closed: "gray",
 };
 
 export function StatusBadge({ status, size = "xs" }: { status: string; size?: "sm" | "xs" }) {
-  const info = STATUS_MAP[status] || STATUS_MAP.collecting;
-  return <Badge color={info.color} size={size}>{info.label}</Badge>;
+  const t = useTranslations("status");
+  const color = STATUS_COLORS[status] || STATUS_COLORS.collecting;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const label = t(status as any) || t("collecting");
+  return <Badge color={color} size={size}>{label}</Badge>;
 }
 
 export function getStatusLabel(status: string): string {
-  return (STATUS_MAP[status] || STATUS_MAP.collecting).label;
+  // Static fallback for non-component contexts
+  const FALLBACK: Record<string, string> = {
+    collecting: "Ouverte",
+    goal_reached: "Ouverte",
+    formal_notice: "En cours",
+    negotiation: "En cours",
+    legal_action: "En cours",
+    won: "Terminee",
+    partial: "Terminee",
+    closed: "Terminee",
+  };
+  return FALLBACK[status] || FALLBACK.collecting;
 }

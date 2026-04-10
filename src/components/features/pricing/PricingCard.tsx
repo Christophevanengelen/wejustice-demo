@@ -5,10 +5,11 @@
  *
  * Shows: name, icon, price, 4 features with tooltips, CTA.
  * Shows beneficiaires count based on plan.maxSeats.
- * Badge "Recommande" on Maxi.
+ * Badge "Recommended" on Maxi.
  */
 
 import { type Plan, type PriceResult, formatPrice } from "@/lib/pricing-engine";
+import { useTranslations } from "next-intl";
 import { CTAButton } from "@/components/ui/CTAButton";
 
 interface PricingCardProps {
@@ -34,6 +35,14 @@ function InfoTooltip({ text }: { text: string }) {
 
 export function PricingCard({ plan, price, isReduced, onChoose }: PricingCardProps) {
   const disabled = false;
+  const t = useTranslations("tarifs");
+
+  const seatsLabel = plan.maxSeats === 1 ? t("for1Person") : plan.maxSeats === 2 ? t("upTo2Persons") : t("upTo3Persons");
+  const seatsDesc = plan.maxSeats === 1 ? t("for1PersonDesc") : plan.maxSeats === 2 ? t("upTo2PersonsDesc") : t("upTo3PersonsDesc");
+
+  const durationLabel = price.durationMonths === 1
+    ? t("noCommitment")
+    : t("engageFor", { duration: price.durationMonths === 12 ? t("annual") : price.durationMonths === 24 ? t("biannual") : t("triannual") });
 
   return (
     <div
@@ -46,16 +55,16 @@ export function PricingCard({ plan, price, isReduced, onChoose }: PricingCardPro
       }`}
       style={plan.recommended && !disabled ? { borderColor: 'var(--color-brand)' } : undefined}
     >
-      {/* Badge Recommande */}
+      {/* Badge Recommended */}
       {plan.recommended && !disabled && (
         <div className="absolute -top-3 left-1/2 -translate-x-1/2">
           <span className="whitespace-nowrap rounded-full bg-brand px-3 py-1 text-xs font-semibold text-white">
-            Recommandé
+            {t("recommended")}
           </span>
         </div>
       )}
 
-      {/* Name — pas d'icône, propre et aligné */}
+      {/* Name */}
       <div className="mb-4">
         <span className="text-sm font-bold uppercase tracking-wider text-gray-900 dark:text-white">
           {plan.name}
@@ -68,47 +77,44 @@ export function PricingCard({ plan, price, isReduced, onChoose }: PricingCardPro
           {formatPrice(price.totalMonthly)}
         </span>
         <span className="ml-1 text-sm text-gray-500 dark:text-gray-400">
-          /mois
+          {t("perMonth")}
         </span>
       </div>
 
       {/* Engagement duration */}
       <p className="mb-1 text-xs text-gray-500 dark:text-gray-400">
-        {price.durationMonths === 1
-          ? "Sans engagement"
-          : `Je m'engage pour ${price.durationMonths === 12 ? "1 an" : price.durationMonths === 24 ? "2 ans" : "3 ans"}`}
+        {durationLabel}
       </p>
 
-      {/* Upfront payment if duration > monthly */}
+      {/* Upfront payment */}
       {price.totalUpfront !== null && (
         <p className="mb-1 text-sm font-medium text-gray-900 dark:text-white">
-          Réglez maintenant {formatPrice(price.totalUpfront)}
+          {t("payNow", { amount: formatPrice(price.totalUpfront) })}
         </p>
       )}
 
       {/* Savings */}
       {price.savings > 0 && (
         <p className="mb-2 text-xs font-medium text-green-600 dark:text-green-400">
-          Vous économisez {formatPrice(price.savings)}
+          {t("youSave", { amount: formatPrice(price.savings) })}
         </p>
       )}
 
-      {/* Divider */}
       <hr className="mb-4 border-gray-200 dark:border-white/[0.08]" />
 
       {/* Features */}
       <ul className="mb-6 flex-1 space-y-3">
-        {/* Beneficiaires */}
+        {/* Beneficiaries */}
         <li className="flex items-start gap-2">
           <svg className="mt-0.5 h-4 w-4 flex-shrink-0 text-green-500" viewBox="0 0 20 20">
             <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" fill="currentColor" />
           </svg>
           <div>
             <span className="text-xs font-medium text-gray-900 dark:text-white">
-              {plan.maxSeats === 1 ? "Pour 1 pers." : plan.maxSeats === 2 ? "Jusqu\u0027\u00e0 2 pers." : "Jusqu\u0027\u00e0 3 pers. incluses"}
+              {seatsLabel}
             </span>
             <div className="text-xs text-gray-500 dark:text-gray-400">
-              {plan.maxSeats === 1 ? "Pour moi uniquement" : plan.maxSeats === 2 ? "Pour moi et un proche inclus" : "Pour moi et deux proches inclus"}
+              {seatsDesc}
             </div>
           </div>
         </li>
@@ -134,7 +140,7 @@ export function PricingCard({ plan, price, isReduced, onChoose }: PricingCardPro
         size="lg"
         fullWidth
       >
-        Choisir
+        {t("choose")}
       </CTAButton>
     </div>
   );
