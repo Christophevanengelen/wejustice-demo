@@ -5,7 +5,7 @@
  *
  * Marketing-grade layout:
  * 1. Hero with value proposition + trust signals
- * 2. Configurator (seats, duration) + 4 plan cards
+ * 2. Configurator (duration) + 4 plan cards
  * 3. Comparison table toggle (Flowbite Table)
  * 4. Don libre step (after CTA)
  * 5. Trust badges bar
@@ -47,7 +47,7 @@ const FAQ_ITEMS = [
   },
   {
     q: "Comment fonctionne le forfait groupe ?",
-    a: "Avec les forfaits Plus (2 pers.), Maxi (3 pers.) ou Aura (4 pers.), vous financez l'abonnement de vos proches. Chacun a son propre compte et ses propres actions.",
+    a: "Avec les forfaits Maxi (2 pers.) ou Aura (3 pers.), vous financez l'abonnement de vos proches. Chacun a son propre compte et ses propres actions.",
   },
   {
     q: "Mon don libre est-il d\u00e9ductible des imp\u00f4ts ?",
@@ -105,8 +105,7 @@ const COMPARISON_FEATURES = [
   { label: "Support en ligne", mini: true, plus: true, maxi: true, aura: true },
   { label: "Actions rejoignables", mini: "1", plus: "2", maxi: "5", aura: "Illimit\u00e9" },
   { label: "Rejoindre les proces", mini: true, plus: true, maxi: true, aura: true },
-  { label: "B\u00e9n\u00e9ficiaires max", mini: "1", plus: "2", maxi: "3", aura: "4" },
-  { label: "R\u00e9duction groupe", mini: false, plus: "-40%", maxi: "-50%", aura: "-50%" },
+  { label: "B\u00e9n\u00e9ficiaires max", mini: "1", plus: "1", maxi: "2", aura: "3" },
   { label: "Tarif r\u00e9duit disponible", mini: true, plus: true, maxi: true, aura: false },
 ];
 
@@ -163,7 +162,6 @@ function CellValue({ val }: { val: boolean | string }) {
 export function TarifsClient() {
   const params = useParams();
   const locale = (params?.locale as string) || "fr";
-  const [seats, setSeats] = useState(1);
   const [duration, setDuration] = useState<DurationKey>("annual");
   const [isReduced, setIsReduced] = useState(false);
   const [selectedPlan, setSelectedPlan] = useState<Plan | null>(null);
@@ -195,17 +193,8 @@ export function TarifsClient() {
     const next = !isReduced;
     setIsReduced(next);
     if (next) {
-      setSeats(1);
       setSelectedPlan(null);
     }
-  };
-
-  const handleSeatDown = () => {
-    if (seats > 1) { setSeats(seats - 1); setSelectedPlan(null); }
-  };
-
-  const handleSeatUp = () => {
-    if (seats < 4) { setSeats(seats + 1); setSelectedPlan(null); }
   };
 
   const currentDuration = DURATIONS.find((d) => d.key === duration)!;
@@ -272,42 +261,6 @@ export function TarifsClient() {
           </p>
         </div>
 
-        {/* Seat selector (hidden in reduced mode) */}
-        {!isReduced && (
-          <div className="mb-6 flex flex-wrap items-center justify-center gap-4">
-            <span className="flex items-center gap-1.5 text-sm text-gray-500 dark:text-gray-400">
-              Bénéficiaires
-              <Tooltip content={TOOLTIPS.seats}>
-                <span className="inline-flex cursor-help items-center text-gray-400 dark:text-gray-500">
-                  <svg width="14" height="14" viewBox="0 0 20 20">
-                    <circle cx="10" cy="10" r="8.5" fill="none" stroke="currentColor" strokeWidth="1.8" />
-                    <text x="10" y="14.5" textAnchor="middle" fontSize="10" fontWeight="600" fill="currentColor" fontFamily="sans-serif">?</text>
-                  </svg>
-                </span>
-              </Tooltip>
-            </span>
-            <div className="flex items-center gap-3">
-              <button
-                onClick={handleSeatDown}
-                disabled={seats <= 1}
-                className="flex h-8 w-8 items-center justify-center rounded-full bg-brand text-sm font-bold text-white transition-opacity disabled:opacity-30"
-              >
-                -
-              </button>
-              <span className="min-w-[60px] text-center text-sm font-semibold text-gray-900 dark:text-white">
-                {seats} pers.
-              </span>
-              <button
-                onClick={handleSeatUp}
-                disabled={seats >= 4}
-                className="flex h-8 w-8 items-center justify-center rounded-full bg-brand text-sm font-bold text-white transition-opacity disabled:opacity-30"
-              >
-                +
-              </button>
-            </div>
-          </div>
-        )}
-
         {/* Duration selector */}
         <div className="mb-8 flex flex-wrap items-center justify-center gap-3">
           <span className="flex items-center gap-1.5 text-sm text-gray-500 dark:text-gray-400">
@@ -347,18 +300,12 @@ export function TarifsClient() {
         {/* Cards */}
         <div className={`mb-8 flex gap-6 overflow-x-auto pb-4 pt-4 lg:grid lg:overflow-visible ${visiblePlans.length <= 3 ? "lg:grid-cols-3 lg:max-w-4xl lg:mx-auto" : "lg:grid-cols-4"}`}>
           {visiblePlans.map((plan) => {
-            // Prix calculé au max seats du plan quand dépassé (carte grisée mais prix stable)
-            const seatsForPrice = isReduced ? 1 : Math.min(seats, plan.maxSeats);
-            const priceResult = {
-              ...calculatePrice(plan.id, seatsForPrice, duration, isReduced),
-              isDisabled: !isReduced && seats > plan.maxSeats,
-            };
+            const priceResult = calculatePrice(plan.id, 1, duration, isReduced);
             return (
               <PricingCard
                 key={plan.id}
                 plan={plan}
                 price={priceResult}
-                seats={seats}
                 isReduced={isReduced}
                 onChoose={() => handleChoose(plan)}
               />
@@ -470,8 +417,7 @@ export function TarifsClient() {
           <div ref={donLibreRef}>
             <DonLibreStep
               plan={selectedPlan}
-              price={calculatePrice(selectedPlan.id, seats, duration, isReduced)}
-              seats={seats}
+              price={calculatePrice(selectedPlan.id, 1, duration, isReduced)}
               isReduced={isReduced}
               durationLabel={currentDuration.label}
               onBack={() => setSelectedPlan(null)}

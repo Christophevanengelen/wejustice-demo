@@ -14,13 +14,12 @@ import { CTAButton } from "@/components/ui/CTAButton";
 interface DonLibreStepProps {
   plan: Plan;
   price: PriceResult;
-  seats: number;
   isReduced: boolean;
   durationLabel: string;
   onBack: () => void;
 }
 
-export function DonLibreStep({ plan, price, seats, isReduced, durationLabel, onBack }: DonLibreStepProps) {
+export function DonLibreStep({ plan, price, isReduced, durationLabel, onBack }: DonLibreStepProps) {
   const [donAmount, setDonAmount] = useState<number | null>(null);
   const [selectedTag, setSelectedTag] = useState<number | null>(null);
   const [confirmed, setConfirmed] = useState(false);
@@ -71,7 +70,7 @@ export function DonLibreStep({ plan, price, seats, isReduced, durationLabel, onB
           <div>
             <span className="text-sm font-bold" style={{ color: plan.color }}>{plan.name}</span>
             <span className="ml-2 text-xs text-gray-500 dark:text-gray-400">
-              {seats} pers. - {durationLabel}
+              {durationLabel}
             </span>
           </div>
           <span className="text-lg font-bold text-gray-900 dark:text-white">
@@ -163,7 +162,7 @@ export function DonLibreStep({ plan, price, seats, isReduced, durationLabel, onB
             Souscription enregistrée (démo)
           </p>
           <p className="mt-1 text-xs text-green-600 dark:text-green-400">
-            Forfait {plan.name} — {seats} pers. — {durationLabel}
+            Forfait {plan.name} — {durationLabel}
           </p>
           <p className="mt-0.5 text-xs text-green-600 dark:text-green-400">
             {formatPrice(totalMonthly)}/mois

@@ -4,7 +4,7 @@
  * PricingCard - One plan card in the pricing carousel.
  *
  * Shows: name, icon, price, 4 features with tooltips, CTA.
- * Greyed out when disabled (seats > max).
+ * Shows beneficiaires count based on plan.maxSeats.
  * Badge "Recommande" on Maxi.
  */
 
@@ -14,7 +14,6 @@ import { CTAButton } from "@/components/ui/CTAButton";
 interface PricingCardProps {
   plan: Plan;
   price: PriceResult;
-  seats: number;
   isReduced: boolean;
   onChoose: () => void;
 }
@@ -33,8 +32,8 @@ function InfoTooltip({ text }: { text: string }) {
   );
 }
 
-export function PricingCard({ plan, price, seats, isReduced, onChoose }: PricingCardProps) {
-  const disabled = price.isDisabled;
+export function PricingCard({ plan, price, isReduced, onChoose }: PricingCardProps) {
+  const disabled = false;
 
   return (
     <div
@@ -66,19 +65,12 @@ export function PricingCard({ plan, price, seats, isReduced, onChoose }: Pricing
       {/* Price */}
       <div className="mb-1">
         <span className="text-3xl font-bold text-gray-900 dark:text-white">
-          {formatPrice(seats > 1 && !isReduced && !disabled ? price.pricePerPersonMonthly : price.totalMonthly)}
+          {formatPrice(price.totalMonthly)}
         </span>
         <span className="ml-1 text-sm text-gray-500 dark:text-gray-400">
-          {seats > 1 && !isReduced && !disabled ? "/mois/pers." : "/mois"}
+          /mois
         </span>
       </div>
-
-      {/* Total monthly if multi-seat (masqué si carte grisée) */}
-      {seats > 1 && !isReduced && !disabled && (
-        <p className="mb-1 text-sm font-medium text-brand">
-          Total : {formatPrice(price.totalMonthly)}/mois
-        </p>
-      )}
 
       {/* Engagement duration */}
       <p className="mb-1 text-xs text-gray-500 dark:text-gray-400">
@@ -106,6 +98,20 @@ export function PricingCard({ plan, price, seats, isReduced, onChoose }: Pricing
 
       {/* Features */}
       <ul className="mb-6 flex-1 space-y-3">
+        {/* Beneficiaires */}
+        <li className="flex items-start gap-2">
+          <svg className="mt-0.5 h-4 w-4 flex-shrink-0 text-green-500" viewBox="0 0 20 20">
+            <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" fill="currentColor" />
+          </svg>
+          <div>
+            <span className="text-xs font-medium text-gray-900 dark:text-white">
+              {plan.maxSeats === 1 ? "Pour 1 pers." : plan.maxSeats === 2 ? "Jusqu\u0027\u00e0 2 pers." : "Jusqu\u0027\u00e0 3 pers. incluses"}
+            </span>
+            <div className="text-xs text-gray-500 dark:text-gray-400">
+              {plan.maxSeats === 1 ? "Pour moi uniquement" : plan.maxSeats === 2 ? "Pour moi et un proche inclus" : "Pour moi et deux proches inclus"}
+            </div>
+          </div>
+        </li>
         {plan.features.map((f) => (
           <li key={f.label} className="flex items-start gap-2">
             <svg className="mt-0.5 h-4 w-4 flex-shrink-0 text-green-500" viewBox="0 0 20 20">

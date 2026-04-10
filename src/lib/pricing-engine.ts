@@ -47,12 +47,6 @@ const BASES: Record<string, number> = {
   aura: 34.00,
 };
 
-const DISCOUNT_SEAT: Record<number, number> = {
-  2: 0.40,  // duo: -40%
-  3: 0.50,  // trio: -50%
-  4: 0.60,  // quad: -60%
-};
-
 const DISCOUNT_DURATION: Record<DurationKey, number> = {
   monthly: 0,
   annual: 0.25,    // -25%
@@ -115,7 +109,7 @@ export const PLANS: Plan[] = [
     color: "#64748b",
     icon: "M10,1.5 L12.6,7.5 L19.2,8.1 L14.3,12.5 L15.9,19 L10,15.6 L4.1,19 L5.7,12.5 L0.8,8.1 L7.4,7.5",
     basePriceMonthly: BASES.plus,
-    maxSeats: 2,
+    maxSeats: 1,
     maxActions: "Jusqu'à 2 actions",
     features: [
       { label: "Recevoir notre Gazette", value: "" },
@@ -130,7 +124,7 @@ export const PLANS: Plan[] = [
     color: "#64748b",
     icon: "M10,2 L17.5,5.5 L17.5,11.5 C17.5,15.5 14.2,18.5 10,20 C5.8,18.5 2.5,15.5 2.5,11.5 L2.5,5.5 Z",
     basePriceMonthly: BASES.maxi,
-    maxSeats: 3,
+    maxSeats: 2,
     maxActions: "Jusqu'à 5 actions",
     recommended: true,
     features: [
@@ -146,7 +140,7 @@ export const PLANS: Plan[] = [
     color: "#64748b",
     icon: "M2,15 L5,7 L8.5,12 L10,3.5 L11.5,12 L15,7 L18,15 Z M2,16.5 L18,16.5 L18,18 L2,18 Z",
     basePriceMonthly: BASES.aura,
-    maxSeats: 4,
+    maxSeats: 3,
     maxActions: "Illimité",
     features: [
       { label: "Recevoir notre Gazette", value: "" },
@@ -194,18 +188,15 @@ export function calculatePrice(
 ): PriceResult {
   const plan = PLANS.find((p) => p.id === planId);
   if (!plan) {
-    return { pricePerPersonMonthly: 0, totalMonthly: 0, totalUpfront: null, savings: 0, durationMonths: 1, isDisabled: true };
+    return { pricePerPersonMonthly: 0, totalMonthly: 0, totalUpfront: null, savings: 0, durationMonths: 1, isDisabled: false };
   }
 
-  const isDisabled = !isReduced && seats > plan.maxSeats;
   const months = DURATION_MONTHS[duration];
   const durationDiscount = DISCOUNT_DURATION[duration];
-
-  // All plans use the same calculation
   const base = plan.basePriceMonthly;
 
   if (isReduced) {
-    // Reduced: -50% on base, 1 person, no seat discount
+    // Reduced: -50% on base, then duration discount
     const reducedBase = round10(base * (1 - DISCOUNT_REDUCED));
     const monthly = round10(reducedBase * (1 - durationDiscount));
     const totalUpfront = duration === "monthly" ? null : round10(monthly * months);
@@ -217,40 +208,30 @@ export function calculatePrice(
       totalUpfront,
       savings: savingsVsMonthly,
       durationMonths: months,
-      isDisabled,
+      isDisabled: false,
     };
   }
 
-  // Standard: apply seat discount then duration discount
-  const seatDiscount = seats === 1 ? 0 : (DISCOUNT_SEAT[seats] || 0);
-  const afterSeat = round10(base * (1 - seatDiscount));
-  const monthly = round10(afterSeat * (1 - durationDiscount));
-  const totalMonthly = round10(monthly * seats);
-  const totalUpfront = duration === "monthly" ? null : round10(monthly * months * seats);
-
-  // Savings: compare vs monthly (no duration discount) over same period
-  const monthlyNoDiscount = round10(afterSeat * seats);
-  const savingsVsMonthly = duration === "monthly" ? 0 : round10(monthlyNoDiscount * months - (totalUpfront || 0));
+  // Standard: base × (1 - durationDiscount)
+  const monthly = round10(base * (1 - durationDiscount));
+  const totalUpfront = duration === "monthly" ? null : round10(monthly * months);
+  const savingsVsMonthly = duration === "monthly" ? 0 : round10(base * months - monthly * months);
 
   return {
     pricePerPersonMonthly: monthly,
-    totalMonthly,
+    totalMonthly: monthly,
     totalUpfront,
     savings: savingsVsMonthly,
     durationMonths: months,
-    isDisabled,
+    isDisabled: false,
   };
 }
 
 /**
  * Check if a card should be disabled for the given seat count.
  */
-export function isCardDisabled(planId: string, seats: number, isReduced: boolean): boolean {
-  // All plans available in reduced mode
-  const plan = PLANS.find((p) => p.id === planId);
-  if (!plan) return true;
-  if (isReduced) return false; // reduced = 1 seat, always fits
-  return seats > plan.maxSeats;
+export function isCardDisabled(_planId: string, _seats: number, _isReduced: boolean): boolean {
+  return false;
 }
 
 /**
