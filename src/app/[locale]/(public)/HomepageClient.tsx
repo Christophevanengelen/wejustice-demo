@@ -247,19 +247,17 @@ export function HomepageClient() {
           </div>
 
           {/* Mobile layout */}
-          <div className="lg:hidden">
+          <div className="ml-3 lg:hidden">
             <Timeline>
-              {siteSettings.howItWorks.map(({ step, title, description }, i) => (
-                <ScrollReveal key={step} delay={0.1 * i}>
-                  <TimelineItem>
-                    <TimelinePoint />
-                    <TimelineContent>
-                      <TimelineTime>{t("stepPrefix")} {step}</TimelineTime>
-                      <TimelineTitle>{title}</TimelineTitle>
-                      <TimelineBody><span dangerouslySetInnerHTML={{ __html: sanitizeHtml(description) }} /></TimelineBody>
-                    </TimelineContent>
-                  </TimelineItem>
-                </ScrollReveal>
+              {siteSettings.howItWorks.map(({ step, title, description }) => (
+                <TimelineItem key={step}>
+                  <TimelinePoint />
+                  <TimelineContent className="ms-4">
+                    <TimelineTime>{t("stepPrefix")} {step}</TimelineTime>
+                    <TimelineTitle>{title}</TimelineTitle>
+                    <TimelineBody><span dangerouslySetInnerHTML={{ __html: sanitizeHtml(description) }} /></TimelineBody>
+                  </TimelineContent>
+                </TimelineItem>
               ))}
             </Timeline>
           </div>
