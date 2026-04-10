@@ -35,6 +35,41 @@
 
 ---
 
+## Architecture BFF — Regles NON NEGOCIABLES
+
+Next.js est une VITRINE + BFF minimal. Le backend PHP est la source de verite.
+
+### Ce que Next.js FAIT :
+- Rendre les pages (SSR/CSR)
+- Gerer session/cookie (HTTP-only)
+- Proxy transparent vers le backend PHP (routes /api/*)
+- Callbacks techniques (PayZen, OAuth, magic links)
+- Contenu marketing statique (site-settings.json, testimonials.json)
+
+### Ce que Next.js ne fait JAMAIS :
+- DB, ORM, queries SQL
+- Logique metier (pricing, entitlement, eligibilite)
+- Persistance (signatures, paiements, comptes)
+- Auth comme source de verite (JWT, sessions server)
+- Calculs de droits (max actions, tarif reduit, seats)
+
+### Imports mocks — Classification :
+| Fichier | Type | En prod |
+|---------|------|---------|
+| `actions.json` | RUNTIME | GET /api/actions |
+| `comments.json` | RUNTIME | GET /api/actions/:slug/comments |
+| `user-activity.json` | RUNTIME | GET /api/me/dashboard |
+| `users.json` | RUNTIME | GET /api/auth/me |
+| `blog.json` | RUNTIME | GET /api/cms/articles |
+| `site-settings.json` | STATIQUE | Reste en JSON (marketing) |
+| `testimonials.json` | STATIQUE | Reste en JSON (marketing) |
+
+### Client API :
+Les composants DOIVENT importer depuis `@/lib/api.ts`, JAMAIS directement `@/mocks/*.json`
+pour les donnees RUNTIME. Le client API retourne les mocks en demo et appellera le BFF en prod.
+
+---
+
 ## Structure du projet
 
 ```
