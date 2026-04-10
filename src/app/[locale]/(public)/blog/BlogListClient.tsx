@@ -79,7 +79,7 @@ export function BlogListClient() {
           <div className="mx-auto max-w-screen-xl px-4 lg:px-6">
             <a href={`/${locale}/blog/${featured.slug}`} className="group grid gap-6 lg:grid-cols-2">
               <div className="relative h-64 overflow-hidden rounded-lg lg:h-full">
-                <Image src={featured.image} alt={featured.title} fill className="object-cover transition-transform duration-[600ms] ease-[cubic-bezier(0.25,0.1,0.25,1)] group-hover:scale-105" />
+                <Image src={featured.image} alt={featured.title} fill className="object-cover img-zoom" />
                 <div className="absolute left-3 top-3">
                   <span className="rounded-full bg-white px-3 py-1 text-xs font-semibold text-gray-900">{featured.category}</span>
                 </div>
@@ -130,7 +130,7 @@ export function BlogListClient() {
               {filtered.filter((a) => !(a.featured && !search && !selectedCat)).map((article) => (
                 <a key={article.id} href={`/${locale}/blog/${article.slug}`} className="group flex flex-col overflow-hidden rounded-lg border border-gray-200 bg-white transition-shadow hover:shadow-lg dark:border-white/[0.08] dark:bg-gray-900">
                   <div className="relative h-48 overflow-hidden">
-                    <Image src={article.image} alt={article.title} fill className="object-cover transition-transform duration-[600ms] ease-[cubic-bezier(0.25,0.1,0.25,1)] group-hover:scale-105" />
+                    <Image src={article.image} alt={article.title} fill className="object-cover img-zoom" />
                     <div className="absolute left-3 top-3">
                       <span className="rounded-full bg-white/90 px-2.5 py-0.5 text-xs font-medium text-gray-900 backdrop-blur-sm">{article.category}</span>
                     </div>
