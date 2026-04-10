@@ -247,12 +247,12 @@ export function HomepageClient() {
           </div>
 
           {/* Mobile layout */}
-          <div className="ml-3 lg:hidden">
+          <div className="ml-6 lg:hidden">
             <Timeline>
               {siteSettings.howItWorks.map(({ step, title, description }) => (
                 <TimelineItem key={step}>
                   <TimelinePoint />
-                  <TimelineContent className="ms-4">
+                  <TimelineContent className="ms-6">
                     <TimelineTime>{t("stepPrefix")} {step}</TimelineTime>
                     <TimelineTitle>{title}</TimelineTitle>
                     <TimelineBody><span dangerouslySetInnerHTML={{ __html: sanitizeHtml(description) }} /></TimelineBody>
