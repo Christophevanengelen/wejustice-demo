@@ -23,29 +23,6 @@ import { PricingCard } from "@/components/features/pricing/PricingCard";
 import { DonLibreStep } from "@/components/features/pricing/DonLibreStep";
 import { OrganisationsTable } from "@/components/features/pricing/OrganisationsTable";
 
-/* --- Check/Cross icons for comparison table --- */
-function CheckIcon() {
-  return (
-    <svg className="mx-auto h-4 w-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-    </svg>
-  );
-}
-
-function CrossIcon() {
-  return (
-    <svg className="mx-auto h-4 w-4 text-gray-300 dark:text-gray-600" fill="currentColor" viewBox="0 0 20 20">
-      <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
-    </svg>
-  );
-}
-
-function CellValue({ val }: { val: boolean | string }) {
-  if (val === true) return <CheckIcon />;
-  if (val === false) return <CrossIcon />;
-  return <span className="text-xs font-medium text-gray-700 dark:text-gray-300">{val}</span>;
-}
-
 /* --- FAQ Item component --- */
 function FaqItem({ q, a }: { q: string; a: string }) {
   const [open, setOpen] = useState(false);
@@ -80,7 +57,6 @@ export function TarifsClient() {
   const [duration, setDuration] = useState<DurationKey>("annual");
   const [isReduced, setIsReduced] = useState(false);
   const [selectedPlan, setSelectedPlan] = useState<Plan | null>(null);
-  const [showComparison, setShowComparison] = useState(false);
   const [showSignup, setShowSignup] = useState(false);
   const [signupPlan, setSignupPlan] = useState<string | null>(null);
 
@@ -169,16 +145,6 @@ export function TarifsClient() {
       label: t("trustCommunity"),
       desc: t("trustCommunityDesc"),
     },
-  ];
-
-  /* Comparison table features */
-  const COMPARISON_FEATURES = [
-    { label: t("comparisonNewsletter"), mini: true, plus: true, maxi: true, aura: true },
-    { label: t("comparisonSupport"), mini: true, plus: true, maxi: true, aura: true },
-    { label: t("comparisonActions"), mini: "1", plus: "2", maxi: "5", aura: t("unlimited") },
-    { label: t("comparisonLawsuit"), mini: true, plus: true, maxi: true, aura: true },
-    { label: t("comparisonMaxSeats"), mini: "1", plus: "1", maxi: "2", aura: "3" },
-    { label: t("comparisonReduced"), mini: true, plus: true, maxi: true, aura: false },
   ];
 
   return (
@@ -292,6 +258,11 @@ export function TarifsClient() {
 
         {/* Reduced toggle */}
         <div className="mb-8 flex flex-col items-center">
+          {isReduced && (
+            <div className="mb-3 max-w-md rounded-lg border border-amber-300 bg-amber-50 p-3 text-center text-xs text-amber-800 dark:border-amber-600/40 dark:bg-amber-900/20 dark:text-amber-300">
+              {t("reducedRateInfo")}
+            </div>
+          )}
           <button
             role="switch"
             aria-checked={isReduced}
@@ -313,79 +284,7 @@ export function TarifsClient() {
               {t("reducedRate")}
             </span>
           </button>
-          {isReduced && (
-            <div className="mt-3 max-w-md rounded-lg bg-gray-100 p-3 text-center text-xs text-gray-600 dark:bg-gray-700 dark:text-gray-300">
-              {t("reducedRateInfo")}
-            </div>
-          )}
         </div>
-
-        {/* Comparison table toggle */}
-        <ScrollReveal>
-          <div className="mb-8 text-center">
-            <button
-              onClick={() => setShowComparison(!showComparison)}
-              className="inline-flex items-center gap-2 rounded-lg border border-gray-300 bg-gray-50 px-5 py-2.5 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-100 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700"
-            >
-              <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25H12" />
-              </svg>
-              {showComparison ? t("hideComparison") : t("compare")}
-              <svg className={`h-3 w-3 transition-transform duration-200 ${showComparison ? "rotate-180" : ""}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-              </svg>
-            </button>
-          </div>
-        </ScrollReveal>
-
-        {/* Comparison table */}
-        {showComparison && (
-            <div className="mb-10 overflow-x-auto rounded-lg border border-gray-200 dark:border-white/[0.08]">
-              <table className="w-full text-left text-sm">
-                <thead>
-                  <tr className="border-b border-gray-200 bg-gray-50 text-xs uppercase text-gray-700 dark:border-white/[0.08] dark:bg-gray-800 dark:text-gray-300">
-                    <th className="px-6 py-4">{t("featureLabel")}</th>
-                    {PLANS.map((p) => (
-                      <th key={p.id} className="px-4 py-4 text-center">
-                        <span className="font-bold normal-case text-gray-900 dark:text-white">{p.name}</span>
-                        {p.recommended && (
-                          <span className="ml-1.5 rounded-full bg-gray-200 px-2 py-0.5 text-[10px] font-medium text-gray-600 dark:bg-gray-700 dark:text-gray-300">
-                            {t("recommended")}
-                          </span>
-                        )}
-                      </th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-gray-200 dark:divide-white/[0.08]">
-                  {COMPARISON_FEATURES.map((feat) => (
-                    <tr key={feat.label} className="bg-white dark:bg-gray-900">
-                      <td className="whitespace-nowrap px-6 py-4 text-sm font-medium text-gray-900 dark:text-white">
-                        {feat.label}
-                      </td>
-                      <td className="px-4 py-4 text-center"><CellValue val={feat.mini} /></td>
-                      <td className="px-4 py-4 text-center"><CellValue val={feat.plus} /></td>
-                      <td className="px-4 py-4 text-center"><CellValue val={feat.maxi} /></td>
-                      <td className="px-4 py-4 text-center"><CellValue val={feat.aura} /></td>
-                    </tr>
-                  ))}
-                  <tr className="bg-gray-50 font-semibold dark:bg-gray-800">
-                    <td className="px-6 py-4 text-sm font-bold text-gray-900 dark:text-white">
-                      {t("pricePerMonth")}
-                    </td>
-                    {PLANS.map((p) => {
-                      const pr = calculatePrice(p.id, 1, "annual", false);
-                      return (
-                        <td key={p.id} className="px-4 py-4 text-center text-sm font-bold text-gray-900 dark:text-white">
-                          {pr.pricePerPersonMonthly.toFixed(2).replace(".", ",")} EUR
-                        </td>
-                      );
-                    })}
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-        )}
 
         {/* Step 2: Don libre */}
         {selectedPlan && (
