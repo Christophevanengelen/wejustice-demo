@@ -31,11 +31,10 @@ export default function CompteDashboard() {
   const { user } = useAuthSafe();
   const t = useTranslations("compte");
   const tc = useTranslations("common");
-  const [hasSignedActions] = useState(false);
-
   const maxActions = getMaxActions(userActivity.plan);
   const rejointes = userActivity.actionsRejointes.length;
   const sigCount = userActivity.signatures.length;
+  const hasSignedActions = sigCount > 0 || rejointes > 0;
   const seatsUsed = userActivity.seats.used;
   const seatsMax = userActivity.seats.max;
   const unread = userActivity.notifications.filter((n) => !n.read).length;

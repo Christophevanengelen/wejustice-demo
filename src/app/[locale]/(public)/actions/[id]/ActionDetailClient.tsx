@@ -13,7 +13,7 @@
  * All state is local - no API calls.
  */
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { Button, Badge } from "flowbite-react";
 import Link from "next/link";
 import { useParams } from "next/navigation";
@@ -50,8 +50,12 @@ export function ActionDetailClient({ actionId }: { actionId: string }) {
   const [sigCount, setSigCount] = useState(0);
   const [activeTab, setActiveTab] = useState<TabId>("presentation");
 
-  // Live readers counter (mock - random 15-45, stable per session)
-  const [liveReaders] = useState(() => Math.floor(Math.random() * 31) + 15);
+  // Live readers counter (mock - deterministic from actionId to avoid hydration mismatch)
+  const liveReaders = useMemo(() => {
+    let hash = 0;
+    for (let i = 0; i < actionId.length; i++) hash = (hash * 31 + actionId.charCodeAt(i)) | 0;
+    return 15 + (Math.abs(hash) % 31);
+  }, [actionId]);
 
   /** Switch tab without scroll jump - lock scroll position during re-render */
   const switchTab = (tab: TabId) => {
