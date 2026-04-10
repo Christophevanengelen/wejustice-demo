@@ -113,7 +113,7 @@ export function BlogArticleClient({ slug }: { slug: string }) {
               {related.map((a) => (
                 <Link key={a.id} href={`/${locale}/blog/${a.slug}`} className="group flex flex-col overflow-hidden rounded-lg border border-gray-200 bg-white transition-shadow hover:shadow-lg dark:border-white/[0.08] dark:bg-gray-900 dark:hover:border-white/[0.14] dark:hover:shadow-none">
                   <div className="relative h-40 overflow-hidden">
-                    <Image src={a.image} alt={a.title} fill className="object-cover transition-transform duration-300 group-hover:scale-105" />
+                    <Image src={a.image} alt={a.title} fill className="object-cover transition-transform duration-[600ms] ease-[cubic-bezier(0.25,0.1,0.25,1)] group-hover:scale-105" />
                   </div>
                   <div className="flex flex-1 flex-col p-4">
                     <span className="mb-2 text-xs font-medium text-gray-500 dark:text-gray-400">{a.category}</span>
