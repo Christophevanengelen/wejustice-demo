@@ -151,7 +151,9 @@ export function MerciClient({ actionId }: { actionId: string }) {
             <svg className="h-5 w-5 shrink-0 text-blue-600 dark:text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
             </svg>
-            <p className="text-sm text-blue-700 dark:text-blue-300" dangerouslySetInnerHTML={{ __html: t("emailVerification", { email: verifyEmail }) }} />
+            <p className="text-sm text-blue-700 dark:text-blue-300">
+              {t.rich("emailVerification", { email: verifyEmail, strong: (chunks) => <strong>{chunks}</strong> })}
+            </p>
           </div>
         </div>
       )}

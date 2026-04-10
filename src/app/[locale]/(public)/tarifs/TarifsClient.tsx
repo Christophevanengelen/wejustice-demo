@@ -170,7 +170,9 @@ export function TarifsClient() {
           <h1 className="mb-4 text-3xl font-bold leading-tight tracking-tight text-white lg:text-5xl">
             {t("heroTitle")}
           </h1>
-          <p className="mx-auto mb-8 max-w-2xl text-base leading-relaxed text-white/80 sm:text-lg" dangerouslySetInnerHTML={{ __html: t("heroText") }} />
+          <p className="mx-auto mb-8 max-w-2xl text-base leading-relaxed text-white/80 sm:text-lg">
+            {t.rich("heroText", { sup: (chunks) => <sup>{chunks}</sup> })}
+          </p>
           <div className="mx-auto grid max-w-2xl gap-6 sm:grid-cols-3">
             <div className="rounded-lg border border-white/15 bg-white/10 p-5 backdrop-blur-sm">
               <p className="text-2xl font-bold text-white">0 EUR</p>
@@ -182,7 +184,9 @@ export function TarifsClient() {
             </div>
             <div className="rounded-lg border border-white/15 bg-white/10 p-5 backdrop-blur-sm">
               <p className="text-2xl font-bold text-brand">{locale === "en" ? "You" : "Vous"}</p>
-              <p className="mt-1 text-xs text-white/60" dangerouslySetInnerHTML={{ __html: t("youAre") }} />
+              <p className="mt-1 text-xs text-white/60">
+                {t.rich("youAre", { sup: (chunks) => <sup>{chunks}</sup> })}
+              </p>
             </div>
           </div>
         </div>
