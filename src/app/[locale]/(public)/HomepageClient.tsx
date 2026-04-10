@@ -21,6 +21,7 @@ import { ActionCard } from "@/components/features/actions/ActionCard";
 import { PressSection } from "@/components/features/press/PressSection";
 import { AnimatedCounter } from "@/components/animations/AnimatedCounter";
 import { ScrollReveal } from "@/components/animations/ScrollReveal";
+import { sanitizeHtml } from "@/lib/sanitize";
 import actionsData from "@/mocks/actions.json";
 import siteSettings from "@/mocks/site-settings.json";
 import testimonialsData from "@/mocks/testimonials.json";
@@ -238,7 +239,7 @@ export function HomepageClient() {
                     <h3 className="mb-2 text-lg font-bold text-gray-900 dark:text-white">
                       {title}
                     </h3>
-                    <p className="text-sm leading-relaxed text-gray-500 dark:text-gray-400" dangerouslySetInnerHTML={{ __html: description }} />
+                    <p className="text-sm leading-relaxed text-gray-500 dark:text-gray-400" dangerouslySetInnerHTML={{ __html: sanitizeHtml(description) }} />
                   </div>
                 </div>
               </ScrollReveal>
@@ -255,7 +256,7 @@ export function HomepageClient() {
                     <TimelineContent>
                       <TimelineTime>{t("stepPrefix")} {step}</TimelineTime>
                       <TimelineTitle>{title}</TimelineTitle>
-                      <TimelineBody><span dangerouslySetInnerHTML={{ __html: description }} /></TimelineBody>
+                      <TimelineBody><span dangerouslySetInnerHTML={{ __html: sanitizeHtml(description) }} /></TimelineBody>
                     </TimelineContent>
                   </TimelineItem>
                 </ScrollReveal>

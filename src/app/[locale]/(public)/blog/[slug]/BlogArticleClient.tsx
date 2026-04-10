@@ -19,7 +19,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import DOMPurify from "isomorphic-dompurify";
+import { sanitizeHtml } from "@/lib/sanitize";
 import { useTranslations } from "next-intl";
 import { CTAButton } from "@/components/ui/CTAButton";
 import { ShareButtons } from "@/components/features/actions/ShareButtons";
@@ -142,7 +142,7 @@ export function BlogArticleClient({ slug }: { slug: string }) {
               {/* Body */}
               <div
                 className="prose prose-lg prose-gray max-w-none dark:prose-invert prose-headings:scroll-mt-20 prose-h2:mt-12 prose-h2:mb-4 prose-h2:text-2xl prose-h2:font-bold prose-h3:mt-8 prose-h3:mb-3 prose-h3:text-lg prose-p:leading-relaxed prose-p:text-gray-600 prose-p:dark:text-gray-400 prose-blockquote:border-brand prose-blockquote:text-gray-600 prose-strong:text-gray-900 prose-strong:dark:text-white prose-a:text-brand prose-a:no-underline hover:prose-a:underline"
-                dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(bodyWithIds) }}
+                dangerouslySetInnerHTML={{ __html: sanitizeHtml(bodyWithIds) }}
               />
 
               {/* Share after article */}

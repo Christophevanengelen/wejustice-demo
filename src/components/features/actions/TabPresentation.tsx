@@ -12,6 +12,7 @@
 
 import { Card, Avatar, Badge, Rating, RatingStar } from "flowbite-react";
 import { useTranslations } from "next-intl";
+import { sanitizeHtml } from "@/lib/sanitize";
 import { MilestoneTracker } from "./MilestoneTracker";
 import { ScrollReveal } from "@/components/animations/ScrollReveal";
 import { AnimatedCounter } from "@/components/animations/AnimatedCounter";
@@ -108,7 +109,7 @@ export function TabPresentation({ problem, petitionContent, evidence, demands, c
             </h3>
             <div
               className="prose prose-sm prose-gray max-w-none dark:prose-invert"
-              dangerouslySetInnerHTML={{ __html: petitionContent }}
+              dangerouslySetInnerHTML={{ __html: sanitizeHtml(petitionContent) }}
             />
           </section>
         </ScrollReveal>
