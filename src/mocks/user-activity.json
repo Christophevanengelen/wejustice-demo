@@ -6,15 +6,15 @@
   "maxActions": 5,
   "seats": { "used": 2, "max": 3 },
   "inviteCode": "WJ-MAXI-7K3F",
-  "signatures": ["dejavu-transparence-vaccins", "ultimatum-linky-refus", "dermatose-nodulaire-stop-abattage", "phonegate-ondes-ill\u00e9gales", "glyphosate-stop-empoisonnement"],
+  "signatures": ["dejavu-transparence-vaccins", "ultimatum-linky-refus", "dermatose-nodulaire-stop-abattage", "phonegate-ondes-illegales", "glyphosate-stop-empoisonnement"],
   "notifications": [
-    { "id": "n-1", "type": "bienvenue", "title": "Bienvenue sur Wejustice !", "body": "Votre compte a \u00e9t\u00e9 cr\u00e9\u00e9 avec succ\u00e8s. Explorez nos actions collectives.", "date": "2026-03-25T10:00:00Z", "read": true },
-    { "id": "n-2", "type": "action", "title": "DejaVu : la Commission fait appel", "body": "La Commission europ\u00e9enne a d\u00e9pos\u00e9 un appel contre sa condamnation du 17 juillet 2024.", "date": "2026-04-06T14:00:00Z", "read": false },
-    { "id": "n-3", "type": "action", "title": "Phonegate : nouveau palier atteint", "body": "L'action Phonegate vient de d\u00e9passer un nouveau palier de signatures.", "date": "2026-04-07T09:00:00Z", "read": false },
-    { "id": "n-4", "type": "invite", "title": "Marie L. a utilis\u00e9 votre code d'invitation", "body": "Votre proche Marie L. a rejoint Wejustice gr\u00e2ce \u00e0 votre code WJ-MAXI-7K3F.", "date": "2026-04-04T16:00:00Z", "read": true },
-    { "id": "n-5", "type": "action", "title": "Linky : 15 561 signatures atteintes", "body": "L'ultimatum contre Linky continue de rassembler. 15 561 signataires.", "date": "2026-04-03T11:00:00Z", "read": true },
-    { "id": "n-6", "type": "action", "title": "Dermatose : les \u00e9leveurs bloquent les autoroutes", "body": "Des \u00e9leveurs en Ari\u00e8ge refusent l'abattage de 200 bovins.", "date": "2026-03-31T08:00:00Z", "read": true },
-    { "id": "n-7", "type": "upgrade", "title": "Pensez \u00e0 upgrader : 3/5 actions rejointes", "body": "Vous avez rejoint 3 actions sur les 5 de votre forfait Maxi. Passez \u00e0 Aura pour un acc\u00e8s illimit\u00e9.", "date": "2026-04-05T10:00:00Z", "read": false }
+    { "id": "n1", "type": "signature", "title": "Nouvelle signature enregistree", "description": "Votre signature sur l'action DejaVu a ete confirmee.", "date": "2026-04-08T14:30:00Z", "read": false, "link": "/actions/dejavu-transparence-vaccins" },
+    { "id": "n2", "type": "milestone", "title": "Palier 10K atteint !", "description": "L'action Linky vient de franchir les 10 000 signatures.", "date": "2026-04-07T09:15:00Z", "read": false, "link": "/actions/ultimatum-linky-refus" },
+    { "id": "n3", "type": "comment", "title": "Nouveau commentaire", "description": "Jean-Pierre a commente l'action Dermatose Nodulaire.", "date": "2026-04-06T18:45:00Z", "read": false, "link": "/actions/dermatose-nodulaire-stop-abattage" },
+    { "id": "n4", "type": "action", "title": "Nouvelle action ouverte", "description": "L'action Glyphosate vient d'etre lancee. Signez maintenant.", "date": "2026-04-05T10:00:00Z", "read": true, "link": "/actions/glyphosate-stop-empoisonnement" },
+    { "id": "n5", "type": "payment", "title": "Paiement confirme", "description": "Votre forfait Maxi a ete renouvele pour 24,80 EUR/mois.", "date": "2026-04-01T08:00:00Z", "read": true, "link": "/compte/paiements" },
+    { "id": "n6", "type": "welcome", "title": "Bienvenue sur Wejustice !", "description": "Votre compte a ete cree. Decouvrez les actions ouvertes.", "date": "2026-03-28T12:00:00Z", "read": true, "link": "/actions" },
+    { "id": "n7", "type": "update", "title": "Mise a jour de l'action DejaVu", "description": "La Commission europeenne a depose son appel. Le combat continue.", "date": "2026-03-25T16:30:00Z", "read": true, "link": "/actions/dejavu-transparence-vaccins" }
   ],
   "payments": [
     { "id": "p-1", "date": "2026-03-15", "description": "Forfait Maxi - mensuel", "amount": 24.80, "status": "paid" },

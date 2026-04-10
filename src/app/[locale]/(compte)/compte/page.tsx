@@ -211,7 +211,7 @@ export default function CompteDashboard() {
               <div className="flex items-start gap-2">
                 <p className="flex-1 text-sm font-medium text-gray-900 dark:text-white">{n.title}</p>
               </div>
-              <p className="text-xs text-gray-500 dark:text-gray-400">{n.body}</p>
+              <p className="text-xs text-gray-500 dark:text-gray-400">{n.description}</p>
             </Card>
           ))}
         </div>

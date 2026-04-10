@@ -18,6 +18,7 @@ import { useParams } from "next/navigation";
 import { DarkThemeToggle, Dropdown, DropdownHeader, DropdownItem, DropdownDivider } from "flowbite-react";
 import { useAuthSafe } from "@/lib/mock-auth";
 import { LogoFigma } from "@/components/ui/LogoFigma";
+import { NotificationBell } from "@/components/ui/NotificationBell";
 
 interface CompteNavbarProps {
   onMenuClick: () => void;
@@ -72,6 +73,7 @@ export function CompteNavbar({ onMenuClick }: CompteNavbarProps) {
         {/* Right — dark mode toggle + avatar dropdown */}
         <div className="ml-auto flex items-center gap-2">
           <DarkThemeToggle />
+          {user && <NotificationBell />}
           {user && (
             <Dropdown
               arrowIcon={false}

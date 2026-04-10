@@ -6,6 +6,7 @@ import { DarkThemeToggle, Dropdown, DropdownHeader, DropdownItem, DropdownDivide
 import { useParams, usePathname } from "next/navigation";
 import { useAuthSafe } from "@/lib/mock-auth";
 import { LogoFigma } from "@/components/ui/LogoFigma";
+import { NotificationBell } from "@/components/ui/NotificationBell";
 
 const NAV_LINKS = [
   { href: "/actions", label: "Actions" },
@@ -85,6 +86,9 @@ export function Navigation() {
 
           {/* Dark mode toggle */}
           <DarkThemeToggle />
+
+          {/* Notification bell (authenticated only) */}
+          {isAuthenticated && <NotificationBell />}
 
           {/* User avatar / login */}
           {isAuthenticated && user ? (
