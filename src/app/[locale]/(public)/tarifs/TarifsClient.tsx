@@ -345,7 +345,7 @@ export function TarifsClient() {
         </div>
 
         {/* Cards */}
-        <div className={`mb-8 flex gap-6 overflow-x-auto pb-4 lg:grid lg:overflow-visible ${visiblePlans.length <= 3 ? "lg:grid-cols-3 lg:max-w-4xl lg:mx-auto" : "lg:grid-cols-4"}`}>
+        <div className={`mb-8 flex gap-6 overflow-x-auto pb-4 pt-4 lg:grid lg:overflow-visible ${visiblePlans.length <= 3 ? "lg:grid-cols-3 lg:max-w-4xl lg:mx-auto" : "lg:grid-cols-4"}`}>
           {visiblePlans.map((plan) => {
             // Prix calculé au max seats du plan quand dépassé (carte grisée mais prix stable)
             const seatsForPrice = isReduced ? 1 : Math.min(seats, plan.maxSeats);
