@@ -66,15 +66,15 @@ export function PricingCard({ plan, price, seats, isReduced, onChoose }: Pricing
       {/* Price */}
       <div className="mb-1">
         <span className="text-3xl font-bold text-gray-900 dark:text-white">
-          {formatPrice(seats > 1 && !isReduced ? price.pricePerPersonMonthly : price.totalMonthly)}
+          {formatPrice(seats > 1 && !isReduced && !disabled ? price.pricePerPersonMonthly : price.totalMonthly)}
         </span>
         <span className="ml-1 text-sm text-gray-500 dark:text-gray-400">
-          {seats > 1 && !isReduced ? "/mois/pers." : "/mois"}
+          {seats > 1 && !isReduced && !disabled ? "/mois/pers." : "/mois"}
         </span>
       </div>
 
-      {/* Total monthly if multi-seat */}
-      {seats > 1 && !isReduced && (
+      {/* Total monthly if multi-seat (masqué si carte grisée) */}
+      {seats > 1 && !isReduced && !disabled && (
         <p className="mb-1 text-sm font-medium text-brand">
           Total : {formatPrice(price.totalMonthly)}/mois
         </p>
